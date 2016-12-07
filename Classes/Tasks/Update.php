@@ -59,10 +59,6 @@ class Update extends \TYPO3\CMS\Scheduler\Task\AbstractTask
      */
     protected $extConf;
 
-
-
-
-
     /**
      * constructor of this class
      */
@@ -112,7 +108,7 @@ class Update extends \TYPO3\CMS\Scheduler\Task\AbstractTask
                 if ($company->getEmail()) {
                     $this->informUser($company, 'deactivated');
                 }
-                $this->informAdmin($company, 'deactivated');
+                $this->informAdmin($company);
             }
             $this->persistenceManager->persistAll();
         }
@@ -148,8 +144,7 @@ class Update extends \TYPO3\CMS\Scheduler\Task\AbstractTask
                 'yellowpages2light',
                 array(
                     $company->getUid(),
-                    $company->getCompany(),
-                    $this->extConf->getEditLink()
+                    $company->getCompany()
                 )
             ),
             'text/html'

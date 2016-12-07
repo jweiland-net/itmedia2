@@ -33,13 +33,6 @@ use TYPO3\CMS\Core\SingletonInterface;
 class ExtConf implements SingletonInterface
 {
     /**
-     * editLink
-     *
-     * @var string
-     */
-    protected $editLink;
-
-    /**
      * email from address
      *
      * @var string
@@ -84,27 +77,6 @@ class ExtConf implements SingletonInterface
                 }
             }
         }
-    }
-
-    /**
-     * getter for editLink
-     *
-     * @return string
-     */
-    public function getEditLink()
-    {
-        return $this->editLink;
-    }
-
-    /**
-     * setter for editLink
-     *
-     * @param string $editLink
-     * @return void
-     */
-    public function setEditLink($editLink)
-    {
-        $this->editLink = (string) $editLink;
     }
 
     /**

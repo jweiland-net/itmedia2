@@ -21,5 +21,5 @@ $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['proc
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks']['JWeiland\\Yellowpages2light\\Tasks\\Update'] = array(
     'extension'        => $_EXTKEY,
     'title'            => 'Update yellowpages',
-    'description'      => 'Hide all yellowpages records which are older than the secified age.'
+    'description'      => 'Hide all yellowpages records which are older than the specified age.'
 );
