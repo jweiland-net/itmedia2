@@ -1,4 +1,4 @@
-{namespace yp=JWeiland\Yellowpages2light\ViewHelpers}
+{namespace yp=JWeiland\Itmedia2\ViewHelpers}
 
 <f:if condition="{companies}">
 	<f:then>
@@ -14,7 +14,7 @@
 									</f:then>
 									<f:else>
 										<f:if condition="{company.mainTrade.icon}">
-											<yp:grayScaleImage src="uploads/tx_yellowpages2light/{company.mainTrade.icon}" alt="Logo: {company.mainTrade.title}" width="{settings.list.image.width}" height="{settings.list.image.height}" minWidth="{settings.list.image.minWidth}" maxWidth="{settings.list.image.maxWidth}" minHeight="{settings.list.image.minHeight}" maxHeight="{settings.list.image.maxHeight}" />
+											<yp:grayScaleImage src="uploads/tx_itmedia2/{company.mainTrade.icon}" alt="Logo: {company.mainTrade.title}" width="{settings.list.image.width}" height="{settings.list.image.height}" minWidth="{settings.list.image.minWidth}" maxWidth="{settings.list.image.maxWidth}" minHeight="{settings.list.image.minHeight}" maxHeight="{settings.list.image.maxHeight}" />
 										</f:if>
 									</f:else>
 								</f:if>

@@ -6,13 +6,13 @@
 		<sDEFAULT>
 			<ROOT>
 				<TCEforms>
-					<sheetTitle>LLL:EXT:yellowpages2light/Resources/Private/Language/FlexForms.xlf:sheetGeneral</sheetTitle>
+					<sheetTitle>LLL:EXT:itmedia2/Resources/Private/Language/FlexForms.xlf:sheetGeneral</sheetTitle>
 				</TCEforms>
 				<type>array</type>
 				<el>
 					<settings.showWspMembers>
 						<TCEforms>
-							<label>LLL:EXT:yellowpages2light/Resources/Private/Language/FlexForms.xlf:showWspMembers</label>
+							<label>LLL:EXT:itmedia2/Resources/Private/Language/FlexForms.xlf:showWspMembers</label>
 							<config>
 								<type>check</type>
 							</config>
@@ -20,13 +20,13 @@
 					</settings.showWspMembers>
 					<settings.district>
 					<TCEforms>
-						<label>LLL:EXT:yellowpages2light/Resources/Private/Language/FlexForms.xlf:district</label>
+						<label>LLL:EXT:itmedia2/Resources/Private/Language/FlexForms.xlf:district</label>
 						<config>
 							<type>select</type>
-							<foreign_table>tx_yellowpages2light_domain_model_district</foreign_table>
+							<foreign_table>tx_itmedia2_domain_model_district</foreign_table>
 							<items type="array">
 								<numIndex index="0">
-									<numIndex index="0">LLL:EXT:yellowpages2light/Resources/Private/Language/locallang_db.xlf:tx_yellowpages2light_domain_model_company.district.pleaseChoose</numIndex>
+									<numIndex index="0">LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.district.pleaseChoose</numIndex>
 									<numIndex index="1"></numIndex>
 								</numIndex>
 							</items>

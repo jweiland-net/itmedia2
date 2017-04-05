@@ -1,5 +1,5 @@
 <?php
-namespace JWeiland\Yellowpages2light\Configuration;
+namespace JWeiland\Itmedia2\Configuration;
 
 /***************************************************************
  *  Copyright notice
@@ -27,7 +27,7 @@ namespace JWeiland\Yellowpages2light\Configuration;
 use TYPO3\CMS\Core\SingletonInterface;
 
 /**
- * @package yellowpages2light
+ * @package itmedia2
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class ExtConf implements SingletonInterface
@@ -67,7 +67,7 @@ class ExtConf implements SingletonInterface
     public function __construct()
     {
         // get global configuration
-        $extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['yellowpages2light']);
+        $extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['itmedia2']);
         if (is_array($extConf) && count($extConf)) {
             // call setter method foreach configuration entry
             foreach ($extConf as $key => $value) {

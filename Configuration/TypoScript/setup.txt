@@ -1,18 +1,18 @@
-plugin.tx_yellowpages2light {
+plugin.tx_itmedia2 {
 	view {
-		templateRootPath = {$plugin.tx_yellowpages2light.view.templateRootPath}
-		partialRootPath = {$plugin.tx_yellowpages2light.view.partialRootPath}
-		layoutRootPath = {$plugin.tx_yellowpages2light.view.layoutRootPath}
+		templateRootPath = {$plugin.tx_itmedia2.view.templateRootPath}
+		partialRootPath = {$plugin.tx_itmedia2.view.partialRootPath}
+		layoutRootPath = {$plugin.tx_itmedia2.view.layoutRootPath}
 	}
 	persistence {
-		storagePid = {$plugin.tx_yellowpages2light.persistence.storagePid}
+		storagePid = {$plugin.tx_itmedia2.persistence.storagePid}
 		classes {
-			JWeiland\Yellowpages2light\Domain\Model\FileReference {
+			JWeiland\Itmedia2\Domain\Model\FileReference {
 				mapping {
 					tableName = sys_file_reference
 				}
 			}
- 			JWeiland\Yellowpages2light\Domain\Model\Category {
+ 			JWeiland\Itmedia2\Domain\Model\Category {
  				mapping {
  					tableName = sys_category
  				}
@@ -23,11 +23,11 @@ plugin.tx_yellowpages2light {
 		rewrittenPropertyMapper = 1
 	}
 	settings {
-		includeJQueryLibrary = {$plugin.tx_yellowpages2light.settings.includeJQueryLibrary}
-		pidOfMaps2Plugin = {$plugin.tx_yellowpages2light.settings.pidOfMaps2Plugin}
-		startingUidForCategories = {$plugin.tx_yellowpages2light.settings.startingUidForCategories}
-		uidOfDefaultDistrict = {$plugin.tx_yellowpages2light.settings.uidOfDefaultDistrict}
-		pidOfDetailPage = {$plugin.tx_yellowpages2light.settings.pidOfDetailPage}
+		includeJQueryLibrary = {$plugin.tx_itmedia2.settings.includeJQueryLibrary}
+		pidOfMaps2Plugin = {$plugin.tx_itmedia2.settings.pidOfMaps2Plugin}
+		startingUidForCategories = {$plugin.tx_itmedia2.settings.startingUidForCategories}
+		uidOfDefaultDistrict = {$plugin.tx_itmedia2.settings.uidOfDefaultDistrict}
+		pidOfDetailPage = {$plugin.tx_itmedia2.settings.pidOfDetailPage}
 		mapOptions {
 			zoom = 12
 			mapTypeId = google.maps.MapTypeId.HYBRID
@@ -49,15 +49,15 @@ plugin.tx_yellowpages2light {
 			}
 		}
 		pageBrowser {
-			itemsPerPage = {$plugin.tx_yellowpages2light.settings.pageBrowser.itemsPerPage}
-			insertAbove = {$plugin.tx_yellowpages2light.settings.pageBrowser.insertAbove}
-			insertBelow = {$plugin.tx_yellowpages2light.settings.pageBrowser.insertBelow}
-			maximumNumberOfLinks = {$plugin.tx_yellowpages2light.settings.pageBrowser.maximumNumberOfLinks}
+			itemsPerPage = {$plugin.tx_itmedia2.settings.pageBrowser.itemsPerPage}
+			insertAbove = {$plugin.tx_itmedia2.settings.pageBrowser.insertAbove}
+			insertBelow = {$plugin.tx_itmedia2.settings.pageBrowser.insertBelow}
+			maximumNumberOfLinks = {$plugin.tx_itmedia2.settings.pageBrowser.maximumNumberOfLinks}
 		}
 	}
 }
 
-plugin.tx_yellowpages2light._CSS_DEFAULT_STYLE (
+plugin.tx_itmedia2._CSS_DEFAULT_STYLE (
 	textarea.f3-form-error {
 		background-color:#FF9F9F;
 		border: 1px #FF0000 solid;

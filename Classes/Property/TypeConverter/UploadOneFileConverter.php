@@ -1,5 +1,5 @@
 <?php
-namespace JWeiland\Yellowpages2light\Property\TypeConverter;
+namespace JWeiland\Itmedia2\Property\TypeConverter;
 
 /***************************************************************
  *
@@ -43,7 +43,7 @@ class UploadOneFileConverter extends AbstractTypeConverter
     /**
      * @var string
      */
-    protected $targetType = 'JWeiland\\Yellowpages2light\\Domain\\Model\\FileReference';
+    protected $targetType = 'JWeiland\\Itmedia2\\Domain\\Model\\FileReference';
 
     /**
      * @var int
@@ -83,7 +83,7 @@ class UploadOneFileConverter extends AbstractTypeConverter
         \TYPO3\CMS\Extbase\Property\PropertyMappingConfigurationInterface $configuration = NULL
     ) {
         /** @var \TYPO3\CMS\Extbase\Domain\Model\Filereference $alreadyPersistedImage */
-        $alreadyPersistedImage = $configuration->getConfigurationValue('JWeiland\\Yellowpages2light\\Property\\TypeConverter\\UploadOneFileConverter', 'IMAGE');
+        $alreadyPersistedImage = $configuration->getConfigurationValue('JWeiland\\Itmedia2\\Property\\TypeConverter\\UploadOneFileConverter', 'IMAGE');
 
         // if no file was uploaded use the already persisted one
         if (
@@ -99,14 +99,14 @@ class UploadOneFileConverter extends AbstractTypeConverter
         // check if uploaded file returns an error
         if ($source['error'] !== 0) {
             return new \TYPO3\CMS\Extbase\Error\Error(
-                LocalizationUtility::translate('error.upload', 'yellowpages2light') . $source['error'],
+                LocalizationUtility::translate('error.upload', 'itmedia2') . $source['error'],
                 1396957314
             );
         }
         // now we have a valid uploaded file. Check if user has rights to upload this file
         if (!isset($source['rights']) || empty($source['rights'])) {
             return new \TYPO3\CMS\Extbase\Error\Error(
-                LocalizationUtility::translate('error.uploadRights', 'yellowpages2light'),
+                LocalizationUtility::translate('error.uploadRights', 'itmedia2'),
                 1397464390
             );
         }
@@ -116,7 +116,7 @@ class UploadOneFileConverter extends AbstractTypeConverter
             return new \TYPO3\CMS\Extbase\Error\Error(
                 LocalizationUtility::translate(
                     'error.fileExtension',
-                    'yellowpages2light',
+                    'itmedia2',
                     array($GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
                     )
                 ),
@@ -158,7 +158,7 @@ class UploadOneFileConverter extends AbstractTypeConverter
     protected function getCoreFileReference(array $source)
     {
         // upload file
-        $uploadFolder = ResourceFactory::getInstance()->retrieveFileOrFolderObject('uploads/tx_yellowpages2light/');
+        $uploadFolder = ResourceFactory::getInstance()->retrieveFileOrFolderObject('uploads/tx_itmedia2/');
         $uploadedFile = $uploadFolder->addUploadedFile($source, 'changeName');
         // create Core FileReference
         return ResourceFactory::getInstance()->createFileReferenceObject(

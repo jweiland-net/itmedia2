@@ -1,5 +1,5 @@
 <?php
-namespace JWeiland\Yellowpages2light\Tca;
+namespace JWeiland\Itmedia2\Tca;
 
 /***************************************************************
  *  Copyright notice
@@ -29,7 +29,7 @@ use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
- * @package yellowpages2light
+ * @package itmedia2
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class CreateMap
@@ -71,7 +71,7 @@ class CreateMap
     public function processDatamap_afterDatabaseOperations($status, $table, $uid, array $fieldArray, \TYPO3\CMS\Core\DataHandling\DataHandler $pObj)
     {
         // process this hook only on expected table
-        if ($table !== 'tx_yellowpages2light_domain_model_company') {
+        if ($table !== 'tx_itmedia2_domain_model_company') {
             return;
         }
 
@@ -102,7 +102,7 @@ class CreateMap
     }
 
     /**
-     * get full yellowpages record
+     * get full itmedia2 record
      * While updating a record only the changed fields will be in $fieldArray
      *
      * @param string $table
@@ -155,7 +155,7 @@ class CreateMap
     }
 
     /**
-     * update yellowpages record
+     * update itmedia2 record
      *
      * @param int $poi
      * @return void
@@ -163,7 +163,7 @@ class CreateMap
     public function updateCurrentRecord($poi)
     {
         $GLOBALS['TYPO3_DB']->exec_UPDATEquery(
-            'tx_yellowpages2light_domain_model_company',
+            'tx_itmedia2_domain_model_company',
             'uid=' . $this->currentRecord['uid'],
             array('tx_maps2_uid' => $poi)
         );
@@ -171,7 +171,7 @@ class CreateMap
     }
 
     /**
-     * creates a new poiCollection before updating the current yellowPages record
+     * creates a new poiCollection before updating the current itmedia2 record
      *
      * @param array $location
      * @param string $address Formatted Address returned from Google
@@ -209,11 +209,11 @@ class CreateMap
      */
     public function getTsConfig()
     {
-        $tsConfig = BackendUtility::getModTSconfig($this->currentRecord['uid'], 'ext.yellowpages2light');
+        $tsConfig = BackendUtility::getModTSconfig($this->currentRecord['uid'], 'ext.itmedia2');
         if (is_array($tsConfig) && !empty($tsConfig['properties']['pid'])) {
             return $tsConfig['properties'];
         } else {
-            throw new \Exception('no PID for maps2 given. Please add this PID in extension configuration of yellowpages2light or set it in page TSconfig', 1364889195);
+            throw new \Exception('no PID for maps2 given. Please add this PID in extension configuration of itmedia2 or set it in page TSconfig', 1364889195);
         }
     }
 
@@ -231,12 +231,12 @@ class CreateMap
                 ' AND tablenames="tx_maps2_domain_model_poicollection"'
         );
 
-        // get all with yellowpages2light related categories
+        // get all with itmedia2 related categories
         $rows = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows(
             '*',
             'sys_category_record_mm',
             'uid_foreign=' . $this->currentRecord['uid'] .
-            ' AND tablenames="tx_yellowpages2light_domain_model_company"' .
+            ' AND tablenames="tx_itmedia2_domain_model_company"' .
             ' AND fieldname="trades"'
         );
 

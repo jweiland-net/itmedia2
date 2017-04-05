@@ -16,10 +16,10 @@ if (!defined('TYPO3_MODE')) {
 );
 
 // use hook to automatically add a map record to current yellow page
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processDatamapClass'][] = 'JWeiland\\Yellowpages2light\\Tca\\CreateMap';
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processDatamapClass'][] = 'JWeiland\\Itmedia2\\Tca\\CreateMap';
 
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks']['JWeiland\\Yellowpages2light\\Tasks\\Update'] = array(
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks']['JWeiland\\Itmedia2\\Tasks\\Update'] = array(
     'extension'        => $_EXTKEY,
-    'title'            => 'Update yellowpages',
-    'description'      => 'Hide all yellowpages records which are older than the specified age.'
+    'title'            => 'Update itmedia2',
+    'description'      => 'Hide all itmedia2 records which are older than the specified age.'
 );

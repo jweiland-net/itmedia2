@@ -1,36 +1,36 @@
-plugin.tx_yellowpages2light {
+plugin.tx_itmedia2 {
 	view {
-		# cat=plugin.tx_yellowpages2light/file; type=string; label=Path to template root (FE)
-		templateRootPath = EXT:yellowpages2light/Resources/Private/Templates/
-		# cat=plugin.tx_yellowpages2light/file; type=string; label=Path to template partials (FE)
-		partialRootPath = EXT:yellowpages2light/Resources/Private/Partials/
-		# cat=plugin.tx_yellowpages2light/file; type=string; label=Path to template layouts (FE)
-		layoutRootPath = EXT:yellowpages2light/Resources/Private/Layouts/
+		# cat=plugin.tx_itmedia2/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:itmedia2/Resources/Private/Templates/
+		# cat=plugin.tx_itmedia2/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:itmedia2/Resources/Private/Partials/
+		# cat=plugin.tx_itmedia2/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:itmedia2/Resources/Private/Layouts/
 	}
 	persistence {
-		# cat=plugin.tx_yellowpages2light//a; type=string; label=Default storage PID
+		# cat=plugin.tx_itmedia2//a; type=string; label=Default storage PID
 		storagePid =
 	}
 	settings {
-		# cat=plugin.tx_yellowpages2light//b; type=boolean; label=Include jQuery
+		# cat=plugin.tx_itmedia2//b; type=boolean; label=Include jQuery
 		includeJQueryLibrary = 1
-		# cat=plugin.tx_yellowpages2light//c; type=int+; label=PID for maps2: PID where maps2 plugin for detail view is inserted
+		# cat=plugin.tx_itmedia2//c; type=int+; label=PID for maps2: PID where maps2 plugin for detail view is inserted
 		pidOfMaps2Plugin =
-		# cat=plugin.tx_yellowpages2light//d; type=int+; label=Root for categories: Starting/Parent UID of all available categories for this plugin
+		# cat=plugin.tx_itmedia2//d; type=int+; label=Root for categories: Starting/Parent UID of all available categories for this plugin
 		startingUidForCategories =
-		# cat=plugin.tx_yellowpages2light//e; type=int+; label=Default District: UID of the default district to show in selectbox
+		# cat=plugin.tx_itmedia2//e; type=int+; label=Default District: UID of the default district to show in selectbox
 		uidOfDefaultDistrict =
-		# cat=plugin.tx_yellowpages2light//f; type=int+; label=PID of Detail page: Leave empty to show details on current page.
+		# cat=plugin.tx_itmedia2//f; type=int+; label=PID of Detail page: Leave empty to show details on current page.
 		pidOfDetailPage =
 
 		pageBrowser {
-			# cat=plugin.tx_yellowpages2light/basic/dims; type=int+; label=Items per page: How many items should be displayed on one page
+			# cat=plugin.tx_itmedia2/basic/dims; type=int+; label=Items per page: How many items should be displayed on one page
 			itemsPerPage = 15
-			# cat=plugin.tx_yellowpages2light/basic/enable; type=boolean; label=insert above: Should pagebrowser be displayed on top of the list
+			# cat=plugin.tx_itmedia2/basic/enable; type=boolean; label=insert above: Should pagebrowser be displayed on top of the list
 			insertAbove = 1
-			# cat=plugin.tx_yellowpages2light/basic/enable; type=boolean; label=insert below: Should pagebrowser be displayed at bottom of the list
+			# cat=plugin.tx_itmedia2/basic/enable; type=boolean; label=insert below: Should pagebrowser be displayed at bottom of the list
 			insertBelow = 0
-			# cat=plugin.tx_yellowpages2light/basic/dims; type=int+; label=max number of links: Define maximum amount of pages which should be displayed
+			# cat=plugin.tx_itmedia2/basic/dims; type=int+; label=max number of links: Define maximum amount of pages which should be displayed
 			maximumNumberOfLinks = 5
 		}
 	}

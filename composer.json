@@ -1,10 +1,10 @@
 {
-    "name": "jweiland/yellowpages2light",
+    "name": "jweiland/itmedia2",
     "type": "typo3-cms-extension",
     "description": "With this extension you can build your own industry directory",
     "version": "1.0.5",
     "license": "GPL-2.0+",
-    "keywords": ["typo3", "TYPO3 CMS", "yellowpages", "industry", "directory"],
+    "keywords": ["typo3", "TYPO3 CMS", "itmedia2", "industry", "directory"],
     "homepage": "http://www.jweiland.net",
     "authors": [
       {
@@ -15,8 +15,8 @@
     ],
     "support": {
       "email": "projects@jweiland.net",
-      "issues": "https://github.com/jweiland-net/yellowpages2light/issues",
-      "source": "https://github.com/jweiland-net/yellowpages2light"
+      "issues": "https://github.com/jweiland-net/itmedia2/issues",
+      "source": "https://github.com/jweiland-net/itmedia2"
     },
     "require": {
       "php": ">=5.3.7 <6.0",
@@ -27,7 +27,7 @@
     },
     "autoload": {
         "psr-4": {
-            "JWeiland\\Yellowpages2light\\": "Classes"
+            "JWeiland\\Itmedia2\\": "Classes"
         }
     }
 }

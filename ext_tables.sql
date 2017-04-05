@@ -1,7 +1,7 @@
 #
-# Table structure for table 'tx_yellowpages2light_domain_model_company'
+# Table structure for table 'tx_itmedia2_domain_model_company'
 #
-CREATE TABLE tx_yellowpages2light_domain_model_company (
+CREATE TABLE tx_itmedia2_domain_model_company (
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
 
@@ -59,9 +59,9 @@ CREATE TABLE tx_yellowpages2light_domain_model_company (
 );
 
 #
-# Table structure for table 'tx_yellowpages2light_domain_model_district'
+# Table structure for table 'tx_itmedia2_domain_model_district'
 #
-CREATE TABLE tx_yellowpages2light_domain_model_district (
+CREATE TABLE tx_itmedia2_domain_model_district (
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
 

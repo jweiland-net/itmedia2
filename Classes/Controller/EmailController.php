@@ -1,5 +1,5 @@
 <?php
-namespace JWeiland\Yellowpages2light\Controller;
+namespace JWeiland\Itmedia2\Controller;
 
 /***************************************************************
  *  Copyright notice
@@ -28,7 +28,7 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
- * @package yellowpages2light
+ * @package itmedia2
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class EmailController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
@@ -40,7 +40,7 @@ class EmailController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     protected $mail;
 
     /**
-     * @var \JWeiland\Yellowpages2light\Configuration\ExtConf
+     * @var \JWeiland\Itmedia2\Configuration\ExtConf
      */
     protected $extConf;
 
@@ -58,10 +58,10 @@ class EmailController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     /**
      * inject extConf
      *
-     * @param \JWeiland\Yellowpages2light\Configuration\ExtConf $extConf
+     * @param \JWeiland\Itmedia2\Configuration\ExtConf $extConf
      * @return void
      */
-    public function injectExtConf(\JWeiland\Yellowpages2light\Configuration\ExtConf $extConf)
+    public function injectExtConf(\JWeiland\Itmedia2\Configuration\ExtConf $extConf)
     {
         $this->extConf = $extConf;
     }
@@ -82,7 +82,7 @@ class EmailController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
             $this->mail->setFrom($this->extConf->getEmailFromAddress(), $this->extConf->getEmailFromName());
             $this->mail->setTo($this->extConf->getEmailToAddress(), $this->extConf->getEmailToName());
-            $this->mail->setSubject(LocalizationUtility::translate(lcfirst($templateFile), 'yellowpages2light'));
+            $this->mail->setSubject(LocalizationUtility::translate(lcfirst($templateFile), 'itmedia2'));
             $this->mail->setBody($this->view->render(), 'text/html');
 
             $this->mail->send();

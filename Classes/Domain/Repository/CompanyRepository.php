@@ -1,5 +1,5 @@
 <?php
-namespace JWeiland\Yellowpages2light\Domain\Repository;
+namespace JWeiland\Itmedia2\Domain\Repository;
 
 /***************************************************************
  *  Copyright notice
@@ -24,7 +24,7 @@ namespace JWeiland\Yellowpages2light\Domain\Repository;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-use JWeiland\Yellowpages2light\Domain\Model\Company;
+use JWeiland\Itmedia2\Domain\Model\Company;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Extbase\Persistence\Generic\Query;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
@@ -32,7 +32,7 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
- * @package yellowpages2light
+ * @package itmedia2
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class CompanyRepository extends Repository
@@ -58,7 +58,7 @@ class CompanyRepository extends Repository
      * find company by uid whether it is hidden or not
      *
      * @param int $companyUid
-     * @return \JWeiland\Yellowpages2light\Domain\Model\Company
+     * @return \JWeiland\Itmedia2\Domain\Model\Company
      */
     public function findHiddenEntryByUid($companyUid)
     {
@@ -135,10 +135,10 @@ class CompanyRepository extends Repository
         $query = $this->createQuery();
         return $query->statement('
 			SELECT UPPER(LEFT(company, 1)) as letter
-			FROM tx_yellowpages2light_domain_model_company
+			FROM tx_itmedia2_domain_model_company
 			WHERE 1=1 ' . $addWhere .
-            BackendUtility::BEenableFields('tx_yellowpages2light_domain_model_company')    .
-            BackendUtility::deleteClause('tx_yellowpages2light_domain_model_company')    . '
+            BackendUtility::BEenableFields('tx_itmedia2_domain_model_company')    .
+            BackendUtility::deleteClause('tx_itmedia2_domain_model_company')    . '
 			GROUP BY letter
 			ORDER by letter;
 		')->execute(true);
@@ -206,19 +206,19 @@ class CompanyRepository extends Repository
         $query = $this->createQuery();
         $results = $query->statement('
 			SELECT sys_category.uid, sys_category.title
-			FROM sys_category, tx_yellowpages2light_domain_model_company
-			WHERE tx_yellowpages2light_domain_model_company.main_trade = sys_category.uid
-			AND tx_yellowpages2light_domain_model_company.main_trade > 0 ' .
+			FROM sys_category, tx_itmedia2_domain_model_company
+			WHERE tx_itmedia2_domain_model_company.main_trade = sys_category.uid
+			AND tx_itmedia2_domain_model_company.main_trade > 0 ' .
                 BackendUtility::BEenableFields('sys_category') .
                 BackendUtility::deleteClause('sys_category') .
-                BackendUtility::BEenableFields('tx_yellowpages2light_domain_model_company') .
-                BackendUtility::deleteClause('tx_yellowpages2light_domain_model_company') . '
+                BackendUtility::BEenableFields('tx_itmedia2_domain_model_company') .
+                BackendUtility::deleteClause('tx_itmedia2_domain_model_company') . '
 				GROUP BY sys_category.uid
 				ORDER BY sys_category.title'
         )->execute(true);
 
         $groupedCategories = array();
-        $groupedCategories[] = LocalizationUtility::translate('allBranches', 'yellowpages2light');
+        $groupedCategories[] = LocalizationUtility::translate('allBranches', 'itmedia2');
         foreach ($results as $result) {
             $groupedCategories[$result['uid']] = $result['title'];
         }

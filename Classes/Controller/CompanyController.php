@@ -1,5 +1,5 @@
 <?php
-namespace JWeiland\Yellowpages2light\Controller;
+namespace JWeiland\Itmedia2\Controller;
 
 /***************************************************************
  *  Copyright notice
@@ -26,7 +26,7 @@ namespace JWeiland\Yellowpages2light\Controller;
  ***************************************************************/
 
 /**
- * @package yellowpages2light
+ * @package itmedia2
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class CompanyController extends AbstractController

@@ -7,7 +7,7 @@
 				<f:image image="{company.logo}" alt="Logo: {company.company}" width="{settings.list.image.width}" height="{settings.list.image.height}" />
 			</f:then>
 			<f:else>
-				<f:image src="uploads/tx_yellowpages2light/{company.mainTrade.icon}" alt="Logo: {company.mainTrade.title}" width="{settings.list.image.width}" height="{settings.list.image.height}" />
+				<f:image src="uploads/tx_itmedia2/{company.mainTrade.icon}" alt="Logo: {company.mainTrade.title}" width="{settings.list.image.width}" height="{settings.list.image.height}" />
 			</f:else>
 		</f:if>
 	</figure>
@@ -34,7 +34,7 @@
 					</dd>
 						<f:if condition="{company.openingTimes}">
 							<dt>
-								<f:translate key="tx_yellowpages2light_domain_model_company.openingTimes"/>:
+								<f:translate key="tx_itmedia2_domain_model_company.openingTimes"/>:
 							</dt>
 							<dd>
 								 {company.openingTimes -> f:format.html(parseFuncTSPath: 'lib.parseFunc') -> f:format.nl2br()}
@@ -56,14 +56,14 @@
 					<dl class="extdl">
 					<f:if condition="{company.contactPerson}">
 						<dt>
-							<f:translate key="tx_yellowpages2light_domain_model_company.contactPerson"/>:</dt>
+							<f:translate key="tx_itmedia2_domain_model_company.contactPerson"/>:</dt>
 						<dd>
 							 {company.contactPerson}
 						</dd>
 					</f:if>
 
 
-					<dt>	<f:translate key="tx_yellowpages2light_domain_model_company.barrierFree"/>:</dt>
+					<dt>	<f:translate key="tx_itmedia2_domain_model_company.barrierFree"/>:</dt>
 					<dd>
 						<f:if condition="{company.barrierFree}">
 							<f:then>

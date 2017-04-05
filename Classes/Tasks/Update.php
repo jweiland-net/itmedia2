@@ -1,5 +1,5 @@
 <?php
-namespace JWeiland\Yellowpages2light\Tasks;
+namespace JWeiland\Itmedia2\Tasks;
 
 /***************************************************************
  *  Copyright notice
@@ -28,7 +28,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
- * @package yellowpages2light
+ * @package itmedia2
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class Update extends \TYPO3\CMS\Scheduler\Task\AbstractTask
@@ -45,7 +45,7 @@ class Update extends \TYPO3\CMS\Scheduler\Task\AbstractTask
     protected $persistenceManager;
 
     /**
-     * @var \JWeiland\Yellowpages2light\Domain\Repository\CompanyRepository
+     * @var \JWeiland\Itmedia2\Domain\Repository\CompanyRepository
      */
     protected $companyRepository;
 
@@ -55,7 +55,7 @@ class Update extends \TYPO3\CMS\Scheduler\Task\AbstractTask
     protected $mail;
 
     /**
-     * @var \JWeiland\Yellowpages2light\Configuration\ExtConf
+     * @var \JWeiland\Itmedia2\Configuration\ExtConf
      */
     protected $extConf;
 
@@ -71,8 +71,8 @@ class Update extends \TYPO3\CMS\Scheduler\Task\AbstractTask
         $this->objectManager = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
         $this->persistenceManager = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Persistence\\Generic\\PersistenceManager');
         $this->mail = $this->objectManager->get('TYPO3\\CMS\\Core\\Mail\\MailMessage');
-        $this->extConf = $this->objectManager->get('JWeiland\\Yellowpages2light\\Configuration\\ExtConf');
-        $this->companyRepository = $this->objectManager->get('JWeiland\\Yellowpages2light\\Domain\\Repository\\CompanyRepository');
+        $this->extConf = $this->objectManager->get('JWeiland\\Itmedia2\\Configuration\\ExtConf');
+        $this->companyRepository = $this->objectManager->get('JWeiland\\Itmedia2\\Domain\\Repository\\CompanyRepository');
         $this->companyRepository->setDefaultQuerySettings($this->getDefaultQuerySettings());
     }
 
@@ -101,7 +101,7 @@ class Update extends \TYPO3\CMS\Scheduler\Task\AbstractTask
         // hide companies which are older than 13 months
         $companies = $this->companyRepository->findOlderThan(396);
         if ($companies instanceof \TYPO3\CMS\Extbase\Persistence\Generic\QueryResult) {
-            /** @var $company \JWeiland\Yellowpages2light\Domain\Model\Company */
+            /** @var $company \JWeiland\Itmedia2\Domain\Model\Company */
             foreach ($companies as $company) {
                 $company->setHidden(true);
                 $this->companyRepository->update($company);
@@ -116,7 +116,7 @@ class Update extends \TYPO3\CMS\Scheduler\Task\AbstractTask
         // inform users about entries older than 12 month
         $companies = $this->companyRepository->findOlderThan(365);
         if ($companies instanceof \TYPO3\CMS\Extbase\Persistence\Generic\QueryResult) {
-            /** @var $company \JWeiland\Yellowpages2light\Domain\Model\Company */
+            /** @var $company \JWeiland\Itmedia2\Domain\Model\Company */
             foreach ($companies as $company) {
                 $this->informUser($company, 'inform');
             }
@@ -129,19 +129,19 @@ class Update extends \TYPO3\CMS\Scheduler\Task\AbstractTask
     /**
      * mail to user
      *
-     * @param \JWeiland\Yellowpages2light\Domain\Model\Company $company
+     * @param \JWeiland\Itmedia2\Domain\Model\Company $company
      * @param string $type "inform" or "deactivated"
      * @return void
      */
-    public function informUser(\JWeiland\Yellowpages2light\Domain\Model\Company $company, $type)
+    public function informUser(\JWeiland\Itmedia2\Domain\Model\Company $company, $type)
     {
         $this->mail->setFrom($this->extConf->getEmailFromAddress(), $this->extConf->getEmailFromName());
         $this->mail->setTo($company->getEmail(), $company->getCompany());
-        $this->mail->setSubject(LocalizationUtility::translate('email.subject.' . $type . '.user', 'yellowpages2light'));
+        $this->mail->setSubject(LocalizationUtility::translate('email.subject.' . $type . '.user', 'itmedia2'));
         $this->mail->setBody(
             LocalizationUtility::translate(
                 'email.body.' . $type . '.user',
-                'yellowpages2light',
+                'itmedia2',
                 array(
                     $company->getUid(),
                     $company->getCompany()
@@ -156,18 +156,18 @@ class Update extends \TYPO3\CMS\Scheduler\Task\AbstractTask
     /**
      * inform admin about old company entries
      *
-     * @param \JWeiland\Yellowpages2light\Domain\Model\Company $company
+     * @param \JWeiland\Itmedia2\Domain\Model\Company $company
      * @return void
      */
-    public function informAdmin(\JWeiland\Yellowpages2light\Domain\Model\Company $company)
+    public function informAdmin(\JWeiland\Itmedia2\Domain\Model\Company $company)
     {
         $this->mail->setFrom($this->extConf->getEmailFromAddress(), $this->extConf->getEmailFromName());
         $this->mail->setTo($this->extConf->getEmailToAddress(), $this->extConf->getEmailToName());
-        $this->mail->setSubject(LocalizationUtility::translate('email.subject.deactivated.admin', 'yellowpages2light'));
+        $this->mail->setSubject(LocalizationUtility::translate('email.subject.deactivated.admin', 'itmedia2'));
         $this->mail->setBody(
             LocalizationUtility::translate(
                 'email.body.deactivated.admin',
-                'yellowpages2light',
+                'itmedia2',
                 array(
                     $company->getUid(),
                     $company->getCompany()
@@ -189,8 +189,8 @@ class Update extends \TYPO3\CMS\Scheduler\Task\AbstractTask
         $this->objectManager = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
         $this->persistenceManager = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Persistence\\Generic\\PersistenceManager');
         $this->mail = $this->objectManager->get('TYPO3\\CMS\\Core\\Mail\\MailMessage');
-        $this->extConf = $this->objectManager->get('JWeiland\\Yellowpages2light\\Configuration\\ExtConf');
-        $this->companyRepository = $this->objectManager->get('JWeiland\\Yellowpages2light\\Domain\\Repository\\CompanyRepository');
+        $this->extConf = $this->objectManager->get('JWeiland\\Itmedia2\\Configuration\\ExtConf');
+        $this->companyRepository = $this->objectManager->get('JWeiland\\Itmedia2\\Domain\\Repository\\CompanyRepository');
         $this->companyRepository->setDefaultQuerySettings($this->getDefaultQuerySettings());
     }
 

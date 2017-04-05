@@ -1,5 +1,5 @@
 <?php
-namespace JWeiland\Yellowpages2light\Domain\Repository;
+namespace JWeiland\Itmedia2\Domain\Repository;
 
 /***************************************************************
  *  Copyright notice
@@ -26,7 +26,7 @@ namespace JWeiland\Yellowpages2light\Domain\Repository;
  ***************************************************************/
 
 /**
- * @package yellowpages2light
+ * @package itmedia2
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class CategoryRepository extends \TYPO3\CMS\Extbase\Domain\Repository\CategoryRepository

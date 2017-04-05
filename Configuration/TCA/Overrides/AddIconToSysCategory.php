@@ -6,11 +6,11 @@ if (!defined('TYPO3_MODE')) {
 if (!\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('jw_api')) {
     $GLOBALS['TCA']['sys_category']['columns']['icon'] = array(
         'exclude' => 1,
-        'label' => 'LLL:EXT:yellowpages2light/Resources/Private/Language/locallang_db.xlf:sys_category.icon',
+        'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:sys_category.icon',
         'config' => array(
             'type' => 'group',
             'internal_type' => 'file',
-            'uploadfolder' => 'uploads/tx_yellowpages2light',
+            'uploadfolder' => 'uploads/tx_itmedia2',
             'allowed' => $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext'],
             'max_size' => $GLOBALS['TYPO3_CONF_VARS']['BE']['maxFileSize'],
             'show_thumbs' => true,

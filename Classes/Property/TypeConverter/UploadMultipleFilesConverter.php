@@ -1,5 +1,5 @@
 <?php
-namespace JWeiland\Yellowpages2light\Property\TypeConverter;
+namespace JWeiland\Itmedia2\Property\TypeConverter;
 
 /***************************************************************
  *
@@ -102,7 +102,7 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
         array $convertedChildProperties = array(),
         \TYPO3\CMS\Extbase\Property\PropertyMappingConfigurationInterface $configuration = null
     ) {
-        $alreadyPersistedImages = $configuration->getConfigurationValue('JWeiland\\Yellowpages2light\\Property\\TypeConverter\\UploadMultipleFilesConverter', 'IMAGES');
+        $alreadyPersistedImages = $configuration->getConfigurationValue('JWeiland\\Itmedia2\\Property\\TypeConverter\\UploadMultipleFilesConverter', 'IMAGES');
         $originalSource = $source;
         foreach ($originalSource as $key => $uploadedFile) {
             // check if $source contains an uploaded file. 4 = no file uploaded
@@ -124,14 +124,14 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
             // check if uploaded file returns an error
             if (!$uploadedFile['error'] === 0) {
                 return new \TYPO3\CMS\Extbase\Error\Error(
-                    LocalizationUtility::translate('error.upload', 'yellowpages2light') . $uploadedFile['error'],
+                    LocalizationUtility::translate('error.upload', 'itmedia2') . $uploadedFile['error'],
                     1396957314
                 );
             }
             // now we have a valid uploaded file. Check if user has rights to upload this file
             if (!isset($uploadedFile['rights']) || empty($uploadedFile['rights'])) {
                 return new \TYPO3\CMS\Extbase\Error\Error(
-                    LocalizationUtility::translate('error.uploadRights', 'yellowpages2light'),
+                    LocalizationUtility::translate('error.uploadRights', 'itmedia2'),
                     1397464390
                 );
             }
@@ -141,7 +141,7 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
                 return new \TYPO3\CMS\Extbase\Error\Error(
                     LocalizationUtility::translate(
                         'error.fileExtension',
-                        'yellowpages2light',
+                        'itmedia2',
                         array(
                             $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
                         )
@@ -199,7 +199,7 @@ class UploadMultipleFilesConverter extends AbstractTypeConverter
     protected function getCoreFileReference(array $source)
     {
         // upload file
-        $uploadFolder = ResourceFactory::getInstance()->retrieveFileOrFolderObject('uploads/tx_yellowpages2light/');
+        $uploadFolder = ResourceFactory::getInstance()->retrieveFileOrFolderObject('uploads/tx_itmedia2/');
         $uploadedFile = $uploadFolder->addUploadedFile($source, 'changeName');
         // create Core FileReference
         return ResourceFactory::getInstance()->createFileReferenceObject(

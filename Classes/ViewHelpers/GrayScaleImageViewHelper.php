@@ -1,5 +1,5 @@
 <?php
-namespace JWeiland\Yellowpages2light\ViewHelpers;
+namespace JWeiland\Itmedia2\ViewHelpers;
 
 /***************************************************************
  *  Copyright notice
@@ -29,7 +29,7 @@ use TYPO3\CMS\Extbase\Domain\Model\AbstractFileFolder;
 use TYPO3\CMS\Fluid\ViewHelpers\ImageViewHelper;
 
 /**
- * @package yellowpages2light
+ * @package itmedia2
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class GrayScaleImageViewHelper extends ImageViewHelper

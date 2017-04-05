@@ -1,7 +1,7 @@
 <?php
 return array(
     'ctrl' => array(
-        'title'    => 'LLL:EXT:yellowpages2light/Resources/Private/Language/locallang_db.xlf:tx_yellowpages2light_domain_model_district',
+        'title'    => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_district',
         'label' => 'district',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
@@ -22,7 +22,7 @@ return array(
             'endtime' => 'endtime',
         ),
         'searchFields' => 'district,',
-        'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('yellowpages2light') . 'Resources/Public/Icons/tx_yellowpages2light_domain_model_district.gif'
+        'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('itmedia2') . 'Resources/Public/Icons/tx_itmedia2_domain_model_district.gif'
     ),
     'interface' => array(
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, district',
@@ -50,8 +50,8 @@ return array(
                 'items' => array(
                     array('', 0),
                 ),
-                'foreign_table' => 'tx_yellowpages2light_domain_model_district',
-                'foreign_table_where' => 'AND tx_yellowpages2light_domain_model_district.pid=###CURRENT_PID### AND tx_yellowpages2light_domain_model_district.sys_language_uid IN (-1,0)',
+                'foreign_table' => 'tx_itmedia2_domain_model_district',
+                'foreign_table_where' => 'AND tx_itmedia2_domain_model_district.pid=###CURRENT_PID### AND tx_itmedia2_domain_model_district.sys_language_uid IN (-1,0)',
             ),
         ),
         'l10n_diffsource' => array(
@@ -108,7 +108,7 @@ return array(
         ),
         'district' => array(
             'exclude' => 1,
-            'label' => 'LLL:EXT:yellowpages2light/Resources/Private/Language/locallang_db.xlf:tx_yellowpages2light_domain_model_district.district',
+            'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_district.district',
             'config' => array(
                 'type' => 'input',
                 'size' => 30,

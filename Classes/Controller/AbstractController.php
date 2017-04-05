@@ -1,5 +1,5 @@
 <?php
-namespace JWeiland\Yellowpages2light\Controller;
+namespace JWeiland\Itmedia2\Controller;
 
 /***************************************************************
  *  Copyright notice
@@ -26,7 +26,7 @@ namespace JWeiland\Yellowpages2light\Controller;
  ***************************************************************/
 use JWeiland\Maps2\Domain\Model\PoiCollection;
 use JWeiland\Maps2\Domain\Model\RadiusResult;
-use JWeiland\Yellowpages2light\Domain\Model\Company;
+use JWeiland\Itmedia2\Domain\Model\Company;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\MathUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
@@ -34,7 +34,7 @@ use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
- * @package yellowpages2light
+ * @package itmedia2
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class AbstractController extends ActionController
@@ -45,7 +45,7 @@ class AbstractController extends ActionController
     protected $mail;
 
     /**
-     * @var \JWeiland\Yellowpages2light\Configuration\ExtConf
+     * @var \JWeiland\Itmedia2\Configuration\ExtConf
      */
     protected $extConf;
 
@@ -59,21 +59,21 @@ class AbstractController extends ActionController
     /**
      * companyRepository
      *
-     * @var \JWeiland\Yellowpages2light\Domain\Repository\CompanyRepository
+     * @var \JWeiland\Itmedia2\Domain\Repository\CompanyRepository
      */
     protected $companyRepository;
 
     /**
      * districtRepository
      *
-     * @var \JWeiland\Yellowpages2light\Domain\Repository\DistrictRepository
+     * @var \JWeiland\Itmedia2\Domain\Repository\DistrictRepository
      */
     protected $districtRepository;
 
     /**
      * categoryRepository
      *
-     * @var \JWeiland\Yellowpages2light\Domain\Repository\CategoryRepository
+     * @var \JWeiland\Itmedia2\Domain\Repository\CategoryRepository
      */
     protected $categoryRepository;
 
@@ -106,10 +106,10 @@ class AbstractController extends ActionController
     /**
      * inject extConf
      *
-     * @param \JWeiland\Yellowpages2light\Configuration\ExtConf $extConf
+     * @param \JWeiland\Itmedia2\Configuration\ExtConf $extConf
      * @return void
      */
-    public function injectExtConf(\JWeiland\Yellowpages2light\Configuration\ExtConf $extConf)
+    public function injectExtConf(\JWeiland\Itmedia2\Configuration\ExtConf $extConf)
     {
         $this->extConf = $extConf;
     }
@@ -128,10 +128,10 @@ class AbstractController extends ActionController
     /**
      * inject companyRepository
      *
-     * @param \JWeiland\Yellowpages2light\Domain\Repository\CompanyRepository $companyRepository
+     * @param \JWeiland\Itmedia2\Domain\Repository\CompanyRepository $companyRepository
      * @return void
      */
-    public function injectCompanyRepository(\JWeiland\Yellowpages2light\Domain\Repository\CompanyRepository $companyRepository)
+    public function injectCompanyRepository(\JWeiland\Itmedia2\Domain\Repository\CompanyRepository $companyRepository)
     {
         $this->companyRepository = $companyRepository;
     }
@@ -139,10 +139,10 @@ class AbstractController extends ActionController
     /**
      * inject districtRepository
      *
-     * @param \JWeiland\Yellowpages2light\Domain\Repository\DistrictRepository $districtRepository
+     * @param \JWeiland\Itmedia2\Domain\Repository\DistrictRepository $districtRepository
      * @return void
      */
-    public function injectDistrictRepository(\JWeiland\Yellowpages2light\Domain\Repository\DistrictRepository $districtRepository)
+    public function injectDistrictRepository(\JWeiland\Itmedia2\Domain\Repository\DistrictRepository $districtRepository)
     {
         $this->districtRepository = $districtRepository;
     }
@@ -150,10 +150,10 @@ class AbstractController extends ActionController
     /**
      * inject categoryRepository
      *
-     * @param \JWeiland\Yellowpages2light\Domain\Repository\CategoryRepository $categoryRepository
+     * @param \JWeiland\Itmedia2\Domain\Repository\CategoryRepository $categoryRepository
      * @return void
      */
-    public function injectCategoryRepository(\JWeiland\Yellowpages2light\Domain\Repository\CategoryRepository $categoryRepository)
+    public function injectCategoryRepository(\JWeiland\Itmedia2\Domain\Repository\CategoryRepository $categoryRepository)
     {
         $this->categoryRepository = $categoryRepository;
     }
@@ -257,7 +257,7 @@ class AbstractController extends ActionController
      */
     protected function getErrorFlashMessage()
     {
-        return LocalizationUtility::translate('errorFlashMessage', 'yellowpages2light', array(
+        return LocalizationUtility::translate('errorFlashMessage', 'itmedia2', array(
             get_class($this),
             $this->actionMethodName
         ));

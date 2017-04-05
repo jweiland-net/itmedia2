@@ -1,5 +1,5 @@
 <?php
-namespace JWeiland\Yellowpages2light\Domain\Model;
+namespace JWeiland\Itmedia2\Domain\Model;
 
 /***************************************************************
  *  Copyright notice
@@ -27,7 +27,7 @@ namespace JWeiland\Yellowpages2light\Domain\Model;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 /**
- * @package yellowpages2light
+ * @package itmedia2
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class Company extends AbstractEntity
@@ -160,7 +160,7 @@ class Company extends AbstractEntity
     /**
      * District
      *
-     * @var \JWeiland\Yellowpages2light\Domain\Model\District
+     * @var \JWeiland\Itmedia2\Domain\Model\District
      * @validate NotEmpty
      * @lazy
      */
@@ -596,7 +596,7 @@ class Company extends AbstractEntity
     /**
      * Returns the district
      *
-     * @return \JWeiland\Yellowpages2light\Domain\Model\District $district
+     * @return \JWeiland\Itmedia2\Domain\Model\District $district
      */
     public function getDistrict()
     {
@@ -606,10 +606,10 @@ class Company extends AbstractEntity
     /**
      * Sets the district
      *
-     * @param \JWeiland\Yellowpages2light\Domain\Model\District $district
+     * @param \JWeiland\Itmedia2\Domain\Model\District $district
      * @return void
      */
-    public function setDistrict(\JWeiland\Yellowpages2light\Domain\Model\District $district = null)
+    public function setDistrict(\JWeiland\Itmedia2\Domain\Model\District $district = null)
     {
         $this->district = $district;
     }
