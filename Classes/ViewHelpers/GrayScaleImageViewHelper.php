@@ -24,6 +24,7 @@ namespace JWeiland\Itmedia2\ViewHelpers;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use TYPO3\CMS\Core\Resource\File;
 use TYPO3\CMS\Core\Resource\FileInterface;
 use TYPO3\CMS\Extbase\Domain\Model\AbstractFileFolder;
 use TYPO3\CMS\Fluid\ViewHelpers\ImageViewHelper;

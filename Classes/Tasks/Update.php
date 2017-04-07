@@ -33,7 +33,6 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
  */
 class Update extends \TYPO3\CMS\Scheduler\Task\AbstractTask
 {
-
     /**
      * @var \TYPO3\CMS\Extbase\Object\ObjectManager
      */
