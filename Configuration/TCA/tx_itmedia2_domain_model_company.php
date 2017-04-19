@@ -284,7 +284,7 @@ return array(
                 ),
                 'minitems' => 0,
                 'maxitems' => 1,
-                'default' => 12,
+                'default' => 0,
             ),
         ),
         'tx_maps2_uid' => array(
