@@ -277,8 +277,8 @@ return array(
             'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.district',
             'config' => array(
                 'type' => 'select',
-                'foreign_table' => 'tx_itmedia2_domain_model_district',
-                'foreign_table_where' => 'ORDER BY tx_itmedia2_domain_model_district.district',
+                'foreign_table' => 'tx_yellowpages2_domain_model_district',
+                'foreign_table_where' => 'ORDER BY tx_yellowpages2_domain_model_district.district',
                 'items' => array(
                     array('LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.district.pleaseChoose', ''),
                 ),

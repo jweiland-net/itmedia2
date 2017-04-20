@@ -23,7 +23,7 @@
 						<label>LLL:EXT:itmedia2/Resources/Private/Language/FlexForms.xlf:district</label>
 						<config>
 							<type>select</type>
-							<foreign_table>tx_itmedia2_domain_model_district</foreign_table>
+							<foreign_table>tx_yellowpages2_domain_model_district</foreign_table>
 							<items type="array">
 								<numIndex index="0">
 									<numIndex index="0">LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.district.pleaseChoose</numIndex>
