@@ -42,7 +42,7 @@
 				<target>Straße</target>
 			</trans-unit>
 			<trans-unit id="tx_itmedia2_domain_model_company.houseNumber" xml:space="preserve">
-				<source>house number</source>
+				<source>House number</source>
 				<target>Hausnummer</target>
 			</trans-unit>
 			<trans-unit id="tx_itmedia2_domain_model_company.zip" xml:space="preserve">

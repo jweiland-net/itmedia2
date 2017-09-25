@@ -1,39 +1,33 @@
 <?php
+declare(strict_types=1);
 namespace JWeiland\Itmedia2\Domain\Repository;
 
-/***************************************************************
- *  Copyright notice
+/*
+ * This file is part of the TYPO3 CMS project.
  *
- *  (c) 2013 Stefan Froemken <projects@jweiland.net>, jweiland.net
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
  *
- *  All rights reserved
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
  *
- *  This script is part of the TYPO3 project. The TYPO3 project is
- *  free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  The GNU General Public License can be found at
- *  http://www.gnu.org/copyleft/gpl.html.
- *
- *  This script is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
+ * The TYPO3 project - inspiring people to share!
+ */
+
 use JWeiland\Itmedia2\Domain\Model\Company;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
+use TYPO3\CMS\Core\Charset\CharsetConverter;
 use TYPO3\CMS\Extbase\Persistence\Generic\Query;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
- * @package itmedia2
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
+ * Class CompanyRepository
+ *
+ * @package JWeiland\Itmedia2\Domain\Repository
  */
 class CompanyRepository extends Repository
 {
@@ -41,31 +35,41 @@ class CompanyRepository extends Repository
     /**
      * @var array
      */
-    protected $defaultOrderings = array(
+    protected $defaultOrderings = [
         'company' => QueryInterface::ORDER_ASCENDING
-    );
+    ];
 
     /**
      * charset converter
      * We need some UTF-8 compatible functions for search
      *
      * @var \TYPO3\CMS\Core\Charset\CharsetConverter
-     * @inject
      */
     protected $charsetConverter;
+
+    /**
+     * injects charsetConverter
+     *
+     * @param CharsetConverter $charsetConverter
+     * @return void
+     */
+    public function injectCharsetConverter(CharsetConverter $charsetConverter)
+    {
+        $this->charsetConverter = $charsetConverter;
+    }
 
     /**
      * find company by uid whether it is hidden or not
      *
      * @param int $companyUid
-     * @return \JWeiland\Itmedia2\Domain\Model\Company
+     * @return Company
      */
     public function findHiddenEntryByUid($companyUid)
     {
         $query = $this->createQuery();
         $query->getQuerySettings()->setIgnoreEnableFields(true);
-        $query->getQuerySettings()->setEnableFieldsToBeIgnored(array('disabled'));
-        
+        $query->getQuerySettings()->setEnableFieldsToBeIgnored(['disabled']);
+
         /** @var Company $company */
         $company = $query->matching($query->equals('uid', (int)$companyUid))->execute()->getFirst();
         return $company;
@@ -76,16 +80,16 @@ class CompanyRepository extends Repository
      *
      * @param string $letter
      * @param array $settings
-     * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     * @return QueryResultInterface
      */
-    public function findByStartingLetter($letter, array $settings = array())
+    public function findByStartingLetter($letter, array $settings = [])
     {
         $query = $this->createQuery();
 
-        $constraintAnd = array();
+        $constraintAnd = [];
 
         if ($letter) {
-            $constraintOr = array();
+            $constraintOr = [];
             if ($letter == '0-9') {
                 $constraintOr[] = $query->like('company', '0%');
                 $constraintOr[] = $query->like('company', '1%');
@@ -113,9 +117,8 @@ class CompanyRepository extends Repository
 
         if (count($constraintAnd)) {
             return $query->matching($query->logicalAnd($constraintAnd))->execute();
-        } else {
-            return $query->execute();
         }
+        return $query->execute();
     }
 
     /**
@@ -126,11 +129,12 @@ class CompanyRepository extends Repository
      */
     public function getStartingLetters($isWsp)
     {
+        $addWhere = '';
+
         if ($isWsp) {
             $addWhere = 'AND wsp_member=1';
-        } else {
-            $addWhere = '';
         }
+
         /** @var Query $query */
         $query = $this->createQuery();
         return $query->statement('
@@ -149,7 +153,7 @@ class CompanyRepository extends Repository
      *
      * @param string $search
      * @param int $category
-     * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     * @return QueryResultInterface
      */
     public function searchCompanies($search, $category)
     {
@@ -159,21 +163,21 @@ class CompanyRepository extends Repository
         $smallStreetSearch = $search;
 
         // unify street search
-        if (strtolower($this->charsetConverter->utf8_substr($search, -6) === 'straße')) {
+        if (strtolower(mb_substr($search, -6)) === 'straße') {
             $smallStreetSearch = str_ireplace('straße', 'str', $search);
         }
-        if (strtolower($this->charsetConverter->utf8_substr($search, -4)) === 'str.') {
+        if (strtolower(mb_substr($search, -4)) === 'str.') {
             $longStreetSearch = str_ireplace('str.', 'straße', $search);
             $smallStreetSearch = str_ireplace('str.', 'str', $search);
         }
-        if (strtolower($this->charsetConverter->utf8_substr($search, -3)) === 'str') {
+        if (strtolower(mb_substr($search, -3)) === 'str') {
             $longStreetSearch = str_ireplace('str', 'straße', $search);
         }
 
         /** @var Query $query */
         $query = $this->createQuery();
 
-        $constraint = array();
+        $constraint = [];
         $constraint[] = $query->like('company', '%' . $search . '%');
         $constraint[] = $query->like('street', '%' . $smallStreetSearch . '%');
         $constraint[] = $query->like('street', '%' . $longStreetSearch . '%');
@@ -182,17 +186,19 @@ class CompanyRepository extends Repository
             return $query->matching(
                 $query->logicalAnd(
                     $query->logicalOr($constraint),
-                    $query->logicalOr(array(
+                    $query->logicalOr(
+                        [
                         $query->equals('mainTrade', $category),
-                        $query->contains('trades', $category),
-                    ))
+                        $query->contains('trades', $category)
+                        ]
+                    )
                 )
             )->execute();
-        } else {
-            return $query->matching(
-                $query->logicalOr($constraint)
-            )->execute();
         }
+
+        return $query->matching(
+            $query->logicalOr($constraint)
+        )->execute();
     }
 
     /**
@@ -204,7 +210,8 @@ class CompanyRepository extends Repository
     {
         /** @var Query $query */
         $query = $this->createQuery();
-        $results = $query->statement('
+        $results = $query->statement(
+            '
 			SELECT sys_category.uid, sys_category.title
 			FROM sys_category, tx_itmedia2_domain_model_company
 			WHERE tx_itmedia2_domain_model_company.main_trade = sys_category.uid
@@ -217,7 +224,7 @@ class CompanyRepository extends Repository
 				ORDER BY sys_category.title'
         )->execute(true);
 
-        $groupedCategories = array();
+        $groupedCategories = [];
         $groupedCategories[] = LocalizationUtility::translate('allBranches', 'itmedia2');
         foreach ($results as $result) {
             $groupedCategories[$result['uid']] = $result['title'];
@@ -231,7 +238,7 @@ class CompanyRepository extends Repository
      * Hint: Needed by scheduler
      *
      * @param int $days
-     * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     * @return QueryResultInterface
      */
     public function findOlderThan($days)
     {

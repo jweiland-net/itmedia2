@@ -1,4 +1,5 @@
 <?php
+
 if (!defined('TYPO3_MODE')) {
     die('Access denied.');
 }
@@ -6,20 +7,20 @@ if (!defined('TYPO3_MODE')) {
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'JWeiland.' . $_EXTKEY,
     'Directory',
-    array(
-        'Company' => 'list, show, search',
-    ),
+    [
+        'Company' => 'list, show, search'
+    ],
     // non-cacheable actions
-    array(
-        'Company' => 'search',
-    )
+    [
+        'Company' => 'search'
+    ]
 );
 
 // use hook to automatically add a map record to current yellow page
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processDatamapClass'][] = 'JWeiland\\Itmedia2\\Tca\\CreateMap';
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processDatamapClass'][] = \JWeiland\Itmedia2\Hooks\Tca\CreateMap::class;
 
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks']['JWeiland\\Itmedia2\\Tasks\\Update'] = array(
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks'][\JWeiland\Itmedia2\Tasks\Update::class] = [
     'extension'        => $_EXTKEY,
     'title'            => 'Update itmedia2',
     'description'      => 'Hide all itmedia2 records which are older than the specified age.'
-);
+];

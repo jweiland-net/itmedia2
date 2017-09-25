@@ -1,34 +1,26 @@
 <?php
+declare(strict_types=1);
 namespace JWeiland\Itmedia2\Configuration;
 
-/***************************************************************
- *  Copyright notice
+/*
+ * This file is part of the TYPO3 CMS project.
  *
- *  (c) 2013 Stefan Froemken <projects@jweiland.net>, jweiland.net
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
  *
- *  All rights reserved
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
  *
- *  This script is part of the TYPO3 project. The TYPO3 project is
- *  free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  The GNU General Public License can be found at
- *  http://www.gnu.org/copyleft/gpl.html.
- *
- *  This script is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
+ * The TYPO3 project - inspiring people to share!
+ */
+
 use TYPO3\CMS\Core\SingletonInterface;
 
 /**
- * @package itmedia2
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
+ * Class ExtConf
+ *
+ * @package JWeiland\Itmedia2\Configuration
  */
 class ExtConf implements SingletonInterface
 {
@@ -37,28 +29,28 @@ class ExtConf implements SingletonInterface
      *
      * @var string
      */
-    protected $emailFromAddress;
+    protected $emailFromAddress = '';
 
     /**
      * email from name
      *
      * @var string
      */
-    protected $emailFromName;
+    protected $emailFromName = '';
 
     /**
      * email to address
      *
      * @var string
      */
-    protected $emailToAddress;
+    protected $emailToAddress = '';
 
     /**
      * email to name
      *
      * @var string
      */
-    protected $emailToName;
+    protected $emailToName = '';
 
     /**
      * constructor of this class
@@ -91,12 +83,10 @@ class ExtConf implements SingletonInterface
             $senderMail = $GLOBALS['TYPO3_CONF_VARS']['MAIL']['defaultMailFromAddress'];
             if (empty($senderMail)) {
                 throw new \Exception('You have forgotten to set a sender email address in extension configuration or in install tool');
-            } else {
-                return $senderMail;
             }
-        } else {
-            return $this->emailFromAddress;
+            return $senderMail;
         }
+        return $this->emailFromAddress;
     }
 
     /**
@@ -105,9 +95,9 @@ class ExtConf implements SingletonInterface
      * @param string $emailFromAddress
      * @return void
      */
-    public function setEmailFromAddress($emailFromAddress)
+    public function setEmailFromAddress(string $emailFromAddress)
     {
-        $this->emailFromAddress = (string) $emailFromAddress;
+        $this->emailFromAddress = $emailFromAddress;
     }
 
     /**
@@ -122,12 +112,10 @@ class ExtConf implements SingletonInterface
             $senderName = $GLOBALS['TYPO3_CONF_VARS']['MAIL']['defaultMailFromName'];
             if (empty($senderName)) {
                 throw new \Exception('You have forgotten to set a sender name in extension configuration or in install tool');
-            } else {
-                return $senderName;
             }
-        } else {
-            return $this->emailFromName;
+            return $senderName;
         }
+        return $this->emailFromName;
     }
 
     /**
@@ -136,9 +124,9 @@ class ExtConf implements SingletonInterface
      * @param string $emailFromName
      * @return void
      */
-    public function setEmailFromName($emailFromName)
+    public function setEmailFromName(string $emailFromName)
     {
-        $this->emailFromName = (string) $emailFromName;
+        $this->emailFromName = $emailFromName;
     }
 
     /**
@@ -157,9 +145,9 @@ class ExtConf implements SingletonInterface
      * @param string $emailToAddress
      * @return void
      */
-    public function setEmailToAddress($emailToAddress)
+    public function setEmailToAddress(string $emailToAddress)
     {
-        $this->emailToAddress = (string) $emailToAddress;
+        $this->emailToAddress = $emailToAddress;
     }
 
     /**
@@ -178,8 +166,8 @@ class ExtConf implements SingletonInterface
      * @param string $emailToName
      * @return void
      */
-    public function setEmailToName($emailToName)
+    public function setEmailToName(string $emailToName)
     {
-        $this->emailToName = (string) $emailToName;
+        $this->emailToName = $emailToName;
     }
 }

@@ -4,10 +4,10 @@ if (!defined('TYPO3_MODE')) {
 }
 
 if (!\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('jw_api')) {
-    $GLOBALS['TCA']['sys_category']['columns']['icon'] = array(
+    $GLOBALS['TCA']['sys_category']['columns']['icon'] = [
         'exclude' => 1,
         'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:sys_category.icon',
-        'config' => array(
+        'config' => [
             'type' => 'group',
             'internal_type' => 'file',
             'uploadfolder' => 'uploads/tx_itmedia2',
@@ -16,9 +16,9 @@ if (!\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('jw_api')) {
             'show_thumbs' => true,
             'size' => 5,
             'maxitems' => 1,
-            'minitems' => 0,
-        )
-    );
+            'minitems' => 0
+        ]
+    ];
 
     $GLOBALS['TCA']['sys_category']['types']['1']['showitem'] = str_replace(',description,', ',description,icon,', $GLOBALS['TCA']['sys_category']['types']['1']['showitem']);
 }
