@@ -8,8 +8,10 @@
 								 height="{settings.list.image.height}"/>
 			</f:then>
 			<f:else>
-				<f:image src="{fallbackIconPath}{company.mainTrade.icon}" alt="Logo: {company.mainTrade.title}"
-								 width="{settings.list.image.width}" height="{settings.list.image.height}"/>
+				<f:if condition="{fallbackIconPath} && {company.mainTrade.icon}">
+					<f:image src="{fallbackIconPath}{company.mainTrade.icon}" alt="Logo: {company.mainTrade.title}"
+									 width="{settings.list.image.width}" height="{settings.list.image.height}"/>
+				</f:if>
 			</f:else>
 		</f:if>
 	</figure>

@@ -1,65 +1,81 @@
 plugin.tx_itmedia2 {
-	view {
-		templateRootPath = {$plugin.tx_itmedia2.view.templateRootPath}
-		partialRootPath = {$plugin.tx_itmedia2.view.partialRootPath}
-		layoutRootPath = {$plugin.tx_itmedia2.view.layoutRootPath}
-	}
-	persistence {
-		storagePid = {$plugin.tx_itmedia2.persistence.storagePid}
-		classes {
-			JWeiland\Itmedia2\Domain\Model\FileReference {
-				mapping {
-					tableName = sys_file_reference
-				}
-			}
- 			JWeiland\Itmedia2\Domain\Model\Category {
- 				mapping {
- 					tableName = sys_category
- 				}
-			}
-			JWeiland\Itmedia2\Domain\Model\District {
-				mapping {
-					tableName = tx_yellowpages2_domain_model_district
-				}
-			}
-		}
-	}
-	features {
-		rewrittenPropertyMapper = 1
-	}
-	settings {
-		includeJQueryLibrary = {$plugin.tx_itmedia2.settings.includeJQueryLibrary}
-		pidOfMaps2Plugin = {$plugin.tx_itmedia2.settings.pidOfMaps2Plugin}
-		startingUidForCategories = {$plugin.tx_itmedia2.settings.startingUidForCategories}
-		uidOfDefaultDistrict = {$plugin.tx_itmedia2.settings.uidOfDefaultDistrict}
-		pidOfDetailPage = {$plugin.tx_itmedia2.settings.pidOfDetailPage}
-		mapOptions {
-			zoom = 12
-			mapTypeId = google.maps.MapTypeId.HYBRID
-			panControl = 1
-			zoomControl = 1
-			mapTypeControl = 1
-			scaleControl = 1
-			streetViewControl = 1
-			overviewMapControl = 1
-		}
-		list {
-			image {
-				width = 50c
-				height= 50c
-				minWidth = 50
-				maxWidth = 50
-				minHeight = 50
-				maxHeight = 50
-			}
-		}
-		pageBrowser {
-			itemsPerPage = {$plugin.tx_itmedia2.settings.pageBrowser.itemsPerPage}
-			insertAbove = {$plugin.tx_itmedia2.settings.pageBrowser.insertAbove}
-			insertBelow = {$plugin.tx_itmedia2.settings.pageBrowser.insertBelow}
-			maximumNumberOfLinks = {$plugin.tx_itmedia2.settings.pageBrowser.maximumNumberOfLinks}
-		}
-	}
+  view {
+    templateRootPaths {
+      0 = EXT:itmedia2/Resources/Private/Templates/
+      1 = {$plugin.tx_itmedia2.view.templateRootPath}
+    }
+    partialRootPaths {
+      0 = EXT:itmedia2/Resources/Private/Partials/
+      1 = {$plugin.tx_itmedia2.view.partialRootPath}
+    }
+    layoutRootPaths {
+      0 = EXT:itmedia2/Resources/Private/Layouts/
+      1 = {$plugin.tx_itmedia2.view.layoutRootPath}
+    }
+  }
+
+  persistence {
+    storagePid = {$plugin.tx_itmedia2.persistence.storagePid}
+    classes {
+      JWeiland\Itmedia2\Domain\Model\FileReference {
+        mapping {
+          tableName = sys_file_reference
+        }
+      }
+
+      JWeiland\Itmedia2\Domain\Model\Category {
+        mapping {
+          tableName = sys_category
+        }
+      }
+
+      JWeiland\Itmedia2\Domain\Model\District {
+        mapping {
+          tableName = tx_yellowpages2_domain_model_district
+        }
+      }
+    }
+  }
+
+  features {
+    rewrittenPropertyMapper = 1
+  }
+
+  settings {
+    includeJQueryLibrary = {$plugin.tx_itmedia2.settings.includeJQueryLibrary}
+    pidOfMaps2Plugin = {$plugin.tx_itmedia2.settings.pidOfMaps2Plugin}
+    startingUidForCategories = {$plugin.tx_itmedia2.settings.startingUidForCategories}
+    uidOfDefaultDistrict = {$plugin.tx_itmedia2.settings.uidOfDefaultDistrict}
+    pidOfDetailPage = {$plugin.tx_itmedia2.settings.pidOfDetailPage}
+    mapOptions {
+      zoom = 12
+      mapTypeId = google.maps.MapTypeId.HYBRID
+      panControl = 1
+      zoomControl = 1
+      mapTypeControl = 1
+      scaleControl = 1
+      streetViewControl = 1
+      overviewMapControl = 1
+    }
+
+    list {
+      image {
+        width = 50c
+        height = 50c
+        minWidth = 50
+        maxWidth = 50
+        minHeight = 50
+        maxHeight = 50
+      }
+    }
+
+    pageBrowser {
+      itemsPerPage = {$plugin.tx_itmedia2.settings.pageBrowser.itemsPerPage}
+      insertAbove = {$plugin.tx_itmedia2.settings.pageBrowser.insertAbove}
+      insertBelow = {$plugin.tx_itmedia2.settings.pageBrowser.insertBelow}
+      maximumNumberOfLinks = {$plugin.tx_itmedia2.settings.pageBrowser.maximumNumberOfLinks}
+    }
+  }
 }
 
 plugin.tx_itmedia2._CSS_DEFAULT_STYLE (

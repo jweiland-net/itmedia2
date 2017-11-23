@@ -2,9 +2,9 @@
 if (!defined('TYPO3_MODE')) {
     die('Access denied.');
 }
-
-if ($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['itmedia2']['fallbackIconPath']) {
-    $fallbackIconPath = $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['itmedia2']['fallbackIconPath'];
+$extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['itmedia2']);
+if ($extConf['fallbackIconPath']) {
+    $fallbackIconPath = $extConf['fallbackIconPath'];
 } else {
     $fallbackIconPath = '/uploads/tx_itmedia2/';
 }
