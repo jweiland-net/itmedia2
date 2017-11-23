@@ -25,6 +25,13 @@ use TYPO3\CMS\Core\SingletonInterface;
 class ExtConf implements SingletonInterface
 {
     /**
+     * fallback icon path
+     *
+     * @var string
+     */
+    protected $fallbackIconPath = '';
+
+    /**
      * email from address
      *
      * @var string
@@ -69,6 +76,30 @@ class ExtConf implements SingletonInterface
                 }
             }
         }
+    }
+
+    /**
+     * Gets FallbackIconPath
+     *
+     * @return string
+     */
+    public function getFallbackIconPath(): string
+    {
+        if (!$this->fallbackIconPath) {
+            $this->fallbackIconPath = '/uploads/tx_itmedia2/';
+        }
+        return $this->fallbackIconPath;
+    }
+
+    /**
+     * Sets FallbackIconPath
+     *
+     * @param string $fallbackIconPath
+     * @return void
+     */
+    public function setFallbackIconPath(string $fallbackIconPath)
+    {
+        $this->fallbackIconPath = $fallbackIconPath;
     }
 
     /**

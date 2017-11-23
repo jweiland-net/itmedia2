@@ -8,7 +8,7 @@
 								 height="{settings.list.image.height}"/>
 			</f:then>
 			<f:else>
-				<f:image src="uploads/tx_itmedia2/{company.mainTrade.icon}" alt="Logo: {company.mainTrade.title}"
+				<f:image src="{fallbackIconPath}{company.mainTrade.icon}" alt="Logo: {company.mainTrade.title}"
 								 width="{settings.list.image.width}" height="{settings.list.image.height}"/>
 			</f:else>
 		</f:if>

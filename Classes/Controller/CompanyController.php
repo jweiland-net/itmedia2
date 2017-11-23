@@ -36,6 +36,7 @@ class CompanyController extends AbstractController
         $this->view->assign('companies', $companies);
         $this->view->assign('glossar', $this->getGlossar($this->settings['showWspMembers']));
         $this->view->assign('categories', $this->companyRepository->getGroupedCategories());
+        $this->view->assign('fallbackIconPath', $this->extConf->getFallbackIconPath());
     }
 
     /**
@@ -48,6 +49,7 @@ class CompanyController extends AbstractController
     {
         $companyObject = $this->companyRepository->findByIdentifier($company);
         $this->view->assign('company', $companyObject);
+        $this->view->assign('fallbackIconPath', $this->extConf->getFallbackIconPath());
     }
 
     /**

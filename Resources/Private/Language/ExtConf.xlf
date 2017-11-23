@@ -4,6 +4,9 @@
 		<header/>
 		<body>
 
+			<trans-unit id="fallbackIconPath" xml:space="preserve">
+				<source>Fallback icon path (Must exists and end with /"</source>
+			</trans-unit>
 			<trans-unit id="poiCollectionPid" xml:space="preserve">
 				<source>PID for poiCollections: Define a storage pid where to store records of type Point of Interest.</source>
 			</trans-unit>
