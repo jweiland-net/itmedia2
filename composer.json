@@ -2,7 +2,7 @@
     "name": "jweiland/itmedia2",
     "type": "typo3-cms-extension",
     "description": "With this extension you can build your own industry directory",
-    "version": "1.0.5",
+    "version": "1.0.0",
     "license": "GPL-2.0+",
     "keywords": ["typo3", "TYPO3 CMS", "itmedia2", "industry", "directory"],
     "homepage": "http://www.jweiland.net",
@@ -19,8 +19,9 @@
       "source": "https://github.com/jweiland-net/itmedia2"
     },
     "require": {
-      "php": ">=5.3.7 <6.0",
-      "typo3/cms-core": ">=6.2.14,<8.0"
+      "typo3/cms-core": ">=8.7.0,<8.7.99",
+      "jweiland/maps2": ">=3.0.0,<4.0.0",
+      "jweiland/yellowpages2": ">=2.0.0,<3.0.0"
     },
     "require-dev": {
       "phpunit/phpunit": "~4.8.0"

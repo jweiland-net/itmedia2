@@ -205,8 +205,8 @@ class CreateMap
      */
     public function getTsConfig(): array
     {
-        $tsConfig = BackendUtility::getModTSconfig($this->currentRecord['uid'], 'ext.yellowpages2');
-        if (is_array($tsConfig) && isset($tsConfig['properties']['pid'])) {
+        $tsConfig = BackendUtility::getModTSconfig($this->currentRecord['uid'], 'ext.itmedia2');
+        if (is_array($tsConfig) && !empty($tsConfig['properties']['pid'])) {
             return $tsConfig['properties'];
         }
         throw new \Exception('no PID for maps2 given. Please add this PID in extension configuration of yellowpages2 or set it in page TSconfig', 1364889195);
