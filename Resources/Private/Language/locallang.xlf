@@ -37,6 +37,12 @@
 			<trans-unit id="tx_itmedia2_domain_model_company.fax" xml:space="preserve">
 				<source>Fax</source>
 			</trans-unit>
+			<trans-unit id="tx_itmedia2_domain_model_company.postAddress" xml:space="preserve">
+				<source>Contact person</source>
+			</trans-unit>
+			<trans-unit id="tx_itmedia2_domain_model_company.contact" xml:space="preserve">
+				<source>Post address</source>
+			</trans-unit>
 			<trans-unit id="tx_itmedia2_domain_model_company.contactPerson" xml:space="preserve">
 				<source>Contact person</source>
 			</trans-unit>

@@ -1,40 +1,34 @@
-{namespace yp=JWeiland\Maps2\ViewHelpers}
-
 <div class="thumbnail grid_1 floatleft">
 	<figure class="marginbottom gridrightstd">
 		<f:if condition="{company.logo}">
 			<f:then>
-				<f:image image="{company.logo}" alt="Logo: {company.company}" width="{settings.list.image.width}"
-								 height="{settings.list.image.height}"/>
+				<f:image image="{company.logo}" alt="Logo: {company.company}" width="{settings.list.image.width}" height="{settings.list.image.height}" />
 			</f:then>
 			<f:else>
-				<f:if condition="{fallbackIconPath} && {company.mainTrade.icon}">
-					<f:image src="{fallbackIconPath}{company.mainTrade.icon}" alt="Logo: {company.mainTrade.title}"
-									 width="{settings.list.image.width}" height="{settings.list.image.height}"/>
-				</f:if>
+				<f:image src="uploads/tx_jwapi/{company.mainTrade.icon}" alt="Logo: {company.mainTrade.title}" width="{settings.list.image.width}" height="{settings.list.image.height}" />
 			</f:else>
 		</f:if>
 	</figure>
 </div>
-<header class="grid_11 floatleft marginbottom"><h1>{company.company}</h1></header>
+<div class="grid_11 floatleft marginbottom"><h1>{company.company}</h1></div>
 <div class="grid_12 clearer clearfix">
 	<div class="grid_6 floatleft">
 		<f:if condition="{company.images->f:count()}">
 			<figure class="gridright marginbottom2">
-				<f:render partial="Company/Images" arguments="{company: company}"/>
+				<f:render partial="Company/Images" arguments="{company: company}" />
 			</figure>
 		</f:if>
 
 		<f:if condition="{company.description}">
-			<div class="description gridright marginbottom">
-				<f:format.html>{company.description}</f:format.html>
-			</div>
+			<div class="description gridright marginbottom"><f:format.html>{company.description}</f:format.html></div>
 		</f:if>
 		&nbsp;
 	</div>
 	<div class="grid_6 floatleft">
 		<div class="gridleft clearfix rulerbefore4">
 			<dl class="extdl">
+				<dt>
+					<f:translate key="tx_itmedia2_domain_model_company.postAddress"/>:</dt>
 				<dd>
 					<f:render partial="Company/Address" arguments="{company: company}"/>
 				</dd>
@@ -48,34 +42,32 @@
 				</f:if>
 			</dl>
 			<dl class="extdl clearfix rulerafter">
+				<dt>
+					<f:translate key="tx_itmedia2_domain_model_company.contact"/>:</dt>
 				<dd class="grid_8 floatleft noborder">
 					<f:render partial="Company/Contact" arguments="{company: company}"/>
 				</dd>
 				<f:if condition="{company.txMaps2Uid}">
 					<dd class="grid_4 floatleft noborder">
-						<f:link.action title="<f:translate key='LLL:fileadmin/templates/language/locallang.xml:mapview'/>"
-													 action="show" controller="PoiCollection" extensionName="maps2" pluginName="maps2"
-													 pageUid="{settings.pidOfMaps2Plugin}" arguments="{poiCollection: company.txMaps2Uid}">
-							<f:image class="floatright" src="fileadmin/templates/img/thumbmaps.png"
-											 alt="{f:translate(key: 'altTextMapImg')}"/>
-						</f:link.action>
+						<figure>
+							<f:link.action title="<f:translate key='LLL:fileadmin/templates/language/locallang.xml:mapview'/>" action="show" controller="PoiCollection" extensionName="maps2" pluginName="maps2" pageUid="{settings.pidOfMaps2Plugin}" arguments="{poiCollection: company.txMaps2Uid}">
+								<f:image class="floatright" src="fileadmin/templates/img/thumbmaps.png" alt="{f:translate(key: 'altTextMapImg')}"/>
+							</f:link.action>
+						</figure>
 					</dd>
 				</f:if>
 			</dl>
 			<dl class="extdl">
 				<f:if condition="{company.contactPerson}">
 					<dt>
-						<f:translate key="tx_itmedia2_domain_model_company.contactPerson"/>:
-					</dt>
+						<f:translate key="tx_itmedia2_domain_model_company.contactPerson"/>:</dt>
 					<dd>
 						{company.contactPerson}
 					</dd>
 				</f:if>
 
 
-				<dt>
-					<f:translate key="tx_itmedia2_domain_model_company.barrierFree"/>:
-				</dt>
+				<dt>	<f:translate key="tx_itmedia2_domain_model_company.barrierFree"/>:</dt>
 				<dd>
 					<f:if condition="{company.barrierFree}">
 						<f:then>
@@ -87,6 +79,7 @@
 					</f:if>
 				</dd>
 			</dl>
+			<f:render partial="Company/Social.html" arguments="{company: company}"/>
 		</div>
 	</div>
 </div>
