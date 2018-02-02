@@ -1,9 +1,4 @@
 <?php
-if (\TYPO3\CMS\Core\Utility\GeneralUtility::compat_version('7.6')) {
-    $ttContentLanguageFile = 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf';
-} else {
-    $ttContentLanguageFile = 'LLL:EXT:cms/locallang_ttc.xlf';
-}
 return [
     'ctrl' => [
         'title'    => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company',
@@ -32,9 +27,25 @@ return [
     'interface' => [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, wsp_member, company, logo, images, street, house_number, zip, city, telephone, fax, contact_person, email, website, opening_times, barrier_free, description, district, tx_maps2_uid, facebook, twitter, google, main_trade, trades'
     ],
+    'types' => [
+        '1' => [
+            'showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, wsp_member, company,
+            logo, images, street, house_number, zip, city, telephone, fax, contact_person, email, website,
+            opening_times, barrier_free, description, district, tx_maps2_uid,
+            --div--;LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tabs.social, facebook, twitter, google,
+            --div--;LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tabs.trades, main_trade, trades,
+            --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.tabs.access, 
+            --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.palettes.access;access'
+        ]
+    ],
+    'palettes' => [
+        'access' => [
+            'showitem' => 'starttime;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:starttime_formlabel,endtime;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:endtime_formlabel',
+        ]
+    ],
     'columns' => [
         'sys_language_uid' => [
-            'exclude' => 1,
+            'exclude' => true,
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.language',
             'config' => [
                 'type' => 'select',
@@ -51,21 +62,19 @@ return [
             ]
         ],
         'l10n_parent' => [
-            'exclude' => 1,
             'displayCond' => 'FIELD:sys_language_uid:>:0',
+            'exclude' => true,
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.l18n_parent',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
-                    [
-                        '',
-                        0
-                    ]
+                    ['', 0],
                 ],
-                'foreign_table' => 'tt_content',
-                'foreign_table_where' => 'AND tt_content.pid=###CURRENT_PID### AND tt_content.sys_language_uid IN (-1,0)',
-                'default' => 0
+                'foreign_table' => 'tx_itmedia2_domain_model_company',
+                'foreign_table_where' => 'AND tx_itmedia2_domain_model_company.pid=###CURRENT_PID### AND tx_itmedia2_domain_model_company.sys_language_uid IN (-1,0)',
+                'showIconTable' => false,
+                'default' => 0,
             ]
         ],
         'l10n_diffsource' => [
@@ -83,7 +92,7 @@ return [
             ]
         ],
         'hidden' => [
-            'exclude' => 1,
+            'exclude' => true,
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
             'config' => [
                 'type' => 'check',
@@ -95,7 +104,7 @@ return [
             ]
         ],
         'starttime' => [
-            'exclude' => 1,
+            'exclude' => true,
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.starttime',
             'config' => [
                 'type' => 'input',
@@ -107,7 +116,7 @@ return [
             'l10n_display' => 'defaultAsReadonly'
         ],
         'endtime' => [
-            'exclude' => 1,
+            'exclude' => true,
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.endtime',
             'config' => [
                 'type' => 'input',
@@ -122,14 +131,14 @@ return [
             'l10n_display' => 'defaultAsReadonly'
         ],
         'wsp_member' => [
-            'exclude' => 1,
+            'exclude' => true,
             'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.wspMember',
             'config' => [
                 'type' => 'check'
             ]
         ],
         'company' => [
-            'exclude' => 1,
+            'exclude' => true,
             'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.company',
             'config' => [
                 'type' => 'input',
@@ -138,7 +147,7 @@ return [
             ]
         ],
         'logo' => [
-            'exclude' => 1,
+            'exclude' => true,
             'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.logo',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
                 'logo',
@@ -154,7 +163,7 @@ return [
             )
         ],
         'images' => [
-            'exclude' => 1,
+            'exclude' => true,
             'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.images',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
                 'images',
@@ -170,7 +179,7 @@ return [
             )
         ],
         'street' => [
-            'exclude' => 1,
+            'exclude' => true,
             'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.street',
             'config' => [
                 'type' => 'input',
@@ -179,7 +188,7 @@ return [
             ]
         ],
         'house_number' => [
-            'exclude' => 1,
+            'exclude' => true,
             'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.houseNumber',
             'config' => [
                 'type' => 'input',
@@ -188,7 +197,7 @@ return [
             ]
         ],
         'zip' => [
-            'exclude' => 1,
+            'exclude' => true,
             'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.zip',
             'config' => [
                 'type' => 'input',
@@ -197,7 +206,7 @@ return [
             ]
         ],
         'city' => [
-            'exclude' => 1,
+            'exclude' => true,
             'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.city',
             'config' => [
                 'type' => 'input',
@@ -206,7 +215,7 @@ return [
             ]
         ],
         'telephone' => [
-            'exclude' => 1,
+            'exclude' => true,
             'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.telephone',
             'config' => [
                 'type' => 'input',
@@ -215,7 +224,7 @@ return [
             ]
         ],
         'fax' => [
-            'exclude' => 1,
+            'exclude' => true,
             'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.fax',
             'config' => [
                 'type' => 'input',
@@ -224,7 +233,7 @@ return [
             ]
         ],
         'contact_person' => [
-            'exclude' => 1,
+            'exclude' => true,
             'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.contactPerson',
             'config' => [
                 'type' => 'input',
@@ -233,7 +242,7 @@ return [
             ]
         ],
         'email' => [
-            'exclude' => 1,
+            'exclude' => true,
             'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.email',
             'config' => [
                 'type' => 'input',
@@ -242,7 +251,7 @@ return [
             ]
         ],
         'website' => [
-            'exclude' => 1,
+            'exclude' => true,
             'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.website',
             'config' => [
                 'type' => 'input',
@@ -251,7 +260,7 @@ return [
             ]
         ],
         'opening_times' => [
-            'exclude' => 1,
+            'exclude' => true,
             'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.openingTimes',
             'config' => [
                 'type' => 'text',
@@ -261,7 +270,7 @@ return [
             ]
         ],
         'barrier_free' => [
-            'exclude' => 1,
+            'exclude' => true,
             'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.barrierFree',
             'config' => [
                 'type' => 'check',
@@ -269,7 +278,7 @@ return [
             ]
         ],
         'description' => [
-            'exclude' => 1,
+            'exclude' => true,
             'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.description',
             'config' => [
                 'type' => 'text',
@@ -293,7 +302,7 @@ return [
             'defaultExtras' => 'richtext:rte_transform[flag=rte_enabled|mode=ts]'
         ],
         'district' => [
-            'exclude' => 1,
+            'exclude' => true,
             'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.district',
             'config' => [
                 'type' => 'select',
@@ -308,7 +317,7 @@ return [
             ]
         ],
         'tx_maps2_uid' => [
-            'exclude' => 1,
+            'exclude' => true,
             'label' => 'LLL:EXT:maps2/Resources/Private/Language/locallang_db.xlf:tx_maps2_uid',
             'config' => [
                 'type' => 'group',
@@ -332,7 +341,7 @@ return [
             ]
         ],
         'facebook' => [
-            'exclude' => 1,
+            'exclude' => true,
             'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.facebook',
             'config' => [
                 'type' => 'input',
@@ -355,7 +364,7 @@ return [
             ]
         ],
         'twitter' => [
-            'exclude' => 1,
+            'exclude' => true,
             'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.twitter',
             'config' => [
                 'type' => 'input',
@@ -378,7 +387,7 @@ return [
             ]
         ],
         'google' => [
-            'exclude' => 1,
+            'exclude' => true,
             'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.google',
             'config' => [
                 'type' => 'input',
@@ -401,7 +410,7 @@ return [
             ]
         ],
         'main_trade' => [
-            'exclude' => 1,
+            'exclude' => true,
             'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.mainTrade',
             'config' => [
                 'type' => 'select',
@@ -421,7 +430,7 @@ return [
             ]
         ],
         'trades' => [
-            'exclude' => 1,
+            'exclude' => true,
             'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.trades',
             'config' => [
                 'type' => 'select',
@@ -445,11 +454,5 @@ return [
                 'maxitems' => 2
             ]
         ]
-    ],
-    'types' => [
-        '1' => ['showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, wsp_member, company, logo, images, street, house_number, zip, city, telephone, fax, contact_person, email, website, opening_times, barrier_free, description, district, tx_maps2_uid, --div--;LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tabs.social, facebook, twitter, google,--div--;LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tabs.trades, main_trade, trades,--div--;' . $ttContentLanguageFile . ':tabs.access,starttime, endtime']
-    ],
-    'palettes' => [
-        '1' => ['showitem' => '']
     ]
 ];
