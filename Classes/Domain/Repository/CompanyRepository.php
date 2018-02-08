@@ -18,6 +18,7 @@ namespace JWeiland\Itmedia2\Domain\Repository;
 use JWeiland\Itmedia2\Domain\Model\Company;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Charset\CharsetConverter;
+use TYPO3\CMS\Core\Database\PreparedStatement;
 use TYPO3\CMS\Extbase\Persistence\Generic\Query;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
@@ -202,26 +203,52 @@ class CompanyRepository extends Repository
     }
 
     /**
-     * return grouped categories
+     * Collect all categories used as main_trade and group them
      *
      * @return array
      */
     public function getGroupedCategories()
     {
+        $where = [];
+        $where[] = ' sys_category_record_mm.tablenames=?';
+        $where[] = ' AND sys_category_record_mm.fieldname=?';
+        $where[] = BackendUtility::BEenableFields('sys_category');
+        $where[] = BackendUtility::deleteClause('sys_category');
+        $where[] = BackendUtility::BEenableFields('tx_itmedia2_domain_model_company');
+        $where[] = BackendUtility::deleteClause('tx_itmedia2_domain_model_company');
+
+        $sql = '
+            SELECT sys_category.uid, sys_category.title
+            
+            FROM tx_itmedia2_domain_model_company
+            
+            LEFT JOIN sys_category_record_mm
+            ON tx_itmedia2_domain_model_company.uid = sys_category_record_mm.uid_foreign
+            
+            LEFT JOIN sys_category
+            ON sys_category_record_mm.uid_local = sys_category.uid
+            
+            WHERE ' . implode(LF, $where) . '
+            
+            GROUP BY sys_category.uid
+            ORDER BY sys_category.title
+        ';
+
+        /** @var PreparedStatement $preparedStatement */
+        $preparedStatement = $this->objectManager->get(
+            PreparedStatement::class,
+            $sql,
+            'tx_itmedia2_domain_model_company'
+        );
+
         /** @var Query $query */
         $query = $this->createQuery();
         $results = $query->statement(
-            '
-			SELECT sys_category.uid, sys_category.title
-			FROM sys_category, tx_itmedia2_domain_model_company
-			WHERE tx_itmedia2_domain_model_company.main_trade = sys_category.uid
-			AND tx_itmedia2_domain_model_company.main_trade > 0 ' .
-                BackendUtility::BEenableFields('sys_category') .
-                BackendUtility::deleteClause('sys_category') .
-                BackendUtility::BEenableFields('tx_itmedia2_domain_model_company') .
-                BackendUtility::deleteClause('tx_itmedia2_domain_model_company') . '
-				GROUP BY sys_category.uid
-				ORDER BY sys_category.title'
+            $preparedStatement,
+            [
+                'tx_itmedia2_domain_model_company',
+                'main_trade'
+            ]
         )->execute(true);
 
         $groupedCategories = [];
