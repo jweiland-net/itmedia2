@@ -154,15 +154,16 @@ class CompanyRepository extends Repository
      *
      * @param string $search
      * @param int $category
-     * @return QueryResultInterface
+     * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
      */
     public function searchCompanies($search, $category)
     {
+        /** @var Query $query */
+        $query = $this->createQuery();
         // strtolower is not UTF-8 compatible
         // $search = strtolower($search);
-        $longStreetSearch = $search;
-        $smallStreetSearch = $search;
-
+        $longStreetSearch = trim($search);
+        $smallStreetSearch = trim($search);
         // unify street search
         if (strtolower(mb_substr($search, -6)) === 'straße') {
             $smallStreetSearch = str_ireplace('straße', 'str', $search);
@@ -174,32 +175,26 @@ class CompanyRepository extends Repository
         if (strtolower(mb_substr($search, -3)) === 'str') {
             $longStreetSearch = str_ireplace('str', 'straße', $search);
         }
-
-        /** @var Query $query */
-        $query = $this->createQuery();
-
         $constraint = [];
-        $constraint[] = $query->like('company', '%' . $search . '%');
-        $constraint[] = $query->like('street', '%' . $smallStreetSearch . '%');
-        $constraint[] = $query->like('street', '%' . $longStreetSearch . '%');
-
-        if ($category) {
-            return $query->matching(
-                $query->logicalAnd(
-                    $query->logicalOr($constraint),
-                    $query->logicalOr(
-                        [
-                        $query->equals('mainTrade', $category),
-                        $query->contains('trades', $category)
-                        ]
-                    )
-                )
-            )->execute();
+        if (!empty($longStreetSearch)) {
+            $searchConstraint = [];
+            $searchConstraint[] = $query->like('company', '%' . $search . '%');
+            $searchConstraint[] = $query->like('street', '%' . $smallStreetSearch . '%');
+            $searchConstraint[] = $query->like('street', '%' . $longStreetSearch . '%');
+            $constraint[] = $query->logicalOr($searchConstraint);
         }
-
-        return $query->matching(
-            $query->logicalOr($constraint)
-        )->execute();
+        if (!empty($category)) {
+            $constraint[] = $query->logicalOr(
+                [
+                    $query->contains('mainTrade', $category),
+                    $query->contains('trades', $category)
+                ]
+            );
+        }
+        if (!empty($constraint)) {
+            return $query->matching($query->logicalAnd($constraint))->execute();
+        }
+        return $query->execute();
     }
 
     /**
