@@ -12,7 +12,7 @@ if ($extConf['fallbackIconPath']) {
 $tempColumns = [
     'icon' => [
         'exclude' => 1,
-        'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:sys_category.icon',
+        'label' => 'LLL:EXT:jw5124001pforzheim/Resources/Private/Language/locallang_db.xlf:sys_category.icon',
         'config' => [
             'type' => 'group',
             'internal_type' => 'file',
