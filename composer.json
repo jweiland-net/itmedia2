@@ -18,8 +18,8 @@
       "source": "https://github.com/jweiland-net/itmedia2"
     },
     "require": {
-      "typo3/cms-core": ">=8.7.0,<8.7.99",
-      "jweiland/maps2": ">=3.0.0,<4.0.0",
+			"typo3/cms-core": "^8.7",
+      "jweiland/maps2": "^4.1",
       "jweiland/yellowpages2": ">=2.0.0,<3.0.0"
     },
     "require-dev": {
