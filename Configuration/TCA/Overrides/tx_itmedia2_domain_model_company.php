@@ -1,5 +1,11 @@
 <?php
 call_user_func(function() {
+    // Add tx_maps2_uid column to company table
+    $result = \JWeiland\Maps2\Tca\Maps2Registry::getInstance()->add(
+        'itmedia2',
+        'tx_itmedia2_domain_model_company'
+    );
+
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::makeCategorizable(
         'itmedia2',
         'tx_itmedia2_domain_model_company',
