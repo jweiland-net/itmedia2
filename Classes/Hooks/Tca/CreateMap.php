@@ -19,15 +19,14 @@ use JWeiland\Maps2\Domain\Model\Location;
 use JWeiland\Maps2\Domain\Model\PoiCollection;
 use JWeiland\Maps2\Domain\Model\RadiusResult;
 use JWeiland\Maps2\Domain\Repository\PoiCollectionRepository;
-use JWeiland\Maps2\Utility\GeocodeUtility;
 use JWeiland\Itmedia2\Domain\Model\Company;
 use JWeiland\Itmedia2\Domain\Repository\CompanyRepository;
+use JWeiland\Maps2\Service\GoogleMapsService;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
-use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /**
  * @package yellowpages2
@@ -41,9 +40,9 @@ class CreateMap
     protected $objectManager;
 
     /**
-     * @var GeocodeUtility
+     * @var GoogleMapsService
      */
-    protected $geocodeUtility;
+    protected $googleMapsService;
 
     /**
      * @var array
@@ -73,7 +72,7 @@ class CreateMap
     public function init()
     {
         $this->objectManager = GeneralUtility::makeInstance(ObjectManager::class);
-        $this->geocodeUtility = $this->objectManager->get(GeocodeUtility::class);
+        $this->googleMapsService = $this->objectManager->get(GoogleMapsService::class);
 
         $this->persistenceManager = $this->objectManager->get(PersistenceManager::class);
         $this->companyRepository = $this->objectManager->get(CompanyRepository::class);
@@ -106,13 +105,10 @@ class CreateMap
         $this->currentRecord = $this->getFullRecord($table, $uid);
 
         // create new map-record and set them in relation
-        $response = $this->geocodeUtility->findPositionByAddress($this->getAddress());
-
-        if ($response instanceof ObjectStorage && $response->count()) {
-            /** @var RadiusResult $firstResult */
-            $firstResult = $response->current();
-            $location = $firstResult->getGeometry()->getLocation();
-            $address = $firstResult->getFormattedAddress();
+        $radiusResult = $this->googleMapsService->getFirstFoundPositionByAddress($this->getAddress());
+        if ($radiusResult instanceof RadiusResult) {
+            $location = $radiusResult->getGeometry()->getLocation();
+            $address = $radiusResult->getFormattedAddress();
             $poiUid = $this->createNewPoiCollection($location, $address);
             $this->updateCurrentRecord($poiUid);
         }
@@ -209,6 +205,6 @@ class CreateMap
         if (is_array($tsConfig) && !empty($tsConfig['properties']['pid'])) {
             return $tsConfig['properties'];
         }
-        throw new \Exception('no PID for maps2 given. Please add this PID in extension configuration of yellowpages2 or set it in page TSconfig', 1364889195);
+        throw new \Exception('no PID for maps2 given. Please add this PID in extension configuration of itmedia2 or set it in page TSconfig', 1540997702);
     }
 }
