@@ -3,7 +3,7 @@ if (!defined('TYPO3_MODE')) {
     die('Access denied.');
 }
 
-call_user_func(function($extKey) {
+call_user_func(function($extKey, $extConf) {
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
         'JWeiland.' . $extKey,
         'Directory',
@@ -29,7 +29,6 @@ call_user_func(function($extKey) {
     );
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_itmedia2_domain_model_district');
 
-    $extConf = unserialize($extKey);
-    $tsConfig = 'ext.itmedia2.pid = ' . (int) $extConf['poiCollectionPid'];
+    $tsConfig = 'ext.itmedia2.pid = ' . (int)$extConf['poiCollectionPid'];
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig($tsConfig);
-}, $_EXTKEY);
+}, $_EXTKEY, unserialize($_EXTCONF));
