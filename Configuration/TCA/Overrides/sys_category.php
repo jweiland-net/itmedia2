@@ -17,10 +17,14 @@ call_user_func(function() {
                 'uploadfolder' => $fallbackIconPath,
                 'allowed' => $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext'],
                 'max_size' => $GLOBALS['TYPO3_CONF_VARS']['BE']['maxFileSize'],
-                'show_thumbs' => true,
                 'size' => 5,
                 'maxitems' => 1,
-                'minitems' => 0
+                'minitems' => 0,
+                'fieldWizard' => [
+                    'selectIcons' => [
+                        'disabled' => false,
+                    ],
+                ],
             ]
         ]
     ];
