@@ -293,6 +293,7 @@ return [
             'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.district',
             'config' => [
                 'type' => 'select',
+                'renderType' => 'selectSingle',
                 'foreign_table' => 'tx_yellowpages2_domain_model_district',
                 'foreign_table_where' => 'ORDER BY tx_yellowpages2_domain_model_district.district',
                 'items' => [
@@ -308,22 +309,9 @@ return [
             'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.facebook',
             'config' => [
                 'type' => 'input',
+                'renderType' => 'inputLink',
                 'size' => 30,
                 'eval' => 'trim',
-                'wizards' => [
-                    '_PADDING' => 2,
-                    'link' => [
-                        'type' => 'popup',
-                        'title' => 'Link',
-                        'icon' => 'link_popup.gif',
-                        'script' => 'browse_links.php?mode=wizard',
-                        'JSopenParams' => 'height=300,width=500,status=0,menubar=0,scrollbars=1',
-                        'module' => [
-                            'name' => 'wizard_link'
-                        ]
-                    ]
-                ],
-                'softref' => 'typolink[linkList]'
             ]
         ],
         'twitter' => [
@@ -331,22 +319,9 @@ return [
             'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.twitter',
             'config' => [
                 'type' => 'input',
+                'renderType' => 'inputLink',
                 'size' => 30,
                 'eval' => 'trim',
-                'wizards' => [
-                    '_PADDING' => 2,
-                    'link' => [
-                        'type' => 'popup',
-                        'title' => 'Link',
-                        'icon' => 'link_popup.gif',
-                        'script' => 'browse_links.php?mode=wizard',
-                        'JSopenParams' => 'height=300,width=500,status=0,menubar=0,scrollbars=1',
-                        'module' => [
-                            'name' => 'wizard_link'
-                        ]
-                    ]
-                ],
-                'softref' => 'typolink[linkList]'
             ]
         ],
         'google' => [
@@ -354,22 +329,9 @@ return [
             'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.google',
             'config' => [
                 'type' => 'input',
+                'renderType' => 'inputLink',
                 'size' => 30,
                 'eval' => 'trim',
-                'wizards' => [
-                    '_PADDING' => 2,
-                    'link' => [
-                        'type' => 'popup',
-                        'title' => 'Link',
-                        'icon' => 'link_popup.gif',
-                        'script' => 'browse_links.php?mode=wizard',
-                        'JSopenParams' => 'height=300,width=500,status=0,menubar=0,scrollbars=1',
-                        'module' => [
-                            'name' => 'wizard_link'
-                        ]
-                    ]
-                ],
-                'softref' => 'typolink[linkList]'
             ]
         ],
         'main_trade' => [
@@ -377,6 +339,7 @@ return [
             'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.mainTrade',
             'config' => [
                 'type' => 'select',
+                'renderType' => 'selectTree',
                 'foreign_table' => 'sys_category',
                 'renderMode' => 'tree',
                 'size' => 10,
@@ -397,6 +360,7 @@ return [
             'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.trades',
             'config' => [
                 'type' => 'select',
+                'renderType' => 'selectTree',
                 'foreign_table' => 'sys_category',
                 'MM' => 'sys_category_record_mm',
                 'MM_match_fields' => [
