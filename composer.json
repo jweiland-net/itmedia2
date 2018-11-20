@@ -19,7 +19,7 @@
     },
     "require": {
       "typo3/cms-core": "^8.7",
-      "jweiland/maps2": "^4.1",
+      "jweiland/maps2": "^4.2",
       "jweiland/yellowpages2": "^2.2"
     },
     "require-dev": {
