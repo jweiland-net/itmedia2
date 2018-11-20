@@ -1,4 +1,8 @@
 <?php
+if (!defined('TYPO3_MODE')) {
+    die('Access denied.');
+}
+
 call_user_func(function() {
     $extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['itmedia2']);
     if ($extConf['fallbackIconPath']) {
