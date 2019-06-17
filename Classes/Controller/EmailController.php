@@ -22,8 +22,6 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
  * Class EmailController
- *
- * @package JWeiland\Itmedia2\Controller
  */
 class EmailController extends ActionController
 {

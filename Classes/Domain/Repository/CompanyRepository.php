@@ -27,8 +27,6 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
  * Class CompanyRepository
- *
- * @package JWeiland\Itmedia2\Domain\Repository
  */
 class CompanyRepository extends Repository
 {
