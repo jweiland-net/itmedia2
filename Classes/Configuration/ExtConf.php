@@ -18,7 +18,7 @@ namespace JWeiland\Itmedia2\Configuration;
 use TYPO3\CMS\Core\SingletonInterface;
 
 /**
- * Class ExtConf
+ * This class holds the configuration done in ExtensionManager
  */
 class ExtConf implements SingletonInterface
 {

@@ -21,7 +21,7 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /**
- * Class Company
+ * Main Domain model for Company
  */
 class Company extends AbstractEntity
 {

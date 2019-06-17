@@ -26,11 +26,10 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
- * Class CompanyRepository
+ * Repository to retrieve company records incl. search methods
  */
 class CompanyRepository extends Repository
 {
-
     /**
      * @var array
      */

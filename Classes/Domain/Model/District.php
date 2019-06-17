@@ -16,7 +16,9 @@ namespace JWeiland\Itmedia2\Domain\Model;
  */
 
 /**
- * Class District
+ * Domain model for District
+ *
+ * We use the table of yellowpages2 to prevent duplicates.
  */
 class District extends \JWeiland\Yellowpages2\Domain\Model\District
 {

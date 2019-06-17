@@ -15,7 +15,10 @@ namespace JWeiland\Itmedia2\Domain\Model;
  */
 
 /**
- * Class Category
+ * Domain model for Category
+ * As TYPO3 does not deliverSQL nor TCA for that property the
+ * icon-property may be removed in later TYPO3 versions.
+ * So please keep it.
  */
 class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
 {

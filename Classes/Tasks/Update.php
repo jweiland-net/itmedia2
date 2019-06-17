@@ -28,7 +28,8 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Scheduler\Task\AbstractTask;
 
 /**
- * Class Update
+ * Hide companies which are older than 13 months.
+ * Inform users about entries older than 12 month.
  */
 class Update extends AbstractTask
 {

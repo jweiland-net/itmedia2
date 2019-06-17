@@ -16,7 +16,7 @@ namespace JWeiland\Itmedia2\Domain\Repository;
  */
 
 /**
- * Class CategoryRepository
+ * Repository to retrieve records from category table: sys_category
  */
 class CategoryRepository extends \TYPO3\CMS\Extbase\Domain\Repository\CategoryRepository
 {

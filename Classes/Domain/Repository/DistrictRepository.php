@@ -16,7 +16,9 @@ namespace JWeiland\Itmedia2\Domain\Repository;
  */
 
 /**
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
+ * A repository to search for districts. Needed for selectbox.
+ *
+ * We use the district table of yellowpages2 here to prevent duplicates.
  */
 class DistrictRepository extends \JWeiland\Yellowpages2\Domain\Repository\DistrictRepository
 {

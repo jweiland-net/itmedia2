@@ -16,7 +16,7 @@ namespace JWeiland\Itmedia2\Controller;
  */
 
 /**
- * Class CompanyController
+ * This controller holds methods to list, show and search for companies
  */
 class CompanyController extends AbstractController
 {
