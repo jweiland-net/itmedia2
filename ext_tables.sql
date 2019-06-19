@@ -61,5 +61,5 @@ CREATE TABLE tx_itmedia2_domain_model_company (
 # Table structure for table 'sys_category'
 #
 CREATE TABLE sys_category (
-  icon varchar(255) DEFAULT '' NOT NULL,
+	icon varchar(255) DEFAULT '' NOT NULL
 );
