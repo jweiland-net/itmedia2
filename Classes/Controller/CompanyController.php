@@ -25,9 +25,8 @@ class CompanyController extends AbstractController
      *
      * @param string $letter Show only records starting with this letter
      * @validate $letter String, StringLength(minimum=0,maximum=3)
-     * @return void
      */
-    public function listAction($letter = null)
+    public function listAction(string $letter = null)
     {
         $companies = $this->companyRepository->findByStartingLetter($letter, $this->settings);
 
@@ -41,9 +40,8 @@ class CompanyController extends AbstractController
      * action show
      *
      * @param int $company
-     * @return void
      */
-    public function showAction($company)
+    public function showAction(int $company)
     {
         $companyObject = $this->companyRepository->findByIdentifier($company);
         $this->view->assign('company', $companyObject);
@@ -51,9 +49,7 @@ class CompanyController extends AbstractController
     }
 
     /**
-     * secure search parameter
-     *
-     * @return void
+     * Secure search parameter
      */
     public function initializeSearchAction()
     {
@@ -64,13 +60,12 @@ class CompanyController extends AbstractController
     }
 
     /**
-     * search show
+     * Search show
      *
      * @param string $search
      * @param int $category
-     * @return void
      */
-    public function searchAction($search, $category = 0)
+    public function searchAction(string $search, int $category = 0)
     {
         $companies = $this->companyRepository->searchCompanies($search, $category);
         $this->view->assign('search', $search);
