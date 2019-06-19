@@ -18,7 +18,9 @@ namespace JWeiland\Itmedia2\Domain\Repository;
 use JWeiland\Itmedia2\Domain\Model\Company;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Charset\CharsetConverter;
+use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\PreparedStatement;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\Generic\Query;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
@@ -46,10 +48,7 @@ class CompanyRepository extends Repository
     protected $charsetConverter;
 
     /**
-     * injects charsetConverter
-     *
      * @param CharsetConverter $charsetConverter
-     * @return void
      */
     public function injectCharsetConverter(CharsetConverter $charsetConverter)
     {
@@ -57,7 +56,7 @@ class CompanyRepository extends Repository
     }
 
     /**
-     * find company by uid whether it is hidden or not
+     * Find company by uid whether it is hidden or not
      *
      * @param int $companyUid
      * @return Company
@@ -74,13 +73,13 @@ class CompanyRepository extends Repository
     }
 
     /**
-     * find all records starting with given letter
+     * Find all records starting with given letter
      *
      * @param string $letter
      * @param array $settings
      * @return QueryResultInterface
      */
-    public function findByStartingLetter($letter, array $settings = [])
+    public function findByStartingLetter($letter, array $settings = []): QueryResultInterface
     {
         $query = $this->createQuery();
 
@@ -120,40 +119,42 @@ class CompanyRepository extends Repository
     }
 
     /**
-     * get an array with available starting letters
+     * Get an array with available starting letters
      *
-     * @param boolean $isWsp
+     * @param bool $isWsp
      * @return array
      */
-    public function getStartingLetters($isWsp)
+    public function getStartingLetters(bool $isWsp): array
     {
-        $addWhere = '';
+        $queryBuilder = $this->getConnectionPool()->getQueryBuilderForTable('tx_itmedia2_domain_model_company');
+        $queryBuilder
+            ->selectLiteral('UPPER(LEFT(company, 1)) as letter')
+            ->from('tx_itmedia2_domain_model_company')
+            ->add('groupBy', 'letter')
+            ->add('orderBy', 'letter');
 
         if ($isWsp) {
-            $addWhere = 'AND wsp_member=1';
+            $queryBuilder->where(
+                $queryBuilder->expr()->eq(
+                    'wsp_member',
+                    $queryBuilder->createNamedParameter(1, \PDO::PARAM_INT)
+                )
+            );
         }
 
         /** @var Query $query */
         $query = $this->createQuery();
-        return $query->statement('
-			SELECT UPPER(LEFT(company, 1)) as letter
-			FROM tx_itmedia2_domain_model_company
-			WHERE 1=1 ' . $addWhere .
-            BackendUtility::BEenableFields('tx_itmedia2_domain_model_company')    .
-            BackendUtility::deleteClause('tx_itmedia2_domain_model_company')    . '
-			GROUP BY letter
-			ORDER by letter;
-		')->execute(true);
+        return $query->statement($queryBuilder)->execute(true);
     }
 
     /**
-     * search records
+     * Search for company records
      *
      * @param string $search
      * @param int $category
-     * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     * @return QueryResultInterface
      */
-    public function searchCompanies($search, $category)
+    public function searchCompanies(string $search, int $category): QueryResultInterface
     {
         /** @var Query $query */
         $query = $this->createQuery();
@@ -199,49 +200,46 @@ class CompanyRepository extends Repository
      *
      * @return array
      */
-    public function getGroupedCategories()
+    public function getGroupedCategories(): array
     {
-        $where = [];
-        $where[] = ' sys_category_record_mm.tablenames=?';
-        $where[] = ' AND sys_category_record_mm.fieldname=?';
-        $where[] = BackendUtility::BEenableFields('sys_category');
-        $where[] = BackendUtility::deleteClause('sys_category');
-        $where[] = BackendUtility::BEenableFields('tx_itmedia2_domain_model_company');
-        $where[] = BackendUtility::deleteClause('tx_itmedia2_domain_model_company');
-
-        $sql = '
-            SELECT sys_category.uid, sys_category.title
-            
-            FROM tx_itmedia2_domain_model_company
-            
-            LEFT JOIN sys_category_record_mm
-            ON tx_itmedia2_domain_model_company.uid = sys_category_record_mm.uid_foreign
-            
-            LEFT JOIN sys_category
-            ON sys_category_record_mm.uid_local = sys_category.uid
-            
-            WHERE ' . implode(LF, $where) . '
-            
-            GROUP BY sys_category.uid
-            ORDER BY sys_category.title
-        ';
-
-        /** @var PreparedStatement $preparedStatement */
-        $preparedStatement = $this->objectManager->get(
-            PreparedStatement::class,
-            $sql,
-            'tx_itmedia2_domain_model_company'
-        );
+        $queryBuilder = $this->getConnectionPool()->getQueryBuilderForTable('tx_itmedia2_domain_model_company');
+        $queryBuilder
+            ->select('sc.uid', 'sc.title')
+            ->from('tx_itmedia2_domain_model_company', 'c')
+            ->leftJoin(
+                'c',
+                'sys_category_record_mm',
+                'mm',
+                (string)$queryBuilder->expr()->andX(
+                    $queryBuilder->expr()->eq(
+                        'c.uid',
+                        $queryBuilder->quoteIdentifier('mm.uid_foreign')
+                    ),
+                    $queryBuilder->expr()->eq(
+                        'mm.tablenames',
+                        $queryBuilder->createNamedParameter('tx_itmedia2_domain_model_company', \PDO::PARAM_STR)
+                    ),
+                    $queryBuilder->expr()->eq(
+                        'mm.fieldname',
+                        $queryBuilder->createNamedParameter('main_trade', \PDO::PARAM_STR)
+                    )
+                )
+            )
+            ->leftJoin(
+                'mm',
+                'sys_category',
+                'sc',
+                $queryBuilder->expr()->eq(
+                    'mm.uid_local',
+                    $queryBuilder->quoteIdentifier('sc.uid')
+                )
+            )
+            ->groupBy('sc.uid')
+            ->orderBy('sc.title', 'ASC');
 
         /** @var Query $query */
         $query = $this->createQuery();
-        $results = $query->statement(
-            $preparedStatement,
-            [
-                'tx_itmedia2_domain_model_company',
-                'main_trade'
-            ]
-        )->execute(true);
+        $results = $query->statement($queryBuilder)->execute(true);
 
         $groupedCategories = [];
         $groupedCategories[] = LocalizationUtility::translate('allBranches', 'itmedia2');
@@ -253,18 +251,28 @@ class CompanyRepository extends Repository
     }
 
     /**
-     * find all records which are older than given days
-     * Hint: Needed by scheduler
+     * Find all records which are older than given days
+     * Info: Needed by scheduler
      *
      * @param int $days
      * @return QueryResultInterface
      */
-    public function findOlderThan($days)
+    public function findOlderThan(int $days): QueryResultInterface
     {
         $days = (int) $days;
         $today = date('U');
         $history = $today - ($days * 60 * 60 * 24);
         $query = $this->createQuery();
         return $query->matching($query->lessThan('tstamp', $history))->execute();
+    }
+
+    /**
+     * Get TYPO3s Connection Pool
+     *
+     * @return ConnectionPool
+     */
+    protected function getConnectionPool(): ConnectionPool
+    {
+        return GeneralUtility::makeInstance(ConnectionPool::class);
     }
 }
