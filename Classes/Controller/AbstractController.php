@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 namespace JWeiland\Itmedia2\Controller;
 
 /*
@@ -19,9 +20,9 @@ use JWeiland\Itmedia2\Domain\Repository\CategoryRepository;
 use JWeiland\Itmedia2\Domain\Repository\CompanyRepository;
 use JWeiland\Itmedia2\Domain\Repository\DistrictRepository;
 use JWeiland\Maps2\Domain\Model\PoiCollection;
-use JWeiland\Maps2\Domain\Model\RadiusResult;
 use JWeiland\Itmedia2\Domain\Model\Company;
-use JWeiland\Maps2\Service\GoogleMapsService;
+use JWeiland\Maps2\Domain\Model\Position;
+use JWeiland\Maps2\Service\GeoCodeService;
 use TYPO3\CMS\Core\Mail\MailMessage;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -48,29 +49,21 @@ class AbstractController extends ActionController
     protected $extConf;
 
     /**
-     * persistenceManager
-     *
      * @var PersistenceManager
      */
     protected $persistenceManager;
 
     /**
-     * companyRepository
-     *
      * @var CompanyRepository
      */
     protected $companyRepository;
 
     /**
-     * districtRepository
-     *
      * @var DistrictRepository
      */
     protected $districtRepository;
 
     /**
-     * categoryRepository
-     *
      * @var CategoryRepository
      */
     protected $categoryRepository;
@@ -81,20 +74,12 @@ class AbstractController extends ActionController
     protected $session;
 
     /**
-     * @var GoogleMapsService
-     */
-    protected $googleMapsService;
-
-    /**
      * @var string
      */
     protected $letters = '0-9,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z';
 
     /**
-     * inject mail
-     *
      * @param MailMessage $mail
-     * @return void
      */
     public function injectMail(MailMessage $mail)
     {
@@ -102,10 +87,7 @@ class AbstractController extends ActionController
     }
 
     /**
-     * inject extConf
-     *
      * @param ExtConf $extConf
-     * @return void
      */
     public function injectExtConf(ExtConf $extConf)
     {
@@ -113,10 +95,7 @@ class AbstractController extends ActionController
     }
 
     /**
-     * inject persistenceManager
-     *
      * @param PersistenceManager $persistenceManager
-     * @return void
      */
     public function injectPersistenceManager(PersistenceManager $persistenceManager)
     {
@@ -124,10 +103,7 @@ class AbstractController extends ActionController
     }
 
     /**
-     * inject companyRepository
-     *
      * @param CompanyRepository $companyRepository
-     * @return void
      */
     public function injectCompanyRepository(CompanyRepository $companyRepository)
     {
@@ -135,10 +111,7 @@ class AbstractController extends ActionController
     }
 
     /**
-     * inject districtRepository
-     *
      * @param DistrictRepository $districtRepository
-     * @return void
      */
     public function injectDistrictRepository(DistrictRepository $districtRepository)
     {
@@ -146,10 +119,7 @@ class AbstractController extends ActionController
     }
 
     /**
-     * inject categoryRepository
-     *
      * @param CategoryRepository $categoryRepository
-     * @return void
      */
     public function injectCategoryRepository(CategoryRepository $categoryRepository)
     {
@@ -157,10 +127,7 @@ class AbstractController extends ActionController
     }
 
     /**
-     * inject session
-     *
      * @param Session $session
-     * @return void
      */
     public function injectSession(Session $session)
     {
@@ -168,20 +135,7 @@ class AbstractController extends ActionController
     }
 
     /**
-     * inject googleMapsService
-     *
-     * @param GoogleMapsService $googleMapsService
-     * @return void
-     */
-    public function injectGoogleMapsService(GoogleMapsService $googleMapsService)
-    {
-        $this->googleMapsService = $googleMapsService;
-    }
-
-    /**
      * PreProcessing of all actions
-     *
-     * @return void
      */
     public function initializeAction()
     {
@@ -193,12 +147,12 @@ class AbstractController extends ActionController
     }
 
     /**
-     * get an array with letters as keys for the glossar
+     * Get an array with letters as keys for the glossar
      *
-     * @param boolean $isWsp
+     * @param bool $isWsp
      * @return array Array with starting letters as keys
      */
-    protected function getGlossar($isWsp)
+    protected function getGlossar(bool $isWsp): array
     {
         $glossar = [];
         $availableLetters = $this->companyRepository->getStartingLetters($isWsp);
@@ -230,10 +184,9 @@ class AbstractController extends ActionController
     /**
      * This is a workaround to help controller actions to find (hidden) companies
      *
-     * @param $argumentName
-     * @return void
+     * @param string $argumentName
      */
-    protected function registerCompanyFromRequest($argumentName)
+    protected function registerCompanyFromRequest(string $argumentName)
     {
         $argument = $this->request->getArgument($argumentName);
         if (is_array($argument)) {
@@ -252,9 +205,8 @@ class AbstractController extends ActionController
      * the flash message in your action controller.
      *
      * @return string The flash message or FALSE if no flash message should be set
-     * @api
      */
-    protected function getErrorFlashMessage()
+    protected function getErrorFlashMessage(): string
     {
         return LocalizationUtility::translate(
             'errorFlashMessage',
@@ -267,12 +219,11 @@ class AbstractController extends ActionController
     }
 
     /**
-     * remove empty arguments from request
-     *
-     * @return void
+     * Remove empty arguments from request
      */
     protected function removeEmptyArgumentsFromRequest()
     {
+        /** @var array $company */
         $company = $this->request->getArgument('company');
         $company['trades'] = ArrayUtility::removeArrayEntryByValue($company['trades'], '');
         if ($company['trades'] === []) {
@@ -282,15 +233,15 @@ class AbstractController extends ActionController
     }
 
     /**
-     * files will be uploaded in typeConverter automatically
+     * Files will be uploaded in typeConverter automatically
      * But, if an error occurs we have to remove them
      *
      * @param string $argument
-     * @return void
      */
     protected function deleteUploadedFilesOnValidationErrors($argument)
     {
         if ($this->getControllerContext()->getRequest()->hasArgument($argument)) {
+            /** @var array $company */
             $company = $this->getControllerContext()->getRequest()->getArgument($argument);
             if ($company['images'] !== []) {
                 unset($company['images']);
@@ -306,23 +257,22 @@ class AbstractController extends ActionController
      * Add new PoiCollection to Company, if company is new
      *
      * @param Company $company
-     * @return void
      * @throws \Exception
      */
     protected function addNewPoiCollectionToCompany(Company $company)
     {
-        $radiusResult = $this->googleMapsService->getFirstFoundPositionByAddress($company->getAddress());
-        if ($radiusResult instanceof RadiusResult) {
-            /** @var PoiCollection $poiCollection */
+        $geoCodeService = GeneralUtility::makeInstance(GeoCodeService::class);
+        $position = $geoCodeService->getFirstFoundPositionByAddress($company->getAddress());
+        if ($position instanceof Position) {
             $poiCollection = $this->objectManager->get(PoiCollection::class);
             $poiCollection->setCollectionType('Point');
             $poiCollection->setTitle($company->getCompany());
-            $poiCollection->setLatitude($radiusResult->getGeometry()->getLocation()->getLatitude());
-            $poiCollection->setLongitude($radiusResult->getGeometry()->getLocation()->getLongitude());
-            $poiCollection->setAddress($radiusResult->getFormattedAddress());
+            $poiCollection->setLatitude($position->getLatitude());
+            $poiCollection->setLongitude($position->getLongitude());
+            $poiCollection->setAddress($position->getFormattedAddress());
             $company->setTxMaps2Uid($poiCollection);
         } else {
-            DebuggerUtility::var_dump($radiusResult);
+            DebuggerUtility::var_dump($position);
             throw new \Exception('Can\'t find a result for address: ' . $company->getAddress() . '. Activate Debugging for a more detailed output.', 1465474954);
         }
     }
