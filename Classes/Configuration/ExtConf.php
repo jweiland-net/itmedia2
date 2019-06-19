@@ -23,48 +23,42 @@ use TYPO3\CMS\Core\SingletonInterface;
 class ExtConf implements SingletonInterface
 {
     /**
-     * fallback icon path
-     *
      * @var string
      */
     protected $fallbackIconPath = '';
 
     /**
-     * email from address
-     *
+     * @var int
+     */
+    protected $poiCollectionPid = 0;
+
+    /**
      * @var string
      */
     protected $emailFromAddress = '';
 
     /**
-     * email from name
-     *
      * @var string
      */
     protected $emailFromName = '';
 
     /**
-     * email to address
-     *
      * @var string
      */
     protected $emailToAddress = '';
 
     /**
-     * email to name
-     *
      * @var string
      */
     protected $emailToName = '';
 
-    /**
-     * constructor of this class
-     * This method reads the global configuration and calls the setter methods
-     */
     public function __construct()
     {
         // get global configuration
-        $extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['itmedia2']);
+        $extConf = unserialize(
+            $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['itmedia2'],
+            ['allowed_classes' => false]
+        );
         if (is_array($extConf) && count($extConf)) {
             // call setter method foreach configuration entry
             foreach ($extConf as $key => $value) {
@@ -77,16 +71,14 @@ class ExtConf implements SingletonInterface
     }
 
     /**
-     * Gets FallbackIconPath
-     *
      * @return string
      */
     public function getFallbackIconPath(): string
     {
-        if (!$this->fallbackIconPath) {
+        if (empty($this->fallbackIconPath)) {
             $this->fallbackIconPath = '/uploads/tx_itmedia2/';
         }
-        return $this->fallbackIconPath;
+        return rtrim($this->fallbackIconPath, '/') . '/';
     }
 
     /**
