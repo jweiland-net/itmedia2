@@ -40,7 +40,6 @@ class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
      * Sets the icon
      *
      * @param string $icon
-     * @return void
      */
     public function setIcon($icon)
     {
