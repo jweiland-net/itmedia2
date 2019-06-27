@@ -16,11 +16,11 @@ namespace JWeiland\Itmedia2\Controller;
  */
 
 use JWeiland\Itmedia2\Configuration\ExtConf;
+use JWeiland\Itmedia2\Domain\Model\Company;
 use JWeiland\Itmedia2\Domain\Repository\CategoryRepository;
 use JWeiland\Itmedia2\Domain\Repository\CompanyRepository;
 use JWeiland\Itmedia2\Domain\Repository\DistrictRepository;
 use JWeiland\Maps2\Domain\Model\PoiCollection;
-use JWeiland\Itmedia2\Domain\Model\Company;
 use JWeiland\Maps2\Domain\Model\Position;
 use JWeiland\Maps2\Service\MapService;
 use TYPO3\CMS\Core\Mail\MailMessage;

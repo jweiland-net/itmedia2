@@ -231,7 +231,7 @@ class Company extends AbstractEntity
      */
     public function getImages(): array
     {
-        $references = array();
+        $references = [];
         foreach ($this->images as $image) {
             $references[] = $image;
         }
