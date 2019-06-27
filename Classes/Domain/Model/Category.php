@@ -15,7 +15,7 @@ namespace JWeiland\Itmedia2\Domain\Model;
  */
 
 /**
- * Class Category
+ * Domain model to keep information about categories
  */
 class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
 {

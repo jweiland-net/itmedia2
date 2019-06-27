@@ -16,7 +16,7 @@ namespace JWeiland\Itmedia2\Domain\Repository;
  */
 
 /**
- * Class CategoryRepository
+ * This repo contains the default methods to get categories from sys_category
  */
 class CategoryRepository extends \TYPO3\CMS\Extbase\Domain\Repository\CategoryRepository
 {
