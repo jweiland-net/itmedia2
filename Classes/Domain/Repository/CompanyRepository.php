@@ -30,7 +30,6 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
  */
 class CompanyRepository extends Repository
 {
-
     /**
      * @var array
      */
@@ -39,7 +38,6 @@ class CompanyRepository extends Repository
     ];
 
     /**
-     * charset converter
      * We need some UTF-8 compatible functions for search
      *
      * @var \TYPO3\CMS\Core\Charset\CharsetConverter
@@ -55,12 +53,12 @@ class CompanyRepository extends Repository
     }
 
     /**
-     * find company by uid whether it is hidden or not
+     * Find company by uid whether it is hidden or not
      *
      * @param int $companyUid
-     * @return Company
+     * @return Company|null
      */
-    public function findHiddenEntryByUid($companyUid)
+    public function findHiddenEntryByUid(int $companyUid)
     {
         $query = $this->createQuery();
         $query->getQuerySettings()->setIgnoreEnableFields(true);
@@ -72,13 +70,13 @@ class CompanyRepository extends Repository
     }
 
     /**
-     * find all records starting with given letter
+     * Find all records starting with given letter
      *
      * @param string $letter
      * @param array $settings
      * @return QueryResultInterface
      */
-    public function findByStartingLetter($letter, array $settings = [])
+    public function findByStartingLetter(string $letter, array $settings = []): QueryResultInterface
     {
         $query = $this->createQuery();
 
@@ -118,12 +116,12 @@ class CompanyRepository extends Repository
     }
 
     /**
-     * get an array with available starting letters
+     * Get an array with available starting letters
      *
-     * @param boolean $isWsp
+     * @param bool $isWsp
      * @return array
      */
-    public function getStartingLetters($isWsp)
+    public function getStartingLetters(bool $isWsp): array
     {
         $addWhere = '';
 
@@ -149,9 +147,9 @@ class CompanyRepository extends Repository
      *
      * @param string $search
      * @param int $category
-     * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     * @return QueryResultInterface
      */
-    public function searchCompanies($search, $category)
+    public function searchCompanies(string $search, int $category): QueryResultInterface
     {
         /** @var Query $query */
         $query = $this->createQuery();
@@ -197,7 +195,7 @@ class CompanyRepository extends Repository
      *
      * @return array
      */
-    public function getGroupedCategories()
+    public function getGroupedCategories(): array
     {
         $where = [];
         $where[] = ' sys_category_record_mm.tablenames=?';
@@ -257,7 +255,7 @@ class CompanyRepository extends Repository
      * @param int $days
      * @return QueryResultInterface
      */
-    public function findOlderThan($days)
+    public function findOlderThan(int $days): QueryResultInterface
     {
         $days = (int) $days;
         $today = date('U');
