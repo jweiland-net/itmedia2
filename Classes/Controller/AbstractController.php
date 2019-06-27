@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 namespace JWeiland\Itmedia2\Controller;
 
 /*
@@ -48,29 +49,21 @@ class AbstractController extends ActionController
     protected $extConf;
 
     /**
-     * persistenceManager
-     *
      * @var PersistenceManager
      */
     protected $persistenceManager;
 
     /**
-     * companyRepository
-     *
      * @var CompanyRepository
      */
     protected $companyRepository;
 
     /**
-     * districtRepository
-     *
      * @var DistrictRepository
      */
     protected $districtRepository;
 
     /**
-     * categoryRepository
-     *
      * @var CategoryRepository
      */
     protected $categoryRepository;
@@ -156,10 +149,10 @@ class AbstractController extends ActionController
     /**
      * get an array with letters as keys for the glossar
      *
-     * @param boolean $isWsp
+     * @param bool $isWsp
      * @return array Array with starting letters as keys
      */
-    protected function getGlossar($isWsp)
+    protected function getGlossar(bool $isWsp): array
     {
         $glossar = [];
         $availableLetters = $this->companyRepository->getStartingLetters($isWsp);
@@ -191,9 +184,9 @@ class AbstractController extends ActionController
     /**
      * This is a workaround to help controller actions to find (hidden) companies
      *
-     * @param $argumentName
+     * @param string $argumentName
      */
-    protected function registerCompanyFromRequest($argumentName)
+    protected function registerCompanyFromRequest(string $argumentName)
     {
         $argument = $this->request->getArgument($argumentName);
         if (is_array($argument)) {
@@ -212,9 +205,8 @@ class AbstractController extends ActionController
      * the flash message in your action controller.
      *
      * @return string The flash message or FALSE if no flash message should be set
-     * @api
      */
-    protected function getErrorFlashMessage()
+    protected function getErrorFlashMessage(): string
     {
         return LocalizationUtility::translate(
             'errorFlashMessage',
@@ -227,7 +219,7 @@ class AbstractController extends ActionController
     }
 
     /**
-     * remove empty arguments from request
+     * Remove empty arguments from request
      */
     protected function removeEmptyArgumentsFromRequest()
     {
@@ -241,12 +233,12 @@ class AbstractController extends ActionController
     }
 
     /**
-     * files will be uploaded in typeConverter automatically
+     * Files will be uploaded in typeConverter automatically
      * But, if an error occurs we have to remove them
      *
      * @param string $argument
      */
-    protected function deleteUploadedFilesOnValidationErrors($argument)
+    protected function deleteUploadedFilesOnValidationErrors(string $argument)
     {
         if ($this->getControllerContext()->getRequest()->hasArgument($argument)) {
             /** @var array $company */
@@ -272,7 +264,6 @@ class AbstractController extends ActionController
         $mapService = $this->objectManager->get(MapService::class);
         $position = $mapService->getFirstFoundPositionByAddress($company->getAddress());
         if ($position instanceof Position) {
-            /** @var PoiCollection $poiCollection */
             $poiCollection = $this->objectManager->get(PoiCollection::class);
             $poiCollection->setCollectionType('Point');
             $poiCollection->setTitle($company->getCompany());
