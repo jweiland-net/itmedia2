@@ -34,8 +34,6 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
  * Class AbstractController
- *
- * @package JWeiland\Itmedia2\Controller
  */
 class AbstractController extends ActionController
 {

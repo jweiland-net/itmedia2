@@ -22,8 +22,6 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /**
  * Class Company
- *
- * @package JWeiland\Itmedia2\Domain\Model
  */
 class Company extends AbstractEntity
 {

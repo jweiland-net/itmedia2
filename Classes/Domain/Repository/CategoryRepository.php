@@ -17,8 +17,6 @@ namespace JWeiland\Itmedia2\Domain\Repository;
 
 /**
  * Class CategoryRepository
- *
- * @package JWeiland\Itmedia2\Domain\Repository
  */
 class CategoryRepository extends \TYPO3\CMS\Extbase\Domain\Repository\CategoryRepository
 {
