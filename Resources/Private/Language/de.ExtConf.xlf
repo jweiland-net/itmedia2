@@ -6,24 +6,31 @@
 
 			<trans-unit id="fallbackIconPath" xml:space="preserve">
 				<source>Fallback icon path: If there is no image to a record assigned, you can define a fallback path where all images are located.</source>
+				<target>Fallback Icon Pfad: Wenn dem Datensatz kein Bild zugewiesen wurde, könnt Ihr hier einen Ordner angeben in dem sich alle Fallback Icons befinden.</target>
 			</trans-unit>
 			<trans-unit id="poiCollectionPid" xml:space="preserve">
 				<source>PID for poiCollections: Define a storage pid where to store records of type Point of Interest.</source>
+				<target>Seiten UID für Map Datensätze: Auf welcher Seite vom Typ "Folder" sollen die Map Datensätze gespeichert werden?</target>
 			</trans-unit>
 			<trans-unit id="editLink" xml:space="preserve">
 				<source>Link to edit form: Set the URI where the user can edit his company record.</source>
+				<target>Link zum Bearbeiten-Formular: Hinterlege hier die URI auf der ein FE Benutzer seinen zugeordneten Firmen-Datensatz bearbeiten kann.</target>
 			</trans-unit>
 			<trans-unit id="emailFromAddress" xml:space="preserve">
 				<source>email from address: The senders email address. If not given the extension tries to get one from INSTALL_TOOL.</source>
+				<target>FROM Emailadresse: Die Absender Emailadresse. Wenn nicht angegeben wird versucht diese aus dem Installtool zu übernehmen.</target>
 			</trans-unit>
 			<trans-unit id="emailFromName" xml:space="preserve">
 				<source>email from name: The senders email name. If not given the extension tries to get one from INSTALL_TOOL.</source>
+				<target>FROM Absendername: Der Absendername. Wenn nicht angegeben wird versucht diesen aus dem Installtool zu übernehmen.</target>
 			</trans-unit>
 			<trans-unit id="emailToAddress" xml:space="preserve">
 				<source>email to address: The recipients email address.</source>
+				<target>TO Emailadresse: Die Email des Empfängers.</target>
 			</trans-unit>
 			<trans-unit id="emailToName" xml:space="preserve">
 				<source>email to name: The recipients email name.</source>
+				<target>TO Empfängername: Der Name des Empfängers.</target>
 			</trans-unit>
 
 		</body>
