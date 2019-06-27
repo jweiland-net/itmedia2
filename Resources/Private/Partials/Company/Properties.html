@@ -5,7 +5,9 @@
 				<f:image image="{company.logo}" alt="Logo: {company.company}" width="{settings.list.image.width}" height="{settings.list.image.height}" />
 			</f:then>
 			<f:else>
-				<f:image src="uploads/tx_jwapi/{company.mainTrade.icon}" alt="Logo: {company.mainTrade.title}" width="{settings.list.image.width}" height="{settings.list.image.height}" />
+				<f:if condition="{company.mainTrade.icon}">
+					<f:image src="uploads/tx_itmedia2/{company.mainTrade.icon}" alt="Logo: {company.mainTrade.title}" width="{settings.list.image.width}" height="{settings.list.image.height}" />
+				</f:if>
 			</f:else>
 		</f:if>
 	</figure>
@@ -13,7 +15,7 @@
 <div class="grid_11 floatleft marginbottom"><h1>{company.company}</h1></div>
 <div class="grid_12 clearer clearfix">
 	<div class="grid_6 floatleft">
-		<f:if condition="{company.images->f:count()}">
+		<f:if condition="{company.images}">
 			<figure class="gridright marginbottom2">
 				<f:render partial="Company/Images" arguments="{company: company}" />
 			</figure>
@@ -27,23 +29,17 @@
 	<div class="grid_6 floatleft">
 		<div class="gridleft clearfix rulerbefore4">
 			<dl class="extdl">
-				<dt>
-					<f:translate key="tx_itmedia2_domain_model_company.postAddress"/>:</dt>
-				<dd>
-					<f:render partial="Company/Address" arguments="{company: company}"/>
-				</dd>
+				<dt><f:translate key="tx_itmedia2_domain_model_company.postAddress"/>:</dt>
+				<dd><f:render partial="Company/Address" arguments="{company: company}"/></dd>
 				<f:if condition="{company.openingTimes}">
-					<dt>
-						<f:translate key="tx_itmedia2_domain_model_company.openingTimes"/>:
-					</dt>
+					<dt><f:translate key="tx_itmedia2_domain_model_company.openingTimes"/>:</dt>
 					<dd>
 						{company.openingTimes -> f:format.html(parseFuncTSPath: 'lib.parseFunc') -> f:format.nl2br()}
 					</dd>
 				</f:if>
 			</dl>
 			<dl class="extdl clearfix rulerafter">
-				<dt>
-					<f:translate key="tx_itmedia2_domain_model_company.contact"/>:</dt>
+				<dt><f:translate key="tx_itmedia2_domain_model_company.contact"/>:</dt>
 				<dd class="grid_8 floatleft noborder">
 					<f:render partial="Company/Contact" arguments="{company: company}"/>
 				</dd>
@@ -59,15 +55,11 @@
 			</dl>
 			<dl class="extdl">
 				<f:if condition="{company.contactPerson}">
-					<dt>
-						<f:translate key="tx_itmedia2_domain_model_company.contactPerson"/>:</dt>
-					<dd>
-						{company.contactPerson}
-					</dd>
+					<dt><f:translate key="tx_itmedia2_domain_model_company.contactPerson"/>:</dt>
+					<dd>{company.contactPerson}</dd>
 				</f:if>
 
-
-				<dt>	<f:translate key="tx_itmedia2_domain_model_company.barrierFree"/>:</dt>
+				<dt><f:translate key="tx_itmedia2_domain_model_company.barrierFree"/>:</dt>
 				<dd>
 					<f:if condition="{company.barrierFree}">
 						<f:then>
@@ -79,7 +71,6 @@
 					</f:if>
 				</dd>
 			</dl>
-			<f:render partial="Company/Social.html" arguments="{company: company}"/>
 		</div>
 	</div>
 </div>
