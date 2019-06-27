@@ -45,7 +45,7 @@ install:
   - composer require typo3/minimal=$TYPO3_VERSION
   - kill %1
   - mkdir -p .Build/public/typo3conf/ext/
-  - if [ ! -L .Build/public/typo3conf/ext/yellowpages2 ]; then ln -snvf ../../../../. .Build/public/typo3conf/ext/yellowpages2; fi
+  - if [ ! -L .Build/public/typo3conf/ext/itmedia2 ]; then ln -snvf ../../../../. .Build/public/typo3conf/ext/itmedia2; fi
   - echo 'date.timezone = "Europe/Paris"' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
   - git checkout composer.json
   - export TYPO3_PATH_ROOT=$PWD/.Build/public
