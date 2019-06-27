@@ -19,9 +19,9 @@ use JWeiland\Itmedia2\Domain\Repository\CategoryRepository;
 use JWeiland\Itmedia2\Domain\Repository\CompanyRepository;
 use JWeiland\Itmedia2\Domain\Repository\DistrictRepository;
 use JWeiland\Maps2\Domain\Model\PoiCollection;
-use JWeiland\Maps2\Domain\Model\RadiusResult;
 use JWeiland\Itmedia2\Domain\Model\Company;
-use JWeiland\Maps2\Service\GoogleMapsService;
+use JWeiland\Maps2\Domain\Model\Position;
+use JWeiland\Maps2\Service\MapService;
 use TYPO3\CMS\Core\Mail\MailMessage;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -81,11 +81,6 @@ class AbstractController extends ActionController
      * @var Session
      */
     protected $session;
-
-    /**
-     * @var GoogleMapsService
-     */
-    protected $googleMapsService;
 
     /**
      * @var string
@@ -167,17 +162,6 @@ class AbstractController extends ActionController
     public function injectSession(Session $session)
     {
         $this->session = $session;
-    }
-
-    /**
-     * inject googleMapsService
-     *
-     * @param GoogleMapsService $googleMapsService
-     * @return void
-     */
-    public function injectGoogleMapsService(GoogleMapsService $googleMapsService)
-    {
-        $this->googleMapsService = $googleMapsService;
     }
 
     /**
@@ -275,6 +259,7 @@ class AbstractController extends ActionController
      */
     protected function removeEmptyArgumentsFromRequest()
     {
+        /** @var array $company */
         $company = $this->request->getArgument('company');
         $company['trades'] = ArrayUtility::removeArrayEntryByValue($company['trades'], '');
         if ($company['trades'] === []) {
@@ -293,6 +278,7 @@ class AbstractController extends ActionController
     protected function deleteUploadedFilesOnValidationErrors($argument)
     {
         if ($this->getControllerContext()->getRequest()->hasArgument($argument)) {
+            /** @var array $company */
             $company = $this->getControllerContext()->getRequest()->getArgument($argument);
             if ($company['images'] !== []) {
                 unset($company['images']);
@@ -313,18 +299,19 @@ class AbstractController extends ActionController
      */
     protected function addNewPoiCollectionToCompany(Company $company)
     {
-        $radiusResult = $this->googleMapsService->getFirstFoundPositionByAddress($company->getAddress());
-        if ($radiusResult instanceof RadiusResult) {
+        $mapService = $this->objectManager->get(MapService::class);
+        $position = $mapService->getFirstFoundPositionByAddress($company->getAddress());
+        if ($position instanceof Position) {
             /** @var PoiCollection $poiCollection */
             $poiCollection = $this->objectManager->get(PoiCollection::class);
             $poiCollection->setCollectionType('Point');
             $poiCollection->setTitle($company->getCompany());
-            $poiCollection->setLatitude($radiusResult->getGeometry()->getLocation()->getLatitude());
-            $poiCollection->setLongitude($radiusResult->getGeometry()->getLocation()->getLongitude());
-            $poiCollection->setAddress($radiusResult->getFormattedAddress());
+            $poiCollection->setLatitude($position->getLatitude());
+            $poiCollection->setLongitude($position->getLongitude());
+            $poiCollection->setAddress($position->getFormattedAddress());
             $company->setTxMaps2Uid($poiCollection);
         } else {
-            DebuggerUtility::var_dump($radiusResult);
+            DebuggerUtility::var_dump($position);
             throw new \Exception('Can\'t find a result for address: ' . $company->getAddress() . '. Activate Debugging for a more detailed output.', 1465474954);
         }
     }
