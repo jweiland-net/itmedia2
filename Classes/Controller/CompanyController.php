@@ -21,12 +21,10 @@ namespace JWeiland\Itmedia2\Controller;
 class CompanyController extends AbstractController
 {
     /**
-     * action list
-     *
      * @param string $letter Show only records starting with this letter
      * @validate $letter String, StringLength(minimum=0,maximum=3)
      */
-    public function listAction($letter = null)
+    public function listAction(string $letter = null)
     {
         $companies = $this->companyRepository->findByStartingLetter($letter, $this->settings);
 
@@ -37,11 +35,9 @@ class CompanyController extends AbstractController
     }
 
     /**
-     * action show
-     *
      * @param int $company
      */
-    public function showAction($company)
+    public function showAction(int $company)
     {
         $companyObject = $this->companyRepository->findByIdentifier($company);
         $this->view->assign('company', $companyObject);
@@ -49,7 +45,7 @@ class CompanyController extends AbstractController
     }
 
     /**
-     * secure search parameter
+     * Secure search-parameter
      */
     public function initializeSearchAction()
     {
@@ -60,12 +56,10 @@ class CompanyController extends AbstractController
     }
 
     /**
-     * search show
-     *
      * @param string $search
      * @param int $category
      */
-    public function searchAction($search, $category = 0)
+    public function searchAction(string $search, int $category = 0)
     {
         $companies = $this->companyRepository->searchCompanies($search, $category);
         $this->view->assign('search', $search);
