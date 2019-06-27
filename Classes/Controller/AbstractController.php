@@ -89,7 +89,6 @@ class AbstractController extends ActionController
      * inject mail
      *
      * @param MailMessage $mail
-     * @return void
      */
     public function injectMail(MailMessage $mail)
     {
@@ -100,7 +99,6 @@ class AbstractController extends ActionController
      * inject extConf
      *
      * @param ExtConf $extConf
-     * @return void
      */
     public function injectExtConf(ExtConf $extConf)
     {
@@ -111,7 +109,6 @@ class AbstractController extends ActionController
      * inject persistenceManager
      *
      * @param PersistenceManager $persistenceManager
-     * @return void
      */
     public function injectPersistenceManager(PersistenceManager $persistenceManager)
     {
@@ -122,7 +119,6 @@ class AbstractController extends ActionController
      * inject companyRepository
      *
      * @param CompanyRepository $companyRepository
-     * @return void
      */
     public function injectCompanyRepository(CompanyRepository $companyRepository)
     {
@@ -133,7 +129,6 @@ class AbstractController extends ActionController
      * inject districtRepository
      *
      * @param DistrictRepository $districtRepository
-     * @return void
      */
     public function injectDistrictRepository(DistrictRepository $districtRepository)
     {
@@ -144,7 +139,6 @@ class AbstractController extends ActionController
      * inject categoryRepository
      *
      * @param CategoryRepository $categoryRepository
-     * @return void
      */
     public function injectCategoryRepository(CategoryRepository $categoryRepository)
     {
@@ -155,7 +149,6 @@ class AbstractController extends ActionController
      * inject session
      *
      * @param Session $session
-     * @return void
      */
     public function injectSession(Session $session)
     {
@@ -164,8 +157,6 @@ class AbstractController extends ActionController
 
     /**
      * PreProcessing of all actions
-     *
-     * @return void
      */
     public function initializeAction()
     {
@@ -215,7 +206,6 @@ class AbstractController extends ActionController
      * This is a workaround to help controller actions to find (hidden) companies
      *
      * @param $argumentName
-     * @return void
      */
     protected function registerCompanyFromRequest($argumentName)
     {
@@ -252,8 +242,6 @@ class AbstractController extends ActionController
 
     /**
      * remove empty arguments from request
-     *
-     * @return void
      */
     protected function removeEmptyArgumentsFromRequest()
     {
@@ -271,7 +259,6 @@ class AbstractController extends ActionController
      * But, if an error occurs we have to remove them
      *
      * @param string $argument
-     * @return void
      */
     protected function deleteUploadedFilesOnValidationErrors($argument)
     {
@@ -292,7 +279,6 @@ class AbstractController extends ActionController
      * Add new PoiCollection to Company, if company is new
      *
      * @param Company $company
-     * @return void
      * @throws \Exception
      */
     protected function addNewPoiCollectionToCompany(Company $company)

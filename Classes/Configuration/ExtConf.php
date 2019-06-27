@@ -93,7 +93,6 @@ class ExtConf implements SingletonInterface
      * Sets FallbackIconPath
      *
      * @param string $fallbackIconPath
-     * @return void
      */
     public function setFallbackIconPath(string $fallbackIconPath)
     {
@@ -122,7 +121,6 @@ class ExtConf implements SingletonInterface
      * setter for email from address
      *
      * @param string $emailFromAddress
-     * @return void
      */
     public function setEmailFromAddress(string $emailFromAddress)
     {
@@ -151,7 +149,6 @@ class ExtConf implements SingletonInterface
      * setter for emailFromName
      *
      * @param string $emailFromName
-     * @return void
      */
     public function setEmailFromName(string $emailFromName)
     {
@@ -172,7 +169,6 @@ class ExtConf implements SingletonInterface
      * setter for email to address
      *
      * @param string $emailToAddress
-     * @return void
      */
     public function setEmailToAddress(string $emailToAddress)
     {
@@ -193,7 +189,6 @@ class ExtConf implements SingletonInterface
      * setter for emailToName
      *
      * @param string $emailToName
-     * @return void
      */
     public function setEmailToName(string $emailToName)
     {

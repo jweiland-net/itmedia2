@@ -25,7 +25,6 @@ class CompanyController extends AbstractController
      *
      * @param string $letter Show only records starting with this letter
      * @validate $letter String, StringLength(minimum=0,maximum=3)
-     * @return void
      */
     public function listAction($letter = null)
     {
@@ -41,7 +40,6 @@ class CompanyController extends AbstractController
      * action show
      *
      * @param int $company
-     * @return void
      */
     public function showAction($company)
     {
@@ -52,8 +50,6 @@ class CompanyController extends AbstractController
 
     /**
      * secure search parameter
-     *
-     * @return void
      */
     public function initializeSearchAction()
     {
@@ -68,7 +64,6 @@ class CompanyController extends AbstractController
      *
      * @param string $search
      * @param int $category
-     * @return void
      */
     public function searchAction($search, $category = 0)
     {

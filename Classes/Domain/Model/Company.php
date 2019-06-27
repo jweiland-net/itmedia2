@@ -227,7 +227,6 @@ class Company extends AbstractEntity
      * Sets the hidden
      *
      * @param bool $hidden
-     * @return void
      */
     public function setHidden(bool $hidden)
     {
@@ -248,7 +247,6 @@ class Company extends AbstractEntity
      * Sets the wspMember
      *
      * @param bool $wspMember
-     * @return void
      */
     public function setWspMember(bool $wspMember)
     {
@@ -269,7 +267,6 @@ class Company extends AbstractEntity
      * Sets the company
      *
      * @param string $company
-     * @return void
      */
     public function setCompany(string $company)
     {
@@ -291,7 +288,6 @@ class Company extends AbstractEntity
      * Sets the logo
      *
      * @param FileReference $logo
-     * @return void
      */
     public function setLogo(FileReference $logo = null)
     {
@@ -317,7 +313,6 @@ class Company extends AbstractEntity
      * Sets the images
      *
      * @param ObjectStorage $images A minimized Array from $_FILES
-     * @return void
      */
     public function setImages(ObjectStorage $images)
     {
@@ -338,7 +333,6 @@ class Company extends AbstractEntity
      * Sets the street
      *
      * @param string $street
-     * @return void
      */
     public function setStreet(string $street)
     {
@@ -359,7 +353,6 @@ class Company extends AbstractEntity
      * Sets the houseNumber
      *
      * @param string $houseNumber
-     * @return void
      */
     public function setHouseNumber(string $houseNumber)
     {
@@ -380,7 +373,6 @@ class Company extends AbstractEntity
      * Sets the zip
      *
      * @param string $zip
-     * @return void
      */
     public function setZip(string $zip)
     {
@@ -401,7 +393,6 @@ class Company extends AbstractEntity
      * Sets the city
      *
      * @param string $city
-     * @return void
      */
     public function setCity(string $city)
     {
@@ -422,7 +413,6 @@ class Company extends AbstractEntity
      * Sets the telephone
      *
      * @param string $telephone
-     * @return void
      */
     public function setTelephone(string $telephone)
     {
@@ -443,7 +433,6 @@ class Company extends AbstractEntity
      * Sets the fax
      *
      * @param string $fax
-     * @return void
      */
     public function setFax(string $fax)
     {
@@ -464,7 +453,6 @@ class Company extends AbstractEntity
      * Sets the contactPerson
      *
      * @param string $contactPerson
-     * @return void
      */
     public function setContactPerson(string $contactPerson)
     {
@@ -485,7 +473,6 @@ class Company extends AbstractEntity
      * Sets the email
      *
      * @param string $email
-     * @return void
      */
     public function setEmail(string $email)
     {
@@ -506,7 +493,6 @@ class Company extends AbstractEntity
      * Sets the website
      *
      * @param string $website
-     * @return void
      */
     public function setWebsite(string $website)
     {
@@ -527,7 +513,6 @@ class Company extends AbstractEntity
      * Sets the openingTimes
      *
      * @param string $openingTimes
-     * @return void
      */
     public function setOpeningTimes(string $openingTimes)
     {
@@ -548,7 +533,6 @@ class Company extends AbstractEntity
      * Sets the barrierFree
      *
      * @param bool $barrierFree
-     * @return void
      */
     public function setBarrierFree(bool $barrierFree)
     {
@@ -579,7 +563,6 @@ class Company extends AbstractEntity
      * Sets the description
      *
      * @param string $description
-     * @return void
      */
     public function setDescription(string $description)
     {
@@ -600,7 +583,6 @@ class Company extends AbstractEntity
      * Sets the district
      *
      * @param District $district
-     * @return void
      */
     public function setDistrict(District $district = null)
     {
@@ -621,7 +603,6 @@ class Company extends AbstractEntity
      * Sets the mainTrade
      *
      * @param \TYPO3\CMS\Extbase\Domain\Model\Category $mainTrade
-     * @return void
      */
     public function setMainTrade(\TYPO3\CMS\Extbase\Domain\Model\Category $mainTrade = null)
     {
@@ -642,7 +623,6 @@ class Company extends AbstractEntity
      * Sets the trades
      *
      * @param ObjectStorage $trades
-     * @return void
      */
     public function setTrades(ObjectStorage $trades)
     {
@@ -663,7 +643,6 @@ class Company extends AbstractEntity
      * Sets the facebook
      *
      * @param string $facebook
-     * @return void
      */
     public function setFacebook(string $facebook)
     {
@@ -684,7 +663,6 @@ class Company extends AbstractEntity
      * Sets the twitter
      *
      * @param string $twitter
-     * @return void
      */
     public function setTwitter(string $twitter)
     {
@@ -705,7 +683,6 @@ class Company extends AbstractEntity
      * Sets the google
      *
      * @param string $google
-     * @return void
      */
     public function setGoogle(string $google)
     {
@@ -726,7 +703,6 @@ class Company extends AbstractEntity
      * Sets the txMaps2Uid
      *
      * @param PoiCollection $txMaps2Uid
-     * @return void
      */
     public function setTxMaps2Uid(PoiCollection $txMaps2Uid)
     {

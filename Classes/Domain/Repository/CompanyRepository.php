@@ -50,7 +50,6 @@ class CompanyRepository extends Repository
      * injects charsetConverter
      *
      * @param CharsetConverter $charsetConverter
-     * @return void
      */
     public function injectCharsetConverter(CharsetConverter $charsetConverter)
     {
