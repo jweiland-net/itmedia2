@@ -86,8 +86,6 @@ class AbstractController extends ActionController
     protected $letters = '0-9,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z';
 
     /**
-     * inject mail
-     *
      * @param MailMessage $mail
      */
     public function injectMail(MailMessage $mail)
@@ -96,8 +94,6 @@ class AbstractController extends ActionController
     }
 
     /**
-     * inject extConf
-     *
      * @param ExtConf $extConf
      */
     public function injectExtConf(ExtConf $extConf)
@@ -106,8 +102,6 @@ class AbstractController extends ActionController
     }
 
     /**
-     * inject persistenceManager
-     *
      * @param PersistenceManager $persistenceManager
      */
     public function injectPersistenceManager(PersistenceManager $persistenceManager)
@@ -116,8 +110,6 @@ class AbstractController extends ActionController
     }
 
     /**
-     * inject companyRepository
-     *
      * @param CompanyRepository $companyRepository
      */
     public function injectCompanyRepository(CompanyRepository $companyRepository)
@@ -126,8 +118,6 @@ class AbstractController extends ActionController
     }
 
     /**
-     * inject districtRepository
-     *
      * @param DistrictRepository $districtRepository
      */
     public function injectDistrictRepository(DistrictRepository $districtRepository)
@@ -136,8 +126,6 @@ class AbstractController extends ActionController
     }
 
     /**
-     * inject categoryRepository
-     *
      * @param CategoryRepository $categoryRepository
      */
     public function injectCategoryRepository(CategoryRepository $categoryRepository)
@@ -146,8 +134,6 @@ class AbstractController extends ActionController
     }
 
     /**
-     * inject session
-     *
      * @param Session $session
      */
     public function injectSession(Session $session)
