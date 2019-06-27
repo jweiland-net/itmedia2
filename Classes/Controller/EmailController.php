@@ -21,7 +21,8 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
- * Class EmailController
+ * Controller to send an email.
+ * Will be called by scheduler task.
  */
 class EmailController extends ActionController
 {

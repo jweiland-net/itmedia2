@@ -16,7 +16,8 @@ namespace JWeiland\Itmedia2\Domain\Repository;
  */
 
 /**
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
+ * Repository to retrieve districts
+ * Needed for selectbox in FE
  */
 class DistrictRepository extends \JWeiland\Yellowpages2\Domain\Repository\DistrictRepository
 {

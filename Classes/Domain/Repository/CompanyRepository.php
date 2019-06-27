@@ -26,7 +26,7 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
- * Class CompanyRepository
+ * Repository to get and search for companies
  */
 class CompanyRepository extends Repository
 {

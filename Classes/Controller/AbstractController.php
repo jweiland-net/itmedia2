@@ -33,7 +33,7 @@ use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
- * Class AbstractController
+ * An abstract class with helpful methods for all other controllers
  */
 class AbstractController extends ActionController
 {
