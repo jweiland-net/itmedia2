@@ -22,7 +22,7 @@ $EM_CONF[$_EXTKEY] = [
         'depends' => [
             'typo3' => '8.7.0-9.5.99',
             'maps2' => '5.0.0-5.99.99',
-            'yellowpages2' => '2.2.0-2.99.99'
+            'yellowpages2' => '3.0.0-3.99.99'
         ],
         'conflicts' => [],
         'suggests' => []
