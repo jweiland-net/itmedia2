@@ -28,6 +28,11 @@ class ExtConf implements SingletonInterface
     protected $fallbackIconPath = '';
 
     /**
+     * @var int
+     */
+    protected $poiCollectionPid = 0;
+
+    /**
      * @var string
      */
     protected $emailFromAddress = '';
@@ -70,10 +75,10 @@ class ExtConf implements SingletonInterface
      */
     public function getFallbackIconPath(): string
     {
-        if (!$this->fallbackIconPath) {
+        if (empty($this->fallbackIconPath)) {
             $this->fallbackIconPath = '/uploads/tx_itmedia2/';
         }
-        return $this->fallbackIconPath;
+        return rtrim($this->fallbackIconPath, '/') . '/';
     }
 
     /**
@@ -82,6 +87,22 @@ class ExtConf implements SingletonInterface
     public function setFallbackIconPath(string $fallbackIconPath)
     {
         $this->fallbackIconPath = $fallbackIconPath;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPoiCollectionPid(): int
+    {
+        return $this->poiCollectionPid;
+    }
+
+    /**
+     * @param int $poiCollectionPid
+     */
+    public function setPoiCollectionPid($poiCollectionPid)
+    {
+        $this->poiCollectionPid = (int)$poiCollectionPid;
     }
 
     /**
