@@ -82,7 +82,7 @@ class CompanyRepository extends Repository
 
         $constraintAnd = [];
 
-        if ($letter) {
+        if (!empty($letter)) {
             $constraintOr = [];
             if ($letter == '0-9') {
                 $constraintOr[] = $query->like('company', '0%');

@@ -24,12 +24,12 @@ class CompanyController extends AbstractController
      * @param string $letter Show only records starting with this letter
      * @validate $letter String, StringLength(minimum=0,maximum=3)
      */
-    public function listAction(string $letter = null)
+    public function listAction(string $letter = '')
     {
         $companies = $this->companyRepository->findByStartingLetter($letter, $this->settings);
 
         $this->view->assign('companies', $companies);
-        $this->view->assign('glossar', $this->getGlossar($this->settings['showWspMembers']));
+        $this->view->assign('glossar', $this->getGlossar((bool)$this->settings['showWspMembers']));
         $this->view->assign('categories', $this->companyRepository->getGroupedCategories());
         $this->view->assign('fallbackIconPath', $this->extConf->getFallbackIconPath());
     }
@@ -65,7 +65,7 @@ class CompanyController extends AbstractController
         $this->view->assign('search', $search);
         $this->view->assign('category', $category);
         $this->view->assign('companies', $companies);
-        $this->view->assign('glossar', $this->getGlossar($this->settings['showWspMembers']));
+        $this->view->assign('glossar', $this->getGlossar((bool)$this->settings['showWspMembers']));
         $this->view->assign('categories', $this->companyRepository->getGroupedCategories());
         $this->view->assign('fallbackIconPath', $this->extConf->getFallbackIconPath());
     }
