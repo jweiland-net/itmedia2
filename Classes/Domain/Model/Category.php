@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 namespace JWeiland\Itmedia2\Domain\Model;
 
 /*
@@ -20,29 +21,23 @@ namespace JWeiland\Itmedia2\Domain\Model;
 class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
 {
     /**
-     * Icon
-     *
      * @var string
      */
-    protected $icon;
+    protected $icon = '';
 
     /**
-     * Returns the icon
-     *
-     * @return string $icon
+     * @return string
      */
-    public function getIcon()
+    public function getIcon(): string
     {
         return $this->icon;
     }
 
     /**
-     * Sets the icon
-     *
      * @param string $icon
      */
     public function setIcon($icon)
     {
-        $this->icon = (string) $icon;
+        $this->icon = $icon;
     }
 }

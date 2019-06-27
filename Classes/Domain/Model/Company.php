@@ -26,133 +26,97 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 class Company extends AbstractEntity
 {
     /**
-     * Hidden
-     *
      * @var bool
      */
     protected $hidden = false;
 
     /**
-     * WSP Member
-     *
      * @var bool
      */
     protected $wspMember = false;
 
     /**
-     * Company
-     *
      * @var string
      * @validate NotEmpty
      */
     protected $company = '';
 
     /**
-     * Logo
-     *
      * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
      */
     protected $logo;
 
     /**
-     * Images
-     *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
      */
     protected $images;
 
     /**
-     * Street
-     *
      * @var string
      * @validate NotEmpty
      */
     protected $street = '';
 
     /**
-     * house number
-     *
      * @var string
      * @validate NotEmpty
      */
     protected $houseNumber = '';
 
     /**
-     * Zip
-     *
      * @var string
      * @validate NotEmpty
      */
     protected $zip = '';
 
     /**
-     * City
-     *
      * @var string
      * @validate NotEmpty
      */
     protected $city = '';
 
     /**
-     * Telephone
-     *
      * @var string
      */
     protected $telephone = '';
 
     /**
-     * Fax
-     *
      * @var string
      */
     protected $fax = '';
 
     /**
-     * Contact person
-     *
      * @var string
      */
     protected $contactPerson = '';
 
     /**
-     * Email
-     *
      * @var string
      */
     protected $email = '';
 
     /**
-     * Website
-     *
      * @var string
      */
     protected $website = '';
 
     /**
-     * Opening times
-     *
      * @var string
      */
     protected $openingTimes = '';
 
     /**
-     * Barrier-free
-     *
-     * @var boolean
+     * @var bool
      */
     protected $barrierFree = false;
 
     /**
-     * Description
-     *
      * @var string
      * @validate NotEmpty
      */
     protected $description = '';
 
     /**
-     * District
-     *
      * @var \JWeiland\Itmedia2\Domain\Model\District
      * @validate NotEmpty
      * @lazy
@@ -160,53 +124,38 @@ class Company extends AbstractEntity
     protected $district;
 
     /**
-     * MainTrade
-     *
-     * @var \TYPO3\CMS\Extbase\Domain\Model\Category
+     * @var \JWeiland\Itmedia2\Domain\Model\Category
      * @validate NotEmpty
      * @lazy
      */
     protected $mainTrade;
 
     /**
-     * trades
-     *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category>
      * @lazy
      */
     protected $trades;
 
     /**
-     * Facebook
-     *
      * @var string
      */
     protected $facebook = '';
 
     /**
-     * Twitter
-     *
      * @var string
      */
     protected $twitter = '';
 
     /**
-     * Google
-     *
      * @var string
      */
     protected $google = '';
 
     /**
-     * TxMaps2Uid
-     *
      * @var \JWeiland\Maps2\Domain\Model\PoiCollection
      */
     protected $txMaps2Uid;
 
-    /**
-     * Constructor of this object
-     */
     public function __construct()
     {
         $this->trades = new ObjectStorage();
@@ -214,18 +163,14 @@ class Company extends AbstractEntity
     }
 
     /**
-     * Returns the hidden
-     *
-     * @return bool $hidden
+     * @return bool
      */
-    public function getHidden()
+    public function getHidden(): bool
     {
         return $this->hidden;
     }
 
     /**
-     * Sets the hidden
-     *
      * @param bool $hidden
      */
     public function setHidden(bool $hidden)
@@ -234,18 +179,14 @@ class Company extends AbstractEntity
     }
 
     /**
-     * Returns the wspMember
-     *
-     * @return bool $wspMember
+     * @return bool
      */
-    public function getWspMember()
+    public function getWspMember(): bool
     {
         return $this->wspMember;
     }
 
     /**
-     * Sets the wspMember
-     *
      * @param bool $wspMember
      */
     public function setWspMember(bool $wspMember)
@@ -254,9 +195,7 @@ class Company extends AbstractEntity
     }
 
     /**
-     * Returns the company
-     *
-     * @return string $company
+     * @return string
      */
     public function getCompany()
     {
@@ -264,8 +203,6 @@ class Company extends AbstractEntity
     }
 
     /**
-     * Sets the company
-     *
      * @param string $company
      */
     public function setCompany(string $company)
@@ -274,10 +211,7 @@ class Company extends AbstractEntity
     }
 
     /**
-     * Returns the logo
-     * This is only needed by the edit form
-     *
-     * @return FileReference $logo
+     * @return FileReference
      */
     public function getLogo()
     {
@@ -285,9 +219,7 @@ class Company extends AbstractEntity
     }
 
     /**
-     * Sets the logo
-     *
-     * @param FileReference $logo
+     * @param FileReference|null $logo
      */
     public function setLogo(FileReference $logo = null)
     {
@@ -295,12 +227,9 @@ class Company extends AbstractEntity
     }
 
     /**
-     * Returns the images
-     * This is only allowed in edit form
-     *
-     * @return array $images
+     * @return array
      */
-    public function getImages()
+    public function getImages(): array
     {
         $references = array();
         foreach ($this->images as $image) {
@@ -310,8 +239,6 @@ class Company extends AbstractEntity
     }
 
     /**
-     * Sets the images
-     *
      * @param ObjectStorage $images A minimized Array from $_FILES
      */
     public function setImages(ObjectStorage $images)
@@ -320,18 +247,14 @@ class Company extends AbstractEntity
     }
 
     /**
-     * Returns the street
-     *
-     * @return string $street
+     * @return string
      */
-    public function getStreet()
+    public function getStreet(): string
     {
         return $this->street;
     }
 
     /**
-     * Sets the street
-     *
      * @param string $street
      */
     public function setStreet(string $street)
@@ -340,18 +263,14 @@ class Company extends AbstractEntity
     }
 
     /**
-     * Returns the houseNumber
-     *
-     * @return string $houseNumber
+     * @return string
      */
-    public function getHouseNumber()
+    public function getHouseNumber(): string
     {
         return $this->houseNumber;
     }
 
     /**
-     * Sets the houseNumber
-     *
      * @param string $houseNumber
      */
     public function setHouseNumber(string $houseNumber)
@@ -360,18 +279,14 @@ class Company extends AbstractEntity
     }
 
     /**
-     * Returns the zip
-     *
      * @return string $zip
      */
-    public function getZip()
+    public function getZip(): string
     {
         return $this->zip;
     }
 
     /**
-     * Sets the zip
-     *
      * @param string $zip
      */
     public function setZip(string $zip)
@@ -380,18 +295,14 @@ class Company extends AbstractEntity
     }
 
     /**
-     * Returns the city
-     *
-     * @return string $city
+     * @return string
      */
-    public function getCity()
+    public function getCity(): string
     {
         return $this->city;
     }
 
     /**
-     * Sets the city
-     *
      * @param string $city
      */
     public function setCity(string $city)
@@ -400,18 +311,14 @@ class Company extends AbstractEntity
     }
 
     /**
-     * Returns the telephone
-     *
-     * @return string $telephone
+     * @return string
      */
-    public function getTelephone()
+    public function getTelephone(): string
     {
         return $this->telephone;
     }
 
     /**
-     * Sets the telephone
-     *
      * @param string $telephone
      */
     public function setTelephone(string $telephone)
@@ -420,18 +327,14 @@ class Company extends AbstractEntity
     }
 
     /**
-     * Returns the fax
-     *
-     * @return string $fax
+     * @return string
      */
-    public function getFax()
+    public function getFax(): string
     {
         return $this->fax;
     }
 
     /**
-     * Sets the fax
-     *
      * @param string $fax
      */
     public function setFax(string $fax)
@@ -440,18 +343,14 @@ class Company extends AbstractEntity
     }
 
     /**
-     * Returns the contactPerson
-     *
-     * @return string $contactPerson
+     * @return string
      */
-    public function getContactPerson()
+    public function getContactPerson(): string
     {
         return $this->contactPerson;
     }
 
     /**
-     * Sets the contactPerson
-     *
      * @param string $contactPerson
      */
     public function setContactPerson(string $contactPerson)
@@ -460,18 +359,14 @@ class Company extends AbstractEntity
     }
 
     /**
-     * Returns the email
-     *
-     * @return string $email
+     * @return string
      */
-    public function getEmail()
+    public function getEmail(): string
     {
         return $this->email;
     }
 
     /**
-     * Sets the email
-     *
      * @param string $email
      */
     public function setEmail(string $email)
@@ -480,18 +375,14 @@ class Company extends AbstractEntity
     }
 
     /**
-     * Returns the website
-     *
-     * @return string $website
+     * @return string
      */
-    public function getWebsite()
+    public function getWebsite(): string
     {
         return $this->website;
     }
 
     /**
-     * Sets the website
-     *
      * @param string $website
      */
     public function setWebsite(string $website)
@@ -500,18 +391,14 @@ class Company extends AbstractEntity
     }
 
     /**
-     * Returns the openingTimes
-     *
-     * @return string $openingTimes
+     * @return string
      */
-    public function getOpeningTimes()
+    public function getOpeningTimes(): string
     {
         return $this->openingTimes;
     }
 
     /**
-     * Sets the openingTimes
-     *
      * @param string $openingTimes
      */
     public function setOpeningTimes(string $openingTimes)
@@ -520,18 +407,14 @@ class Company extends AbstractEntity
     }
 
     /**
-     * Returns the barrierFree
-     *
      * @return bool $barrierFree
      */
-    public function getBarrierFree()
+    public function getBarrierFree(): bool
     {
         return $this->barrierFree;
     }
 
     /**
-     * Sets the barrierFree
-     *
      * @param bool $barrierFree
      */
     public function setBarrierFree(bool $barrierFree)
@@ -540,28 +423,14 @@ class Company extends AbstractEntity
     }
 
     /**
-     * Returns the boolean state of barrierFree
-     *
-     * @return bool
+     * @return string
      */
-    public function isBarrierFree()
-    {
-        return $this->getBarrierFree();
-    }
-
-    /**
-     * Returns the description
-     *
-     * @return string $description
-     */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->description;
     }
 
     /**
-     * Sets the description
-     *
      * @param string $description
      */
     public function setDescription(string $description)
@@ -570,9 +439,7 @@ class Company extends AbstractEntity
     }
 
     /**
-     * Returns the district
-     *
-     * @return District $district
+     * @return District|null
      */
     public function getDistrict()
     {
@@ -580,8 +447,6 @@ class Company extends AbstractEntity
     }
 
     /**
-     * Sets the district
-     *
      * @param District $district
      */
     public function setDistrict(District $district = null)
@@ -590,9 +455,7 @@ class Company extends AbstractEntity
     }
 
     /**
-     * Returns the mainTrade
-     *
-     * @return \TYPO3\CMS\Extbase\Domain\Model\Category $mainTrade
+     * @return Category|null
      */
     public function getMainTrade()
     {
@@ -600,28 +463,22 @@ class Company extends AbstractEntity
     }
 
     /**
-     * Sets the mainTrade
-     *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\Category $mainTrade
+     * @param Category $mainTrade
      */
-    public function setMainTrade(\TYPO3\CMS\Extbase\Domain\Model\Category $mainTrade = null)
+    public function setMainTrade(Category $mainTrade = null)
     {
         $this->mainTrade = $mainTrade;
     }
 
     /**
-     * Returns the trades
-     *
-     * @return ObjectStorage $trades
+     * @return ObjectStorage
      */
-    public function getTrades()
+    public function getTrades(): ObjectStorage
     {
         return $this->trades;
     }
 
     /**
-     * Sets the trades
-     *
      * @param ObjectStorage $trades
      */
     public function setTrades(ObjectStorage $trades)
@@ -630,18 +487,14 @@ class Company extends AbstractEntity
     }
 
     /**
-     * Returns the facebook
-     *
-     * @return string $facebook
+     * @return string
      */
-    public function getFacebook()
+    public function getFacebook(): string
     {
         return $this->facebook;
     }
 
     /**
-     * Sets the facebook
-     *
      * @param string $facebook
      */
     public function setFacebook(string $facebook)
@@ -650,9 +503,7 @@ class Company extends AbstractEntity
     }
 
     /**
-     * Returns the twitter
-     *
-     * @return string $twitter
+     * @return string
      */
     public function getTwitter()
     {
@@ -660,8 +511,6 @@ class Company extends AbstractEntity
     }
 
     /**
-     * Sets the twitter
-     *
      * @param string $twitter
      */
     public function setTwitter(string $twitter)
@@ -670,18 +519,14 @@ class Company extends AbstractEntity
     }
 
     /**
-     * Returns the google
-     *
-     * @return string $google
+     * @return string
      */
-    public function getGoogle()
+    public function getGoogle(): string
     {
         return $this->google;
     }
 
     /**
-     * Sets the google
-     *
      * @param string $google
      */
     public function setGoogle(string $google)
@@ -690,9 +535,7 @@ class Company extends AbstractEntity
     }
 
     /**
-     * Returns the txMaps2Uid
-     *
-     * @return PoiCollection $txMaps2Uid
+     * @return PoiCollection|null
      */
     public function getTxMaps2Uid()
     {
@@ -700,11 +543,9 @@ class Company extends AbstractEntity
     }
 
     /**
-     * Sets the txMaps2Uid
-     *
-     * @param PoiCollection $txMaps2Uid
+     * @param PoiCollection|null $txMaps2Uid
      */
-    public function setTxMaps2Uid(PoiCollection $txMaps2Uid)
+    public function setTxMaps2Uid(PoiCollection $txMaps2Uid = null)
     {
         $this->txMaps2Uid = $txMaps2Uid;
     }
@@ -715,7 +556,7 @@ class Company extends AbstractEntity
      *
      * @return string
      */
-    public function getAddress()
+    public function getAddress(): string
     {
         return $this->getStreet() . ' ' . $this->getHouseNumber() . ', ' . $this->getZip() . ' ' . $this->getCity();
     }
