@@ -1,8 +1,9 @@
 <?php
+declare(strict_types = 1);
 namespace JWeiland\Itmedia2;
 
 /*
- * This file is part of the maps2 project.
+ * This file is part of the itmedia2 project.
  *
  * It is free software; you can redistribute it and/or modify it under
  * the terms of the GNU General Public License, either version 2
@@ -14,6 +15,7 @@ namespace JWeiland\Itmedia2;
  * The TYPO3 project - inspiring people to share!
  */
 
+use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
 use TYPO3\CMS\Core\Messaging\FlashMessageRendererResolver;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -41,7 +43,7 @@ class ext_update
      *
      * @return string
      */
-    public function main()
+    public function main(): string
     {
         $this->processUpdates();
         return $this->generateOutput();
@@ -53,15 +55,39 @@ class ext_update
      *
      * @return bool
      */
-    public function access()
+    public function access(): bool
     {
-        $grantAccess = $this->getDatabaseConnection()->exec_SELECTquery(
-            'COUNT(*) AS rowsToUpdate',
-            'tx_itmedia2_domain_model_company',
-            'tx_itmedia2_domain_model_company.main_trade != 0'
-        );
-
-        return (bool)$grantAccess->fetch_assoc()['rowsToUpdate'];
+        $queryBuilder = $this->getConnectionPool()->getQueryBuilderForTable('tx_itmedia2_domain_model_company');
+        $rowsToUpdate = $queryBuilder
+            ->count('*')
+            ->from('tx_itmedia2_domain_model_company', 'c')
+            ->leftJoin(
+                'c',
+                'sys_category_record_mm',
+                'mm',
+                (string)$queryBuilder->expr()->andX(
+                    $queryBuilder->expr()->eq(
+                        'c.uid',
+                        $queryBuilder->quoteIdentifier('mm.uid_foreign')
+                    ),
+                    $queryBuilder->expr()->eq(
+                        'mm.tablenames',
+                        $queryBuilder->createNamedParameter('tx_itmedia2_domain_model_company', \PDO::PARAM_STR)
+                    ),
+                    $queryBuilder->expr()->eq(
+                        'mm.fieldname',
+                        $queryBuilder->createNamedParameter('main_trade', \PDO::PARAM_STR)
+                    )
+                )
+            )
+            ->where(
+                $queryBuilder->expr()->isNull(
+                    'mm.uid_foreign'
+                )
+            )
+            ->execute()
+            ->fetchColumn(0);
+        return (bool)$rowsToUpdate;
     }
 
     /**
@@ -80,11 +106,36 @@ class ext_update
      */
     protected function migrateMainTradeToMM()
     {
-        $companyMainTradeMapping = $this->getDatabaseConnection()->exec_SELECTquery(
-            'tx_itmedia2_domain_model_company.main_trade AS uid_local, tx_itmedia2_domain_model_company.uid AS uid_foreign',
-            'tx_itmedia2_domain_model_company',
-            'tx_itmedia2_domain_model_company.main_trade != 0'
-        );
+        $queryBuilder = $this->getConnectionPool()->getQueryBuilderForTable('tx_itmedia2_domain_model_company');
+        $companyMainTradeMapping = $queryBuilder
+            ->select('c.main_trade AS uid_local', 'c.uid AS uid_foreign')
+            ->from('tx_itmedia2_domain_model_company', 'c')
+            ->leftJoin(
+                'c',
+                'sys_category_record_mm',
+                'mm',
+                (string)$queryBuilder->expr()->andX(
+                    $queryBuilder->expr()->eq(
+                        'c.uid',
+                        $queryBuilder->quoteIdentifier('mm.uid_foreign')
+                    ),
+                    $queryBuilder->expr()->eq(
+                        'mm.tablenames',
+                        $queryBuilder->createNamedParameter('tx_itmedia2_domain_model_company', \PDO::PARAM_STR)
+                    ),
+                    $queryBuilder->expr()->eq(
+                        'mm.fieldname',
+                        $queryBuilder->createNamedParameter('main_trade', \PDO::PARAM_STR)
+                    )
+                )
+            )
+            ->where(
+                $queryBuilder->expr()->isNull(
+                    'mm.uid_foreign'
+                )
+            )
+            ->execute()
+            ->fetchAll();
 
         $rows = [];
         foreach ($companyMainTradeMapping as $row) {
@@ -95,18 +146,20 @@ class ext_update
             }
         }
 
-        $insertSuccessfull = $this->getDatabaseConnection()->exec_INSERTmultipleRows(
+        $connection = $this->getConnectionPool()->getConnectionForTable('sys_category_record_mm');
+        $insertSuccessfull = (bool)$connection->bulkInsert(
             'sys_category_record_mm',
-            ['uid_local', 'uid_foreign', 'tablenames', 'fieldname'],
-            $rows
+            $rows,
+            ['uid_local', 'uid_foreign', 'tablenames', 'fieldname']
         );
 
         if ($insertSuccessfull) {
             foreach ($rows as $row) {
-                $this->getDatabaseConnection()->exec_UPDATEquery(
+                $connection = $this->getConnectionPool()->getConnectionForTable('tx_itmedia2_domain_model_company');
+                $connection->update(
                     'tx_itmedia2_domain_model_company',
-                    'uid = ' . $row['uid_foreign'],
-                    ['main_trade' => 1]
+                    ['main_trade' => 1],
+                    ['uid' => $row['uid_foreign']]
                 );
             }
 
@@ -114,12 +167,6 @@ class ext_update
                 FlashMessage::OK,
                 'Update records successful',
                 'Update records successful'
-            ];
-        } else {
-            $this->messageArray[] = [
-                FlashMessage::ERROR,
-                'Error while selecting tt_content records',
-                'SQL-Error: ' . $this->getDatabaseConnection()->sql_error()
             ];
         }
     }
@@ -129,7 +176,7 @@ class ext_update
      *
      * @return string
      */
-    protected function generateOutput()
+    protected function generateOutput(): string
     {
         $output = '';
         foreach ($this->messageArray as $messageItem) {
@@ -153,12 +200,12 @@ class ext_update
     }
 
     /**
-     * Get TYPO3s Database Connection
+     * Get TYPO3s Connection Pool
      *
-     * @return \TYPO3\CMS\Core\Database\DatabaseConnection
+     * @return ConnectionPool
      */
-    protected function getDatabaseConnection()
+    protected function getConnectionPool()
     {
-        return $GLOBALS['TYPO3_DB'];
+        return GeneralUtility::makeInstance(ConnectionPool::class);
     }
 }
