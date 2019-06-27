@@ -37,8 +37,6 @@ class EmailController extends ActionController
     protected $extConf;
 
     /**
-     * inject mail
-     *
      * @param MailMessage $mail
      */
     public function injectMail(MailMessage $mail)
@@ -47,8 +45,6 @@ class EmailController extends ActionController
     }
 
     /**
-     * inject extConf
-     *
      * @param ExtConf $extConf
      */
     public function injectExtConf(ExtConf $extConf)
