@@ -58,9 +58,6 @@ class Update extends AbstractTask
      */
     protected $extConf;
 
-    /**
-     * constructor of this class
-     */
     public function __construct()
     {
         // first we have to call the parent constructor
@@ -80,9 +77,8 @@ class Update extends AbstractTask
      *
      * @return QuerySettingsInterface
      */
-    protected function getDefaultQuerySettings()
+    protected function getDefaultQuerySettings(): QuerySettingsInterface
     {
-        /** @var QuerySettingsInterface $settings */
         $settings = $this->objectManager->get(QuerySettingsInterface::class);
         $settings->setIgnoreEnableFields(true);
         $settings->setRespectSysLanguage(false);
@@ -95,7 +91,7 @@ class Update extends AbstractTask
      *
      * @return bool
      */
-    public function execute()
+    public function execute(): bool
     {
         // hide companies which are older than 13 months
         $companies = $this->companyRepository->findOlderThan(396);
@@ -126,12 +122,12 @@ class Update extends AbstractTask
     }
 
     /**
-     * mail to user
+     * Send mail to user
      *
      * @param Company $company
      * @param string $type "inform" or "deactivated"
      */
-    public function informUser(Company $company, $type)
+    public function informUser(Company $company, string $type)
     {
         $this->mail->setFrom($this->extConf->getEmailFromAddress(), $this->extConf->getEmailFromName());
         $this->mail->setTo($company->getEmail(), $company->getCompany());
@@ -152,7 +148,7 @@ class Update extends AbstractTask
     }
 
     /**
-     * inform admin about old company entries
+     * Inform admin about old company entries
      *
      * @param Company $company
      */
@@ -177,7 +173,7 @@ class Update extends AbstractTask
     }
 
     /**
-     * scheduler serializes this object so we have to tell unserialize() what to do
+     * Scheduler serializes this object so we have to tell unserialize() what to do
      */
     public function __wakeup()
     {
@@ -194,7 +190,7 @@ class Update extends AbstractTask
      *
      * @return array
      */
-    public function __sleep()
+    public function __sleep(): array
     {
         return ['scheduler', 'taskUid', 'disabled', 'execution', 'executionTime'];
     }
