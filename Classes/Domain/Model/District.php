@@ -17,8 +17,6 @@ namespace JWeiland\Itmedia2\Domain\Model;
 
 /**
  * Class District
- *
- * @package JWeiland\Itmedia2\Domain\Model
  */
 class District extends \JWeiland\Yellowpages2\Domain\Model\District
 {

@@ -17,8 +17,6 @@ namespace JWeiland\Itmedia2\Controller;
 
 /**
  * Class CompanyController
- *
- * @package JWeiland\Itmedia2\Controller
  */
 class CompanyController extends AbstractController
 {

@@ -29,8 +29,6 @@ use TYPO3\CMS\Scheduler\Task\AbstractTask;
 
 /**
  * Class Update
- *
- * @package JWeiland\Itmedia2\Tasks
  */
 class Update extends AbstractTask
 {

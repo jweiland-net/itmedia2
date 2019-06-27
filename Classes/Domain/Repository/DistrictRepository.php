@@ -16,7 +16,6 @@ namespace JWeiland\Itmedia2\Domain\Repository;
  */
 
 /**
- * @package itmedia2
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class DistrictRepository extends \JWeiland\Yellowpages2\Domain\Repository\DistrictRepository
