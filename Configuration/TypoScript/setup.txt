@@ -16,29 +16,6 @@ plugin.tx_itmedia2 {
 
   persistence {
     storagePid = {$plugin.tx_itmedia2.persistence.storagePid}
-    classes {
-      JWeiland\Itmedia2\Domain\Model\FileReference {
-        mapping {
-          tableName = sys_file_reference
-        }
-      }
-
-      JWeiland\Itmedia2\Domain\Model\Category {
-        mapping {
-          tableName = sys_category
-        }
-      }
-
-      JWeiland\Itmedia2\Domain\Model\District {
-        mapping {
-          tableName = tx_yellowpages2_domain_model_district
-        }
-      }
-    }
-  }
-
-  features {
-    rewrittenPropertyMapper = 1
   }
 
   settings {
