@@ -1,0 +1,17 @@
+config.tx_extbase {
+  persistence {
+    classes {
+      JWeiland\Itmedia2\Domain\Model\Category {
+        mapping {
+          tableName = sys_category
+        }
+      }
+
+      JWeiland\Itmedia2\Domain\Model\District {
+        mapping {
+          tableName = tx_yellowpages2_domain_model_district
+        }
+      }
+    }
+  }
+}
