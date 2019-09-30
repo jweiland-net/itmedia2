@@ -85,6 +85,12 @@
 			<trans-unit id="tx_itmedia2_domain_model_district.district" xml:space="preserve">
 				<source>District</source>
 			</trans-unit>
+			<trans-unit id="tx_itmedia2_domain_model_company.floor">
+				<source>Floor</source>
+			</trans-unit>
+			<trans-unit id="tx_itmedia2_domain_model_company.position">
+				<source>Position</source>
+			</trans-unit>
 
 			<trans-unit id="search">
 				<source>Search</source>

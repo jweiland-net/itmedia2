@@ -23,13 +23,13 @@ return [
         'iconfile' => 'EXT:itmedia2/Resources/Public/Icons/tx_itmedia2_domain_model_company.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, wsp_member, company, logo, images, street, house_number, zip, city, telephone, fax, contact_person, email, website, opening_times, barrier_free, description, district, facebook, twitter, google, main_trade, trades'
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, wsp_member, company, logo, images, image_maps, street, house_number, zip, city, telephone, fax, contact_person, email, website, opening_times, barrier_free, description, floor, position, district, facebook, twitter, google, main_trade, trades'
     ],
     'types' => [
         '1' => [
             'showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, wsp_member, company,
-            logo, images, street, house_number, zip, city, telephone, fax, contact_person, email, website,
-            opening_times, barrier_free, description, district,
+            logo, images, image_maps, street, house_number, zip, city, telephone, fax, contact_person, email, website,
+            opening_times, barrier_free, description, district, floor, position,
             --div--;LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tabs.social, facebook, twitter, google,
             --div--;LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tabs.trades, main_trade, trades,
             --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.tabs.access, 
@@ -174,7 +174,8 @@ return [
                         'tablenames' => 'tx_itmedia2_domain_model_company',
                         'table_local' => 'sys_file'
                     ]
-                ]
+                ],
+                $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
             )
         ],
         'images' => [
@@ -190,7 +191,20 @@ return [
                         'tablenames' => 'tx_itmedia2_domain_model_company',
                         'table_local' => 'sys_file'
                     ]
-                ]
+                ],
+                $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
+            )
+        ],
+        'image_maps' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.image_maps',
+            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
+                'image_maps',
+                [
+                    'minitems' => 0,
+                    'maxitems' => 1
+                ],
+                $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
             )
         ],
         'street' => [
@@ -314,6 +328,31 @@ return [
                 'foreign_table_where' => 'ORDER BY tx_yellowpages2_domain_model_district.district',
                 'items' => [
                     ['LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.district.pleaseChoose', '']
+                ],
+                'minitems' => 0,
+                'maxitems' => 1,
+                'default' => 0
+            ]
+        ],
+        'floor' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.floor',
+            'config' => [
+                'type' => 'input',
+                'eval' => 'num',
+                'default' => 1
+            ]
+        ],
+        'position' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.position',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'foreign_table' => 'tx_itmedia2_domain_model_position',
+                'foreign_table_where' => 'ORDER BY tx_itmedia2_domain_model_position.title',
+                'items' => [
+                    ['LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.position.pleaseChoose', '']
                 ],
                 'minitems' => 0,
                 'maxitems' => 1,

@@ -156,10 +156,26 @@ class Company extends AbstractEntity
      */
     protected $txMaps2Uid;
 
+    /**
+     * @var int
+     */
+    protected $floor = 0;
+
+    /**
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
+     */
+    protected $imageMaps;
+
+    /**
+     * @var \JWeiland\Itmedia2\Domain\Model\Position
+     */
+    protected $position;
+
     public function __construct()
     {
         $this->trades = new ObjectStorage();
         $this->images = new ObjectStorage();
+        $this->imageMaps = new ObjectStorage();
     }
 
     /**
@@ -559,5 +575,53 @@ class Company extends AbstractEntity
     public function getAddress(): string
     {
         return $this->getStreet() . ' ' . $this->getHouseNumber() . ', ' . $this->getZip() . ' ' . $this->getCity();
+    }
+
+    /**
+     * @return int
+     */
+    public function getFloor(): int
+    {
+        return $this->floor;
+    }
+
+    /**
+     * @param int $floor
+     */
+    public function setFloor(int $floor)
+    {
+        $this->floor = $floor;
+    }
+
+    /**
+     * @return ObjectStorage|null
+     */
+    public function getImageMaps()
+    {
+        return $this->imageMaps;
+    }
+
+    /**
+     * @param ObjectStorage $imageMaps
+     */
+    public function setImageMaps(ObjectStorage $imageMaps)
+    {
+        $this->imageMaps = $imageMaps;
+    }
+
+    /**
+     * @return Position|null
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
+     * @param Position $position
+     */
+    public function setPosition(Position $position)
+    {
+        $this->position = $position;
     }
 }

@@ -110,6 +110,22 @@
 				<source>Sub Trades</source>
 				<target>hier können Sie bis zu zwei weitere Branchen auswählen:</target>
 			</trans-unit>
+			<trans-unit id="tx_itmedia2_domain_model_company.floor">
+				<source>Floor</source>
+				<target>Stockwerk</target>
+			</trans-unit>
+			<trans-unit id="tx_itmedia2_domain_model_company.position">
+				<source>Position</source>
+				<target>Position</target>
+			</trans-unit>
+			<trans-unit id="tx_itmedia2_domain_model_company.position.pleaseChoose">
+				<source>---Please choose a position---</source>
+				<target>---Position wählen---</target>
+			</trans-unit>
+			<trans-unit id="tx_itmedia2_domain_model_company.image_maps">
+				<source>Image map</source>
+				<target>Lageplan</target>
+			</trans-unit>
 
 			<trans-unit id="tx_itmedia2_domain_model_district" xml:space="preserve">
 				<source>District (yp)</source>
@@ -120,6 +136,14 @@
 				<target>Stadtteil</target>
 			</trans-unit>
 
+			<trans-unit id="tx_itmedia2_domain_model_position">
+				<source>Position</source>
+				<target>Position</target>
+			</trans-unit>
+			<trans-unit id="tx_itmedia2_domain_model_position.title">
+				<source>Title</source>
+				<target>Bezeichnung</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

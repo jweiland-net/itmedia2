@@ -24,10 +24,26 @@
 		<f:if condition="{company.description}">
 			<div class="description gridright marginbottom"><f:format.html>{company.description}</f:format.html></div>
 		</f:if>
+
+		<f:if condition="{company.imageMaps}">
+			<div class="image-map gridright marginbottom">
+				<f:for each="{company.imageMaps}" as="imageMap">
+					<f:image image="{imageMap}" />
+				</f:for>
+			</div>
+		</f:if>
 		&nbsp;
 	</div>
 	<div class="grid_6 floatleft">
 		<div class="gridleft clearfix rulerbefore4">
+			<dl class="extdl">
+				<dt><f:translate key="tx_itmedia2_domain_model_company.floor"/>:</dt>
+				<dd>{company.floor}</dd>
+			</dl>
+			<dl class="extdl">
+				<dt><f:translate key="tx_itmedia2_domain_model_company.position"/>:</dt>
+				<dd>{company.position.title}</dd>
+			</dl>
 			<dl class="extdl">
 				<dt><f:translate key="tx_itmedia2_domain_model_company.postAddress"/>:</dt>
 				<dd><f:render partial="Company/Address" arguments="{company: company}"/></dd>
