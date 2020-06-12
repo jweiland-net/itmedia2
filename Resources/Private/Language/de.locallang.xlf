@@ -104,9 +104,9 @@
 				<source>Sub Trades</source>
 				<target>Untergeordnete Branchen</target>
 			</trans-unit>
-			<trans-unit id="tx_itmedia2_domain_model_company.floor">
-				<source>Floor</source>
-				<target>Stockwerk</target>
+			<trans-unit id="tx_itmedia2_domain_model_company.floors">
+				<source>Floor(s)</source>
+				<target>Stockwerk(e)</target>
 			</trans-unit>
 			<trans-unit id="tx_itmedia2_domain_model_company.position">
 				<source>Position</source>

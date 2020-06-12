@@ -110,9 +110,9 @@
 				<source>Sub Trades</source>
 				<target>hier können Sie bis zu zwei weitere Branchen auswählen:</target>
 			</trans-unit>
-			<trans-unit id="tx_itmedia2_domain_model_company.floor">
-				<source>Floor</source>
-				<target>Stockwerk</target>
+			<trans-unit id="tx_itmedia2_domain_model_company.floors">
+				<source>Floors</source>
+				<target>Stockwerk(e)</target>
 			</trans-unit>
 			<trans-unit id="tx_itmedia2_domain_model_company.position">
 				<source>Position</source>
@@ -144,6 +144,14 @@
 				<source>Title</source>
 				<target>Bezeichnung</target>
 			</trans-unit>
+
+			<trans-unit id="tx_itmedia2_domain_model_floor">
+				<target>Stockwerk</target>
+			</trans-unit>
+			<trans-unit id="tx_itmedia2_domain_model_floor.name">
+				<target>Name</target>
+			</trans-unit>
+
 		</body>
 	</file>
 </xliff>

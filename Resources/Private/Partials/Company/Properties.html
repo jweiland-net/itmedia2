@@ -37,8 +37,12 @@
 	<div class="grid_6 floatleft">
 		<div class="gridleft clearfix rulerbefore4">
 			<dl class="extdl">
-				<dt><f:translate key="tx_itmedia2_domain_model_company.floor"/>:</dt>
-				<dd>{company.floor}</dd>
+				<dt><f:translate key="tx_itmedia2_domain_model_company.floors"/>:</dt>
+				<dd>
+					<f:for each="{company.floors}" as="floor" iteration="iterator">
+						{floor.name}<f:if condition="{iterator.isLast} === false">, </f:if>
+					</f:for>
+				</dd>
 			</dl>
 			<dl class="extdl">
 				<dt><f:translate key="tx_itmedia2_domain_model_company.position"/>:</dt>

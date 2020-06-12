@@ -23,13 +23,13 @@ return [
         'iconfile' => 'EXT:itmedia2/Resources/Public/Icons/tx_itmedia2_domain_model_company.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, wsp_member, company, logo, images, image_maps, street, house_number, zip, city, telephone, fax, contact_person, email, website, opening_times, barrier_free, description, floor, position, district, facebook, twitter, google, main_trade, trades'
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, wsp_member, company, logo, images, image_maps, street, house_number, zip, city, telephone, fax, contact_person, email, website, opening_times, barrier_free, description, floors, position, district, facebook, twitter, google, main_trade, trades'
     ],
     'types' => [
         '1' => [
             'showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, wsp_member, company,
             logo, images, image_maps, street, house_number, zip, city, telephone, fax, contact_person, email, website,
-            opening_times, barrier_free, description, district, floor, position,
+            opening_times, barrier_free, description, district, floors, position,
             --div--;LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tabs.social, facebook, twitter, google,
             --div--;LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tabs.trades, main_trade, trades,
             --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.tabs.access, 
@@ -334,13 +334,14 @@ return [
                 'default' => 0
             ]
         ],
-        'floor' => [
+        'floors' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.floor',
+            'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.floors',
             'config' => [
-                'type' => 'input',
-                'eval' => 'num',
-                'default' => 1
+                'type' => 'select',
+                'renderType' => 'selectMultipleSideBySide',
+                'foreign_table' => 'tx_itmedia2_domain_model_floor',
+                'foreign_table_where' => 'ORDER BY tx_itmedia2_domain_model_floor.sorting'
             ]
         ],
         'position' => [

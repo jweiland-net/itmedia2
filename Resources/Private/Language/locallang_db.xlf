@@ -87,8 +87,8 @@
 			<trans-unit id="tx_itmedia2_domain_model_company.trades" xml:space="preserve">
 				<source>Sub Trades</source>
 			</trans-unit>
-			<trans-unit id="tx_itmedia2_domain_model_company.floor">
-				<source>Floor</source>
+			<trans-unit id="tx_itmedia2_domain_model_company.floors">
+				<source>Floor(s)</source>
 			</trans-unit>
 			<trans-unit id="tx_itmedia2_domain_model_company.position">
 				<source>Position</source>
@@ -113,6 +113,14 @@
 			<trans-unit id="tx_itmedia2_domain_model_position.title">
 				<source>Title</source>
 			</trans-unit>
+
+			<trans-unit id="tx_itmedia2_domain_model_floor">
+				<source>Floor</source>
+			</trans-unit>
+			<trans-unit id="tx_itmedia2_domain_model_floor.name">
+				<source>Name</source>
+			</trans-unit>
+
 		</body>
 	</file>
 </xliff>

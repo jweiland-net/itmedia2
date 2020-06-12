@@ -157,9 +157,9 @@ class Company extends AbstractEntity
     protected $txMaps2Uid;
 
     /**
-     * @var int
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\JWeiland\Itmedia2\Domain\Model\Floor>
      */
-    protected $floor = 0;
+    protected $floors;
 
     /**
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
@@ -176,6 +176,7 @@ class Company extends AbstractEntity
         $this->trades = new ObjectStorage();
         $this->images = new ObjectStorage();
         $this->imageMaps = new ObjectStorage();
+        $this->floors = new ObjectStorage();
     }
 
     /**
@@ -578,19 +579,19 @@ class Company extends AbstractEntity
     }
 
     /**
-     * @return int
+     * @return ObjectStorage|Floor[]|null
      */
-    public function getFloor(): int
+    public function getFloors()
     {
-        return $this->floor;
+        return $this->floors;
     }
 
     /**
-     * @param int $floor
+     * @param ObjectStorage $floors
      */
-    public function setFloor(int $floor)
+    public function setFloors(ObjectStorage $floors)
     {
-        $this->floor = $floor;
+        $this->floors = $floors;
     }
 
     /**
