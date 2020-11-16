@@ -1,7 +1,4 @@
 <T3DataStructure>
-	<meta>
-		<langDisable>1</langDisable>
-	</meta>
 	<sheets>
 		<sDEFAULT>
 			<ROOT>
@@ -15,6 +12,8 @@
 							<label>LLL:EXT:itmedia2/Resources/Private/Language/FlexForms.xlf:showWspMembers</label>
 							<config>
 								<type>check</type>
+								<renderType>checkboxToggle</renderType>
+								<default>0</default>
 							</config>
 						</TCEforms>
 					</settings.showWspMembers>
@@ -23,6 +22,7 @@
 						<label>LLL:EXT:itmedia2/Resources/Private/Language/FlexForms.xlf:district</label>
 						<config>
 							<type>select</type>
+							<type>selectSingle</type>
 							<foreign_table>tx_yellowpages2_domain_model_district</foreign_table>
 							<items type="array">
 								<numIndex index="0">
