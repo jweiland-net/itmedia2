@@ -1,6 +1,6 @@
 <?php
+
 declare(strict_types=1);
-namespace JWeiland\Itmedia2\Domain\Model;
 
 /*
  * This file is part of the package jweiland/itmedia2.
@@ -8,6 +8,8 @@ namespace JWeiland\Itmedia2\Domain\Model;
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
+
+namespace JWeiland\Itmedia2\Domain\Model;
 
 use JWeiland\Maps2\Domain\Model\PoiCollection;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
@@ -173,72 +175,48 @@ class Company extends AbstractEntity
         $this->floors = new ObjectStorage();
     }
 
-    /**
-     * @return bool
-     */
     public function getHidden(): bool
     {
         return $this->hidden;
     }
 
-    /**
-     * @param bool $hidden
-     */
-    public function setHidden(bool $hidden)
+    public function setHidden(bool $hidden): void
     {
         $this->hidden = $hidden;
     }
 
-    /**
-     * @return bool
-     */
     public function getWspMember(): bool
     {
         return $this->wspMember;
     }
 
-    /**
-     * @param bool $wspMember
-     */
-    public function setWspMember(bool $wspMember)
+    public function setWspMember(bool $wspMember): void
     {
         $this->wspMember = $wspMember;
     }
 
-    /**
-     * @return string
-     */
-    public function getCompany()
+    public function getCompany(): string
     {
         return $this->company;
     }
 
-    /**
-     * @param string $company
-     */
-    public function setCompany(string $company)
+    public function setCompany(string $company): void
     {
         $this->company = $company;
     }
 
-    /**
-     * @return FileReference
-     */
-    public function getLogo()
+    public function getLogo(): array
     {
         return $this->logo;
     }
 
-    /**
-     * @param FileReference|null $logo
-     */
-    public function setLogo(FileReference $logo = null)
+    public function setLogo(ObjectStorage $logo): void
     {
         $this->logo = $logo;
     }
 
     /**
-     * @return array
+     * @return FileReference[]
      */
     public function getImages(): array
     {
@@ -249,314 +227,197 @@ class Company extends AbstractEntity
         return $references;
     }
 
-    /**
-     * @param ObjectStorage $images A minimized Array from $_FILES
-     */
-    public function setImages(ObjectStorage $images)
+    public function setImages(ObjectStorage $images): void
     {
         $this->images = $images;
     }
 
-    /**
-     * @return string
-     */
     public function getStreet(): string
     {
         return $this->street;
     }
 
-    /**
-     * @param string $street
-     */
-    public function setStreet(string $street)
+    public function setStreet(string $street): void
     {
         $this->street = $street;
     }
 
-    /**
-     * @return string
-     */
     public function getHouseNumber(): string
     {
         return $this->houseNumber;
     }
 
-    /**
-     * @param string $houseNumber
-     */
-    public function setHouseNumber(string $houseNumber)
+    public function setHouseNumber(string $houseNumber): void
     {
         $this->houseNumber = $houseNumber;
     }
 
-    /**
-     * @return string $zip
-     */
     public function getZip(): string
     {
         return $this->zip;
     }
 
-    /**
-     * @param string $zip
-     */
-    public function setZip(string $zip)
+    public function setZip(string $zip): void
     {
         $this->zip = $zip;
     }
 
-    /**
-     * @return string
-     */
     public function getCity(): string
     {
         return $this->city;
     }
 
-    /**
-     * @param string $city
-     */
-    public function setCity(string $city)
+    public function setCity(string $city): void
     {
         $this->city = $city;
     }
 
-    /**
-     * @return string
-     */
     public function getTelephone(): string
     {
         return $this->telephone;
     }
 
-    /**
-     * @param string $telephone
-     */
-    public function setTelephone(string $telephone)
+    public function setTelephone(string $telephone): void
     {
         $this->telephone = $telephone;
     }
 
-    /**
-     * @return string
-     */
     public function getFax(): string
     {
         return $this->fax;
     }
 
-    /**
-     * @param string $fax
-     */
-    public function setFax(string $fax)
+    public function setFax(string $fax): void
     {
         $this->fax = $fax;
     }
 
-    /**
-     * @return string
-     */
     public function getContactPerson(): string
     {
         return $this->contactPerson;
     }
 
-    /**
-     * @param string $contactPerson
-     */
-    public function setContactPerson(string $contactPerson)
+    public function setContactPerson(string $contactPerson): void
     {
         $this->contactPerson = $contactPerson;
     }
 
-    /**
-     * @return string
-     */
     public function getEmail(): string
     {
         return $this->email;
     }
 
-    /**
-     * @param string $email
-     */
-    public function setEmail(string $email)
+    public function setEmail(string $email): void
     {
         $this->email = $email;
     }
 
-    /**
-     * @return string
-     */
     public function getWebsite(): string
     {
         return $this->website;
     }
 
-    /**
-     * @param string $website
-     */
-    public function setWebsite(string $website)
+    public function setWebsite(string $website): void
     {
         $this->website = $website;
     }
 
-    /**
-     * @return string
-     */
     public function getOpeningTimes(): string
     {
         return $this->openingTimes;
     }
 
-    /**
-     * @param string $openingTimes
-     */
-    public function setOpeningTimes(string $openingTimes)
+    public function setOpeningTimes(string $openingTimes): void
     {
         $this->openingTimes = $openingTimes;
     }
 
-    /**
-     * @return bool $barrierFree
-     */
     public function getBarrierFree(): bool
     {
         return $this->barrierFree;
     }
 
-    /**
-     * @param bool $barrierFree
-     */
-    public function setBarrierFree(bool $barrierFree)
+    public function setBarrierFree(bool $barrierFree): void
     {
         $this->barrierFree = $barrierFree;
     }
 
-    /**
-     * @return string
-     */
     public function getDescription(): string
     {
         return $this->description;
     }
 
-    /**
-     * @param string $description
-     */
-    public function setDescription(string $description)
+    public function setDescription(string $description): void
     {
         $this->description = $description;
     }
 
-    /**
-     * @return District|null
-     */
-    public function getDistrict()
+    public function getDistrict(): ?District
     {
         return $this->district;
     }
 
-    /**
-     * @param District $district
-     */
-    public function setDistrict(District $district = null)
+    public function setDistrict(?District $district = null): void
     {
         $this->district = $district;
     }
 
-    /**
-     * @return Category|null
-     */
-    public function getMainTrade()
+    public function getMainTrade(): ObjectStorage
     {
         return $this->mainTrade;
     }
 
-    /**
-     * @param Category $mainTrade
-     */
-    public function setMainTrade(Category $mainTrade = null)
+    public function setMainTrade(ObjectStorage $mainTrade): void
     {
         $this->mainTrade = $mainTrade;
     }
 
-    /**
-     * @return ObjectStorage
-     */
     public function getTrades(): ObjectStorage
     {
         return $this->trades;
     }
 
-    /**
-     * @param ObjectStorage $trades
-     */
-    public function setTrades(ObjectStorage $trades)
+    public function setTrades(ObjectStorage $trades): void
     {
         $this->trades = $trades;
     }
 
-    /**
-     * @return string
-     */
     public function getFacebook(): string
     {
         return $this->facebook;
     }
 
-    /**
-     * @param string $facebook
-     */
-    public function setFacebook(string $facebook)
+    public function setFacebook(string $facebook): void
     {
         $this->facebook = $facebook;
     }
 
-    /**
-     * @return string
-     */
-    public function getTwitter()
+    public function getTwitter(): string
     {
         return $this->twitter;
     }
 
-    /**
-     * @param string $twitter
-     */
-    public function setTwitter(string $twitter)
+    public function setTwitter(string $twitter): void
     {
         $this->twitter = $twitter;
     }
 
-    /**
-     * @return string
-     */
     public function getGoogle(): string
     {
         return $this->google;
     }
 
-    /**
-     * @param string $google
-     */
-    public function setGoogle(string $google)
+    public function setGoogle(string $google): void
     {
         $this->google = $google;
     }
 
-    /**
-     * @return PoiCollection|null
-     */
-    public function getTxMaps2Uid()
+    public function getTxMaps2Uid(): ?PoiCollection
     {
         return $this->txMaps2Uid;
     }
 
-    /**
-     * @param PoiCollection|null $txMaps2Uid
-     */
-    public function setTxMaps2Uid(PoiCollection $txMaps2Uid = null)
+    public function setTxMaps2Uid(?PoiCollection $txMaps2Uid = null): void
     {
         $this->txMaps2Uid = $txMaps2Uid;
     }
@@ -573,49 +434,34 @@ class Company extends AbstractEntity
     }
 
     /**
-     * @return ObjectStorage|Floor[]|null
+     * @return ObjectStorage|Floor[]
      */
-    public function getFloors()
+    public function getFloors(): ObjectStorage
     {
         return $this->floors;
     }
 
-    /**
-     * @param ObjectStorage $floors
-     */
-    public function setFloors(ObjectStorage $floors)
+    public function setFloors(ObjectStorage $floors): void
     {
         $this->floors = $floors;
     }
 
-    /**
-     * @return ObjectStorage|null
-     */
-    public function getImageMaps()
+    public function getImageMaps(): ObjectStorage
     {
         return $this->imageMaps;
     }
 
-    /**
-     * @param ObjectStorage $imageMaps
-     */
-    public function setImageMaps(ObjectStorage $imageMaps)
+    public function setImageMaps(ObjectStorage $imageMaps): void
     {
         $this->imageMaps = $imageMaps;
     }
 
-    /**
-     * @return Position|null
-     */
-    public function getPosition()
+    public function getPosition(): ?Position
     {
         return $this->position;
     }
 
-    /**
-     * @param Position $position
-     */
-    public function setPosition(Position $position)
+    public function setPosition(?Position $position = null): void
     {
         $this->position = $position;
     }

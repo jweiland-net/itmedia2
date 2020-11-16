@@ -28,34 +28,22 @@ class Floor extends AbstractEntity
      */
     protected $sorting = 0;
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * @param string $name
-     */
-    public function setName(string $name)
+    public function setName(string $name): void
     {
         $this->name = $name;
     }
 
-    /**
-     * @return int
-     */
     public function getSorting(): int
     {
         return $this->sorting;
     }
 
-    /**
-     * @param int $sorting
-     */
-    public function setSorting(int $sorting)
+    public function setSorting(int $sorting): void
     {
         $this->sorting = $sorting;
     }

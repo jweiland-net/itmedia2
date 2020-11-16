@@ -1,6 +1,6 @@
 <?php
+
 declare(strict_types=1);
-namespace JWeiland\Itmedia2\Tasks;
 
 /*
  * This file is part of the package jweiland/itmedia2.
@@ -8,6 +8,8 @@ namespace JWeiland\Itmedia2\Tasks;
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
+
+namespace JWeiland\Itmedia2\Tasks;
 
 use JWeiland\Itmedia2\Configuration\ExtConf;
 use JWeiland\Itmedia2\Domain\Model\Company;
@@ -66,25 +68,16 @@ class Update extends AbstractTask
         $this->companyRepository->setDefaultQuerySettings($this->getDefaultQuerySettings());
     }
 
-    /**
-     * generate default query settings to access all records
-     *
-     * @return QuerySettingsInterface
-     */
     protected function getDefaultQuerySettings(): QuerySettingsInterface
     {
         $settings = $this->objectManager->get(QuerySettingsInterface::class);
         $settings->setIgnoreEnableFields(true);
         $settings->setRespectSysLanguage(false);
         $settings->setRespectStoragePage(false);
+
         return $settings;
     }
 
-    /**
-     * The first method which will be executed when task starts
-     *
-     * @return bool
-     */
     public function execute(): bool
     {
         // hide companies which are older than 13 months
@@ -115,13 +108,7 @@ class Update extends AbstractTask
         return true;
     }
 
-    /**
-     * Send mail to user
-     *
-     * @param Company $company
-     * @param string $type "inform" or "deactivated"
-     */
-    public function informUser(Company $company, string $type)
+    public function informUser(Company $company, string $type): void
     {
         $this->mail->setFrom($this->extConf->getEmailFromAddress(), $this->extConf->getEmailFromName());
         $this->mail->setTo($company->getEmail(), $company->getCompany());
@@ -141,12 +128,7 @@ class Update extends AbstractTask
         $this->mail->send();
     }
 
-    /**
-     * Inform admin about old company entries
-     *
-     * @param Company $company
-     */
-    public function informAdmin(Company $company)
+    public function informAdmin(Company $company): void
     {
         $this->mail->setFrom($this->extConf->getEmailFromAddress(), $this->extConf->getEmailFromName());
         $this->mail->setTo($this->extConf->getEmailToAddress(), $this->extConf->getEmailToName());
@@ -180,7 +162,7 @@ class Update extends AbstractTask
     }
 
     /**
-     * the result of serialization is too big for db. So we reduce the return value
+     * The result of serialization is too big for db. So we reduce the return value
      *
      * @return array
      */

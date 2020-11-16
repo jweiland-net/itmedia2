@@ -1,6 +1,6 @@
 <?php
+
 declare(strict_types=1);
-namespace JWeiland\Itmedia2\Domain\Repository;
 
 /*
  * This file is part of the package jweiland/itmedia2.
@@ -8,6 +8,8 @@ namespace JWeiland\Itmedia2\Domain\Repository;
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
+
+namespace JWeiland\Itmedia2\Domain\Repository;
 
 use JWeiland\Itmedia2\Domain\Model\Company;
 use TYPO3\CMS\Core\Charset\CharsetConverter;
@@ -32,27 +34,16 @@ class CompanyRepository extends Repository
     ];
 
     /**
-     * We need some UTF-8 compatible functions for search
-     *
-     * @var \TYPO3\CMS\Core\Charset\CharsetConverter
+     * @var CharsetConverter
      */
     protected $charsetConverter;
 
-    /**
-     * @param CharsetConverter $charsetConverter
-     */
     public function injectCharsetConverter(CharsetConverter $charsetConverter)
     {
         $this->charsetConverter = $charsetConverter;
     }
 
-    /**
-     * Find company by uid whether it is hidden or not
-     *
-     * @param int $companyUid
-     * @return Company|null
-     */
-    public function findHiddenEntryByUid(int $companyUid)
+    public function findHiddenEntryByUid(int $companyUid): ?Company
     {
         $query = $this->createQuery();
         $query->getQuerySettings()->setIgnoreEnableFields(true);
@@ -138,13 +129,6 @@ class CompanyRepository extends Repository
         return $query->statement($queryBuilder)->execute(true);
     }
 
-    /**
-     * Search for company records
-     *
-     * @param string $search
-     * @param int $category
-     * @return QueryResultInterface
-     */
     public function searchCompanies(string $search, int $category): QueryResultInterface
     {
         /** @var Query $query */
@@ -257,12 +241,7 @@ class CompanyRepository extends Repository
         return $query->matching($query->lessThan('tstamp', $history))->execute();
     }
 
-    /**
-     * Get TYPO3s Connection Pool
-     *
-     * @return ConnectionPool
-     */
-    protected function getConnectionPool()
+    protected function getConnectionPool(): ConnectionPool
     {
         return GeneralUtility::makeInstance(ConnectionPool::class);
     }

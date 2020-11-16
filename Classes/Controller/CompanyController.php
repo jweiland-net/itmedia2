@@ -1,6 +1,6 @@
 <?php
+
 declare(strict_types=1);
-namespace JWeiland\Itmedia2\Controller;
 
 /*
  * This file is part of the package jweiland/itmedia2.
@@ -8,6 +8,8 @@ namespace JWeiland\Itmedia2\Controller;
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
+
+namespace JWeiland\Itmedia2\Controller;
 
 /**
  * Controller which keeps methods to list and show companies
@@ -18,30 +20,25 @@ class CompanyController extends AbstractController
      * @param string $letter Show only records starting with this letter
      * @validate $letter String, StringLength(minimum=0,maximum=3)
      */
-    public function listAction(string $letter = '')
+    public function listAction(string $letter = ''): void
     {
         $companies = $this->companyRepository->findByStartingLetter($letter, $this->settings);
 
         $this->view->assign('companies', $companies);
         $this->view->assign('glossar', $this->getGlossar((bool)$this->settings['showWspMembers']));
         $this->view->assign('categories', $this->companyRepository->getGroupedCategories());
-        $this->view->assign('fallbackIconPath', $this->extConf->getFallbackIconPath());
     }
 
     /**
      * @param int $company
      */
-    public function showAction(int $company)
+    public function showAction(int $company): void
     {
         $companyObject = $this->companyRepository->findByIdentifier($company);
         $this->view->assign('company', $companyObject);
-        $this->view->assign('fallbackIconPath', $this->extConf->getFallbackIconPath());
     }
 
-    /**
-     * Secure search-parameter
-     */
-    public function initializeSearchAction()
+    public function initializeSearchAction(): void
     {
         if ($this->request->hasArgument('search')) {
             $search = $this->request->getArgument('search');
@@ -49,11 +46,7 @@ class CompanyController extends AbstractController
         }
     }
 
-    /**
-     * @param string $search
-     * @param int $category
-     */
-    public function searchAction(string $search, int $category = 0)
+    public function searchAction(string $search, int $category = 0): void
     {
         $companies = $this->companyRepository->searchCompanies($search, $category);
         $this->view->assign('search', $search);
@@ -61,6 +54,5 @@ class CompanyController extends AbstractController
         $this->view->assign('companies', $companies);
         $this->view->assign('glossar', $this->getGlossar((bool)$this->settings['showWspMembers']));
         $this->view->assign('categories', $this->companyRepository->getGroupedCategories());
-        $this->view->assign('fallbackIconPath', $this->extConf->getFallbackIconPath());
     }
 }
