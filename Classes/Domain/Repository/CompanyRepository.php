@@ -234,7 +234,7 @@ class CompanyRepository extends Repository
      */
     public function findOlderThan(int $days): QueryResultInterface
     {
-        $days = (int) $days;
+        $days = (int)$days;
         $today = date('U');
         $history = $today - ($days * 60 * 60 * 24);
         $query = $this->createQuery();
