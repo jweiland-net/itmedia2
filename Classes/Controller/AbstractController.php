@@ -1,6 +1,6 @@
 <?php
+
 declare(strict_types = 1);
-namespace JWeiland\Itmedia2\Controller;
 
 /*
  * This file is part of the package jweiland/itmedia2.
@@ -8,6 +8,8 @@ namespace JWeiland\Itmedia2\Controller;
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
+
+namespace JWeiland\Itmedia2\Controller;
 
 use JWeiland\Itmedia2\Configuration\ExtConf;
 use JWeiland\Itmedia2\Domain\Model\Company;
@@ -72,66 +74,42 @@ class AbstractController extends ActionController
      */
     protected $letters = '0-9,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z';
 
-    /**
-     * @param MailMessage $mail
-     */
-    public function injectMail(MailMessage $mail)
+    public function injectMail(MailMessage $mail): void
     {
         $this->mail = $mail;
     }
 
-    /**
-     * @param ExtConf $extConf
-     */
-    public function injectExtConf(ExtConf $extConf)
+    public function injectExtConf(ExtConf $extConf): void
     {
         $this->extConf = $extConf;
     }
 
-    /**
-     * @param PersistenceManager $persistenceManager
-     */
-    public function injectPersistenceManager(PersistenceManager $persistenceManager)
+    public function injectPersistenceManager(PersistenceManager $persistenceManager): void
     {
         $this->persistenceManager = $persistenceManager;
     }
 
-    /**
-     * @param CompanyRepository $companyRepository
-     */
-    public function injectCompanyRepository(CompanyRepository $companyRepository)
+    public function injectCompanyRepository(CompanyRepository $companyRepository): void
     {
         $this->companyRepository = $companyRepository;
     }
 
-    /**
-     * @param DistrictRepository $districtRepository
-     */
-    public function injectDistrictRepository(DistrictRepository $districtRepository)
+    public function injectDistrictRepository(DistrictRepository $districtRepository): void
     {
         $this->districtRepository = $districtRepository;
     }
 
-    /**
-     * @param CategoryRepository $categoryRepository
-     */
-    public function injectCategoryRepository(CategoryRepository $categoryRepository)
+    public function injectCategoryRepository(CategoryRepository $categoryRepository): void
     {
         $this->categoryRepository = $categoryRepository;
     }
 
-    /**
-     * @param Session $session
-     */
-    public function injectSession(Session $session)
+    public function injectSession(Session $session): void
     {
         $this->session = $session;
     }
 
-    /**
-     * PreProcessing of all actions
-     */
-    public function initializeAction()
+    public function initializeAction(): void
     {
         // if this value was not set, then it will be filled with 0
         // but that is not good, because UriBuilder accepts 0 as pid, so it's better to set it to NULL
@@ -180,7 +158,7 @@ class AbstractController extends ActionController
      *
      * @param string $argumentName
      */
-    protected function registerCompanyFromRequest(string $argumentName)
+    protected function registerCompanyFromRequest(string $argumentName): void
     {
         $argument = $this->request->getArgument($argumentName);
         if (is_array($argument)) {
@@ -215,7 +193,7 @@ class AbstractController extends ActionController
     /**
      * Remove empty arguments from request
      */
-    protected function removeEmptyArgumentsFromRequest()
+    protected function removeEmptyArgumentsFromRequest(): void
     {
         /** @var array $company */
         $company = $this->request->getArgument('company');
@@ -232,7 +210,7 @@ class AbstractController extends ActionController
      *
      * @param string $argument
      */
-    protected function deleteUploadedFilesOnValidationErrors(string $argument)
+    protected function deleteUploadedFilesOnValidationErrors(string $argument): void
     {
         if ($this->getControllerContext()->getRequest()->hasArgument($argument)) {
             /** @var array $company */
@@ -253,7 +231,7 @@ class AbstractController extends ActionController
      * @param Company $company
      * @throws \Exception
      */
-    protected function addNewPoiCollectionToCompany(Company $company)
+    protected function addNewPoiCollectionToCompany(Company $company): void
     {
         $mapService = $this->objectManager->get(MapService::class);
         $position = $mapService->getFirstFoundPositionByAddress($company->getAddress());

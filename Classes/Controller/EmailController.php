@@ -1,6 +1,6 @@
 <?php
+
 declare(strict_types = 1);
-namespace JWeiland\Itmedia2\Controller;
 
 /*
  * This file is part of the package jweiland/itmedia2.
@@ -8,6 +8,8 @@ namespace JWeiland\Itmedia2\Controller;
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
+
+namespace JWeiland\Itmedia2\Controller;
 
 use JWeiland\Itmedia2\Configuration\ExtConf;
 use TYPO3\CMS\Core\Mail\MailMessage;
@@ -37,18 +39,12 @@ class EmailController extends ActionController
      */
     protected $extConf;
 
-    /**
-     * @param MailMessage $mail
-     */
-    public function injectMail(MailMessage $mail)
+    public function injectMail(MailMessage $mail): void
     {
         $this->mail = $mail;
     }
 
-    /**
-     * @param ExtConf $extConf
-     */
-    public function injectExtConf(ExtConf $extConf)
+    public function injectExtConf(ExtConf $extConf): void
     {
         $this->extConf = $extConf;
     }
@@ -59,11 +55,11 @@ class EmailController extends ActionController
      * @param array $redirect An Array containing action, controller and maybe some more informations for redirekt after mail processing
      */
     public function sendAction(
-        string $templateFile = null,
+        string $templateFile = '',
         array $assignVariables = [],
         array $redirect = []
-    ) {
-        if ($templateFile !== null) {
+    ): void {
+        if ($templateFile) {
             $this->view->setTemplatePathAndFilename(
                 $this->getTemplatePath() . ucfirst($templateFile)
             );
@@ -88,11 +84,6 @@ class EmailController extends ActionController
         );
     }
 
-    /**
-     * Get template path for email templates
-     *
-     * @return string email template path
-     */
     public function getTemplatePath(): string
     {
         $extKey = $this->controllerContext->getRequest()->getControllerExtensionKey();

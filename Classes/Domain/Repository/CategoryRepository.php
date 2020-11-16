@@ -1,6 +1,6 @@
 <?php
+
 declare(strict_types=1);
-namespace JWeiland\Itmedia2\Domain\Repository;
 
 /*
  * This file is part of the package jweiland/itmedia2.
@@ -8,6 +8,8 @@ namespace JWeiland\Itmedia2\Domain\Repository;
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
+
+namespace JWeiland\Itmedia2\Domain\Repository;
 
 /**
  * This repo contains the default methods to get categories from sys_category

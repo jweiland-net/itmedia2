@@ -1,6 +1,6 @@
 <?php
+
 declare(strict_types = 1);
-namespace JWeiland\Itmedia2\Domain\Model;
 
 /*
  * This file is part of the package jweiland/itmedia2.
@@ -8,6 +8,8 @@ namespace JWeiland\Itmedia2\Domain\Model;
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
+
+namespace JWeiland\Itmedia2\Domain\Model;
 
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
@@ -22,18 +24,12 @@ class Position extends AbstractEntity
      */
     protected $title = '';
 
-    /**
-     * @return string
-     */
     public function getTitle(): string
     {
         return $this->title;
     }
 
-    /**
-     * @param string $title
-     */
-    public function setTitle(string $title)
+    public function setTitle(string $title): void
     {
         $this->title = $title;
     }
