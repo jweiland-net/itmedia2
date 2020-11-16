@@ -1,7 +1,7 @@
 <?php
 return [
     'ctrl' => [
-        'title'    => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company',
+        'title' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company',
         'label' => 'company',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
