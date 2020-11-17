@@ -1,14 +1,7 @@
 <div class="thumbnail grid_1 floatleft">
 	<figure class="marginbottom gridrightstd">
 		<f:if condition="{company.logo}">
-			<f:then>
-				<f:image image="{company.logo}" alt="Logo: {company.company}" width="{settings.list.image.width}" height="{settings.list.image.height}" />
-			</f:then>
-			<f:else>
-				<f:if condition="{company.mainTrade.icon}">
-					<f:image src="uploads/tx_itmedia2/{company.mainTrade.icon}" alt="Logo: {company.mainTrade.title}" width="{settings.list.image.width}" height="{settings.list.image.height}" />
-				</f:if>
-			</f:else>
+			<f:image image="{company.logo}" alt="Logo: {company.company}" width="{settings.list.image.width}" height="{settings.list.image.height}" />
 		</f:if>
 	</figure>
 </div>

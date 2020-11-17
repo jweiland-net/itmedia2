@@ -43,4 +43,3 @@ CREATE TABLE tx_itmedia2_domain_model_floor
 (
 	name varchar(255) DEFAULT ''  NOT NULL
 );
-
