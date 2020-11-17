@@ -1,0 +1,16 @@
+mod.wizards.newContentElement.wizardItems.plugins {
+  elements {
+    itmedia2-directory {
+      iconIdentifier = ext-itmedia2-directory-wizard-icon
+      title = LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:plugin.directory.title
+      description = LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:plugin.directory.description
+      tt_content_defValues {
+        CType = list
+        list_type = itmedia2_directory
+      }
+    }
+  }
+}
+
+# Add CType Preview
+mod.web_layout.tt_content.preview.list.itmedia2_directory = EXT:itmedia2/Resources/Private/Templates/PluginPreview/TableView.html

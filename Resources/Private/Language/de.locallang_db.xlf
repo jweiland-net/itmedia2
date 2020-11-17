@@ -5,8 +5,17 @@
 		<header/>
 		<body>
 			<trans-unit id="plugin.title">
-				<source>IT and Media</source>
+				<source>IT and Media directory</source>
 				<target>IT und Media Verzeichnis</target>
+			</trans-unit>
+
+			<trans-unit id="plugin.directory.title">
+				<source>IT and Media directory</source>
+				<target>IT und Media Verzeichnis</target>
+			</trans-unit>
+			<trans-unit id="plugin.directory.description">
+				<source>Inserts a lightweight industry directory. Above the industry directory you can use the a-z navigation to reduce the companies to its starting letter.</source>
+				<target>Einbindung eines reduzierten Branchenverzeichnisses. Über dem Branchenverzeichnis kann mittels A-Z Navigation direkt zu gewählten Firmen navigiert werden.</target>
 			</trans-unit>
 
 			<trans-unit id="tabs.trades" xml:space="preserve">
