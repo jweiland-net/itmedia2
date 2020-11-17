@@ -119,15 +119,14 @@ class AbstractController extends ActionController
     }
 
     /**
-     * get an array with letters as keys for the glossar
+     * Get an array with letters as keys for the glossar
      *
-     * @param bool $isWsp
      * @return array Array with starting letters as keys
      */
-    protected function getGlossar(bool $isWsp): array
+    protected function getGlossar(): array
     {
         $glossar = [];
-        $availableLetters = $this->companyRepository->getStartingLetters($isWsp);
+        $availableLetters = $this->companyRepository->getStartingLetters();
         $possibleLetters = GeneralUtility::trimExplode(',', $this->letters);
 
         // add all letters which we have found in DB

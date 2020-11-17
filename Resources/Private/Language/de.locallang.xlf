@@ -3,14 +3,9 @@
 	<file source-language="en" datatype="plaintext" original="messages" date="2013-03-28T08:36:00Z" product-name="itmedia2">
 		<header/>
 		<body>
-
 			<trans-unit id="tx_itmedia2_domain_model_company" xml:space="preserve">
 				<source>Company</source>
 				<target>Firma</target>
-			</trans-unit>
-			<trans-unit id="tx_itmedia2_domain_model_company.wspMember" xml:space="preserve">
-				<source>WSP Member</source>
-				<target>WSP Mitglied</target>
 			</trans-unit>
 			<trans-unit id="tx_itmedia2_domain_model_company.company" xml:space="preserve">
 				<source>Company</source>
@@ -353,7 +348,6 @@
 				<source>An error occurred while trying to call %1$s->%2$s()</source>
 				<target>Es ist ein Fehler aufgetreten während dem Aufruf zu %1$s->%2$s()</target>
 			</trans-unit>
-
 		</body>
 	</file>
 </xliff>
