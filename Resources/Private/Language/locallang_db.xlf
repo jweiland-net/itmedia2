@@ -3,9 +3,15 @@
 	<file source-language="en" datatype="plaintext" original="messages" date="2013-03-28T08:36:40Z" product-name="itmedia2">
 		<header/>
 		<body>
-
 			<trans-unit id="plugin.title">
-				<source>IT and Media</source>
+				<source>IT and Media directory</source>
+			</trans-unit>
+
+			<trans-unit id="plugin.directory.title">
+				<source>IT and Media directory</source>
+			</trans-unit>
+			<trans-unit id="plugin.directory.description">
+				<source>Inserts a lightweight industry directory. Above the industry directory you can use the a-z navigation to reduce the companies to its starting letter.</source>
 			</trans-unit>
 
 			<trans-unit id="tabs.trades" xml:space="preserve">
