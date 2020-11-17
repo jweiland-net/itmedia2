@@ -90,10 +90,6 @@ class CompanyRepository extends Repository
             $constraintAnd[] = $query->equals('district', $settings['district']);
         }
 
-        if ($settings['showWspMembers']) {
-            $constraintAnd[] = $query->equals('wspMember', $settings['showWspMembers']);
-        }
-
         if (count($constraintAnd)) {
             return $query->matching($query->logicalAnd($constraintAnd))->execute();
         }
@@ -103,10 +99,9 @@ class CompanyRepository extends Repository
     /**
      * Get an array with available starting letters
      *
-     * @param bool $isWsp
      * @return array
      */
-    public function getStartingLetters(bool $isWsp): array
+    public function getStartingLetters(): array
     {
         $queryBuilder = $this->getConnectionPool()->getQueryBuilderForTable('tx_itmedia2_domain_model_company');
         $queryBuilder
@@ -114,15 +109,6 @@ class CompanyRepository extends Repository
             ->from('tx_itmedia2_domain_model_company')
             ->add('groupBy', 'letter')
             ->add('orderBy', 'letter');
-
-        if ($isWsp) {
-            $queryBuilder->where(
-                $queryBuilder->expr()->eq(
-                    'wsp_member',
-                    $queryBuilder->createNamedParameter(1, \PDO::PARAM_INT)
-                )
-            );
-        }
 
         /** @var Query $query */
         $query = $this->createQuery();

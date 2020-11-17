@@ -7,9 +7,6 @@
 			<trans-unit id="tx_itmedia2_domain_model_company" xml:space="preserve">
 				<source>Company</source>
 			</trans-unit>
-			<trans-unit id="tx_itmedia2_domain_model_company.wspMember" xml:space="preserve">
-				<source>WSP Member</source>
-			</trans-unit>
 			<trans-unit id="tx_itmedia2_domain_model_company.company" xml:space="preserve">
 				<source>Company</source>
 			</trans-unit>

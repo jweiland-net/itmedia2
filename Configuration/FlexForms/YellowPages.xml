@@ -7,16 +7,6 @@
 				</TCEforms>
 				<type>array</type>
 				<el>
-					<settings.showWspMembers>
-						<TCEforms>
-							<label>LLL:EXT:itmedia2/Resources/Private/Language/FlexForms.xlf:showWspMembers</label>
-							<config>
-								<type>check</type>
-								<renderType>checkboxToggle</renderType>
-								<default>0</default>
-							</config>
-						</TCEforms>
-					</settings.showWspMembers>
 					<settings.district>
 					<TCEforms>
 						<label>LLL:EXT:itmedia2/Resources/Private/Language/FlexForms.xlf:district</label>

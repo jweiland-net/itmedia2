@@ -27,11 +27,6 @@ class Company extends AbstractEntity
     protected $hidden = false;
 
     /**
-     * @var bool
-     */
-    protected $wspMember = false;
-
-    /**
      * @var string
      * @validate NotEmpty
      */
@@ -183,16 +178,6 @@ class Company extends AbstractEntity
     public function setHidden(bool $hidden): void
     {
         $this->hidden = $hidden;
-    }
-
-    public function getWspMember(): bool
-    {
-        return $this->wspMember;
-    }
-
-    public function setWspMember(bool $wspMember): void
-    {
-        $this->wspMember = $wspMember;
     }
 
     public function getCompany(): string

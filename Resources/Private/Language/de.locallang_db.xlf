@@ -4,7 +4,6 @@
 		  product-name="itmedia2">
 		<header/>
 		<body>
-
 			<trans-unit id="plugin.title">
 				<source>IT and Media</source>
 				<target>IT und Media Verzeichnis</target>
@@ -20,10 +19,6 @@
 			<trans-unit id="tx_itmedia2_domain_model_company" xml:space="preserve">
 				<source>Company</source>
 				<target>Firma</target>
-			</trans-unit>
-			<trans-unit id="tx_itmedia2_domain_model_company.wspMember" xml:space="preserve">
-				<source>WSP Member</source>
-				<target>WSP Mitglied</target>
 			</trans-unit>
 			<trans-unit id="tx_itmedia2_domain_model_company.company" xml:space="preserve">
 				<source>Company</source>
@@ -151,7 +146,6 @@
 			<trans-unit id="tx_itmedia2_domain_model_floor.name">
 				<target>Name</target>
 			</trans-unit>
-
 		</body>
 	</file>
 </xliff>
