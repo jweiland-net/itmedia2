@@ -3,36 +3,30 @@
 	<file source-language="en" datatype="plaintext" original="messages" date="2013-03-28T08:36:00Z" product-name="itmedia2">
 		<header/>
 		<body>
-
-			<trans-unit id="fallbackIconPath" xml:space="preserve">
-				<source>Fallback icon path: If there is no image to a record assigned, you can define a fallback path where all images are located.</source>
-				<target>Fallback Icon Pfad: Wenn dem Datensatz kein Bild zugewiesen wurde, könnt Ihr hier einen Ordner angeben in dem sich alle Fallback Icons befinden.</target>
-			</trans-unit>
 			<trans-unit id="poiCollectionPid" xml:space="preserve">
 				<source>PID for poiCollections: Define a storage pid where to store records of type Point of Interest.</source>
-				<target>Seiten UID für Map Datensätze: Auf welcher Seite vom Typ "Folder" sollen die Map Datensätze gespeichert werden?</target>
+				<target>PID für POI Sammlungen: Definieren Sie eine Speicher-PID wo Datensätze vom Typ Point of Interest gespeichert werden sollen.</target>
 			</trans-unit>
 			<trans-unit id="editLink" xml:space="preserve">
-				<source>Link to edit form: Set the URI where the user can edit his company record.</source>
-				<target>Link zum Bearbeiten-Formular: Hinterlege hier die URI auf der ein FE Benutzer seinen zugeordneten Firmen-Datensatz bearbeiten kann.</target>
+				<source>Link to edit view: Set the URI where the frontend user can edit his business listings.</source>
+				<target>Link zur Bearbeitunsansicht: Tragen Sie die URI ein wo ein Frontend Benutzer seine Brancheneinträge bearbeiten kann.</target>
 			</trans-unit>
 			<trans-unit id="emailFromAddress" xml:space="preserve">
-				<source>email from address: The senders email address. If not given the extension tries to get one from INSTALL_TOOL.</source>
-				<target>FROM Emailadresse: Die Absender Emailadresse. Wenn nicht angegeben wird versucht diese aus dem Installtool zu übernehmen.</target>
+				<source>Email address FROM: The senders email address. If not given the extension tries to get one from INSTALL_TOOL.</source>
+				<target>E-Mail Adresse FROM: Die E-Mail-Adresse des Absenders. Falls nicht angegeben versucht die Erweiterung eine von INSTALL_TOOL zu erhalten.</target>
 			</trans-unit>
 			<trans-unit id="emailFromName" xml:space="preserve">
-				<source>email from name: The senders email name. If not given the extension tries to get one from INSTALL_TOOL.</source>
-				<target>FROM Absendername: Der Absendername. Wenn nicht angegeben wird versucht diesen aus dem Installtool zu übernehmen.</target>
+				<source>Sender name FROM: The senders email name. If not given the extension tries to get one from INSTALL_TOOL.</source>
+				<target>Absendername FROM: Der Absender-E-Mail-Name. Falls nicht angegeben versucht die Erweiterung einen von INSTALL_TOOL zu erhalten.</target>
 			</trans-unit>
 			<trans-unit id="emailToAddress" xml:space="preserve">
-				<source>email to address: The recipients email address.</source>
-				<target>TO Emailadresse: Die Email des Empfängers.</target>
+				<source>Email address TO: The recipients email address.</source>
+				<target>E-Mail Adresse TO: Die E-Mail-Adresse des Empfängers.</target>
 			</trans-unit>
 			<trans-unit id="emailToName" xml:space="preserve">
-				<source>email to name: The recipients email name.</source>
-				<target>TO Empfängername: Der Name des Empfängers.</target>
+				<source>Recipient name TO: The recipients email name.</source>
+				<target>Empfängername TO: Der E-Mail-Name des Empfängers.</target>
 			</trans-unit>
-
 		</body>
 	</file>
 </xliff>
