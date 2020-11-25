@@ -1,16 +1,14 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2013-08-28T08:23:04Z" product-name="itmedia2">
-		<header/>
-		<body>
-			<trans-unit id="sheetGeneral" xml:space="preserve">
+  <file source-language="en" datatype="plaintext" original="messages" date="2013-08-28T08:23:04Z" product-name="itmedia2" target-language="de">
+    <header/>
+    <body>
+      <trans-unit id="sheetGeneral" xml:space="preserve">
 				<source>General</source>
-				<target>Allgemein</target>
-			</trans-unit>
-			<trans-unit id="district" xml:space="preserve">
+			<target state="translated">Allgemein</target></trans-unit>
+      <trans-unit id="district" xml:space="preserve">
 				<source>District</source>
-				<target>Stadtteil</target>
-			</trans-unit>
-		</body>
-	</file>
+			<target state="translated">Bezirk</target></trans-unit>
+    </body>
+  </file>
 </xliff>
