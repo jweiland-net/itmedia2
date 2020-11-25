@@ -6,7 +6,7 @@ if (!defined('TYPO3_MODE')) {
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['itmedia2_directory'] = 'pi_flexform';
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
     'itmedia2_directory',
-    'FILE:EXT:itmedia2/Configuration/FlexForms/YellowPages.xml'
+    'FILE:EXT:itmedia2/Configuration/FlexForms/ItMedia.xml'
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
