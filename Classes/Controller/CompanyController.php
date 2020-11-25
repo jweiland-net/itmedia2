@@ -12,7 +12,6 @@ declare(strict_types=1);
 namespace JWeiland\Itmedia2\Controller;
 
 use JWeiland\Glossary2\Service\GlossaryService;
-use JWeiland\Itmedia2\Domain\Repository\CategoryRepository;
 use JWeiland\Itmedia2\Domain\Repository\CompanyRepository;
 use TYPO3\CMS\Extbase\Annotation as Extbase;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
@@ -29,11 +28,6 @@ class CompanyController extends ActionController
     protected $companyRepository;
 
     /**
-     * @var CategoryRepository
-     */
-    protected $categoryRepository;
-
-    /**
      * @var Session
      */
     protected $session;
@@ -45,12 +39,10 @@ class CompanyController extends ActionController
 
     public function __construct(
         CompanyRepository $companyRepository,
-        CategoryRepository  $categoryRepository,
         Session $session,
         GlossaryService $glossaryService
     ) {
         $this->companyRepository = $companyRepository;
-        $this->categoryRepository = $categoryRepository;
         $this->session = $session;
         $this->glossaryService = $glossaryService;
     }
