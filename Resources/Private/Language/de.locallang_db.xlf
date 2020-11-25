@@ -95,7 +95,7 @@
 			</trans-unit>
 			<trans-unit id="tx_itmedia2_domain_model_company.barrierFree" xml:space="preserve">
 				<source>Barrier-free</source>
-				<target>Barrierefreier Zugang (Rollstuhl/Rollator)</target>
+				<target>Barrierefreier Zugang</target>
 			</trans-unit>
 			<trans-unit id="tx_itmedia2_domain_model_company.description" xml:space="preserve">
 				<source>Description</source>
@@ -115,12 +115,12 @@
 				<target>Hauptbranche</target>
 			</trans-unit>
 			<trans-unit id="tx_itmedia2_domain_model_company.trades" xml:space="preserve">
-				<source>Sub Trades</source>
-				<target>hier können Sie bis zu zwei weitere Branchen auswählen:</target>
+				<source>Trades</source>
+				<target>Branchen</target>
 			</trans-unit>
 			<trans-unit id="tx_itmedia2_domain_model_company.floors">
 				<source>Floors</source>
-				<target>Stockwerk(e)</target>
+				<target>Stockwerke</target>
 			</trans-unit>
 			<trans-unit id="tx_itmedia2_domain_model_company.position">
 				<source>Position</source>
@@ -145,9 +145,11 @@
 			</trans-unit>
 
 			<trans-unit id="tx_itmedia2_domain_model_floor">
+				<target>Floor</target>
 				<target>Stockwerk</target>
 			</trans-unit>
 			<trans-unit id="tx_itmedia2_domain_model_floor.name">
+				<target>Name</target>
 				<target>Name</target>
 			</trans-unit>
 		</body>

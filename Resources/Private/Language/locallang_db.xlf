@@ -119,7 +119,6 @@
 			<trans-unit id="tx_itmedia2_domain_model_floor.name">
 				<source>Name</source>
 			</trans-unit>
-
 		</body>
 	</file>
 </xliff>

@@ -7,10 +7,6 @@
 				<source>PID for poiCollections: Define a storage pid where to store records of type Point of Interest.</source>
 				<target>PID für POI Sammlungen: Definieren Sie eine Speicher-PID wo Datensätze vom Typ Point of Interest gespeichert werden sollen.</target>
 			</trans-unit>
-			<trans-unit id="editLink" xml:space="preserve">
-				<source>Link to edit view: Set the URI where the frontend user can edit his business listings.</source>
-				<target>Link zur Bearbeitunsansicht: Tragen Sie die URI ein wo ein Frontend Benutzer seine Brancheneinträge bearbeiten kann.</target>
-			</trans-unit>
 		</body>
 	</file>
 </xliff>

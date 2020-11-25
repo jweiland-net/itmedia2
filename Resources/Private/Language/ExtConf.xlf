@@ -6,9 +6,6 @@
 			<trans-unit id="poiCollectionPid" xml:space="preserve">
 				<source>PID for poiCollections: Define a storage pid where to store records of type Point of Interest.</source>
 			</trans-unit>
-			<trans-unit id="editLink" xml:space="preserve">
-				<source>Link to edit view: Set the URI where the frontend user can edit his business listings.</source>
-			</trans-unit>
 		</body>
 	</file>
 </xliff>
