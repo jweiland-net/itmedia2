@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace JWeiland\Itmedia2\Domain\Model;
 
 use JWeiland\Maps2\Domain\Model\PoiCollection;
+use JWeiland\Yellowpages2\Domain\Model\Category;
 use JWeiland\Yellowpages2\Domain\Model\District;
 use TYPO3\CMS\Extbase\Annotation as Extbase;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
@@ -117,14 +118,14 @@ class Company extends AbstractEntity
     protected $district;
 
     /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\JWeiland\Itmedia2\Domain\Model\Category>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\JWeiland\Yellowpages2\Domain\Model\Category>
      * @Extbase\Validate("NotEmpty")
      * @Extbase\ORM\Lazy
      */
     protected $mainTrade;
 
     /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\JWeiland\Itmedia2\Domain\Model\Category>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\JWeiland\Yellowpages2\Domain\Model\Category>
      * @Extbase\ORM\Lazy
      */
     protected $trades;
