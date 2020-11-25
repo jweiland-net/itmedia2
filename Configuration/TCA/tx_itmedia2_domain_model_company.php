@@ -98,6 +98,7 @@ return [
             'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.hidden',
             'config' => [
                 'type' => 'check',
+                'renderType' => 'checkboxToggle',
                 'default' => 0
             ]
         ],
@@ -412,6 +413,7 @@ return [
             'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.barrierFree',
             'config' => [
                 'type' => 'check',
+                'renderType' => 'checkboxToggle',
                 'default' => 0
             ]
         ],
@@ -436,7 +438,7 @@ return [
                 'foreign_table' => 'tx_yellowpages2_domain_model_district',
                 'foreign_table_where' => 'ORDER BY tx_yellowpages2_domain_model_district.district',
                 'items' => [
-                    ['LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.district.pleaseChoose', '']
+                    ['LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.district.pleaseChoose', 0]
                 ],
                 'minitems' => 0,
                 'maxitems' => 1,
@@ -462,7 +464,7 @@ return [
                 'foreign_table' => 'tx_itmedia2_domain_model_position',
                 'foreign_table_where' => 'ORDER BY tx_itmedia2_domain_model_position.title',
                 'items' => [
-                    ['LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.position.pleaseChoose', '']
+                    ['LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.position.pleaseChoose', 0]
                 ],
                 'minitems' => 0,
                 'maxitems' => 1,
@@ -499,52 +501,5 @@ return [
                 'eval' => 'trim',
             ]
         ],
-        'main_trade' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.mainTrade',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectTree',
-                'foreign_table' => 'sys_category',
-                'renderMode' => 'tree',
-                'size' => 10,
-                'autoSizeMax' => 50,
-                'treeConfig' => [
-                    'parentField' => 'parent',
-                    'appearance' => [
-                        'showHeader' => true,
-                        'expandAll' => true
-                    ]
-                ],
-                'minitems' => 0,
-                'maxitems' => 1
-            ]
-        ],
-        'trades' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.trades',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectTree',
-                'foreign_table' => 'sys_category',
-                'MM' => 'sys_category_record_mm',
-                'MM_match_fields' => [
-                    'tablenames' => 'tx_itmedia2_domain_model_company',
-                    'fieldname' => 'trades'
-                ],
-                'MM_opposite_field' => 'items',
-                'renderMode' => 'tree',
-                'treeConfig' => [
-                    'rootUid' => 0,
-                    'parentField' => 'parent',
-                    'appearance' => [
-                        'showHeader' => true,
-                        'expandAll' => false
-                    ]
-                ],
-                'minitems' => 0,
-                'maxitems' => 2
-            ]
-        ]
     ]
 ];
