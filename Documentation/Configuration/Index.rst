@@ -55,27 +55,6 @@ If you have assigned an EXT:maps2 PoiCollection record to company record you set
 a PID where you have inserted the EXT:maps2 plugin.
 
 
-.. _startingUidForCategories:
-
-startingUidForCategories
-------------------------
-
-Default:
-
-If you need frontend editing you should set this value to a parent category UID whose sub-categories
-should be assigned to the category selector.
-
-
-.. _uidOfDefaultDistrict:
-
-uidOfDefaultDistrict
---------------------
-
-Default:
-
-If you need frontend editing you can set this value to be a preset for new companies in frontend.
-
-
 .. _pidOfDetailPage:
 
 pidOfDetailPage
