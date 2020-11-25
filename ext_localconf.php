@@ -32,7 +32,10 @@ call_user_func(function () {
         );
     }
 
-    // add yellowpages2 plugin to new element wizard
+    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['itmedia2UpdateSlug']
+        = \JWeiland\Itmedia2\Updater\Itmedia2SlugUpdater::class;
+
+    // Add ItMedia plugin to new element wizard
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(
         '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:itmedia2/Configuration/TSconfig/ContentElementWizard.txt">'
     );
