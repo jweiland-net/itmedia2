@@ -11,22 +11,71 @@ declare(strict_types=1);
 
 namespace JWeiland\Itmedia2\Controller;
 
+use JWeiland\Glossary2\Service\GlossaryService;
+use JWeiland\Itmedia2\Domain\Repository\CategoryRepository;
+use JWeiland\Itmedia2\Domain\Repository\CompanyRepository;
+use TYPO3\CMS\Extbase\Annotation as Extbase;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Persistence\Generic\Session;
+
 /**
  * Controller which keeps methods to list and show companies
  */
-class CompanyController extends AbstractController
+class CompanyController extends ActionController
 {
     /**
+     * @var CompanyRepository
+     */
+    protected $companyRepository;
+
+    /**
+     * @var CategoryRepository
+     */
+    protected $categoryRepository;
+
+    /**
+     * @var Session
+     */
+    protected $session;
+
+    /**
+     * @var GlossaryService
+     */
+    protected $glossaryService;
+
+    public function __construct(
+        CompanyRepository $companyRepository,
+        CategoryRepository  $categoryRepository,
+        Session $session,
+        GlossaryService $glossaryService
+    ) {
+        $this->companyRepository = $companyRepository;
+        $this->categoryRepository = $categoryRepository;
+        $this->session = $session;
+        $this->glossaryService = $glossaryService;
+    }
+
+    public function initializeAction(): void
+    {
+        // if this value was not set, then it will be filled with 0
+        // but that is not good, because UriBuilder accepts 0 as pid, so it's better to set it to NULL
+        if (empty($this->settings['pidOfDetailPage'])) {
+            $this->settings['pidOfDetailPage'] = null;
+        }
+    }
+
+    /**
      * @param string $letter Show only records starting with this letter
-     * @validate $letter String, StringLength(minimum=0,maximum=3)
+     * @Extbase\Validate("String", param="letter")
+     * @Extbase\Validate("StringLength", param="letter", options={"minimum": 0, "maximum": 3})
      */
     public function listAction(string $letter = ''): void
     {
-        $companies = $this->companyRepository->findByStartingLetter($letter, $this->settings);
-
-        $this->view->assign('companies', $companies);
-        $this->view->assign('glossar', $this->getGlossar());
-        $this->view->assign('categories', $this->companyRepository->getGroupedCategories());
+        $this->view->assignMultiple([
+            'companies' => $this->companyRepository->findByLetter($letter, $this->settings),
+            'categories' => $this->companyRepository->getTranslatedCategories()
+        ]);
+        $this->assignGlossary();
     }
 
     /**
@@ -48,11 +97,46 @@ class CompanyController extends AbstractController
 
     public function searchAction(string $search, int $category = 0): void
     {
-        $companies = $this->companyRepository->searchCompanies($search, $category);
-        $this->view->assign('search', $search);
-        $this->view->assign('category', $category);
-        $this->view->assign('companies', $companies);
-        $this->view->assign('glossar', $this->getGlossar());
-        $this->view->assign('categories', $this->companyRepository->getGroupedCategories());
+        $this->view->assignMultiple([
+            'search' => $search,
+            'category' => $category,
+            'companies' => $this->companyRepository->searchCompanies($search, $category, $this->settings),
+            'categories' => $this->companyRepository->getTranslatedCategories()
+        ]);
+        $this->assignGlossary();
+    }
+
+    /**
+     * This is a workaround to help controller actions to find (hidden) companies
+     *
+     * @param string $argumentName
+     */
+    protected function registerCompanyFromRequest(string $argumentName): void
+    {
+        $argument = $this->request->getArgument($argumentName);
+        if (is_array($argument)) {
+            // get company from form ($_POST)
+            $company = $this->companyRepository->findHiddenEntryByUid((int)$argument['__identity']);
+        } else {
+            // get company from UID
+            $company = $this->companyRepository->findHiddenEntryByUid((int)$argument);
+        }
+        $this->session->registerObject($company, $company->getUid());
+    }
+
+    protected function assignGlossary(): void
+    {
+        $this->view->assign(
+            'glossar',
+            $this->glossaryService->buildGlossary(
+                $this->companyRepository->getQueryBuilderToFindAllEntries(),
+                [
+                    'extensionName' => 'itmedia2',
+                    'pluginName' => 'directory',
+                    'controllerName' => 'Company',
+                    'column' => 'company'
+                ]
+            )
+        );
     }
 }

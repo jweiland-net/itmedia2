@@ -11,14 +11,19 @@ declare(strict_types=1);
 
 namespace JWeiland\Itmedia2\Domain\Repository;
 
+use JWeiland\Glossary2\Service\GlossaryService;
 use JWeiland\Itmedia2\Domain\Model\Company;
-use TYPO3\CMS\Core\Charset\CharsetConverter;
+use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Database\Query\QueryBuilder;
+use TYPO3\CMS\Core\Database\Query\Restriction\FrontendRestrictionContainer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Extbase\Persistence\Generic\Query;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
+use TYPO3\CMS\Extbase\SignalSlot\Dispatcher;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
@@ -34,13 +39,17 @@ class CompanyRepository extends Repository
     ];
 
     /**
-     * @var CharsetConverter
+     * @var Dispatcher
      */
-    protected $charsetConverter;
+    protected $dispatcher;
 
-    public function injectCharsetConverter(CharsetConverter $charsetConverter)
-    {
-        $this->charsetConverter = $charsetConverter;
+    public function __construct(
+        ObjectManager $objectManager,
+        Dispatcher $dispatcher
+    ) {
+        parent::__construct($objectManager);
+
+        $this->dispatcher = $dispatcher;
     }
 
     public function findHiddenEntryByUid(int $companyUid): ?Company
@@ -61,68 +70,45 @@ class CompanyRepository extends Repository
      * @param array $settings
      * @return QueryResultInterface
      */
-    public function findByStartingLetter(string $letter, array $settings = []): QueryResultInterface
+    public function findByLetter(string $letter, array $settings = []): QueryResultInterface
     {
+        /** @var Query $query */
         $query = $this->createQuery();
+        $queryBuilder = $this->getQueryBuilderForCompany($query);
 
-        $constraintAnd = [];
-
-        if (!empty($letter)) {
-            $constraintOr = [];
-            if ($letter == '0-9') {
-                $constraintOr[] = $query->like('company', '0%');
-                $constraintOr[] = $query->like('company', '1%');
-                $constraintOr[] = $query->like('company', '2%');
-                $constraintOr[] = $query->like('company', '3%');
-                $constraintOr[] = $query->like('company', '4%');
-                $constraintOr[] = $query->like('company', '5%');
-                $constraintOr[] = $query->like('company', '6%');
-                $constraintOr[] = $query->like('company', '7%');
-                $constraintOr[] = $query->like('company', '8%');
-                $constraintOr[] = $query->like('company', '9%');
-            } else {
-                $constraintOr[] = $query->like('company', $letter . '%');
-            }
-            $constraintAnd[] = $query->logicalOr($constraintOr);
+        if ($letter) {
+            $glossaryService = GeneralUtility::makeInstance(GlossaryService::class);
+            $queryBuilder
+                ->where(
+                    $glossaryService->getLetterConstraintForDoctrineQuery(
+                        $queryBuilder,
+                        'c.company',
+                        $letter
+                    )
+                );
         }
 
         if ($settings['district']) {
-            $constraintAnd[] = $query->equals('district', $settings['district']);
+            $queryBuilder->andWhere(
+                $queryBuilder->expr()->eq(
+                    'c.district',
+                    $queryBuilder->createNamedParameter($settings['district'], \PDO::PARAM_INT)
+                )
+            );
         }
 
-        if (count($constraintAnd)) {
-            return $query->matching($query->logicalAnd($constraintAnd))->execute();
-        }
-        return $query->execute();
+        $this->emitModifyQueryToFindCompanyByLetter($queryBuilder, $settings);
+
+        return $query->statement($queryBuilder)->execute();
     }
 
-    /**
-     * Get an array with available starting letters
-     *
-     * @return array
-     */
-    public function getStartingLetters(): array
-    {
-        $queryBuilder = $this->getConnectionPool()->getQueryBuilderForTable('tx_itmedia2_domain_model_company');
-        $queryBuilder
-            ->selectLiteral('UPPER(LEFT(company, 1)) as letter')
-            ->from('tx_itmedia2_domain_model_company')
-            ->add('groupBy', 'letter')
-            ->add('orderBy', 'letter');
-
-        /** @var Query $query */
-        $query = $this->createQuery();
-        return $query->statement($queryBuilder)->execute(true);
-    }
-
-    public function searchCompanies(string $search, int $category): QueryResultInterface
+    public function searchCompanies(string $search, int $categoryUid, array $settings): QueryResultInterface
     {
         /** @var Query $query */
         $query = $this->createQuery();
-        // strtolower is not UTF-8 compatible
-        // $search = strtolower($search);
-        $longStreetSearch = trim($search);
-        $smallStreetSearch = trim($search);
+        $queryBuilder = $this->getQueryBuilderForCompany($query);
+        $longStreetSearch = $smallStreetSearch = trim($search);
+
         // unify street search
         if (strtolower(mb_substr($search, -6)) === 'straße') {
             $smallStreetSearch = str_ireplace('straße', 'str', $search);
@@ -134,81 +120,159 @@ class CompanyRepository extends Repository
         if (strtolower(mb_substr($search, -3)) === 'str') {
             $longStreetSearch = str_ireplace('str', 'straße', $search);
         }
-        $constraint = [];
+
         if (!empty($longStreetSearch)) {
-            $searchConstraint = [];
-            $searchConstraint[] = $query->like('company', '%' . $search . '%');
-            $searchConstraint[] = $query->like('street', '%' . $smallStreetSearch . '%');
-            $searchConstraint[] = $query->like('street', '%' . $longStreetSearch . '%');
-            $constraint[] = $query->logicalOr($searchConstraint);
-        }
-        if (!empty($category)) {
-            $constraint[] = $query->logicalOr(
-                [
-                    $query->contains('mainTrade', $category),
-                    $query->contains('trades', $category)
-                ]
+            $queryBuilder->andWhere(
+                $queryBuilder->expr()->orX(
+                    $queryBuilder->expr()->like(
+                        'c.company',
+                        $queryBuilder->createNamedParameter('%' . $search . '%', \PDO::PARAM_STR)
+                    ),
+                    $queryBuilder->expr()->like(
+                        'c.street',
+                        $queryBuilder->createNamedParameter('%' . $smallStreetSearch . '%', \PDO::PARAM_STR)
+                    ),
+                    $queryBuilder->expr()->like(
+                        'c.street',
+                        $queryBuilder->createNamedParameter('%' . $longStreetSearch . '%', \PDO::PARAM_STR)
+                    )
+                )
             );
         }
-        if (!empty($constraint)) {
-            return $query->matching($query->logicalAnd($constraint))->execute();
+
+        if (!empty($categoryUid)) {
+            $this->addConstraintForTrades($queryBuilder, $categoryUid);
         }
-        return $query->execute();
+
+        $this->emitModifyQueryToSearchForCompanies($queryBuilder, $search, $categoryUid, $settings);
+
+        return $query->statement($queryBuilder)->execute();
     }
 
     /**
-     * Collect all categories used as main_trade and group them
+     * ->select() and ->groupBy() has to be the same in DB configuration
+     * where only_full_group_by is activated.
      *
      * @return array
      */
-    public function getGroupedCategories(): array
+    protected function getColumnsForCompanyTable(): array
     {
-        $queryBuilder = $this->getConnectionPool()->getQueryBuilderForTable('tx_itmedia2_domain_model_company');
+        $connection = $this->getConnectionPool()->getConnectionForTable('tx_itmedia2_domain_model_company');
+        return array_map(
+            function ($column) {
+                return 'c.' . $column;
+            },
+            array_keys(
+                $connection->getSchemaManager()->listTableColumns('tx_itmedia2_domain_model_company') ?? []
+            )
+        );
+    }
+
+    protected function addConstraintForTrades(QueryBuilder $queryBuilder, int $categoryUid): void
+    {
+        $queryBuilder->leftJoin(
+            'c',
+            'sys_category_record_mm',
+            'category_mm',
+            (string)$queryBuilder->expr()->andX(
+                $queryBuilder->expr()->eq(
+                    'c.uid',
+                    $queryBuilder->quoteIdentifier('category_mm.uid_foreign')
+                ),
+                $queryBuilder->expr()->eq(
+                    'category_mm.tablenames',
+                    $queryBuilder->createNamedParameter(
+                        'tx_itmedia2_domain_model_company',
+                        \PDO::PARAM_STR
+                    )
+                )
+            )
+        );
+
+        $queryBuilder->andWhere(
+            $queryBuilder->expr()->orX(
+                $queryBuilder->expr()->eq(
+                    'category_mm.fieldname',
+                    $queryBuilder->createNamedParameter(
+                        'main_trade',
+                        \PDO::PARAM_STR
+                    )
+                ),
+                $queryBuilder->expr()->eq(
+                    'category_mm.fieldname',
+                    $queryBuilder->createNamedParameter(
+                        'trades',
+                        \PDO::PARAM_STR
+                    )
+                )
+            ),
+            $queryBuilder->expr()->eq(
+                'category_mm.uid_local',
+                $queryBuilder->createNamedParameter($categoryUid, \PDO::PARAM_INT)
+            )
+        );
+    }
+
+    /**
+     * Collect all translated categories used by main_trade and trades
+     *
+     * @return array
+     */
+    public function getTranslatedCategories(): array
+    {
+        $query = $this->createQuery();
+        $queryBuilder = $this->getQueryBuilderForCompany($query);
         $queryBuilder
             ->select('sc.uid', 'sc.title')
-            ->from('tx_itmedia2_domain_model_company', 'c')
             ->leftJoin(
                 'c',
                 'sys_category_record_mm',
-                'mm',
+                'category_mm',
                 (string)$queryBuilder->expr()->andX(
                     $queryBuilder->expr()->eq(
                         'c.uid',
-                        $queryBuilder->quoteIdentifier('mm.uid_foreign')
+                        $queryBuilder->quoteIdentifier('category_mm.uid_foreign')
                     ),
                     $queryBuilder->expr()->eq(
-                        'mm.tablenames',
-                        $queryBuilder->createNamedParameter('tx_itmedia2_domain_model_company', \PDO::PARAM_STR)
+                        'category_mm.tablenames',
+                        $queryBuilder->createNamedParameter(
+                            'tx_itmedia2_domain_model_company',
+                            \PDO::PARAM_STR
+                        )
                     ),
-                    $queryBuilder->expr()->eq(
-                        'mm.fieldname',
-                        $queryBuilder->createNamedParameter('main_trade', \PDO::PARAM_STR)
+                    $queryBuilder->expr()->orX(
+                        $queryBuilder->expr()->eq(
+                            'category_mm.fieldname',
+                            $queryBuilder->createNamedParameter('main_trade', \PDO::PARAM_STR)
+                        ),
+                        $queryBuilder->expr()->eq(
+                            'category_mm.fieldname',
+                            $queryBuilder->createNamedParameter('trades', \PDO::PARAM_STR)
+                        )
                     )
                 )
             )
             ->leftJoin(
-                'mm',
+                'category_mm',
                 'sys_category',
                 'sc',
                 $queryBuilder->expr()->eq(
-                    'mm.uid_local',
-                    $queryBuilder->quoteIdentifier('sc.uid')
+                    'sc.uid',
+                    $queryBuilder->quoteIdentifier('category_mm.uid_local')
                 )
             )
             ->groupBy('sc.uid')
             ->orderBy('sc.title', 'ASC');
 
-        /** @var Query $query */
-        $query = $this->createQuery();
         $results = $query->statement($queryBuilder)->execute(true);
 
-        $groupedCategories = [];
-        $groupedCategories[] = LocalizationUtility::translate('allBranches', 'itmedia2');
+        $translatedCategories = [];
+        $translatedCategories[] = LocalizationUtility::translate('allBranches', 'itmedia2');
         foreach ($results as $result) {
-            $groupedCategories[$result['uid']] = $result['title'];
+            $translatedCategories[$result['uid']] = $result['title'];
         }
 
-        return $groupedCategories;
+        return $translatedCategories;
     }
 
     /**
@@ -225,6 +289,69 @@ class CompanyRepository extends Repository
         $history = $today - ($days * 60 * 60 * 24);
         $query = $this->createQuery();
         return $query->matching($query->lessThan('tstamp', $history))->execute();
+    }
+
+    protected function getQueryBuilderForCompany(QueryInterface $extbaseQuery): QueryBuilder
+    {
+        $queryBuilder = $this->getConnectionPool()->getQueryBuilderForTable('tx_itmedia2_domain_model_company');
+        $queryBuilder->setRestrictions(GeneralUtility::makeInstance(FrontendRestrictionContainer::class));
+        return $queryBuilder
+            ->select(...$this->getColumnsForCompanyTable())
+            ->from('tx_itmedia2_domain_model_company', 'c')
+            ->where(
+                $queryBuilder->expr()->in(
+                    'c.pid',
+                    $queryBuilder->createNamedParameter(
+                        $extbaseQuery->getQuerySettings()->getStoragePageIds(),
+                        Connection::PARAM_INT_ARRAY
+                    )
+                )
+            )
+            ->groupBy(...$this->getColumnsForCompanyTable())
+            ->orderBy('c.company', 'ASC');
+    }
+
+    public function getQueryBuilderToFindAllEntries(): QueryBuilder
+    {
+        return $this->getQueryBuilderForCompany($this->createQuery());
+    }
+
+    /**
+     * Use this signal, if you want to modify the query to find companies by letter
+     *
+     * @param QueryBuilder $queryBuilder
+     * @param array $settings
+     */
+    protected function emitModifyQueryToFindCompanyByLetter(
+        QueryBuilder $queryBuilder,
+        array $settings
+    ): void {
+        $this->dispatcher->dispatch(
+            self::class,
+            'modifyQueryToFindCompanyByLetter',
+            [$queryBuilder, $settings]
+        );
+    }
+
+    /**
+     * Use this signal, if you want to modify the query to search companies
+     *
+     * @param QueryBuilder $queryBuilder
+     * @param string $search
+     * @param int $categoryUid
+     * @param array $settings
+     */
+    protected function emitModifyQueryToSearchForCompanies(
+        QueryBuilder $queryBuilder,
+        string $search,
+        int $categoryUid,
+        array $settings
+    ): void {
+        $this->dispatcher->dispatch(
+            self::class,
+            'modifyQueryToSearchCompanies',
+            [$queryBuilder, $search, $categoryUid, $settings]
+        );
     }
 
     protected function getConnectionPool(): ConnectionPool
