@@ -58,9 +58,6 @@
 			<trans-unit id="tx_itmedia2_domain_model_company.description" xml:space="preserve">
 				<source>Description</source>
 			</trans-unit>
-			<trans-unit id="tx_itmedia2_domain_model_company.district" xml:space="preserve">
-				<source>District</source>
-			</trans-unit>
 			<trans-unit id="tx_itmedia2_domain_model_company.facebook" xml:space="preserve">
 				<source>Facebook</source>
 			</trans-unit>
@@ -75,12 +72,6 @@
 			</trans-unit>
 			<trans-unit id="tx_itmedia2_domain_model_company.trades" xml:space="preserve">
 				<source>Sub Trades</source>
-			</trans-unit>
-			<trans-unit id="tx_itmedia2_domain_model_district" xml:space="preserve">
-				<source>District</source>
-			</trans-unit>
-			<trans-unit id="tx_itmedia2_domain_model_district.district" xml:space="preserve">
-				<source>District</source>
 			</trans-unit>
 			<trans-unit id="tx_itmedia2_domain_model_company.floors">
 				<source>Floor(s)</source>

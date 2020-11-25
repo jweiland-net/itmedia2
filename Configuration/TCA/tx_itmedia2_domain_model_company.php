@@ -431,14 +431,14 @@ return [
         ],
         'district' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.district',
+            'label' => 'LLL:EXT:yellowpages2/Resources/Private/Language/locallang_db.xlf:tx_yellowpages2_domain_model_company.district',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'foreign_table' => 'tx_yellowpages2_domain_model_district',
                 'foreign_table_where' => 'ORDER BY tx_yellowpages2_domain_model_district.district',
                 'items' => [
-                    ['LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.district.pleaseChoose', 0]
+                    ['LLL:EXT:yellowpages2/Resources/Private/Language/locallang_db.xlf:tx_yellowpages2_domain_model_company.district.pleaseChoose', 0]
                 ],
                 'minitems' => 0,
                 'maxitems' => 1,
