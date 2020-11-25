@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="messages" date="2013-03-28T08:36:40Z" product-name="itmedia2" target-language="en">
+    <header/>
+    <body>
+      <trans-unit id="plugin.title">
+        <source>IT and Media directory</source>
+        <target state="needs-translation">IT and Media directory</target>
+      </trans-unit>
+      <trans-unit id="plugin.directory.title">
+        <source>IT and Media directory</source>
+        <target state="needs-translation">IT and Media directory</target>
+      </trans-unit>
+      <trans-unit id="plugin.directory.description">
+        <source>Inserts a lightweight industry directory. Above the industry directory you can use the a-z navigation to reduce the companies to its starting letter.</source>
+        <target state="needs-translation">Inserts a lightweight industry directory. Above the industry directory you can use the a-z navigation to reduce the companies to its starting letter.</target>
+      </trans-unit>
+      <trans-unit id="tabs.trades" xml:space="preserve">
+				<source>Trades</source>
+			<target state="needs-translation">Trades</target></trans-unit>
+      <trans-unit id="tabs.social" xml:space="preserve">
+				<source>Social</source>
+			<target state="needs-translation">Social</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company" xml:space="preserve">
+				<source>Company</source>
+			<target state="needs-translation">Company</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.company" xml:space="preserve">
+				<source>Company</source>
+			<target state="needs-translation">Company</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.path_segment" xml:space="preserve">
+				<source>Segment for URL</source>
+			<target state="needs-translation">Segment for URL</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.logo" xml:space="preserve">
+				<source>Logo</source>
+			<target state="needs-translation">Logo</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.logo.add" xml:space="preserve">
+				<source>Add logo</source>
+			<target state="needs-translation">Add logo</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.images" xml:space="preserve">
+				<source>Images</source>
+			<target state="needs-translation">Images</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.images.add" xml:space="preserve">
+				<source>Add image</source>
+			<target state="needs-translation">Add image</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.street" xml:space="preserve">
+				<source>Street</source>
+			<target state="needs-translation">Street</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.houseNumber" xml:space="preserve">
+				<source>House number</source>
+			<target state="needs-translation">House number</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.zip" xml:space="preserve">
+				<source>Zip</source>
+			<target state="needs-translation">Zip</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.city" xml:space="preserve">
+				<source>City</source>
+			<target state="needs-translation">City</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.telephone" xml:space="preserve">
+				<source>Telephone</source>
+			<target state="needs-translation">Telephone</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.fax" xml:space="preserve">
+				<source>Fax</source>
+			<target state="needs-translation">Fax</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.contactPerson" xml:space="preserve">
+				<source>Contact person</source>
+			<target state="needs-translation">Contact person</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.email" xml:space="preserve">
+				<source>Email</source>
+			<target state="needs-translation">Email</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.website" xml:space="preserve">
+				<source>Website</source>
+			<target state="needs-translation">Website</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.openingTimes" xml:space="preserve">
+				<source>Opening times</source>
+			<target state="needs-translation">Opening times</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.barrierFree" xml:space="preserve">
+				<source>Barrier-free</source>
+			<target state="needs-translation">Barrier-free</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.description" xml:space="preserve">
+				<source>Description</source>
+			<target state="needs-translation">Description</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.facebook" xml:space="preserve">
+				<source>Facebook</source>
+			<target state="needs-translation">Facebook</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.twitter" xml:space="preserve">
+				<source>Twitter</source>
+			<target state="needs-translation">Twitter</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.google" xml:space="preserve">
+				<source>Google+</source>
+			<target state="needs-translation">Google+</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.mainTrade" xml:space="preserve">
+				<source>Main Trade</source>
+			<target state="needs-translation">Main Trade</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.trades" xml:space="preserve">
+				<source>Sub Trades</source>
+			<target state="needs-translation">Sub Trades</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.floors">
+        <source>Floor(s)</source>
+        <target state="needs-translation">Floor(s)</target>
+      </trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.position">
+        <source>Position</source>
+        <target state="needs-translation">Position</target>
+      </trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.position.pleaseChoose">
+        <source>---Please choose a position---</source>
+        <target state="needs-translation">---Please choose a position---</target>
+      </trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.image_maps">
+        <source>Image map</source>
+        <target state="needs-translation">Image map</target>
+      </trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_position">
+        <source>Position</source>
+        <target state="needs-translation">Position</target>
+      </trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_position.title">
+        <source>Title</source>
+        <target state="needs-translation">Title</target>
+      </trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_floor">
+        <source>Floor</source>
+        <target state="needs-translation">Floor</target>
+      </trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_floor.name">
+        <source>Name</source>
+        <target state="needs-translation">Name</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
