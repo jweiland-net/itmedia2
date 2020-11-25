@@ -14,7 +14,7 @@ namespace JWeiland\Itmedia2\Controller;
 use JWeiland\Itmedia2\Configuration\ExtConf;
 use JWeiland\Itmedia2\Domain\Repository\CategoryRepository;
 use JWeiland\Itmedia2\Domain\Repository\CompanyRepository;
-use JWeiland\Itmedia2\Domain\Repository\DistrictRepository;
+use JWeiland\Yellowpages2\Domain\Repository\DistrictRepository;
 use TYPO3\CMS\Core\Mail\MailMessage;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
