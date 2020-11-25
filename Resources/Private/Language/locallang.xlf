@@ -70,10 +70,10 @@
 				<source>Main Trade</source>
 			</trans-unit>
 			<trans-unit id="tx_itmedia2_domain_model_company.trades" xml:space="preserve">
-				<source>Sub Trades</source>
+				<source>Trades</source>
 			</trans-unit>
 			<trans-unit id="tx_itmedia2_domain_model_company.floors">
-				<source>Floor(s)</source>
+				<source>Floors</source>
 			</trans-unit>
 			<trans-unit id="tx_itmedia2_domain_model_company.position">
 				<source>Position</source>
@@ -91,33 +91,6 @@
 			<trans-unit id="allBranches">
 				<source>All branches</source>
 			</trans-unit>
-			<trans-unit id="newCompany">
-				<source>New company</source>
-			</trans-unit>
-			<trans-unit id="editCompany">
-				<source>Edit company</source>
-			</trans-unit>
-			<trans-unit id="listMyCompanies">
-				<source>List my companies</source>
-			</trans-unit>
-			<trans-unit id="create">
-				<source>Create</source>
-			</trans-unit>
-			<trans-unit id="update">
-				<source>Edit</source>
-			</trans-unit>
-			<trans-unit id="companyCreated">
-				<source>Thank you for your entry. Please note that your data will be first checked and released by the Webkoordination of Pforzheim. You will then be notified by e-mail about the activation. This process takes max. 1-2 business days.</source>
-			</trans-unit>
-			<trans-unit id="companyUpdated">
-				<source>Company updated</source>
-			</trans-unit>
-			<trans-unit id="rightsMessage">
-				<source>I give all rights of this image to city Pforzheim</source>
-			</trans-unit>
-			<trans-unit id="pleaseChoose">
-				<source>--- Please choose ---</source>
-			</trans-unit>
 			<trans-unit id="yes">
 				<source>Yes</source>
 			</trans-unit>
@@ -126,53 +99,6 @@
 			</trans-unit>
 			<trans-unit id="altTextMapImg">
 				<source>Map</source>
-			</trans-unit>
-
-			<trans-unit id="email.subject.inform.user">
-				<source>Your company record is out of date</source>
-			</trans-unit>
-			<trans-unit id="email.subject.deactivated.user">
-				<source>Your company record has been deactivated</source>
-			</trans-unit>
-			<trans-unit id="email.subject.deactivated.admin">
-				<source>A company record has been deactivated</source>
-			</trans-unit>
-			<trans-unit id="email.subject.create">
-				<source>A new record was created</source>
-			</trans-unit>
-			<trans-unit id="email.subject.update">
-				<source>A record was updated</source>
-			</trans-unit>
-			<trans-unit id="email.subject.activate">
-				<source>A record was activated</source>
-			</trans-unit>
-			<trans-unit id="email.body.inform.user">
-				<source><![CDATA[
-					<p>Dear customer</p>
-					<p>Your company entry %2$s (%1$s) will be outdated next month</p>
-					<p>Please login at %3$s and update your data.</p>
-					<p>Your team of Pforzheim</p>]]>
-				</source>
-			</trans-unit>
-			<trans-unit id="email.body.deactivated.user">
-				<source><![CDATA[
-					<p>Dear customer</p>
-					<p>Your company entry %2$s (%1$s) now been deactivated</p>
-					<p>Your team of Pforzheim</p>]]>
-				</source>
-			</trans-unit>
-			<trans-unit id="email.body.deactivated.admin">
-				<source><![CDATA[
-					<p>Dear admin</p>
-					<p>The company entry %2$s (%1$s) has now been deactivated</p>]]>
-				</source>
-			</trans-unit>
-
-			<trans-unit id="error.upload">
-				<source>Something went wrong with your uploaded files. Please try again. Error: </source>
-			</trans-unit>
-			<trans-unit id="error.uploadRights">
-				<source>You don\'t have checked the box for upload rights. So upload stops here</source>
 			</trans-unit>
 		</body>
 	</file>

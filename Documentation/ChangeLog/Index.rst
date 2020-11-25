@@ -7,6 +7,10 @@
 ChangeLog
 =========
 
+**Version 3.0.1**
+
+- Remove useless translations
+
 **Version 3.0.0**
 
 - Add TYPO3 10 compatibility
