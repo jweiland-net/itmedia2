@@ -21,11 +21,6 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 class ExtConf implements SingletonInterface
 {
     /**
-     * @var string
-     */
-    protected $fallbackIconPath = '';
-
-    /**
      * @var int
      */
     protected $poiCollectionPid = 0;
