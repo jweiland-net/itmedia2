@@ -41,9 +41,17 @@
 				<source>Logo</source>
 				<target>Logo</target>
 			</trans-unit>
+			<trans-unit id="tx_itmedia2_domain_model_company.logo.add" xml:space="preserve">
+				<source>Add logo</source>
+				<target>Logo hinzufügen</target>
+			</trans-unit>
 			<trans-unit id="tx_itmedia2_domain_model_company.images" xml:space="preserve">
 				<source>Images</source>
 				<target>Bilder</target>
+			</trans-unit>
+			<trans-unit id="tx_itmedia2_domain_model_company.images.add" xml:space="preserve">
+				<source>Add image</source>
+				<target>Bild hinzufügen</target>
 			</trans-unit>
 			<trans-unit id="tx_itmedia2_domain_model_company.street" xml:space="preserve">
 				<source>Street</source>

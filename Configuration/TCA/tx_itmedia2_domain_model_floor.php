@@ -26,12 +26,13 @@ return [
     ],
     'types' => [
         '1' => [
-            'showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name,
+            'showitem' => '--palette--;;languageHidden, name,
             --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.tabs.access, 
             --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.palettes.access;access'
         ]
     ],
     'palettes' => [
+        'languageHidden' => ['showitem' => 'sys_language_uid, l10n_parent, hidden'],
         'access' => [
             'showitem' => 'starttime;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:starttime_formlabel,endtime;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:endtime_formlabel',
         ]
@@ -116,6 +117,12 @@ return [
                 ],
             ]
         ],
+        'sorting' => [
+            'config' => [
+                // required to get this field mapped to our extbase model! (TYPO3 v8)
+                'type' => 'passthrough'
+            ]
+        ],
         'name' => [
             'exclude' => true,
             'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_floor.name',
@@ -125,11 +132,5 @@ return [
                 'eval' => 'trim,required'
             ]
         ],
-        'sorting' => [
-            'config' => [
-                // required to get this field mapped to our extbase model! (TYPO3 v8)
-                'type' => 'passthrough'
-            ]
-        ]
     ]
 ];

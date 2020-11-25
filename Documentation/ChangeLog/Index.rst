@@ -18,6 +18,7 @@ ChangeLog
 - Remove Travis implementation
 - Add github actions
 - Add path_segment. Add SlugUpdater
+- Restructure TCA fields
 
 **Version 2.0.1**
 
