@@ -6,3 +6,6 @@ services:
 
   JWeiland\Itmedia2\:
     resource: '../Classes/*'
+
+  JWeiland\Itmedia2\Configuration\ExtConf:
+    public: true
