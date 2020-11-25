@@ -101,14 +101,6 @@
 				<source>Description</source>
 				<target>Beschreibung</target>
 			</trans-unit>
-			<trans-unit id="tx_itmedia2_domain_model_company.district" xml:space="preserve">
-				<source>District</source>
-				<target>Stadteil</target>
-			</trans-unit>
-			<trans-unit id="tx_itmedia2_domain_model_company.district.pleaseChoose" xml:space="preserve">
-				<source>---Please choose a district---</source>
-				<target>---Stadtteil wählen---</target>
-			</trans-unit>
 			<trans-unit id="tx_itmedia2_domain_model_company.facebook" xml:space="preserve">
 				<source>Facebook</source>
 			</trans-unit>
@@ -141,15 +133,6 @@
 			<trans-unit id="tx_itmedia2_domain_model_company.image_maps">
 				<source>Image map</source>
 				<target>Lageplan</target>
-			</trans-unit>
-
-			<trans-unit id="tx_itmedia2_domain_model_district" xml:space="preserve">
-				<source>District (yp)</source>
-				<target>Stadtteil (yp)</target>
-			</trans-unit>
-			<trans-unit id="tx_itmedia2_domain_model_district.district" xml:space="preserve">
-				<source>District</source>
-				<target>Stadtteil</target>
 			</trans-unit>
 
 			<trans-unit id="tx_itmedia2_domain_model_position">

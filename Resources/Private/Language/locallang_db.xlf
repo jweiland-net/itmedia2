@@ -78,12 +78,6 @@
 			<trans-unit id="tx_itmedia2_domain_model_company.description" xml:space="preserve">
 				<source>Description</source>
 			</trans-unit>
-			<trans-unit id="tx_itmedia2_domain_model_company.district" xml:space="preserve">
-				<source>District</source>
-			</trans-unit>
-			<trans-unit id="tx_itmedia2_domain_model_company.district.pleaseChoose" xml:space="preserve">
-				<source>---Please choose a district---</source>
-			</trans-unit>
 			<trans-unit id="tx_itmedia2_domain_model_company.facebook" xml:space="preserve">
 				<source>Facebook</source>
 			</trans-unit>
@@ -106,17 +100,10 @@
 				<source>Position</source>
 			</trans-unit>
 			<trans-unit id="tx_itmedia2_domain_model_company.position.pleaseChoose">
-				<source>---Please choose a district---</source>
+				<source>---Please choose a position---</source>
 			</trans-unit>
 			<trans-unit id="tx_itmedia2_domain_model_company.image_maps">
 				<source>Image map</source>
-			</trans-unit>
-
-			<trans-unit id="tx_itmedia2_domain_model_district" xml:space="preserve">
-				<source>District (yp)</source>
-			</trans-unit>
-			<trans-unit id="tx_itmedia2_domain_model_district.district" xml:space="preserve">
-				<source>District</source>
 			</trans-unit>
 
 			<trans-unit id="tx_itmedia2_domain_model_position">

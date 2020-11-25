@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace JWeiland\Itmedia2\Domain\Model;
 
 use JWeiland\Maps2\Domain\Model\PoiCollection;
-use JWeiland\Yellowpages2\Domain\Model\Category;
+use JWeiland\Yellowpages2\Domain\Model\District;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
@@ -109,7 +109,7 @@ class Company extends AbstractEntity
     protected $description = '';
 
     /**
-     * @var \JWeiland\Itmedia2\Domain\Model\District
+     * @var \JWeiland\Yellowpages2\Domain\Model\District
      * @Extbase\Validate("NotEmpty")
      * @Extbase\ORM\Lazy
      */
@@ -345,7 +345,7 @@ class Company extends AbstractEntity
         return $this->district;
     }
 
-    public function setDistrict(?District $district = null): void
+    public function setDistrict(?District $district): void
     {
         $this->district = $district;
     }
