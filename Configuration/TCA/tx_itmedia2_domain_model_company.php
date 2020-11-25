@@ -23,11 +23,11 @@ return [
         'iconfile' => 'EXT:itmedia2/Resources/Public/Icons/tx_itmedia2_domain_model_company.svg'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, company, logo, images, image_maps, street, house_number, zip, city, telephone, fax, contact_person, email, website, opening_times, barrier_free, description, floors, position, district, facebook, twitter, google, main_trade, trades'
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, company, path_segment, logo, images, image_maps, street, house_number, zip, city, telephone, fax, contact_person, email, website, opening_times, barrier_free, description, floors, position, district, facebook, twitter, google, main_trade, trades'
     ],
     'types' => [
         '1' => [
-            'showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, company,
+            'showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, company, path_segment,
             logo, images, image_maps, street, house_number, zip, city, telephone, fax, contact_person, email, website,
             opening_times, barrier_free, description, district, floors, position,
             --div--;LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tabs.social, facebook, twitter, google,
@@ -152,6 +152,26 @@ return [
                 'type' => 'input',
                 'size' => 30,
                 'eval' => 'trim,required'
+            ]
+        ],
+        'path_segment' => [
+            'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.path_segment',
+            'displayCond' => 'VERSION:IS:false',
+            'config' => [
+                'type' => 'slug',
+                'size' => 50,
+                'generatorOptions' => [
+                    'fields' => ['company'],
+                    // Do not add pageSlug, as we add pageSlug on our own in RouteEnhancer
+                    'prefixParentPageSlug' => false,
+                    'fieldSeparator' => '-',
+                    'replacements' => [
+                        '/' => '-'
+                    ],
+                ],
+                'fallbackCharacter' => '-',
+                'eval' => 'uniqueInSite',
+                'default' => ''
             ]
         ],
         'logo' => [
