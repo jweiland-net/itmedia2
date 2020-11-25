@@ -13,6 +13,7 @@ namespace JWeiland\Itmedia2\Domain\Model;
 
 use JWeiland\Maps2\Domain\Model\PoiCollection;
 use JWeiland\Yellowpages2\Domain\Model\District;
+use TYPO3\CMS\Extbase\Annotation as Extbase;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
@@ -34,7 +35,7 @@ class Company extends AbstractEntity
     protected $company = '';
 
     /**
-     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
      */
     protected $logo;
 
@@ -193,7 +194,13 @@ class Company extends AbstractEntity
         $this->company = $company;
     }
 
-    public function getLogo(): array
+    public function getLogo(): ?FileReference
+    {
+        $this->logo->rewind();
+        return $this->logo->current();
+    }
+
+    public function getOriginalLogo(): ObjectStorage
     {
         return $this->logo;
     }
@@ -203,21 +210,45 @@ class Company extends AbstractEntity
         $this->logo = $logo;
     }
 
+    public function addLogo(FileReference $logo): void
+    {
+        $this->logo->attach($logo);
+    }
+
+    public function removeLogo(FileReference $logo): void
+    {
+        $this->logo->detach($logo);
+    }
+
     /**
-     * @return FileReference[]
+     * @return array|FileReference[]
      */
     public function getImages(): array
     {
-        $references = [];
-        foreach ($this->images as $image) {
-            $references[] = $image;
-        }
-        return $references;
+        return $this->images->toArray();
+    }
+
+    /**
+     * @return ObjectStorage|\TYPO3\CMS\Core\Resource\FileReference[]
+     */
+    public function getOriginalImages(): ObjectStorage
+    {
+        return $this->images;
     }
 
     public function setImages(ObjectStorage $images): void
     {
         $this->images = $images;
+    }
+
+    public function addImage(FileReference $image): void
+    {
+        $this->images->attach($image);
+    }
+
+    public function removeImage(FileReference $image): void
+    {
+        $this->images->detach($image);
     }
 
     public function getStreet(): string
