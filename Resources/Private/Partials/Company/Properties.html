@@ -1,11 +1,16 @@
 <div class="thumbnail grid_1 floatleft">
 	<figure class="marginbottom gridrightstd">
 		<f:if condition="{company.logo}">
-			<f:image image="{company.logo}" alt="Logo: {company.company}" width="{settings.list.image.width}" height="{settings.list.image.height}" />
+			<f:image image="{company.logo}"
+							 alt="Logo: {company.company}"
+							 width="{settings.show.image.width}"
+							 height="{settings.show.image.height}" />
 		</f:if>
 	</figure>
 </div>
-<div class="grid_11 floatleft marginbottom"><h1>{company.company}</h1></div>
+<div class="grid_11 floatleft marginbottom">
+	<h1>{company.company}</h1>
+</div>
 <div class="grid_12 clearer clearfix">
 	<div class="grid_6 floatleft">
 		<f:if condition="{company.images}">
@@ -15,7 +20,9 @@
 		</f:if>
 
 		<f:if condition="{company.description}">
-			<div class="description gridright marginbottom"><f:format.html>{company.description}</f:format.html></div>
+			<div class="description gridright marginbottom">
+				<f:format.html>{company.description}</f:format.html>
+			</div>
 		</f:if>
 
 		<f:if condition="{company.imageMaps}">
@@ -25,12 +32,12 @@
 				</f:for>
 			</div>
 		</f:if>
-		&nbsp;
 	</div>
+
 	<div class="grid_6 floatleft">
 		<div class="gridleft clearfix rulerbefore4">
 			<dl class="extdl">
-				<dt><f:translate key="tx_itmedia2_domain_model_company.floors"/>:</dt>
+				<dt>{f:translate(key: 'tx_itmedia2_domain_model_company.floors')}:</dt>
 				<dd>
 					<f:for each="{company.floors}" as="floor" iteration="iterator">
 						{floor.name}<f:if condition="{iterator.isLast} === false">, </f:if>
@@ -38,29 +45,37 @@
 				</dd>
 			</dl>
 			<dl class="extdl">
-				<dt><f:translate key="tx_itmedia2_domain_model_company.position"/>:</dt>
+				<dt>{f:translate(key: 'tx_itmedia2_domain_model_company.position')}:</dt>
 				<dd>{company.position.title}</dd>
 			</dl>
 			<dl class="extdl">
-				<dt><f:translate key="tx_itmedia2_domain_model_company.postAddress"/>:</dt>
+				<dt>{f:translate(key: 'tx_itmedia2_domain_model_company.postAddress')}:</dt>
 				<dd><f:render partial="Company/Address" arguments="{company: company}"/></dd>
 				<f:if condition="{company.openingTimes}">
-					<dt><f:translate key="tx_itmedia2_domain_model_company.openingTimes"/>:</dt>
+					<dt>{f:translate(key: 'tx_itmedia2_domain_model_company.openingTimes')}:</dt>
 					<dd>
 						{company.openingTimes -> f:format.html(parseFuncTSPath: 'lib.parseFunc') -> f:format.nl2br()}
 					</dd>
 				</f:if>
 			</dl>
 			<dl class="extdl clearfix rulerafter">
-				<dt><f:translate key="tx_itmedia2_domain_model_company.contact"/>:</dt>
+				<dt>{f:translate(key: 'tx_itmedia2_domain_model_company.contact')}:</dt>
 				<dd class="grid_8 floatleft noborder">
 					<f:render partial="Company/Contact" arguments="{company: company}"/>
 				</dd>
 				<f:if condition="{company.txMaps2Uid}">
 					<dd class="grid_4 floatleft noborder">
 						<figure>
-							<f:link.action title="{f:translate(key: 'altTextMapImg')}" action="show" controller="PoiCollection" extensionName="maps2" pluginName="maps2" pageUid="{settings.pidOfMaps2Plugin}" arguments="{poiCollection: company.txMaps2Uid}">
-								<f:image class="floatright" src="EXT:itmedia2/Resources/Public/Icons/ThumbMaps2.png" alt="{f:translate(key: 'altTextMapImg')}"/>
+							<f:link.action title="{f:translate(key: 'altTextMapImg')}"
+														 action="show"
+														 controller="PoiCollection"
+														 extensionName="maps2"
+														 pluginName="maps2"
+														 pageUid="{settings.pidOfMaps2Plugin}"
+														 arguments="{poiCollection: company.txMaps2Uid}">
+								<f:image class="floatright"
+												 src="EXT:itmedia2/Resources/Public/Icons/ThumbMaps2.png"
+												 alt="{f:translate(key: 'altTextMapImg')}" />
 							</f:link.action>
 						</figure>
 					</dd>
@@ -68,19 +83,15 @@
 			</dl>
 			<dl class="extdl">
 				<f:if condition="{company.contactPerson}">
-					<dt><f:translate key="tx_itmedia2_domain_model_company.contactPerson"/>:</dt>
+					<dt>{f:translate(key: 'tx_itmedia2_domain_model_company.contactPerson')}:</dt>
 					<dd>{company.contactPerson}</dd>
 				</f:if>
 
-				<dt><f:translate key="tx_itmedia2_domain_model_company.barrierFree"/>:</dt>
+				<dt>{f:translate(key: 'tx_itmedia2_domain_model_company.barrierFree')}:</dt>
 				<dd>
 					<f:if condition="{company.barrierFree}">
-						<f:then>
-							<f:translate key="yes"/>
-						</f:then>
-						<f:else>
-							<f:translate key="no"/>
-						</f:else>
+						<f:then>{f:translate(key: 'yes')}</f:then>
+						<f:else>{f:translate(key: 'no')}</f:else>
 					</f:if>
 				</dd>
 			</dl>
