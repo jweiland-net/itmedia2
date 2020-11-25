@@ -15,8 +15,9 @@ ChangeLog
 - Remove old main trade updater
 - Remove TYPO3 columns from ext_tables.sql
 - Add TYPO3 license file
-- Remove Travice implementation
+- Remove Travis implementation
 - Add github actions
+- Add path_segment. Add SlugUpdater
 
 **Version 2.0.1**
 

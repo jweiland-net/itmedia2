@@ -29,6 +29,10 @@
 				<source>Company</source>
 				<target>Firma</target>
 			</trans-unit>
+			<trans-unit id="tx_itmedia2_domain_model_company.path_segment" xml:space="preserve">
+				<source>Segment for URL</source>
+				<target>Abschnitt für URL</target>
+			</trans-unit>
 			<trans-unit id="tx_itmedia2_domain_model_company.company" xml:space="preserve">
 				<source>Company</source>
 				<target>Firmenbezeichnung</target>
