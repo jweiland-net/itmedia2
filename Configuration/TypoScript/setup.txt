@@ -19,10 +19,7 @@ plugin.tx_itmedia2 {
   }
 
   settings {
-    includeJQueryLibrary = {$plugin.tx_itmedia2.settings.includeJQueryLibrary}
     pidOfMaps2Plugin = {$plugin.tx_itmedia2.settings.pidOfMaps2Plugin}
-    startingUidForCategories = {$plugin.tx_itmedia2.settings.startingUidForCategories}
-    uidOfDefaultDistrict = {$plugin.tx_itmedia2.settings.uidOfDefaultDistrict}
     pidOfDetailPage = {$plugin.tx_itmedia2.settings.pidOfDetailPage}
     mapOptions {
       zoom = 12

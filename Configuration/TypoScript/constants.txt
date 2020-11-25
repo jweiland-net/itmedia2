@@ -12,15 +12,9 @@ plugin.tx_itmedia2 {
 		storagePid =
 	}
 	settings {
-		# cat=plugin.tx_itmedia2//b; type=boolean; label=Include jQuery
-		includeJQueryLibrary = 1
 		# cat=plugin.tx_itmedia2//c; type=int+; label=PID for maps2: PID where maps2 plugin for detail view is inserted
 		pidOfMaps2Plugin =
-		# cat=plugin.tx_itmedia2//d; type=int+; label=Root for categories: Starting/Parent UID of all available categories for this plugin
-		startingUidForCategories =
-		# cat=plugin.tx_itmedia2//e; type=int+; label=Default District: UID of the default district to show in selectbox
-		uidOfDefaultDistrict =
-		# cat=plugin.tx_itmedia2//f; type=int+; label=PID of Detail page: Leave empty to show details on current page.
+		# cat=plugin.tx_itmedia2//d; type=int+; label=PID of Detail page: Leave empty to show details on current page.
 		pidOfDetailPage =
 
 		pageBrowser {
