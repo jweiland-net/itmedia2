@@ -36,10 +36,4 @@ call_user_func(function () {
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(
         '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:itmedia2/Configuration/TSconfig/ContentElementWizard.txt">'
     );
-
-    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks'][\JWeiland\Itmedia2\Tasks\Update::class] = [
-        'extension'        => 'itmedia2',
-        'title'            => 'Update itmedia2',
-        'description'      => 'Hide all itmedia2 records which are older than the specified age.'
-    ];
 });
