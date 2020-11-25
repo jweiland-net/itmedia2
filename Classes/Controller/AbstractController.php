@@ -12,13 +12,9 @@ declare(strict_types=1);
 namespace JWeiland\Itmedia2\Controller;
 
 use JWeiland\Itmedia2\Configuration\ExtConf;
-use JWeiland\Itmedia2\Domain\Model\Company;
 use JWeiland\Itmedia2\Domain\Repository\CategoryRepository;
 use JWeiland\Itmedia2\Domain\Repository\CompanyRepository;
 use JWeiland\Itmedia2\Domain\Repository\DistrictRepository;
-use JWeiland\Maps2\Domain\Model\PoiCollection;
-use JWeiland\Maps2\Domain\Model\Position;
-use JWeiland\Maps2\Service\MapService;
 use TYPO3\CMS\Core\Mail\MailMessage;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -26,7 +22,6 @@ use TYPO3\CMS\Core\Utility\MathUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 use TYPO3\CMS\Extbase\Persistence\Generic\Session;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
@@ -221,30 +216,6 @@ class AbstractController extends ActionController
                 unset($company['logo']);
             }
             $this->getControllerContext()->getRequest()->setArgument($argument, $company);
-        }
-    }
-
-    /**
-     * Add new PoiCollection to Company, if company is new
-     *
-     * @param Company $company
-     * @throws \Exception
-     */
-    protected function addNewPoiCollectionToCompany(Company $company): void
-    {
-        $mapService = $this->objectManager->get(MapService::class);
-        $position = $mapService->getFirstFoundPositionByAddress($company->getAddress());
-        if ($position instanceof Position) {
-            $poiCollection = $this->objectManager->get(PoiCollection::class);
-            $poiCollection->setCollectionType('Point');
-            $poiCollection->setTitle($company->getCompany());
-            $poiCollection->setLatitude($position->getLatitude());
-            $poiCollection->setLongitude($position->getLongitude());
-            $poiCollection->setAddress($position->getFormattedAddress());
-            $company->setTxMaps2Uid($poiCollection);
-        } else {
-            DebuggerUtility::var_dump($position);
-            throw new \Exception('Can\'t find a result for address: ' . $company->getAddress() . '. Activate Debugging for a more detailed output.', 1465474954);
         }
     }
 }

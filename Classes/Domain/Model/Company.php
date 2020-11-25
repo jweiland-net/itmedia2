@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace JWeiland\Itmedia2\Domain\Model;
 
 use JWeiland\Maps2\Domain\Model\PoiCollection;
+use JWeiland\Yellowpages2\Domain\Model\Category;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
@@ -28,7 +29,7 @@ class Company extends AbstractEntity
 
     /**
      * @var string
-     * @validate NotEmpty
+     * @Extbase\Validate("NotEmpty")
      */
     protected $company = '';
 
@@ -44,25 +45,25 @@ class Company extends AbstractEntity
 
     /**
      * @var string
-     * @validate NotEmpty
+     * @Extbase\Validate("NotEmpty")
      */
     protected $street = '';
 
     /**
      * @var string
-     * @validate NotEmpty
+     * @Extbase\Validate("NotEmpty")
      */
     protected $houseNumber = '';
 
     /**
      * @var string
-     * @validate NotEmpty
+     * @Extbase\Validate("NotEmpty")
      */
     protected $zip = '';
 
     /**
      * @var string
-     * @validate NotEmpty
+     * @Extbase\Validate("NotEmpty")
      */
     protected $city = '';
 
@@ -103,27 +104,27 @@ class Company extends AbstractEntity
 
     /**
      * @var string
-     * @validate NotEmpty
+     * @Extbase\Validate("NotEmpty")
      */
     protected $description = '';
 
     /**
      * @var \JWeiland\Itmedia2\Domain\Model\District
-     * @validate NotEmpty
-     * @lazy
+     * @Extbase\Validate("NotEmpty")
+     * @Extbase\ORM\Lazy
      */
     protected $district;
 
     /**
-     * @var \JWeiland\Itmedia2\Domain\Model\Category
-     * @validate NotEmpty
-     * @lazy
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\JWeiland\Itmedia2\Domain\Model\Category>
+     * @Extbase\Validate("NotEmpty")
+     * @Extbase\ORM\Lazy
      */
     protected $mainTrade;
 
     /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category>
-     * @lazy
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\JWeiland\Itmedia2\Domain\Model\Category>
+     * @Extbase\ORM\Lazy
      */
     protected $trades;
 
@@ -164,8 +165,10 @@ class Company extends AbstractEntity
 
     public function __construct()
     {
-        $this->trades = new ObjectStorage();
+        $this->logo = new ObjectStorage();
         $this->images = new ObjectStorage();
+        $this->mainTrade = new ObjectStorage();
+        $this->trades = new ObjectStorage();
         $this->imageMaps = new ObjectStorage();
         $this->floors = new ObjectStorage();
     }
@@ -347,7 +350,13 @@ class Company extends AbstractEntity
         $this->district = $district;
     }
 
-    public function getMainTrade(): ObjectStorage
+    public function getMainTrade(): ?Category
+    {
+        $this->mainTrade->rewind();
+        return $this->mainTrade->current();
+    }
+
+    public function getOriginalMainTrade(): ObjectStorage
     {
         return $this->mainTrade;
     }
@@ -357,7 +366,25 @@ class Company extends AbstractEntity
         $this->mainTrade = $mainTrade;
     }
 
-    public function getTrades(): ObjectStorage
+    public function addMainTrade(Category $mainTrade): void
+    {
+        $this->mainTrade->attach($mainTrade);
+    }
+
+    public function removeMainTrade(Category $mainTrade): void
+    {
+        $this->mainTrade->detach($mainTrade);
+    }
+
+    /**
+     * @return Category[]
+     */
+    public function getTrades(): array
+    {
+        return $this->trades->toArray();
+    }
+
+    public function getOriginalTrades(): ObjectStorage
     {
         return $this->trades;
     }
@@ -365,6 +392,16 @@ class Company extends AbstractEntity
     public function setTrades(ObjectStorage $trades): void
     {
         $this->trades = $trades;
+    }
+
+    public function addTrade(Category $trade): void
+    {
+        $this->trades->attach($trade);
+    }
+
+    public function removeTrade(Category $trade): void
+    {
+        $this->trades->detach($trade);
     }
 
     public function getFacebook(): string
@@ -397,14 +434,20 @@ class Company extends AbstractEntity
         $this->google = $google;
     }
 
-    public function getTxMaps2Uid(): ?PoiCollection
+    /**
+     * SF: Do not add PoiCollection as strict_type to $txMaps2Uid
+     * as this will break DataMap in Extbase when maps2 is not installed.
+     */
+    public function getTxMaps2Uid()
     {
         return $this->txMaps2Uid;
     }
 
-    public function setTxMaps2Uid(?PoiCollection $txMaps2Uid = null): void
+    public function setTxMaps2Uid($txMaps2Uid): void
     {
-        $this->txMaps2Uid = $txMaps2Uid;
+        if ($txMaps2Uid instanceof PoiCollection) {
+            $this->txMaps2Uid = $txMaps2Uid;
+        }
     }
 
     /**
