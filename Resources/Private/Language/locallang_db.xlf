@@ -33,8 +33,14 @@
 			<trans-unit id="tx_itmedia2_domain_model_company.logo" xml:space="preserve">
 				<source>Logo</source>
 			</trans-unit>
+			<trans-unit id="tx_itmedia2_domain_model_company.logo.add" xml:space="preserve">
+				<source>Add logo</source>
+			</trans-unit>
 			<trans-unit id="tx_itmedia2_domain_model_company.images" xml:space="preserve">
 				<source>Images</source>
+			</trans-unit>
+			<trans-unit id="tx_itmedia2_domain_model_company.images.add" xml:space="preserve">
+				<source>Add image</source>
 			</trans-unit>
 			<trans-unit id="tx_itmedia2_domain_model_company.street" xml:space="preserve">
 				<source>Street</source>
