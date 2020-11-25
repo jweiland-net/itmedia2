@@ -32,6 +32,13 @@ plugin.tx_itmedia2 {
       overviewMapControl = 1
     }
 
+    show {
+      image {
+        width = 240c
+        height = 180c
+      }
+    }
+
     list {
       image {
         width = 50c
