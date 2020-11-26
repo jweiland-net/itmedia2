@@ -16,7 +16,7 @@ Give a minimal example or a typical example.
 Minimal Example
 ===============
 
-- It is necessary to include static template `Industry Directory (itmedia2)`
+- It is necessary to include static template `IT & Media (itmedia2)`
 
 We prefer to set a Storage PID with help of TypoScript Constants:
 
@@ -31,17 +31,6 @@ We prefer to set a Storage PID with help of TypoScript Constants:
 
 TypoScript Setup Reference
 ==========================
-
-
-.. _includeJQueryLibrary:
-
-includeJQueryLibrary
---------------------
-
-Default: 1
-
-Our JavaScript for frontend editing needs jquery to be present. Please disable this option
-if you have added your own jquery library within your SitePackage.
 
 
 .. _pidOfMaps2Plugin:
@@ -64,28 +53,6 @@ Example: plugin.tx_itmedia2.settings.pidOfDetailPage = 4
 
 If you have inserted the Industry Directory plugin for detail view onto another
 page, you can set its PID to this property here.
-
-
-.. _pidOfListPage:
-
-pidOfListPage
--------------
-
-Example: plugin.tx_itmedia2.settings.pidOfListPage = 2
-
-If you have inserted the Industry Directory plugin for detail view onto another
-page, you can set the PID of list page here to have correct links back to list view.
-
-
-.. _userGroup:
-
-userGroup
----------
-
-Default:
-
-If you will allow for frontend users to create and edit their own business listings you have
-assign them a frontend usergroup and add this group UID to this property.
 
 
 .. _pageBrowser:

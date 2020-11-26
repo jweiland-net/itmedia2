@@ -5,7 +5,7 @@ Updating
 
 If you update EXT:itmedia2 to a newer version, please read this section carefully!
 
-Update to Version 4.0.0
+Update to Version 3.0.0
 -----------------------
 
 We have removed column wsp_member as this column was a specific column for one of our customers. If you have used it

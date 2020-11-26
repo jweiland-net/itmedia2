@@ -13,7 +13,7 @@ Target group: **Editors**
 
 #. Insert a new content element of type: `General Plugin`
 
-#. On tab `Plugin` select `Industry Directory` from selectbox.
+#. On tab `Plugin` select `IT & Media` from selectbox.
 
 #. Confirm reload to load special input fields for our extension (FlexForm).
 
@@ -21,24 +21,6 @@ Target group: **Editors**
 
 Plugin Options
 ==============
-
-**Choose View**
-
-You can select between List and Detail view
-
-**PID of detail page**
-
-If you want another Style for detail view it may make sense to move indistry directory onto another page.
-Define its PID here.
-
-**PID of list page**
-
-If you have defined an PID for detail page, it may make sense to set this value within the plugin on detail page
-to generate correct links back to this list page.
-
-**Preset trade**
-
-Select a trade to reduce the result on website to your selection on startup.
 
 **District**
 
