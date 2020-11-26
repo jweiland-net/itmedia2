@@ -7,6 +7,10 @@
 ChangeLog
 =========
 
+**Version 3.0.3**
+
+- Add getter to get first main trade
+
 **Version 3.0.2**
 
 - Register Slug UpgradeWizard
