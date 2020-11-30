@@ -7,6 +7,11 @@
 ChangeLog
 =========
 
+**Version 3.0.5**
+
+- Use translation of core/frontend instead of lang in TCA
+- Update translation of post address and contact
+
 **Version 3.0.4**
 
 - Replace Google+ column with Instagram
