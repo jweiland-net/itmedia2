@@ -44,16 +44,16 @@
 				<target>Fax</target>
 			</trans-unit>
 			<trans-unit id="tx_itmedia2_domain_model_company.postAddress" xml:space="preserve">
-				<source>Contact person</source>
-				<target>Kontaktperson</target>
-			</trans-unit>
-			<trans-unit id="tx_itmedia2_domain_model_company.contact" xml:space="preserve">
 				<source>Post address</source>
 				<target>Postanschrift</target>
 			</trans-unit>
+			<trans-unit id="tx_itmedia2_domain_model_company.contact" xml:space="preserve">
+				<source>Contact</source>
+				<target>Kontakt</target>
+			</trans-unit>
 			<trans-unit id="tx_itmedia2_domain_model_company.contactPerson" xml:space="preserve">
 				<source>Contact person</source>
-				<target>Kontaktperson</target>
+				<target>Ansprechpartner</target>
 			</trans-unit>
 			<trans-unit id="tx_itmedia2_domain_model_company.email" xml:space="preserve">
 				<source>Email</source>
