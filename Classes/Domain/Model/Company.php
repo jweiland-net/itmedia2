@@ -143,7 +143,7 @@ class Company extends AbstractEntity
     /**
      * @var string
      */
-    protected $google = '';
+    protected $instagram = '';
 
     /**
      * @var \JWeiland\Maps2\Domain\Model\PoiCollection
@@ -464,14 +464,14 @@ class Company extends AbstractEntity
         $this->twitter = $twitter;
     }
 
-    public function getGoogle(): string
+    public function getInstagram(): string
     {
-        return $this->google;
+        return $this->instagram;
     }
 
-    public function setGoogle(string $google): void
+    public function setInstagram(string $instagram): void
     {
-        $this->google = $google;
+        $this->instagram = $instagram;
     }
 
     /**
