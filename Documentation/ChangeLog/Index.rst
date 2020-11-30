@@ -7,6 +7,10 @@
 ChangeLog
 =========
 
+**Version 3.0.4**
+
+- Replace Google+ column with Instagram
+
 **Version 3.0.3**
 
 - Add getter to get first main trade

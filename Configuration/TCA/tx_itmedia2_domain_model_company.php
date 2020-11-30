@@ -23,7 +23,7 @@ return [
         'iconfile' => 'EXT:itmedia2/Resources/Public/Icons/tx_itmedia2_domain_model_company.svg'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, company, path_segment, logo, images, image_maps, street, house_number, zip, city, telephone, fax, contact_person, email, website, opening_times, barrier_free, description, floors, position, district, facebook, twitter, google, main_trade, trades'
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, company, path_segment, logo, images, image_maps, street, house_number, zip, city, telephone, fax, contact_person, email, website, opening_times, barrier_free, description, floors, position, district, facebook, twitter, instagram, main_trade, trades'
     ],
     'types' => [
         '1' => [
@@ -32,7 +32,7 @@ return [
             --palette--;;streetHouseNumber, --palette--;;zipCity, --palette--;;districtBarrierFree,
             --palette--;;telephoneFax, --palette--;;emailWebsite, contact_person,
             opening_times, description, floors, position,
-            --div--;LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tabs.social, facebook, twitter, google,
+            --div--;LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tabs.social, facebook, twitter, instagram,
             --div--;LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tabs.trades, main_trade, trades,
             --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.tabs.access, 
             --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.palettes.access;access'
@@ -491,9 +491,9 @@ return [
                 'eval' => 'trim',
             ]
         ],
-        'google' => [
+        'instagram' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.google',
+            'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.instagram',
             'config' => [
                 'type' => 'input',
                 'renderType' => 'inputLink',
