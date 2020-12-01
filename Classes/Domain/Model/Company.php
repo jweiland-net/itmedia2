@@ -195,7 +195,15 @@ class Company extends AbstractEntity
         $this->company = $company;
     }
 
-    public function getLogo(): ?FileReference
+    /**
+     * @return FileReference[]
+     */
+    public function getLogo(): array
+    {
+        return $this->logo->toArray();
+    }
+
+    public function getFirstLogo(): ?FileReference
     {
         $this->logo->rewind();
         return $this->logo->current();

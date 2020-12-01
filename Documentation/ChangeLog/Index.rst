@@ -7,6 +7,10 @@
 ChangeLog
 =========
 
+**Version 3.0.7**
+
+- Add getFirstLogo to company model
+
 **Version 3.0.6**
 
 - Remove GROUP BY from query, as it is not compatible with pageBrowser
