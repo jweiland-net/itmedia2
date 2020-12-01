@@ -7,6 +7,10 @@
 ChangeLog
 =========
 
+**Version 3.0.6**
+
+- Remove GROUP BY from query, as it is not compatible with pageBrowser
+
 **Version 3.0.5**
 
 - Use translation of core/frontend instead of lang in TCA
