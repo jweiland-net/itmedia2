@@ -7,6 +7,10 @@
 ChangeLog
 =========
 
+**Version 3.0.8**
+
+- Remove title from SVG icons
+
 **Version 3.0.7**
 
 - Add getFirstLogo to company model
