@@ -20,7 +20,7 @@ CREATE TABLE tx_itmedia2_domain_model_company (
 	barrier_free tinyint(1) unsigned DEFAULT '0' NOT NULL,
 	description text NOT NULL,
 	district int(11) unsigned DEFAULT '0',
-	floors text,
+	floors varchar(255) DEFAULT '' NOT NULL,
 	position int(11) unsigned DEFAULT '0' NOT NULL,
 	main_trade int(11) unsigned DEFAULT '0' NOT NULL,
 	trades int(11) unsigned DEFAULT '0' NOT NULL,
