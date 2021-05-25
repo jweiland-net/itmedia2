@@ -5,6 +5,11 @@ Updating
 
 If you update EXT:itmedia2 to a newer version, please read this section carefully!
 
+Update to Version 3.0.11
+------------------------
+
+We have changed some method arguments, please flush cache in InstallTool
+
 Update to Version 3.0.0
 -----------------------
 

@@ -7,6 +7,10 @@
 ChangeLog
 =========
 
+**Version 3.0.11**
+
+- Move SlugHelper from constructor argument into getSlugHelper()
+
 **Version 3.0.8**
 
 - Remove title from SVG icons
