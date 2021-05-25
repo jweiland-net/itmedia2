@@ -12,9 +12,9 @@ declare(strict_types=1);
 namespace JWeiland\Itmedia2\Domain\Model;
 
 use JWeiland\Maps2\Domain\Model\PoiCollection;
-use JWeiland\Yellowpages2\Domain\Model\Category;
 use JWeiland\Yellowpages2\Domain\Model\District;
 use TYPO3\CMS\Extbase\Annotation as Extbase;
+use TYPO3\CMS\Extbase\Domain\Model\Category;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
