@@ -7,6 +7,10 @@
 ChangeLog
 =========
 
+**Version 3.0.12**
+
+- Add compatibility to yellowpages2 ^5.0
+
 **Version 3.0.11**
 
 - Move SlugHelper from constructor argument into getSlugHelper()
