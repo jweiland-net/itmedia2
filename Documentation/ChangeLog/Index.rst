@@ -7,6 +7,12 @@
 ChangeLog
 =========
 
+**Version 3.1.0**
+
+- Use inject methods in controller
+- Update files for github actions
+- Set dependency for glossary2 to 5.0.0
+
 **Version 3.0.12**
 
 - Add compatibility to yellowpages2 ^5.0
