@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the package jweiland/itmedia2.
  *
@@ -22,12 +24,12 @@ class PositionTest extends UnitTestCase
      */
     protected $subject;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->subject = new Position();
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         unset(
             $this->subject
@@ -38,7 +40,7 @@ class PositionTest extends UnitTestCase
     /**
      * @test
      */
-    public function getTitleInitiallyReturnsEmptyString()
+    public function getTitleInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
             '',
@@ -49,7 +51,7 @@ class PositionTest extends UnitTestCase
     /**
      * @test
      */
-    public function setTitleSetsTitle()
+    public function setTitleSetsTitle(): void
     {
         $this->subject->setTitle('foo bar');
 
@@ -57,23 +59,5 @@ class PositionTest extends UnitTestCase
             'foo bar',
             $this->subject->getTitle()
         );
-    }
-
-    /**
-     * @test
-     */
-    public function setTitleWithIntegerResultsInString()
-    {
-        $this->subject->setTitle(123);
-        self::assertSame('123', $this->subject->getTitle());
-    }
-
-    /**
-     * @test
-     */
-    public function setTitleWithBooleanResultsInString()
-    {
-        $this->subject->setTitle(true);
-        self::assertSame('1', $this->subject->getTitle());
     }
 }
