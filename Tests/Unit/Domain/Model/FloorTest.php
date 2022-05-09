@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the package jweiland/itmedia2.
  *
@@ -22,12 +24,12 @@ class FloorTest extends UnitTestCase
      */
     protected $subject;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->subject = new Floor();
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         unset(
             $this->subject
@@ -38,7 +40,7 @@ class FloorTest extends UnitTestCase
     /**
      * @test
      */
-    public function getNameInitiallyReturnsEmptyString()
+    public function getNameInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
             '',
@@ -49,7 +51,7 @@ class FloorTest extends UnitTestCase
     /**
      * @test
      */
-    public function setNameSetsName()
+    public function setNameSetsName(): void
     {
         $this->subject->setName('foo bar');
 
@@ -62,25 +64,7 @@ class FloorTest extends UnitTestCase
     /**
      * @test
      */
-    public function setNameWithIntegerResultsInString()
-    {
-        $this->subject->setName(123);
-        self::assertSame('123', $this->subject->getName());
-    }
-
-    /**
-     * @test
-     */
-    public function setNameWithBooleanResultsInString()
-    {
-        $this->subject->setName(true);
-        self::assertSame('1', $this->subject->getName());
-    }
-
-    /**
-     * @test
-     */
-    public function getSortingInitiallyReturnsZero()
+    public function getSortingInitiallyReturnsZero(): void
     {
         self::assertSame(
             0,
@@ -91,38 +75,12 @@ class FloorTest extends UnitTestCase
     /**
      * @test
      */
-    public function setSortingSetsSorting()
+    public function setSortingSetsSorting(): void
     {
         $this->subject->setSorting(123456);
 
         self::assertSame(
             123456,
-            $this->subject->getSorting()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setSortingWithStringResultsInInteger()
-    {
-        $this->subject->setSorting('123Test');
-
-        self::assertSame(
-            123,
-            $this->subject->getSorting()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setSortingWithBooleanResultsInInteger()
-    {
-        $this->subject->setSorting(true);
-
-        self::assertSame(
-            1,
             $this->subject->getSorting()
         );
     }
