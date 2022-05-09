@@ -37,13 +37,18 @@ class CompanyController extends ActionController
      */
     protected $glossaryService;
 
-    public function __construct(
-        CompanyRepository $companyRepository,
-        Session $session,
-        GlossaryService $glossaryService
-    ) {
+    public function injectCompanyRepository(CompanyRepository $companyRepository): void
+    {
         $this->companyRepository = $companyRepository;
+    }
+
+    public function injectSession(Session $session): void
+    {
         $this->session = $session;
+    }
+
+    public function injectGlossaryService(GlossaryService $glossaryService): void
+    {
         $this->glossaryService = $glossaryService;
     }
 
