@@ -11,9 +11,9 @@ declare(strict_types=1);
 
 namespace JWeiland\Itmedia2\EventListener;
 
+use JWeiland\Glossary2\Service\GlossaryService;
 use JWeiland\Itmedia2\Domain\Repository\CompanyRepository;
 use JWeiland\Itmedia2\Event\PostProcessFluidVariablesEvent;
-use JWeiland\Glossary2\Service\GlossaryService;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
 
 class AddGlossaryEventListener extends AbstractControllerEventListener
