@@ -11,8 +11,8 @@ declare(strict_types=1);
 
 namespace JWeiland\Itmedia2\Controller;
 
-use JWeiland\Glossary2\Service\GlossaryService;
 use JWeiland\Itmedia2\Domain\Repository\CompanyRepository;
+use JWeiland\Itmedia2\Event\PostProcessFluidVariablesEvent;
 use TYPO3\CMS\Extbase\Annotation as Extbase;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Persistence\Generic\Session;
@@ -32,11 +32,6 @@ class CompanyController extends ActionController
      */
     protected $session;
 
-    /**
-     * @var GlossaryService
-     */
-    protected $glossaryService;
-
     public function injectCompanyRepository(CompanyRepository $companyRepository): void
     {
         $this->companyRepository = $companyRepository;
@@ -45,11 +40,6 @@ class CompanyController extends ActionController
     public function injectSession(Session $session): void
     {
         $this->session = $session;
-    }
-
-    public function injectGlossaryService(GlossaryService $glossaryService): void
-    {
-        $this->glossaryService = $glossaryService;
     }
 
     public function initializeAction(): void
@@ -68,11 +58,10 @@ class CompanyController extends ActionController
      */
     public function listAction(string $letter = ''): void
     {
-        $this->view->assignMultiple([
+        $this->postProcessAndAssignFluidVariables([
             'companies' => $this->companyRepository->findByLetter($letter, $this->settings),
             'categories' => $this->companyRepository->getTranslatedCategories()
         ]);
-        $this->assignGlossary();
     }
 
     /**
@@ -80,8 +69,9 @@ class CompanyController extends ActionController
      */
     public function showAction(int $company): void
     {
-        $companyObject = $this->companyRepository->findByIdentifier($company);
-        $this->view->assign('company', $companyObject);
+        $this->postProcessAndAssignFluidVariables([
+            'company', $this->companyRepository->findByIdentifier($company)
+        ]);
     }
 
     public function initializeSearchAction(): void
@@ -94,46 +84,25 @@ class CompanyController extends ActionController
 
     public function searchAction(string $search, int $category = 0): void
     {
-        $this->view->assignMultiple([
+        $this->postProcessAndAssignFluidVariables([
             'search' => $search,
             'category' => $category,
             'companies' => $this->companyRepository->searchCompanies($search, $category, $this->settings),
             'categories' => $this->companyRepository->getTranslatedCategories()
         ]);
-        $this->assignGlossary();
     }
 
-    /**
-     * This is a workaround to help controller actions to find (hidden) companies
-     *
-     * @param string $argumentName
-     */
-    protected function registerCompanyFromRequest(string $argumentName): void
+    protected function postProcessAndAssignFluidVariables(array $variables = []): void
     {
-        $argument = $this->request->getArgument($argumentName);
-        if (is_array($argument)) {
-            // get company from form ($_POST)
-            $company = $this->companyRepository->findHiddenEntryByUid((int)$argument['__identity']);
-        } else {
-            // get company from UID
-            $company = $this->companyRepository->findHiddenEntryByUid((int)$argument);
-        }
-        $this->session->registerObject($company, $company->getUid());
-    }
-
-    protected function assignGlossary(): void
-    {
-        $this->view->assign(
-            'glossar',
-            $this->glossaryService->buildGlossary(
-                $this->companyRepository->getQueryBuilderToFindAllEntries(),
-                [
-                    'extensionName' => 'itmedia2',
-                    'pluginName' => 'directory',
-                    'controllerName' => 'Company',
-                    'column' => 'company'
-                ]
+        /** @var PostProcessFluidVariablesEvent $event */
+        $event = $this->eventDispatcher->dispatch(
+            new PostProcessFluidVariablesEvent(
+                $this->request,
+                $this->settings,
+                $variables
             )
         );
+
+        $this->view->assignMultiple($event->getFluidVariables());
     }
 }
