@@ -60,23 +60,13 @@ plugin.tx_itmedia2 {
       image < .logo
     }
 
+    glossary {
+      mergeNumbers = 1
+      showAllLink = 1
+    }
+
     pageBrowser {
       itemsPerPage = {$plugin.tx_itmedia2.settings.pageBrowser.itemsPerPage}
-      insertAbove = {$plugin.tx_itmedia2.settings.pageBrowser.insertAbove}
-      insertBelow = {$plugin.tx_itmedia2.settings.pageBrowser.insertBelow}
-      maximumNumberOfLinks = {$plugin.tx_itmedia2.settings.pageBrowser.maximumNumberOfLinks}
     }
   }
 }
-
-plugin.tx_itmedia2._CSS_DEFAULT_STYLE (
-	textarea.f3-form-error {
-		background-color:#FF9F9F;
-		border: 1px #FF0000 solid;
-	}
-
-	input.f3-form-error {
-		background-color:#FF9F9F;
-		border: 1px #FF0000 solid;
-	}
-)
