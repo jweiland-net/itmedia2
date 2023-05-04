@@ -3,7 +3,13 @@
 	"type": "typo3-cms-extension",
 	"description": "With this extension you can build your own industry directory",
 	"license": "GPL-2.0-or-later",
-	"keywords": ["typo3", "TYPO3 CMS", "itmedia2", "industry", "directory"],
+	"keywords": [
+		"typo3",
+		"TYPO3 CMS",
+		"itmedia2",
+		"industry",
+		"directory"
+	],
 	"homepage": "https://jweiland.net",
 	"authors": [
 		{
@@ -18,7 +24,7 @@
 		"source": "https://github.com/jweiland-net/itmedia2"
 	},
 	"require": {
-		"typo3/cms-core": "^10.4.19",
+		"typo3/cms-core": "^10.4.36 || ^11.5.23",
 		"jweiland/glossary2": ">=5.0.0",
 		"jweiland/yellowpages2": ">=4.0.0"
 	},
