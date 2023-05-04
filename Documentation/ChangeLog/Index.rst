@@ -7,6 +7,15 @@
 ChangeLog
 =========
 
+Version 3.2.0
+=============
+
+*   Add TYPO3 11 compatibility
+*   Update documentation
+*   Remove unused session object from controller
+*   Use 4 space indents in fluid templates
+*   Migrate makeCategorizable to TCA
+
 Version 3.1.0
 =============
 
