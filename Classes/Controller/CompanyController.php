@@ -60,7 +60,7 @@ class CompanyController extends ActionController
     {
         $this->postProcessAndAssignFluidVariables([
             'companies' => $this->companyRepository->findByLetter($letter, $this->settings),
-            'categories' => $this->companyRepository->getTranslatedCategories()
+            'categories' => $this->companyRepository->getTranslatedCategories(),
         ]);
     }
 
@@ -70,7 +70,7 @@ class CompanyController extends ActionController
     public function showAction(int $company): void
     {
         $this->postProcessAndAssignFluidVariables([
-            'company', $this->companyRepository->findByIdentifier($company)
+            'company', $this->companyRepository->findByIdentifier($company),
         ]);
     }
 
