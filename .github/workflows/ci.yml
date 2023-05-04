@@ -23,7 +23,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Setup PHP ${{ matrix.php }}, with composer and extensions
-      uses: shivammathur/setup-php@v2
+      uses: shivammathur/setup-php@v3
       with:
         php-version: ${{ matrix.php }}
         extensions: mbstring, dom, zip, mysql
