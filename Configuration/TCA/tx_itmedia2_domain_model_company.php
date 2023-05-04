@@ -495,5 +495,65 @@ return [
                 'eval' => 'trim',
             ],
         ],
+        'main_trade' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.mainTrade',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectTree',
+                'treeConfig' => [
+                    'parentField' => 'parent',
+                    'appearance' => [
+                        'showHeader' => true,
+                        'expandAll' => true,
+                        'maxLevels' => 99,
+                    ],
+                ],
+                'MM' => 'sys_category_record_mm',
+                'MM_match_fields' => [
+                    'fieldname' => 'main_trade',
+                    'tablenames' => 'tx_itmedia2_domain_model_company',
+                ],
+                'MM_opposite_field' => 'items',
+                'foreign_table' => 'sys_category',
+                'foreign_table_where' => ' AND (sys_category.sys_language_uid = 0 OR sys_category.l10n_parent = 0) ORDER BY sys_category.sorting',
+                'size' => 10,
+                'minitems' => 1,
+                'maxitems' => 1,
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
+                ],
+            ],
+        ],
+        'trades' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.trades',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectTree',
+                'treeConfig' => [
+                    'parentField' => 'parent',
+                    'appearance' => [
+                        'showHeader' => true,
+                        'expandAll' => true,
+                        'maxLevels' => 99,
+                    ],
+                ],
+                'MM' => 'sys_category_record_mm',
+                'MM_match_fields' => [
+                    'fieldname' => 'trades',
+                    'tablenames' => 'tx_itmedia2_domain_model_company',
+                ],
+                'MM_opposite_field' => 'items',
+                'foreign_table' => 'sys_category',
+                'foreign_table_where' => ' AND (sys_category.sys_language_uid = 0 OR sys_category.l10n_parent = 0) ORDER BY sys_category.sorting',
+                'size' => 10,
+                'minitems' => 0,
+                'maxitems' => 2,
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
+                ],
+            ],
+        ],
     ],
 ];

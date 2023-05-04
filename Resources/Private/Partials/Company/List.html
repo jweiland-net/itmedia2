@@ -1,30 +1,30 @@
 <html lang="en"
-			xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
-			data-namespace-typo3-fluid="true">
+      xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
 
 <f:if condition="{companies}">
-	<f:then>
-		<div class="list gridright scroll-container">
-			<f:for each="{companies}" as="company">
-				<div class="marginbottom scroll-item clearfix">
-					<div class="entry grid_10 floatleft borderbottom">
-						<h2 class="noborder nomargin">
-							<f:link.action action="show"
-														 pageUid="{settings.pidOfDetailPage}"
-														 arguments="{company: company}">
-								{company.company}
-							</f:link.action>
-						</h2>
-						{f:translate(key: 'branch')}: {company.firstMainTrade.title}
-					</div>
-				</div>
-			</f:for>
-			<f:render partial="Component/Pagination"
-								arguments="{pagination: pagination, paginator: paginator, actionName: actionName}" />
-		</div>
-	</f:then>
-	<f:else>
-		<div class="noResults">{f:translate(key: 'noResults')}</div>
-	</f:else>
+    <f:then>
+        <div class="list gridright scroll-container">
+            <f:for each="{companies}" as="company">
+                <div class="marginbottom scroll-item clearfix">
+                    <div class="entry grid_10 floatleft borderbottom">
+                        <h2 class="noborder nomargin">
+                            <f:link.action action="show"
+                                           pageUid="{settings.pidOfDetailPage}"
+                                           arguments="{company: company}">
+                                {company.company}
+                            </f:link.action>
+                        </h2>
+                        {f:translate(key: 'branch')}: {company.firstMainTrade.title}
+                    </div>
+                </div>
+            </f:for>
+            <f:render partial="Component/Pagination"
+                      arguments="{pagination: pagination, paginator: paginator, actionName: actionName}"/>
+        </div>
+    </f:then>
+    <f:else>
+        <div class="noResults">{f:translate(key: 'noResults')}</div>
+    </f:else>
 </f:if>
 </html>

@@ -1,105 +1,108 @@
 <html lang="en"
-			xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
-			data-namespace-typo3-fluid="true">
+      xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
 
 <div class="thumbnail grid_1 floatleft">
-	<figure class="marginbottom gridrightstd">
-		<f:if condition="{company.firstLogo}">
-			<f:image image="{company.firstLogo}"
-							 alt="Logo: {company.company}"
-							 width="{settings.show.logo.width}"
-							 height="{settings.show.logo.height}" />
-		</f:if>
-	</figure>
+    <figure class="marginbottom gridrightstd">
+        <f:if condition="{company.firstLogo}">
+            <f:image image="{company.firstLogo}"
+                     alt="Logo: {company.company}"
+                     width="{settings.show.logo.width}"
+                     height="{settings.show.logo.height}"/>
+        </f:if>
+    </figure>
 </div>
 <div class="grid_11 floatleft marginbottom">
-	<h1>{company.company}</h1>
+    <h1>{company.company}</h1>
 </div>
 <div class="grid_12 clearer clearfix">
-	<div class="grid_6 floatleft">
-		<f:if condition="{company.images}">
-			<figure class="gridright marginbottom2">
-				<f:render partial="Company/Images" arguments="{company: company}" />
-			</figure>
-		</f:if>
+    <div class="grid_6 floatleft">
+        <f:if condition="{company.images}">
+            <figure class="gridright marginbottom2">
+                <f:render partial="Company/Images" arguments="{company: company}"/>
+            </figure>
+        </f:if>
 
-		<f:if condition="{company.description}">
-			<div class="description gridright marginbottom">
-				<f:format.html>{company.description}</f:format.html>
-			</div>
-		</f:if>
+        <f:if condition="{company.description}">
+            <div class="description gridright marginbottom">
+                <f:format.html>{company.description}</f:format.html>
+            </div>
+        </f:if>
 
-		<f:if condition="{company.imageMaps}">
-			<div class="image-map gridright marginbottom">
-				<f:for each="{company.imageMaps}" as="imageMap">
-					<f:image image="{imageMap}" />
-				</f:for>
-			</div>
-		</f:if>
-	</div>
+        <f:if condition="{company.imageMaps}">
+            <div class="image-map gridright marginbottom">
+                <f:for each="{company.imageMaps}" as="imageMap">
+                    <f:image image="{imageMap}"/>
+                </f:for>
+            </div>
+        </f:if>
+    </div>
 
-	<div class="grid_6 floatleft">
-		<div class="gridleft clearfix rulerbefore4">
-			<dl class="extdl">
-				<dt>{f:translate(key: 'tx_itmedia2_domain_model_company.floors')}:</dt>
-				<dd>
-					<f:for each="{company.floors}" as="floor" iteration="iterator">
-						{floor.name}<f:if condition="{iterator.isLast} === false">, </f:if>
-					</f:for>
-				</dd>
-			</dl>
-			<dl class="extdl">
-				<dt>{f:translate(key: 'tx_itmedia2_domain_model_company.position')}:</dt>
-				<dd>{company.position.title}</dd>
-			</dl>
-			<dl class="extdl">
-				<dt>{f:translate(key: 'tx_itmedia2_domain_model_company.postAddress')}:</dt>
-				<dd><f:render partial="Company/Address" arguments="{company: company}"/></dd>
-				<f:if condition="{company.openingTimes}">
-					<dt>{f:translate(key: 'tx_itmedia2_domain_model_company.openingTimes')}:</dt>
-					<dd>
-						{company.openingTimes -> f:format.html(parseFuncTSPath: 'lib.parseFunc') -> f:format.nl2br()}
-					</dd>
-				</f:if>
-			</dl>
-			<dl class="extdl clearfix rulerafter">
-				<dt>{f:translate(key: 'tx_itmedia2_domain_model_company.contact')}:</dt>
-				<dd class="grid_8 floatleft noborder">
-					<f:render partial="Company/Contact" arguments="{company: company}"/>
-				</dd>
-				<f:if condition="{company.txMaps2Uid}">
-					<dd class="grid_4 floatleft noborder">
-						<figure>
-							<f:link.action title="{f:translate(key: 'altTextMapImg')}"
-														 action="show"
-														 controller="PoiCollection"
-														 extensionName="maps2"
-														 pluginName="maps2"
-														 pageUid="{settings.pidOfMaps2Plugin}"
-														 arguments="{poiCollection: company.txMaps2Uid}">
-								<f:image class="floatright"
-												 src="EXT:itmedia2/Resources/Public/Icons/ThumbMaps2.png"
-												 alt="{f:translate(key: 'altTextMapImg')}" />
-							</f:link.action>
-						</figure>
-					</dd>
-				</f:if>
-			</dl>
-			<dl class="extdl">
-				<f:if condition="{company.contactPerson}">
-					<dt>{f:translate(key: 'tx_itmedia2_domain_model_company.contactPerson')}:</dt>
-					<dd>{company.contactPerson}</dd>
-				</f:if>
+    <div class="grid_6 floatleft">
+        <div class="gridleft clearfix rulerbefore4">
+            <dl class="extdl">
+                <dt>{f:translate(key: 'tx_itmedia2_domain_model_company.floors')}:</dt>
+                <dd>
+                    <f:for each="{company.floors}" as="floor" iteration="iterator">
+                        {floor.name}
+                        <f:if condition="{iterator.isLast} === false">,</f:if>
+                    </f:for>
+                </dd>
+            </dl>
+            <dl class="extdl">
+                <dt>{f:translate(key: 'tx_itmedia2_domain_model_company.position')}:</dt>
+                <dd>{company.position.title}</dd>
+            </dl>
+            <dl class="extdl">
+                <dt>{f:translate(key: 'tx_itmedia2_domain_model_company.postAddress')}:</dt>
+                <dd>
+                    <f:render partial="Company/Address" arguments="{company: company}"/>
+                </dd>
+                <f:if condition="{company.openingTimes}">
+                    <dt>{f:translate(key: 'tx_itmedia2_domain_model_company.openingTimes')}:</dt>
+                    <dd>
+                        {company.openingTimes -> f:format.html(parseFuncTSPath: 'lib.parseFunc') -> f:format.nl2br()}
+                    </dd>
+                </f:if>
+            </dl>
+            <dl class="extdl clearfix rulerafter">
+                <dt>{f:translate(key: 'tx_itmedia2_domain_model_company.contact')}:</dt>
+                <dd class="grid_8 floatleft noborder">
+                    <f:render partial="Company/Contact" arguments="{company: company}"/>
+                </dd>
+                <f:if condition="{company.txMaps2Uid}">
+                    <dd class="grid_4 floatleft noborder">
+                        <figure>
+                            <f:link.action title="{f:translate(key: 'altTextMapImg')}"
+                                           action="show"
+                                           controller="PoiCollection"
+                                           extensionName="maps2"
+                                           pluginName="maps2"
+                                           pageUid="{settings.pidOfMaps2Plugin}"
+                                           arguments="{poiCollectionUid: company.txMaps2Uid}">
+                                <f:image class="floatright"
+                                         src="EXT:itmedia2/Resources/Public/Icons/ThumbMaps2.png"
+                                         alt="{f:translate(key: 'altTextMapImg')}"/>
+                            </f:link.action>
+                        </figure>
+                    </dd>
+                </f:if>
+            </dl>
+            <dl class="extdl">
+                <f:if condition="{company.contactPerson}">
+                    <dt>{f:translate(key: 'tx_itmedia2_domain_model_company.contactPerson')}:</dt>
+                    <dd>{company.contactPerson}</dd>
+                </f:if>
 
-				<dt>{f:translate(key: 'tx_itmedia2_domain_model_company.barrierFree')}:</dt>
-				<dd>
-					<f:if condition="{company.barrierFree}">
-						<f:then>{f:translate(key: 'yes')}</f:then>
-						<f:else>{f:translate(key: 'no')}</f:else>
-					</f:if>
-				</dd>
-			</dl>
-		</div>
-	</div>
+                <dt>{f:translate(key: 'tx_itmedia2_domain_model_company.barrierFree')}:</dt>
+                <dd>
+                    <f:if condition="{company.barrierFree}">
+                        <f:then>{f:translate(key: 'yes')}</f:then>
+                        <f:else>{f:translate(key: 'no')}</f:else>
+                    </f:if>
+                </dd>
+            </dl>
+        </div>
+    </div>
 </div>
 </html>
