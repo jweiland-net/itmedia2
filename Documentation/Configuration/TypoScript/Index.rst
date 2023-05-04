@@ -1,99 +1,149 @@
-.. include:: ../../Includes.txt
+..  include:: /Includes.rst.txt
 
-.. _configuration:
 
-=============
-Configuration
-=============
+.. _typoscript:
 
-.. tip::
+===========
+TypoScript
+===========
 
-   You must configure the extension itmedia2 first to run this extension correctly.
+`itmedia2` needs some basic TypoScript configuration. To do so you have
+to add an +ext template to either the root page of your website or to a
+specific page which contains the `itmedia2` plugin.
 
-   `Maps2 Documentation <https://docs.typo3.org/p/jweiland/maps2/master/en-us/>`_
+..  rst-class:: bignums
 
+1.  Locate page
+
+    You have to decide where you want to insert the TypoScript template. Either
+    root page or page with `itmedia2` plugin is OK.
+
+2.  Create TypoScript template
+
+    Switch to template module and choose the specific page from above in the
+    pagetree. Choose `Click here to create an extension template` from the
+    right frame. In the TYPO3 community it is also known as "+ext template".
+
+3.  Add static template
+
+    Choose `Info/Modify` from the upper selectbox and then click
+    on `Edit the whole template record` button below the little table. On
+    tab `Includes` locate the section `Include static (from extension)`. Use
+    the search above `Available items` to search for `itmedia2`. Hopefully
+    just one record is visible below. Choose it, to move that record to
+    the left.
+
+4.  Save
+
+    If you want you can give that template a name on tab "General", save
+    and close it.
+
+5.  Constants Editor
+
+    Choose `Constant Editor` from the upper selectbox.
+
+6.  `itmedia2` constants
+
+    Choose `PLUGIN.TX_ITMEDIA2` from the category selectbox to show
+    just `itmedia2` related constants
+
+7.  Configure constants
+
+    Adapt the constants to your needs. We prefer to set all
+    these `pidOfListPage` and `pidOfDetailPage` constants. That prevents you
+    from setting all these PIDs in each plugin individual.
+
+8.  Configure TypoScript
+
+    As constants will only allow modifying a fixed selection of TypoScript
+    you also switch to `Info/Modify` again and click on `Setup`. Here you have
+    the possibility to configure all `itmedia2` related configuration.
 
 View
 ====
 
-view.templateRootPaths
-""""""""""""""""""""""
+..  confval:: templateRootPaths
 
-Default: Value from Constants *EXT:itmedia2/Resources/Private/Templates/*
+    :type: array
+    :Default: EXT:itmedia2/Resources/Private/Templates/
+    :Path: plugin.tx_itmedia2.view.*
 
-You can override our Templates with your own SitePackage extension. We prefer to change this value in TS Constants.
+    You can override our Templates with your own SitePackage extension. We
+    prefer to change this value in TS Constants.
 
-view.partialRootPaths
-"""""""""""""""""""""
+..  confval:: partialRootPaths
 
-Default: Value from Constants *EXT:itmedia2/Resources/Private/Partials/*
+    :type: array
+    :Default: EXT:itmedia2/Resources/Private/Partials/
+    :Path: plugin.tx_itmedia2.view.*
 
-You can override our Partials with your own SitePackage extension. We prefer to change this value in TS Constants.
+    You can override our Partials with your own SitePackage extension. We
+    prefer to change this value in TS Constants.
 
-view.layoutsRootPaths
-"""""""""""""""""""""
+..  confval:: layoutsRootPaths
 
-Default: Value from Constants *EXT:itmedia2/Resources/Layouts/Templates/*
+    :type: array
+    :Default: EXT:itmedia2/Resources/Layouts/Templates/
+    :Path: plugin.tx_itmedia2.view.*
 
-You can override our Layouts with your own SitePackage extension. We prefer to change this value in TS Constants.
+    You can override our Layouts with your own SitePackage extension. We
+    prefer to change this value in TS Constants.
 
 
 Persistence
 ===========
 
-persistence.storagePid
-""""""""""""""""""""""
+..  confval:: storagePid
 
-Set this value to a Storage Folder (PID) where you have stored the records.
+    :type: int
+    :Default: 0
+    :Path: plugin.tx_itmedia2.persistence
 
-Example: `plugin.tx_itmedia2.settings.pidOfMaps2Plugin = 21,45,3234`
+    Set this value to a Storage Folder (PID) where you have stored the records.
 
 
 Settings
 ========
 
-settings.pidOfMaps2Plugin
-"""""""""""""""""""""""""
+..  confval:: pidOfMaps2Plugin
 
-Default: 0
+    :type: int
+    :Default: 0
+    :Path: plugin.tx_itmedia2.settings
 
-Example: `plugin.tx_itmedia2.settings.pidOfMaps2Plugin = 12`
+    Define the page UID where the EXT:maps2 plugin is located to show an
+    address on a map.
 
-Define the page UID where the EXT:maps2 plugin is located to show an address on a map.
+..  confval:: pidOfDetailPage
 
-setting.pidOfDetailPage
-"""""""""""""""""""""""
+    :type: int
+    :Default: 0
+    :Path: plugin.tx_itmedia2.settings
 
-Default: 0
+    If you have inserted the Industry Directory plugin for detail view onto
+    another page, you can set its PID to this property here.
 
-Example: `plugin.tx_itmedia2.settings.pidOfDetailPage = 84`
+..  confval:: glossary.mergeNumbers
 
-If you have inserted the Industry Directory plugin for detail view onto another
-page, you can set its PID to this property here.
+    :type: int
+    :Default: 1
+    :Path: plugin.tx_itmedia2.settings
 
-settings.glossary.mergeNumbers
-""""""""""""""""""""""""""""""
+    Merge record titles starting with numbers to `0-9` in glossary.
 
-Default: 1
+..  confval:: glossary.showAllLink
 
-Example: `plugin.tx_itmedia2.settings.glossary.mergeNumbers = 0`
+    :type: int
+    :Default: 1
+    :Path: plugin.tx_itmedia2.settings
 
-Merge record titles starting with numbers to `0-9` in glossary.
+    Prepend an additional button in front of the glossary to show
+    all records again.
 
-settings.glossary.showAllLink
-"""""""""""""""""""""""""""""
+..  confval:: pageBrowser.itemsPerPage
 
-Default: 1
+    :type: int
+    :Default: 15
+    :Path: plugin.tx_itmedia2.settings
 
-Example: `plugin.tx_itmedia2.settings.glossary.showAllLink = 0`
-
-Prepend an additional button in front of the glossary to show all records again.
-
-settings.pageBrowser.itemsPerPage
-"""""""""""""""""""""""""""""""""
-
-Default: 15
-
-Example: `plugin.tx_itmedia2.settings.pageBrowser.itemsPerPage = 20`
-
-Reduce result of records to this value for a page
+    Reduce result of records to this value for a page
