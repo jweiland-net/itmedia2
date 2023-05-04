@@ -88,7 +88,7 @@ class CompanyController extends ActionController
             'search' => $search,
             'category' => $category,
             'companies' => $this->companyRepository->searchCompanies($search, $category, $this->settings),
-            'categories' => $this->companyRepository->getTranslatedCategories()
+            'categories' => $this->companyRepository->getTranslatedCategories(),
         ]);
     }
 

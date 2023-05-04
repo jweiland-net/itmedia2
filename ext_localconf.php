@@ -6,14 +6,14 @@ if (!defined('TYPO3_MODE')) {
 
 call_user_func(function () {
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-        'JWeiland.itmedia2',
+        'Itmedia2',
         'Directory',
         [
-            'Company' => 'list, show, search'
+            \JWeiland\Itmedia2\Controller\CompanyController::class => 'list, show, search',
         ],
         // non-cacheable actions
         [
-            'Company' => 'search'
+            \JWeiland\Itmedia2\Controller\CompanyController::class => 'search',
         ]
     );
 

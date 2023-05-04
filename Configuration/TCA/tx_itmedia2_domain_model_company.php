@@ -6,7 +6,6 @@ return [
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
-        'dividers2tabs' => true,
         'default_sortby' => 'ORDER BY company',
         'versioningWS' => true,
         'origUid' => 't3_origuid',
@@ -17,13 +16,10 @@ return [
         'enablecolumns' => [
             'disabled' => 'hidden',
             'starttime' => 'starttime',
-            'endtime' => 'endtime'
+            'endtime' => 'endtime',
         ],
         'searchFields' => 'company,logo,street,house_number,zip,city,telephone,fax,contact_person,email,website,opening_times,barrier_free,description,district,',
-        'iconfile' => 'EXT:itmedia2/Resources/Public/Icons/tx_itmedia2_domain_model_company.svg'
-    ],
-    'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, company, path_segment, logo, images, image_maps, street, house_number, zip, city, telephone, fax, contact_person, email, website, opening_times, barrier_free, description, floors, position, district, facebook, twitter, instagram, main_trade, trades'
+        'iconfile' => 'EXT:itmedia2/Resources/Public/Icons/tx_itmedia2_domain_model_company.svg',
     ],
     'types' => [
         '1' => [
@@ -34,9 +30,9 @@ return [
             opening_times, description, floors, position,
             --div--;LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tabs.social, facebook, twitter, instagram,
             --div--;LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tabs.trades, main_trade, trades,
-            --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.tabs.access, 
-            --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.palettes.access;access'
-        ]
+            --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.tabs.access,
+            --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.palettes.access;access',
+        ],
     ],
     'palettes' => [
         'languageHidden' => ['showitem' => 'sys_language_uid, l10n_parent, hidden'],
@@ -47,7 +43,7 @@ return [
         'emailWebsite' => ['showitem' => 'email, website'],
         'access' => [
             'showitem' => 'starttime;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:starttime_formlabel,endtime;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:endtime_formlabel',
-        ]
+        ],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -61,15 +57,14 @@ return [
                     [
                         'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages',
                         -1,
-                        'flags-multiple'
+                        'flags-multiple',
                     ],
                 ],
                 'default' => 0,
-            ]
+            ],
         ],
         'l10n_parent' => [
             'displayCond' => 'FIELD:sys_language_uid:>:0',
-            'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.l18n_parent',
             'config' => [
                 'type' => 'select',
@@ -85,13 +80,13 @@ return [
                     ],
                 ],
                 'default' => 0,
-            ]
+            ],
         ],
         'l10n_diffsource' => [
             'config' => [
                 'type' => 'passthrough',
-                'default' => ''
-            ]
+                'default' => '',
+            ],
         ],
         'hidden' => [
             'exclude' => true,
@@ -99,32 +94,32 @@ return [
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
-                'default' => 0
-            ]
+                'default' => 0,
+            ],
         ],
         'cruser_id' => [
             'label' => 'cruser_id',
             'config' => [
-                'type' => 'passthrough'
-            ]
+                'type' => 'passthrough',
+            ],
         ],
         'pid' => [
             'label' => 'pid',
             'config' => [
-                'type' => 'passthrough'
-            ]
+                'type' => 'passthrough',
+            ],
         ],
         'crdate' => [
             'label' => 'crdate',
             'config' => [
                 'type' => 'passthrough',
-            ]
+            ],
         ],
         'tstamp' => [
             'label' => 'tstamp',
             'config' => [
                 'type' => 'passthrough',
-            ]
+            ],
         ],
         'starttime' => [
             'exclude' => true,
@@ -138,7 +133,7 @@ return [
                 'behaviour' => [
                     'allowLanguageSynchronization' => true,
                 ],
-            ]
+            ],
         ],
         'endtime' => [
             'exclude' => true,
@@ -152,7 +147,7 @@ return [
                 'behaviour' => [
                     'allowLanguageSynchronization' => true,
                 ],
-            ]
+            ],
         ],
         'company' => [
             'exclude' => true,
@@ -160,8 +155,8 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim,required'
-            ]
+                'eval' => 'trim,required',
+            ],
         ],
         'path_segment' => [
             'label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.path_segment',
@@ -175,13 +170,13 @@ return [
                     'prefixParentPageSlug' => false,
                     'fieldSeparator' => '-',
                     'replacements' => [
-                        '/' => '-'
+                        '/' => '-',
                     ],
                 ],
                 'fallbackCharacter' => '-',
                 'eval' => 'unique',
-                'default' => ''
-            ]
+                'default' => '',
+            ],
         ],
         'logo' => [
             'exclude' => true,
@@ -204,45 +199,45 @@ return [
                         'showPossibleLocalizationRecords' => true,
                         'showRemovedLocalizationRecords' => true,
                         'showAllLocalizationLink' => true,
-                        'showSynchronizationLink' => true
+                        'showSynchronizationLink' => true,
                     ],
                     'overrideChildTca' => [
                         'types' => [
                             '0' => [
                                 'showitem' => '
                                 --palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                                --palette--;;filePalette'
+                                --palette--;;filePalette',
                             ],
-                            \TYPO3\CMS\Core\Resource\File::FILETYPE_TEXT => [
+                            \TYPO3\CMS\Core\Resource\AbstractFile::FILETYPE_TEXT => [
                                 'showitem' => '
                                 --palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                                --palette--;;filePalette'
+                                --palette--;;filePalette',
                             ],
-                            \TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => [
+                            \TYPO3\CMS\Core\Resource\AbstractFile::FILETYPE_IMAGE => [
                                 'showitem' => '
                                 --palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                                --palette--;;filePalette'
+                                --palette--;;filePalette',
                             ],
-                            \TYPO3\CMS\Core\Resource\File::FILETYPE_AUDIO => [
+                            \TYPO3\CMS\Core\Resource\AbstractFile::FILETYPE_AUDIO => [
                                 'showitem' => '
                                 --palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.audioOverlayPalette;audioOverlayPalette,
-                                --palette--;;filePalette'
+                                --palette--;;filePalette',
                             ],
-                            \TYPO3\CMS\Core\Resource\File::FILETYPE_VIDEO => [
+                            \TYPO3\CMS\Core\Resource\AbstractFile::FILETYPE_VIDEO => [
                                 'showitem' => '
                                 --palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.videoOverlayPalette;videoOverlayPalette,
-                                --palette--;;filePalette'
+                                --palette--;;filePalette',
                             ],
-                            \TYPO3\CMS\Core\Resource\File::FILETYPE_APPLICATION => [
+                            \TYPO3\CMS\Core\Resource\AbstractFile::FILETYPE_APPLICATION => [
                                 'showitem' => '
                                 --palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                                --palette--;;filePalette'
-                            ]
+                                --palette--;;filePalette',
+                            ],
                         ],
                     ],
                 ],
                 $GLOBALS['TYPO3_CONF_VARS']['SYS']['mediafile_ext']
-            )
+            ),
         ],
         'images' => [
             'exclude' => true,
@@ -265,45 +260,45 @@ return [
                         'showPossibleLocalizationRecords' => true,
                         'showRemovedLocalizationRecords' => true,
                         'showAllLocalizationLink' => true,
-                        'showSynchronizationLink' => true
+                        'showSynchronizationLink' => true,
                     ],
                     'overrideChildTca' => [
                         'types' => [
                             '0' => [
                                 'showitem' => '
                                 --palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                                --palette--;;filePalette'
+                                --palette--;;filePalette',
                             ],
-                            \TYPO3\CMS\Core\Resource\File::FILETYPE_TEXT => [
+                            \TYPO3\CMS\Core\Resource\AbstractFile::FILETYPE_TEXT => [
                                 'showitem' => '
                                 --palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                                --palette--;;filePalette'
+                                --palette--;;filePalette',
                             ],
-                            \TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => [
+                            \TYPO3\CMS\Core\Resource\AbstractFile::FILETYPE_IMAGE => [
                                 'showitem' => '
                                 --palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                                --palette--;;filePalette'
+                                --palette--;;filePalette',
                             ],
-                            \TYPO3\CMS\Core\Resource\File::FILETYPE_AUDIO => [
+                            \TYPO3\CMS\Core\Resource\AbstractFile::FILETYPE_AUDIO => [
                                 'showitem' => '
                                 --palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.audioOverlayPalette;audioOverlayPalette,
-                                --palette--;;filePalette'
+                                --palette--;;filePalette',
                             ],
-                            \TYPO3\CMS\Core\Resource\File::FILETYPE_VIDEO => [
+                            \TYPO3\CMS\Core\Resource\AbstractFile::FILETYPE_VIDEO => [
                                 'showitem' => '
                                 --palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.videoOverlayPalette;videoOverlayPalette,
-                                --palette--;;filePalette'
+                                --palette--;;filePalette',
                             ],
-                            \TYPO3\CMS\Core\Resource\File::FILETYPE_APPLICATION => [
+                            \TYPO3\CMS\Core\Resource\AbstractFile::FILETYPE_APPLICATION => [
                                 'showitem' => '
                                 --palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                                --palette--;;filePalette'
-                            ]
+                                --palette--;;filePalette',
+                            ],
                         ],
                     ],
                 ],
                 $GLOBALS['TYPO3_CONF_VARS']['SYS']['mediafile_ext']
-            )
+            ),
         ],
         'image_maps' => [
             'exclude' => true,
@@ -312,10 +307,10 @@ return [
                 'image_maps',
                 [
                     'minitems' => 0,
-                    'maxitems' => 1
+                    'maxitems' => 1,
                 ],
                 $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
-            )
+            ),
         ],
         'street' => [
             'exclude' => true,
@@ -323,8 +318,8 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
-            ]
+                'eval' => 'trim',
+            ],
         ],
         'house_number' => [
             'exclude' => true,
@@ -332,8 +327,8 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim,required'
-            ]
+                'eval' => 'trim,required',
+            ],
         ],
         'zip' => [
             'exclude' => true,
@@ -341,8 +336,8 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
-            ]
+                'eval' => 'trim',
+            ],
         ],
         'city' => [
             'exclude' => true,
@@ -350,8 +345,8 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
-            ]
+                'eval' => 'trim',
+            ],
         ],
         'telephone' => [
             'exclude' => true,
@@ -359,8 +354,8 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
-            ]
+                'eval' => 'trim',
+            ],
         ],
         'fax' => [
             'exclude' => true,
@@ -368,8 +363,8 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
-            ]
+                'eval' => 'trim',
+            ],
         ],
         'contact_person' => [
             'exclude' => true,
@@ -377,8 +372,8 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
-            ]
+                'eval' => 'trim',
+            ],
         ],
         'email' => [
             'exclude' => true,
@@ -386,8 +381,8 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
-            ]
+                'eval' => 'trim',
+            ],
         ],
         'website' => [
             'exclude' => true,
@@ -395,8 +390,8 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
-            ]
+                'eval' => 'trim',
+            ],
         ],
         'opening_times' => [
             'exclude' => true,
@@ -405,8 +400,8 @@ return [
                 'type' => 'text',
                 'cols' => 30,
                 'rows' => 5,
-                'eval' => 'trim'
-            ]
+                'eval' => 'trim',
+            ],
         ],
         'barrier_free' => [
             'exclude' => true,
@@ -414,8 +409,8 @@ return [
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
-                'default' => 0
-            ]
+                'default' => 0,
+            ],
         ],
         'description' => [
             'exclude' => true,
@@ -437,12 +432,12 @@ return [
                 'foreign_table' => 'tx_yellowpages2_domain_model_district',
                 'foreign_table_where' => 'ORDER BY tx_yellowpages2_domain_model_district.district',
                 'items' => [
-                    ['LLL:EXT:yellowpages2/Resources/Private/Language/locallang_db.xlf:tx_yellowpages2_domain_model_company.district.pleaseChoose', 0]
+                    ['LLL:EXT:yellowpages2/Resources/Private/Language/locallang_db.xlf:tx_yellowpages2_domain_model_company.district.pleaseChoose', 0],
                 ],
                 'minitems' => 0,
                 'maxitems' => 1,
-                'default' => 0
-            ]
+                'default' => 0,
+            ],
         ],
         'floors' => [
             'exclude' => true,
@@ -451,8 +446,8 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
                 'foreign_table' => 'tx_itmedia2_domain_model_floor',
-                'foreign_table_where' => 'ORDER BY tx_itmedia2_domain_model_floor.sorting'
-            ]
+                'foreign_table_where' => 'ORDER BY tx_itmedia2_domain_model_floor.sorting',
+            ],
         ],
         'position' => [
             'exclude' => true,
@@ -463,12 +458,12 @@ return [
                 'foreign_table' => 'tx_itmedia2_domain_model_position',
                 'foreign_table_where' => 'ORDER BY tx_itmedia2_domain_model_position.title',
                 'items' => [
-                    ['LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.position.pleaseChoose', 0]
+                    ['LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.position.pleaseChoose', 0],
                 ],
                 'minitems' => 0,
                 'maxitems' => 1,
-                'default' => 0
-            ]
+                'default' => 0,
+            ],
         ],
         'facebook' => [
             'exclude' => true,
@@ -478,7 +473,7 @@ return [
                 'renderType' => 'inputLink',
                 'size' => 30,
                 'eval' => 'trim',
-            ]
+            ],
         ],
         'twitter' => [
             'exclude' => true,
@@ -488,7 +483,7 @@ return [
                 'renderType' => 'inputLink',
                 'size' => 30,
                 'eval' => 'trim',
-            ]
+            ],
         ],
         'instagram' => [
             'exclude' => true,
@@ -498,7 +493,7 @@ return [
                 'renderType' => 'inputLink',
                 'size' => 30,
                 'eval' => 'trim',
-            ]
+            ],
         ],
-    ]
+    ],
 ];

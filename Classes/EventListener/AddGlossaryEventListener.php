@@ -31,8 +31,8 @@ class AddGlossaryEventListener extends AbstractControllerEventListener
     protected $allowedControllerActions = [
         'Company' => [
             'list',
-            'search'
-        ]
+            'search',
+        ],
     ];
 
     public function __construct(GlossaryService $glossaryService, CompanyRepository $companyRepository)
@@ -61,7 +61,7 @@ class AddGlossaryEventListener extends AbstractControllerEventListener
             'pluginName' => 'directory',
             'controllerName' => 'Company',
             'column' => 'company',
-            'settings' => $event->getSettings()
+            'settings' => $event->getSettings(),
         ];
 
         if (
