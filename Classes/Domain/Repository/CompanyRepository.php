@@ -35,7 +35,7 @@ class CompanyRepository extends Repository
      * @var array
      */
     protected $defaultOrderings = [
-        'company' => QueryInterface::ORDER_ASCENDING
+        'company' => QueryInterface::ORDER_ASCENDING,
     ];
 
     /**

@@ -36,12 +36,12 @@ class Company extends AbstractEntity
     protected $company = '';
 
     /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
+     * @var ObjectStorage<FileReference>
      */
     protected $logo;
 
     /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
+     * @var ObjectStorage<FileReference>
      */
     protected $images;
 
@@ -111,21 +111,21 @@ class Company extends AbstractEntity
     protected $description = '';
 
     /**
-     * @var \JWeiland\Yellowpages2\Domain\Model\District
+     * @var District
      * @Extbase\Validate("NotEmpty")
      * @Extbase\ORM\Lazy
      */
     protected $district;
 
     /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category>
+     * @var ObjectStorage<Category>
      * @Extbase\Validate("NotEmpty")
      * @Extbase\ORM\Lazy
      */
     protected $mainTrade;
 
     /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category>
+     * @var ObjectStorage<Category>
      * @Extbase\ORM\Lazy
      */
     protected $trades;
@@ -146,22 +146,22 @@ class Company extends AbstractEntity
     protected $instagram = '';
 
     /**
-     * @var \JWeiland\Maps2\Domain\Model\PoiCollection
+     * @var PoiCollection
      */
     protected $txMaps2Uid;
 
     /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\JWeiland\Itmedia2\Domain\Model\Floor>
+     * @var ObjectStorage<Floor>
      */
     protected $floors;
 
     /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
+     * @var ObjectStorage<FileReference>
      */
     protected $imageMaps;
 
     /**
-     * @var \JWeiland\Itmedia2\Domain\Model\Position
+     * @var Position
      */
     protected $position;
 
@@ -173,6 +173,19 @@ class Company extends AbstractEntity
         $this->trades = new ObjectStorage();
         $this->imageMaps = new ObjectStorage();
         $this->floors = new ObjectStorage();
+    }
+
+    /**
+     * Called again with initialize object, as fetching an entity from the DB does not use the constructor
+     */
+    public function initializeObject()
+    {
+        $this->logo = $this->logo ?? new ObjectStorage();
+        $this->images = $this->images ?? new ObjectStorage();
+        $this->mainTrade = $this->mainTrade ?? new ObjectStorage();
+        $this->trades = $this->trades ?? new ObjectStorage();
+        $this->imageMaps = $this->imageMaps ?? new ObjectStorage();
+        $this->floors = $this->floors ?? new ObjectStorage();
     }
 
     public function getHidden(): bool
@@ -238,7 +251,7 @@ class Company extends AbstractEntity
     }
 
     /**
-     * @return ObjectStorage|\TYPO3\CMS\Core\Resource\FileReference[]
+     * @return ObjectStorage|FileReference[]
      */
     public function getOriginalImages(): ObjectStorage
     {

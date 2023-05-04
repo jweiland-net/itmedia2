@@ -6,14 +6,14 @@ if (!defined('TYPO3_MODE')) {
 
 call_user_func(function () {
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-        'JWeiland.itmedia2',
+        'Itmedia2',
         'Directory',
         [
-            'Company' => 'list, show, search'
+            \JWeiland\Itmedia2\Controller\CompanyController::class => 'list, show, search',
         ],
         // non-cacheable actions
         [
-            'Company' => 'search'
+            \JWeiland\Itmedia2\Controller\CompanyController::class => 'search',
         ]
     );
 
@@ -37,6 +37,6 @@ call_user_func(function () {
 
     // Add ItMedia plugin to new element wizard
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(
-        '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:itmedia2/Configuration/TSconfig/ContentElementWizard.txt">'
+        '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:itmedia2/Configuration/TSconfig/ContentElementWizard.tsconfig">'
     );
 });

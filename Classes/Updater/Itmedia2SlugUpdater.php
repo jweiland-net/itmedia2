@@ -80,7 +80,7 @@ class Itmedia2SlugUpdater implements UpgradeWizardInterface
                 )
             )
             ->execute()
-            ->fetchColumn(0);
+            ->fetchColumn();
 
         return (bool)$amountOfRecordsWithEmptySlug;
     }
@@ -118,10 +118,10 @@ class Itmedia2SlugUpdater implements UpgradeWizardInterface
                 $connection->update(
                     $this->tableName,
                     [
-                        $this->fieldName => $slug
+                        $this->fieldName => $slug,
                     ],
                     [
-                        'uid' => (int)$recordToUpdate['uid']
+                        'uid' => (int)$recordToUpdate['uid'],
                     ]
                 );
             }
@@ -154,7 +154,7 @@ class Itmedia2SlugUpdater implements UpgradeWizardInterface
     public function getPrerequisites(): array
     {
         return [
-            DatabaseUpdatedPrerequisite::class
+            DatabaseUpdatedPrerequisite::class,
         ];
     }
 

@@ -10,7 +10,7 @@ $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['itmedia2_dir
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-    'JWeiland.itmedia2',
+    'Itmedia2',
     'Directory',
     'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:plugin.title'
 );

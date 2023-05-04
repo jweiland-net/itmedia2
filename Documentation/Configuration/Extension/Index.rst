@@ -1,4 +1,5 @@
-.. include:: ../../Includes.txt
+..  include:: /Includes.rst.txt
+
 
 .. _extensionSettings:
 
@@ -11,12 +12,13 @@ Some general settings for `itmedia2` can be configured in *Admin Tools -> Settin
 Tab: Basic
 ==========
 
-poiCollectionPid
-""""""""""""""""
+..  confval:: poiCollectionPid
 
-Default: 0
+    :type: int
+    :Default: 0
 
-Only valid, if you have installed EXT:maps2, too.
+    Only valid, if you have installed EXT:maps2, too.
 
-While creating location records we catch the address and automatically create a maps2 record
-for you. Define a storage PID where we should store these records.
+    While creating location records we catch the address and automatically
+    create a maps2 record for you. Define a storage PID where we should store
+    these records.

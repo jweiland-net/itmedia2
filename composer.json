@@ -3,8 +3,14 @@
 	"type": "typo3-cms-extension",
 	"description": "With this extension you can build your own industry directory",
 	"license": "GPL-2.0-or-later",
-	"keywords": ["typo3", "TYPO3 CMS", "itmedia2", "industry", "directory"],
-	"homepage": "http://www.jweiland.net",
+	"keywords": [
+		"typo3",
+		"TYPO3 CMS",
+		"itmedia2",
+		"industry",
+		"directory"
+	],
+	"homepage": "https://jweiland.net",
 	"authors": [
 		{
 			"name": "Stefan Froemken",
@@ -18,13 +24,13 @@
 		"source": "https://github.com/jweiland-net/itmedia2"
 	},
 	"require": {
-		"typo3/cms-core": "^10.4.19",
+		"typo3/cms-core": "^10.4.36 || ^11.5.23",
 		"jweiland/glossary2": ">=5.0.0",
 		"jweiland/yellowpages2": ">=4.0.0"
 	},
 	"require-dev": {
 		"roave/security-advisories": "dev-latest",
-		"friendsofphp/php-cs-fixer": "^3.4",
+		"friendsofphp/php-cs-fixer": "^3.14",
 		"nimut/testing-framework": "^6.0",
 		"phpunit/phpunit": "^9.5",
 		"phpspec/prophecy-phpunit": "^2.0"
@@ -45,9 +51,9 @@
 		}
 	},
 	"scripts": {
-		"php:fix": ".build/vendor/bin/php-cs-fixer --config=Build/.php_cs.php fix Classes Tests",
+		"php:fix": ".build/vendor/bin/php-cs-fixer --config=Build/php-cs-fixer/php-cs-fixer.php fix Classes Tests",
 		"ci:php:lint": "find *.php Classes Configuration Tests -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l",
-		"ci:php:fixer": ".build/vendor/bin/php-cs-fixer --config=Build/.php_cs.php fix --dry-run -v --show-progress=dots --diff Classes Tests",
+		"ci:php:fixer": ".build/vendor/bin/php-cs-fixer --config=Build/php-cs-fixer/php-cs-fixer.php fix --dry-run -v --show-progress=dots --diff Classes Tests",
 		"ci:tests:unit": ".build/vendor/bin/phpunit -c .build/vendor/nimut/testing-framework/res/Configuration/UnitTests.xml Tests/Unit",
 		"ci:tests:functional": "find 'Tests/Functional' -wholename '*Test.php' | parallel --gnu 'echo; echo \"Running functional test suite {}\"; .build/vendor/bin/phpunit -c .build/vendor/nimut/testing-framework/res/Configuration/FunctionalTests.xml {}';",
 		"link-extension": [
