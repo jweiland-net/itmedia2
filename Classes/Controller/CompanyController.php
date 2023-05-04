@@ -15,7 +15,6 @@ use JWeiland\Itmedia2\Domain\Repository\CompanyRepository;
 use JWeiland\Itmedia2\Event\PostProcessFluidVariablesEvent;
 use TYPO3\CMS\Extbase\Annotation as Extbase;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-use TYPO3\CMS\Extbase\Persistence\Generic\Session;
 
 /**
  * Controller which keeps methods to list and show companies
@@ -27,19 +26,9 @@ class CompanyController extends ActionController
      */
     protected $companyRepository;
 
-    /**
-     * @var Session
-     */
-    protected $session;
-
     public function injectCompanyRepository(CompanyRepository $companyRepository): void
     {
         $this->companyRepository = $companyRepository;
-    }
-
-    public function injectSession(Session $session): void
-    {
-        $this->session = $session;
     }
 
     public function initializeAction(): void
