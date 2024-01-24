@@ -1,7 +1,7 @@
 ..  include:: /Includes.rst.txt
 
 
-.. _typoscript:
+..  _typoscript:
 
 ===========
 TypoScript
