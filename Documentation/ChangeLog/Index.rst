@@ -1,11 +1,17 @@
 ..  include:: /Includes.rst.txt
 
 
-.. _changelog:
+..  _changelog:
 
 =========
 ChangeLog
 =========
+
+Version 3.2.1
+=============
+
+*   Add badges to README.md
+*   Add .crowdin.yml to .gitattribute
 
 Version 3.2.0
 =============
