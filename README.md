@@ -1,6 +1,12 @@
 # TYPO3 Extension `itmedia2`
 
-![Build Status](https://github.com/jweiland-net/itmedia2/workflows/CI/badge.svg)
+[![Latest Stable Version](https://poser.pugx.org/jweiland/itmedia2/v/stable.svg)](https://packagist.org/packages/jweiland/itmedia2)
+[![TYPO3 10.4](https://img.shields.io/badge/TYPO3-10.4-green.svg)](https://get.typo3.org/version/10)
+[![TYPO3 11.5](https://img.shields.io/badge/TYPO3-11.5-green.svg)](https://get.typo3.org/version/11)
+[![License](http://poser.pugx.org/jweiland/itmedia2/license)](https://packagist.org/packages/jweiland/itmedia2)
+[![Total Downloads](https://poser.pugx.org/jweiland/itmedia2/downloads.svg)](https://packagist.org/packages/jweiland/itmedia2)
+[![Monthly Downloads](https://poser.pugx.org/jweiland/itmedia2/d/monthly)](https://packagist.org/packages/jweiland/itmedia2)
+![Build Status](https://github.com/jweiland-net/itmedia2/actions/workflows/ci.yml/badge.svg)
 
 EXT:itmedia2 is a reduced version of our EXT:yellowpages2
 
