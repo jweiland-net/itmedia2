@@ -30,9 +30,9 @@
       <trans-unit id="tx_itmedia2_domain_model_company.path_segment" xml:space="preserve" approved="yes">
 				<source>Segment for URL</source>
 			<target state="final">Segment für URL</target></trans-unit>
-      <trans-unit id="tx_itmedia2_domain_model_company.logo" xml:space="preserve">
+      <trans-unit id="tx_itmedia2_domain_model_company.logo" xml:space="preserve" approved="yes">
 				<source>Logo</source>
-			<target state="needs-translation">Logo</target></trans-unit>
+			<target state="final">Logo</target></trans-unit>
       <trans-unit id="tx_itmedia2_domain_model_company.logo.add" xml:space="preserve" approved="yes">
 				<source>Add logo</source>
 			<target state="final">Logo hinzufügen</target></trans-unit>
@@ -57,9 +57,9 @@
       <trans-unit id="tx_itmedia2_domain_model_company.telephone" xml:space="preserve" approved="yes">
 				<source>Telephone</source>
 			<target state="final">Telefon</target></trans-unit>
-      <trans-unit id="tx_itmedia2_domain_model_company.fax" xml:space="preserve">
+      <trans-unit id="tx_itmedia2_domain_model_company.fax" xml:space="preserve" approved="yes">
 				<source>Fax</source>
-			<target state="needs-translation">Fax</target></trans-unit>
+			<target state="final">Fax</target></trans-unit>
       <trans-unit id="tx_itmedia2_domain_model_company.contactPerson" xml:space="preserve" approved="yes">
 				<source>Contact person</source>
 			<target state="final">Kontaktperson</target></trans-unit>
@@ -78,15 +78,15 @@
       <trans-unit id="tx_itmedia2_domain_model_company.description" xml:space="preserve" approved="yes">
 				<source>Description</source>
 			<target state="final">Beschreibung</target></trans-unit>
-      <trans-unit id="tx_itmedia2_domain_model_company.facebook" xml:space="preserve">
+      <trans-unit id="tx_itmedia2_domain_model_company.facebook" xml:space="preserve" approved="yes">
 				<source>Facebook</source>
-			<target state="needs-translation">Facebook</target></trans-unit>
-      <trans-unit id="tx_itmedia2_domain_model_company.twitter" xml:space="preserve">
+			<target state="final">Facebook</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.twitter" xml:space="preserve" approved="yes">
 				<source>Twitter</source>
-			<target state="needs-translation">Twitter</target></trans-unit>
-      <trans-unit id="tx_itmedia2_domain_model_company.instagram" xml:space="preserve">
+			<target state="final">Twitter</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.instagram" xml:space="preserve" approved="yes">
 				<source>Instagram</source>
-			<target state="needs-translation">Instagram</target></trans-unit>
+			<target state="final">Instagram</target></trans-unit>
       <trans-unit id="tx_itmedia2_domain_model_company.mainTrade" xml:space="preserve" approved="yes">
 				<source>Main Trade</source>
 			<target state="final">Hauptbranche</target></trans-unit>
@@ -97,9 +97,9 @@
         <source>Floor(s)</source>
         <target state="final">Stockwerke</target>
       </trans-unit>
-      <trans-unit id="tx_itmedia2_domain_model_company.position">
+      <trans-unit id="tx_itmedia2_domain_model_company.position" approved="yes">
         <source>Position</source>
-        <target state="needs-translation">Position</target>
+        <target state="final">Position</target>
       </trans-unit>
       <trans-unit id="tx_itmedia2_domain_model_company.position.pleaseChoose" approved="yes">
         <source>---Please choose a position---</source>
@@ -109,9 +109,9 @@
         <source>Image map</source>
         <target state="final">Bild-Map</target>
       </trans-unit>
-      <trans-unit id="tx_itmedia2_domain_model_position">
+      <trans-unit id="tx_itmedia2_domain_model_position" approved="yes">
         <source>Position</source>
-        <target state="needs-translation">Position</target>
+        <target state="final">Position</target>
       </trans-unit>
       <trans-unit id="tx_itmedia2_domain_model_position.title" approved="yes">
         <source>Title</source>
@@ -121,9 +121,9 @@
         <source>Floor</source>
         <target state="final">Etage</target>
       </trans-unit>
-      <trans-unit id="tx_itmedia2_domain_model_floor.name">
+      <trans-unit id="tx_itmedia2_domain_model_floor.name" approved="yes">
         <source>Name</source>
-        <target state="needs-translation">Name</target>
+        <target state="final">Name</target>
       </trans-unit>
     </body>
   </file>
