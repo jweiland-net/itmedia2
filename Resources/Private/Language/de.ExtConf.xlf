@@ -3,9 +3,9 @@
   <file source-language="en" datatype="plaintext" original="messages" date="2013-03-28T08:36:00Z" product-name="itmedia2" target-language="de">
     <header/>
     <body>
-      <trans-unit id="poiCollectionPid" xml:space="preserve">
+      <trans-unit id="poiCollectionPid" xml:space="preserve" approved="yes">
 				<source>PID for poiCollections: Define a storage pid where to store records of type Point of Interest.</source>
-			<target state="needs-translation">PID for poiCollections: Define a storage pid where to store records of type Point of Interest.</target></trans-unit>
+			<target state="final">PID für POI Sammlungen: Definieren Sie eine Speicher-PID wo Datensätze vom Typ Point of Interest gespeichert werden sollen.</target></trans-unit>
     </body>
   </file>
 </xliff>
