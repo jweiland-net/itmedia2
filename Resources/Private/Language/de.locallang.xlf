@@ -9,9 +9,9 @@
       <trans-unit id="tx_itmedia2_domain_model_company.company" xml:space="preserve" approved="yes">
 				<source>Company</source>
 			<target state="final">Firma</target></trans-unit>
-      <trans-unit id="tx_itmedia2_domain_model_company.logo" xml:space="preserve">
+      <trans-unit id="tx_itmedia2_domain_model_company.logo" xml:space="preserve" approved="yes">
 				<source>Logo</source>
-			<target state="needs-translation">Logo</target></trans-unit>
+			<target state="final">Logo</target></trans-unit>
       <trans-unit id="tx_itmedia2_domain_model_company.images" xml:space="preserve" approved="yes">
 				<source>Images</source>
 			<target state="final">Bilder</target></trans-unit>
@@ -30,9 +30,9 @@
       <trans-unit id="tx_itmedia2_domain_model_company.telephone" xml:space="preserve" approved="yes">
 				<source>Telephone</source>
 			<target state="final">Telefon</target></trans-unit>
-      <trans-unit id="tx_itmedia2_domain_model_company.fax" xml:space="preserve">
+      <trans-unit id="tx_itmedia2_domain_model_company.fax" xml:space="preserve" approved="yes">
 				<source>Fax</source>
-			<target state="needs-translation">Fax</target></trans-unit>
+			<target state="final">Fax</target></trans-unit>
       <trans-unit id="tx_itmedia2_domain_model_company.postAddress" xml:space="preserve" approved="yes">
 				<source>Post address</source>
 			<target state="final">Postadresse</target></trans-unit>
@@ -57,15 +57,15 @@
       <trans-unit id="tx_itmedia2_domain_model_company.description" xml:space="preserve" approved="yes">
 				<source>Description</source>
 			<target state="final">Beschreibung</target></trans-unit>
-      <trans-unit id="tx_itmedia2_domain_model_company.facebook" xml:space="preserve">
+      <trans-unit id="tx_itmedia2_domain_model_company.facebook" xml:space="preserve" approved="yes">
 				<source>Facebook</source>
-			<target state="needs-translation">Facebook</target></trans-unit>
-      <trans-unit id="tx_itmedia2_domain_model_company.twitter" xml:space="preserve">
+			<target state="final">Facebook</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.twitter" xml:space="preserve" approved="yes">
 				<source>Twitter</source>
-			<target state="needs-translation">Twitter</target></trans-unit>
-      <trans-unit id="tx_itmedia2_domain_model_company.instagram" xml:space="preserve">
+			<target state="final">Twitter</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.instagram" xml:space="preserve" approved="yes">
 				<source>Instagram</source>
-			<target state="needs-translation">Instagram</target></trans-unit>
+			<target state="final">Instagram</target></trans-unit>
       <trans-unit id="tx_itmedia2_domain_model_company.mainTrade" xml:space="preserve" approved="yes">
 				<source>Main Trade</source>
 			<target state="final">Hauptbranche</target></trans-unit>
@@ -76,9 +76,9 @@
         <source>Floors</source>
         <target state="final">Geschoße</target>
       </trans-unit>
-      <trans-unit id="tx_itmedia2_domain_model_company.position">
+      <trans-unit id="tx_itmedia2_domain_model_company.position" approved="yes">
         <source>Position</source>
-        <target state="needs-translation">Position</target>
+        <target state="final">Position</target>
       </trans-unit>
       <trans-unit id="search" approved="yes">
         <source>Search</source>
