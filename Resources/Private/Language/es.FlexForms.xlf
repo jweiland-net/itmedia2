@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="messages" date="2013-08-28T08:23:04Z" product-name="itmedia2" target-language="es-ES">
+    <header/>
+    <body>
+      <trans-unit id="sheetGeneral" xml:space="preserve">
+				<source>General</source>
+			<target state="needs-translation">General</target></trans-unit>
+      <trans-unit id="district" xml:space="preserve">
+				<source>District</source>
+			<target state="needs-translation">District</target></trans-unit>
+    </body>
+  </file>
+</xliff>
