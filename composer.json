@@ -29,9 +29,9 @@
 		"source": "https://github.com/jweiland-net/itmedia2"
 	},
 	"require": {
-		"typo3/cms-core": "^12.4.8",
-		"jweiland/glossary2": ">=6.0.0",
-		"jweiland/yellowpages2": ">=5.0.0"
+		"typo3/cms-core": "^13.4.8",
+		"jweiland/glossary2": ">=7.0.0",
+		"jweiland/yellowpages2": ">=8.0.0"
 	},
 	"require-dev": {
 		"ergebnis/composer-normalize": "~2.42.0",
