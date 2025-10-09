@@ -42,7 +42,7 @@ class ExtConf implements SingletonInterface
         return $this->poiCollectionPid;
     }
 
-    public function setPoiCollectionPid($poiCollectionPid)
+    public function setPoiCollectionPid($poiCollectionPid): void
     {
         $this->poiCollectionPid = (int)$poiCollectionPid;
     }
