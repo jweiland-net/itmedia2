@@ -34,6 +34,6 @@ class AbstractControllerEventListener
                 $event->getActionName(),
                 $this->allowedControllerActions[$event->getControllerName()],
                 true,
-            );g
+            );
     }
 }
