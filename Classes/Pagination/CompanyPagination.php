@@ -14,7 +14,6 @@ namespace JWeiland\Itmedia2\Pagination;
 use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Pagination\PaginationInterface;
 use TYPO3\CMS\Core\Pagination\PaginatorInterface;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class CompanyPagination implements PaginationInterface
 {
