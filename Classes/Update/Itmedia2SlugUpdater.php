@@ -9,20 +9,22 @@ declare(strict_types=1);
  * LICENSE file that was distributed with this source code.
  */
 
-namespace JWeiland\Itmedia2\Updater;
+namespace JWeiland\Itmedia2\Update;
 
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\Restriction\DeletedRestriction;
 use TYPO3\CMS\Core\DataHandling\SlugHelper;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Install\Attribute\UpgradeWizard;
 use TYPO3\CMS\Install\Updates\DatabaseUpdatedPrerequisite;
 use TYPO3\CMS\Install\Updates\UpgradeWizardInterface;
 
 /**
  * Updater to fill empty slug columns of company records
  */
-class Itmedia2SlugUpdater implements UpgradeWizardInterface
+#[UpgradeWizard('itmedia2_itmedia2SlugUpdate')]
+class Itmedia2SlugUpdate implements UpgradeWizardInterface
 {
     protected string $tableName = 'tx_itmedia2_domain_model_company';
 
