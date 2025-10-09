@@ -119,4 +119,9 @@ class CompanyPagination implements PaginationInterface
 
         return $this->paginator->getKeyOfLastPaginatedItem() + 1;
     }
+
+    public function getAllPageNumbers(): array
+    {
+        return range($this->getFirstPageNumber(), $this->getLastPageNumber());
+    }
 }
