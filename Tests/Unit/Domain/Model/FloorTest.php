@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace JWeiland\Itmedia2\Tests\Unit\Domain\Model;
 
 use JWeiland\Itmedia2\Domain\Model\Floor;
+use PHPUnit\Framework\Attributes\Test;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 /**
@@ -19,13 +20,12 @@ use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
  */
 class FloorTest extends UnitTestCase
 {
-    /**
-     * @var Floor
-     */
-    protected $subject;
+    protected Floor $subject;
 
     protected function setUp(): void
     {
+        parent::setUp();
+
         $this->subject = new Floor();
     }
 
@@ -37,9 +37,7 @@ class FloorTest extends UnitTestCase
         parent::tearDown();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getNameInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
@@ -48,9 +46,7 @@ class FloorTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setNameSetsName(): void
     {
         $this->subject->setName('foo bar');
@@ -61,9 +57,7 @@ class FloorTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getSortingInitiallyReturnsZero(): void
     {
         self::assertSame(
@@ -72,9 +66,7 @@ class FloorTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setSortingSetsSorting(): void
     {
         $this->subject->setSorting(123456);

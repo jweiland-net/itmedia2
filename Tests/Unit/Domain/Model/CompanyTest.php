@@ -13,6 +13,7 @@ namespace JWeiland\Itmedia2\Tests\Unit\Domain\Model;
 
 use JWeiland\Itmedia2\Domain\Model\Company;
 use JWeiland\Yellowpages2\Domain\Model\District;
+use PHPUnit\Framework\Attributes\Test;
 use TYPO3\CMS\Extbase\Domain\Model\Category;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
@@ -23,13 +24,12 @@ use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
  */
 class CompanyTest extends UnitTestCase
 {
-    /**
-     * @var Company
-     */
-    protected $subject;
+    protected Company $subject;
 
     protected function setUp(): void
     {
+        parent::setUp();
+
         $this->subject = new Company();
     }
 
@@ -42,9 +42,7 @@ class CompanyTest extends UnitTestCase
         parent::tearDown();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getHiddenInitiallyReturnsFalse(): void
     {
         self::assertFalse(
@@ -52,9 +50,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setHiddenSetsHidden(): void
     {
         $this->subject->setHidden(true);
@@ -63,9 +59,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getCompanyInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
@@ -74,9 +68,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setCompanySetsCompany(): void
     {
         $this->subject->setCompany('foo bar');
@@ -87,9 +79,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getLogoInitiallyReturnsEmptyArray(): void
     {
         self::assertSame(
@@ -98,9 +88,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getFirstLogoInitiallyReturnsNull(): void
     {
         self::assertNull(
@@ -108,9 +96,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getOriginalLogoInitiallyReturnsObjectStorage(): void
     {
         self::assertEquals(
@@ -119,9 +105,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setLogoSetsLogo(): void
     {
         $object = new FileReference();
@@ -135,9 +119,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function addLogoAddsOneLogo(): void
     {
         $objectStorage = new ObjectStorage();
@@ -154,9 +136,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function removeLogoRemovesOneLogo(): void
     {
         $object = new FileReference();
@@ -173,9 +153,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getImagesInitiallyReturnsObjectStorage(): void
     {
         self::assertEquals(
@@ -184,9 +162,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setImagesSetsImages(): void
     {
         $object = new FileReference();
@@ -200,9 +176,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function addImageAddsOneImage(): void
     {
         $objectStorage = new ObjectStorage();
@@ -219,9 +193,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function removeImageRemovesOneImage(): void
     {
         $object = new FileReference();
@@ -238,9 +210,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getStreetInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
@@ -249,9 +219,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setStreetSetsStreet(): void
     {
         $this->subject->setStreet('foo bar');
@@ -262,9 +230,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getHouseNumberInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
@@ -273,9 +239,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setHouseNumberSetsHouseNumber(): void
     {
         $this->subject->setHouseNumber('foo bar');
@@ -286,9 +250,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getZipInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
@@ -297,9 +259,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setZipSetsZip(): void
     {
         $this->subject->setZip('foo bar');
@@ -310,9 +270,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getCityInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
@@ -321,9 +279,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setCitySetsCity(): void
     {
         $this->subject->setCity('foo bar');
@@ -334,9 +290,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getTelephoneInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
@@ -345,9 +299,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setTelephoneSetsTelephone(): void
     {
         $this->subject->setTelephone('foo bar');
@@ -358,9 +310,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getFaxInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
@@ -369,9 +319,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setFaxSetsFax(): void
     {
         $this->subject->setFax('foo bar');
@@ -382,9 +330,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getContactPersonInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
@@ -393,9 +339,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setContactPersonSetsContactPerson(): void
     {
         $this->subject->setContactPerson('foo bar');
@@ -406,9 +350,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getEmailInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
@@ -417,9 +359,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setEmailSetsEmail(): void
     {
         $this->subject->setEmail('foo bar');
@@ -430,9 +370,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getWebsiteInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
@@ -441,9 +379,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setWebsiteSetsWebsite(): void
     {
         $this->subject->setWebsite('foo bar');
@@ -454,9 +390,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getOpeningTimesInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
@@ -465,9 +399,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setOpeningTimesSetsOpeningTimes(): void
     {
         $this->subject->setOpeningTimes('foo bar');
@@ -478,9 +410,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getBarrierFreeInitiallyReturnsFalse(): void
     {
         self::assertFalse(
@@ -488,9 +418,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setBarrierFreeSetsBarrierFree(): void
     {
         $this->subject->setBarrierFree(true);
@@ -499,9 +427,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getDescriptionInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
@@ -510,9 +436,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setDescriptionSetsDescription(): void
     {
         $this->subject->setDescription('foo bar');
@@ -523,17 +447,13 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getDistrictInitiallyReturnsNull(): void
     {
         self::assertNull($this->subject->getDistrict());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setDistrictSetsDistrict(): void
     {
         $instance = new District();
@@ -545,9 +465,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getMainTradeInitiallyReturnsEmptyArray(): void
     {
         self::assertSame(
@@ -556,9 +474,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getFirstMainTradeInitiallyReturnsNull(): void
     {
         self::assertNull(
@@ -566,9 +482,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getOriginalMainTradeInitiallyReturnsObjectStorage(): void
     {
         self::assertEquals(
@@ -577,9 +491,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setMainTradeSetsMainTrade(): void
     {
         $object = new Category();
@@ -593,9 +505,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function addMainTradeAddsOneMainTrade(): void
     {
         $objectStorage = new ObjectStorage();
@@ -612,9 +522,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function removeMainTradeRemovesOneMainTrade(): void
     {
         $object = new Category();
@@ -631,9 +539,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getTradesInitiallyReturnsObjectStorage(): void
     {
         self::assertEquals(
@@ -647,9 +553,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setTradesSetsTrades(): void
     {
         $object = new Category();
@@ -663,9 +567,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function addTradeAddsOneTrade(): void
     {
         $objectStorage = new ObjectStorage();
@@ -682,9 +584,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function removeTradeRemovesOneTrade(): void
     {
         $object = new Category();
@@ -701,9 +601,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getFacebookInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
@@ -712,9 +610,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setFacebookSetsFacebook(): void
     {
         $this->subject->setFacebook('foo bar');
@@ -725,9 +621,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getTwitterInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
@@ -736,9 +630,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setTwitterSetsTwitter(): void
     {
         $this->subject->setTwitter('foo bar');
@@ -749,9 +641,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getInstagramInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
@@ -760,9 +650,7 @@ class CompanyTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setInstagramSetsInstagram(): void
     {
         $this->subject->setInstagram('foo bar');

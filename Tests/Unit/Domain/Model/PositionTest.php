@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace JWeiland\Itmedia2\Tests\Unit\Domain\Model;
 
 use JWeiland\Itmedia2\Domain\Model\Position;
+use PHPUnit\Framework\Attributes\Test;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 /**
@@ -19,13 +20,12 @@ use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
  */
 class PositionTest extends UnitTestCase
 {
-    /**
-     * @var Position
-     */
-    protected $subject;
+    protected Position $subject;
 
     protected function setUp(): void
     {
+        parent::setUp();
+
         $this->subject = new Position();
     }
 
@@ -37,9 +37,7 @@ class PositionTest extends UnitTestCase
         parent::tearDown();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getTitleInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
@@ -48,9 +46,7 @@ class PositionTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setTitleSetsTitle(): void
     {
         $this->subject->setTitle('foo bar');
