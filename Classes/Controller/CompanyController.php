@@ -13,6 +13,7 @@ namespace JWeiland\Itmedia2\Controller;
 
 use JWeiland\Itmedia2\Domain\Repository\CompanyRepository;
 use JWeiland\Itmedia2\Event\PostProcessFluidVariablesEvent;
+use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Extbase\Annotation as Extbase;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
@@ -21,15 +22,7 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
  */
 class CompanyController extends ActionController
 {
-    /**
-     * @var CompanyRepository
-     */
-    protected $companyRepository;
-
-    public function injectCompanyRepository(CompanyRepository $companyRepository): void
-    {
-        $this->companyRepository = $companyRepository;
-    }
+    public function __construct(protected readonly CompanyRepository $companyRepository) {}
 
     public function initializeAction(): void
     {
@@ -42,25 +35,24 @@ class CompanyController extends ActionController
 
     /**
      * @param string $letter Show only records starting with this letter
-     * @Extbase\Validate("String", param="letter")
-     * @Extbase\Validate("StringLength", param="letter", options={"minimum": 0, "maximum": 3})
      */
-    public function listAction(string $letter = ''): void
+    #[Extbase\Validate(['validator' => 'String', 'param' => 'letter'])]
+    #[Extbase\Validate(['validator' => 'StringLength', 'param' => 'letter', 'options' => ['minimum' => 0, 'maximum' => 3]])]
+    public function listAction(string $letter = ''): ResponseInterface
     {
         $this->postProcessAndAssignFluidVariables([
             'companies' => $this->companyRepository->findByLetter($letter, $this->settings),
             'categories' => $this->companyRepository->getTranslatedCategories(),
         ]);
+        return $this->htmlResponse();
     }
 
-    /**
-     * @param int $company
-     */
-    public function showAction(int $company): void
+    public function showAction(int $company): ResponseInterface
     {
         $this->postProcessAndAssignFluidVariables([
             'company' => $this->companyRepository->findByIdentifier($company),
         ]);
+        return $this->htmlResponse();
     }
 
     public function initializeSearchAction(): void
@@ -71,7 +63,7 @@ class CompanyController extends ActionController
         }
     }
 
-    public function searchAction(string $search, int $category = 0): void
+    public function searchAction(string $search, int $category = 0): ResponseInterface
     {
         $this->postProcessAndAssignFluidVariables([
             'search' => $search,
@@ -79,6 +71,7 @@ class CompanyController extends ActionController
             'companies' => $this->companyRepository->searchCompanies($search, $category, $this->settings),
             'categories' => $this->companyRepository->getTranslatedCategories(),
         ]);
+        return $this->htmlResponse();
     }
 
     protected function postProcessAndAssignFluidVariables(array $variables = []): void
@@ -88,8 +81,8 @@ class CompanyController extends ActionController
             new PostProcessFluidVariablesEvent(
                 $this->request,
                 $this->settings,
-                $variables
-            )
+                $variables,
+            ),
         );
 
         $this->view->assignMultiple($event->getFluidVariables());

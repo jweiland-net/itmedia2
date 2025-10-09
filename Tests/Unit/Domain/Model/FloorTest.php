@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace JWeiland\Itmedia2\Tests\Unit\Domain\Model;
 
 use JWeiland\Itmedia2\Domain\Model\Floor;
-use Nimut\TestingFramework\TestCase\UnitTestCase;
+use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 /**
  * Test case.
@@ -32,7 +32,7 @@ class FloorTest extends UnitTestCase
     protected function tearDown(): void
     {
         unset(
-            $this->subject
+            $this->subject,
         );
         parent::tearDown();
     }
@@ -44,7 +44,7 @@ class FloorTest extends UnitTestCase
     {
         self::assertSame(
             '',
-            $this->subject->getName()
+            $this->subject->getName(),
         );
     }
 
@@ -57,7 +57,7 @@ class FloorTest extends UnitTestCase
 
         self::assertSame(
             'foo bar',
-            $this->subject->getName()
+            $this->subject->getName(),
         );
     }
 
@@ -68,7 +68,7 @@ class FloorTest extends UnitTestCase
     {
         self::assertSame(
             0,
-            $this->subject->getSorting()
+            $this->subject->getSorting(),
         );
     }
 
@@ -81,7 +81,7 @@ class FloorTest extends UnitTestCase
 
         self::assertSame(
             123456,
-            $this->subject->getSorting()
+            $this->subject->getSorting(),
         );
     }
 }

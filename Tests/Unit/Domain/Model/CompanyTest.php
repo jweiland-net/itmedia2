@@ -13,10 +13,10 @@ namespace JWeiland\Itmedia2\Tests\Unit\Domain\Model;
 
 use JWeiland\Itmedia2\Domain\Model\Company;
 use JWeiland\Yellowpages2\Domain\Model\District;
-use Nimut\TestingFramework\TestCase\UnitTestCase;
 use TYPO3\CMS\Extbase\Domain\Model\Category;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 /**
  * Test case.
@@ -36,7 +36,7 @@ class CompanyTest extends UnitTestCase
     protected function tearDown(): void
     {
         unset(
-            $this->subject
+            $this->subject,
         );
 
         parent::tearDown();
@@ -48,7 +48,7 @@ class CompanyTest extends UnitTestCase
     public function getHiddenInitiallyReturnsFalse(): void
     {
         self::assertFalse(
-            $this->subject->getHidden()
+            $this->subject->getHidden(),
         );
     }
 
@@ -59,7 +59,7 @@ class CompanyTest extends UnitTestCase
     {
         $this->subject->setHidden(true);
         self::assertTrue(
-            $this->subject->getHidden()
+            $this->subject->getHidden(),
         );
     }
 
@@ -70,7 +70,7 @@ class CompanyTest extends UnitTestCase
     {
         self::assertSame(
             '',
-            $this->subject->getCompany()
+            $this->subject->getCompany(),
         );
     }
 
@@ -83,7 +83,7 @@ class CompanyTest extends UnitTestCase
 
         self::assertSame(
             'foo bar',
-            $this->subject->getCompany()
+            $this->subject->getCompany(),
         );
     }
 
@@ -94,7 +94,7 @@ class CompanyTest extends UnitTestCase
     {
         self::assertSame(
             [],
-            $this->subject->getLogo()
+            $this->subject->getLogo(),
         );
     }
 
@@ -104,7 +104,7 @@ class CompanyTest extends UnitTestCase
     public function getFirstLogoInitiallyReturnsNull(): void
     {
         self::assertNull(
-            $this->subject->getFirstLogo()
+            $this->subject->getFirstLogo(),
         );
     }
 
@@ -115,7 +115,7 @@ class CompanyTest extends UnitTestCase
     {
         self::assertEquals(
             new ObjectStorage(),
-            $this->subject->getOriginalLogo()
+            $this->subject->getOriginalLogo(),
         );
     }
 
@@ -131,7 +131,7 @@ class CompanyTest extends UnitTestCase
 
         self::assertSame(
             $objectStorage,
-            $this->subject->getOriginalLogo()
+            $this->subject->getOriginalLogo(),
         );
     }
 
@@ -150,7 +150,7 @@ class CompanyTest extends UnitTestCase
 
         self::assertSame(
             $objectStorage,
-            $this->subject->getOriginalLogo()
+            $this->subject->getOriginalLogo(),
         );
     }
 
@@ -169,7 +169,7 @@ class CompanyTest extends UnitTestCase
 
         self::assertSame(
             $objectStorage,
-            $this->subject->getOriginalLogo()
+            $this->subject->getOriginalLogo(),
         );
     }
 
@@ -180,7 +180,7 @@ class CompanyTest extends UnitTestCase
     {
         self::assertEquals(
             new ObjectStorage(),
-            $this->subject->getOriginalImages()
+            $this->subject->getOriginalImages(),
         );
     }
 
@@ -196,7 +196,7 @@ class CompanyTest extends UnitTestCase
 
         self::assertSame(
             $objectStorage,
-            $this->subject->getOriginalImages()
+            $this->subject->getOriginalImages(),
         );
     }
 
@@ -215,7 +215,7 @@ class CompanyTest extends UnitTestCase
 
         self::assertSame(
             $objectStorage,
-            $this->subject->getOriginalImages()
+            $this->subject->getOriginalImages(),
         );
     }
 
@@ -234,7 +234,7 @@ class CompanyTest extends UnitTestCase
 
         self::assertSame(
             $objectStorage,
-            $this->subject->getOriginalImages()
+            $this->subject->getOriginalImages(),
         );
     }
 
@@ -245,7 +245,7 @@ class CompanyTest extends UnitTestCase
     {
         self::assertSame(
             '',
-            $this->subject->getStreet()
+            $this->subject->getStreet(),
         );
     }
 
@@ -258,7 +258,7 @@ class CompanyTest extends UnitTestCase
 
         self::assertSame(
             'foo bar',
-            $this->subject->getStreet()
+            $this->subject->getStreet(),
         );
     }
 
@@ -269,7 +269,7 @@ class CompanyTest extends UnitTestCase
     {
         self::assertSame(
             '',
-            $this->subject->getHouseNumber()
+            $this->subject->getHouseNumber(),
         );
     }
 
@@ -282,7 +282,7 @@ class CompanyTest extends UnitTestCase
 
         self::assertSame(
             'foo bar',
-            $this->subject->getHouseNumber()
+            $this->subject->getHouseNumber(),
         );
     }
 
@@ -293,7 +293,7 @@ class CompanyTest extends UnitTestCase
     {
         self::assertSame(
             '',
-            $this->subject->getZip()
+            $this->subject->getZip(),
         );
     }
 
@@ -306,7 +306,7 @@ class CompanyTest extends UnitTestCase
 
         self::assertSame(
             'foo bar',
-            $this->subject->getZip()
+            $this->subject->getZip(),
         );
     }
 
@@ -317,7 +317,7 @@ class CompanyTest extends UnitTestCase
     {
         self::assertSame(
             '',
-            $this->subject->getCity()
+            $this->subject->getCity(),
         );
     }
 
@@ -330,7 +330,7 @@ class CompanyTest extends UnitTestCase
 
         self::assertSame(
             'foo bar',
-            $this->subject->getCity()
+            $this->subject->getCity(),
         );
     }
 
@@ -341,7 +341,7 @@ class CompanyTest extends UnitTestCase
     {
         self::assertSame(
             '',
-            $this->subject->getTelephone()
+            $this->subject->getTelephone(),
         );
     }
 
@@ -354,7 +354,7 @@ class CompanyTest extends UnitTestCase
 
         self::assertSame(
             'foo bar',
-            $this->subject->getTelephone()
+            $this->subject->getTelephone(),
         );
     }
 
@@ -365,7 +365,7 @@ class CompanyTest extends UnitTestCase
     {
         self::assertSame(
             '',
-            $this->subject->getFax()
+            $this->subject->getFax(),
         );
     }
 
@@ -378,7 +378,7 @@ class CompanyTest extends UnitTestCase
 
         self::assertSame(
             'foo bar',
-            $this->subject->getFax()
+            $this->subject->getFax(),
         );
     }
 
@@ -389,7 +389,7 @@ class CompanyTest extends UnitTestCase
     {
         self::assertSame(
             '',
-            $this->subject->getContactPerson()
+            $this->subject->getContactPerson(),
         );
     }
 
@@ -402,7 +402,7 @@ class CompanyTest extends UnitTestCase
 
         self::assertSame(
             'foo bar',
-            $this->subject->getContactPerson()
+            $this->subject->getContactPerson(),
         );
     }
 
@@ -413,7 +413,7 @@ class CompanyTest extends UnitTestCase
     {
         self::assertSame(
             '',
-            $this->subject->getEmail()
+            $this->subject->getEmail(),
         );
     }
 
@@ -426,7 +426,7 @@ class CompanyTest extends UnitTestCase
 
         self::assertSame(
             'foo bar',
-            $this->subject->getEmail()
+            $this->subject->getEmail(),
         );
     }
 
@@ -437,7 +437,7 @@ class CompanyTest extends UnitTestCase
     {
         self::assertSame(
             '',
-            $this->subject->getWebsite()
+            $this->subject->getWebsite(),
         );
     }
 
@@ -450,7 +450,7 @@ class CompanyTest extends UnitTestCase
 
         self::assertSame(
             'foo bar',
-            $this->subject->getWebsite()
+            $this->subject->getWebsite(),
         );
     }
 
@@ -461,7 +461,7 @@ class CompanyTest extends UnitTestCase
     {
         self::assertSame(
             '',
-            $this->subject->getOpeningTimes()
+            $this->subject->getOpeningTimes(),
         );
     }
 
@@ -474,7 +474,7 @@ class CompanyTest extends UnitTestCase
 
         self::assertSame(
             'foo bar',
-            $this->subject->getOpeningTimes()
+            $this->subject->getOpeningTimes(),
         );
     }
 
@@ -484,7 +484,7 @@ class CompanyTest extends UnitTestCase
     public function getBarrierFreeInitiallyReturnsFalse(): void
     {
         self::assertFalse(
-            $this->subject->getBarrierFree()
+            $this->subject->getBarrierFree(),
         );
     }
 
@@ -495,7 +495,7 @@ class CompanyTest extends UnitTestCase
     {
         $this->subject->setBarrierFree(true);
         self::assertTrue(
-            $this->subject->getBarrierFree()
+            $this->subject->getBarrierFree(),
         );
     }
 
@@ -506,7 +506,7 @@ class CompanyTest extends UnitTestCase
     {
         self::assertSame(
             '',
-            $this->subject->getDescription()
+            $this->subject->getDescription(),
         );
     }
 
@@ -519,7 +519,7 @@ class CompanyTest extends UnitTestCase
 
         self::assertSame(
             'foo bar',
-            $this->subject->getDescription()
+            $this->subject->getDescription(),
         );
     }
 
@@ -541,7 +541,7 @@ class CompanyTest extends UnitTestCase
 
         self::assertSame(
             $instance,
-            $this->subject->getDistrict()
+            $this->subject->getDistrict(),
         );
     }
 
@@ -552,7 +552,7 @@ class CompanyTest extends UnitTestCase
     {
         self::assertSame(
             [],
-            $this->subject->getMainTrade()
+            $this->subject->getMainTrade(),
         );
     }
 
@@ -562,7 +562,7 @@ class CompanyTest extends UnitTestCase
     public function getFirstMainTradeInitiallyReturnsNull(): void
     {
         self::assertNull(
-            $this->subject->getFirstMainTrade()
+            $this->subject->getFirstMainTrade(),
         );
     }
 
@@ -573,7 +573,7 @@ class CompanyTest extends UnitTestCase
     {
         self::assertEquals(
             new ObjectStorage(),
-            $this->subject->getOriginalMainTrade()
+            $this->subject->getOriginalMainTrade(),
         );
     }
 
@@ -589,7 +589,7 @@ class CompanyTest extends UnitTestCase
 
         self::assertSame(
             $objectStorage,
-            $this->subject->getOriginalMainTrade()
+            $this->subject->getOriginalMainTrade(),
         );
     }
 
@@ -608,7 +608,7 @@ class CompanyTest extends UnitTestCase
 
         self::assertSame(
             $objectStorage,
-            $this->subject->getOriginalMainTrade()
+            $this->subject->getOriginalMainTrade(),
         );
     }
 
@@ -627,7 +627,7 @@ class CompanyTest extends UnitTestCase
 
         self::assertSame(
             $objectStorage,
-            $this->subject->getOriginalMainTrade()
+            $this->subject->getOriginalMainTrade(),
         );
     }
 
@@ -638,12 +638,12 @@ class CompanyTest extends UnitTestCase
     {
         self::assertEquals(
             new ObjectStorage(),
-            $this->subject->getOriginalTrades()
+            $this->subject->getOriginalTrades(),
         );
 
         self::assertSame(
             [],
-            $this->subject->getTrades()
+            $this->subject->getTrades(),
         );
     }
 
@@ -659,7 +659,7 @@ class CompanyTest extends UnitTestCase
 
         self::assertSame(
             $objectStorage,
-            $this->subject->getOriginalTrades()
+            $this->subject->getOriginalTrades(),
         );
     }
 
@@ -678,7 +678,7 @@ class CompanyTest extends UnitTestCase
 
         self::assertSame(
             $objectStorage,
-            $this->subject->getOriginalTrades()
+            $this->subject->getOriginalTrades(),
         );
     }
 
@@ -697,7 +697,7 @@ class CompanyTest extends UnitTestCase
 
         self::assertSame(
             $objectStorage,
-            $this->subject->getOriginalTrades()
+            $this->subject->getOriginalTrades(),
         );
     }
 
@@ -708,7 +708,7 @@ class CompanyTest extends UnitTestCase
     {
         self::assertSame(
             '',
-            $this->subject->getFacebook()
+            $this->subject->getFacebook(),
         );
     }
 
@@ -721,7 +721,7 @@ class CompanyTest extends UnitTestCase
 
         self::assertSame(
             'foo bar',
-            $this->subject->getFacebook()
+            $this->subject->getFacebook(),
         );
     }
 
@@ -732,7 +732,7 @@ class CompanyTest extends UnitTestCase
     {
         self::assertSame(
             '',
-            $this->subject->getTwitter()
+            $this->subject->getTwitter(),
         );
     }
 
@@ -745,7 +745,7 @@ class CompanyTest extends UnitTestCase
 
         self::assertSame(
             'foo bar',
-            $this->subject->getTwitter()
+            $this->subject->getTwitter(),
         );
     }
 
@@ -756,7 +756,7 @@ class CompanyTest extends UnitTestCase
     {
         self::assertSame(
             '',
-            $this->subject->getInstagram()
+            $this->subject->getInstagram(),
         );
     }
 
@@ -769,7 +769,7 @@ class CompanyTest extends UnitTestCase
 
         self::assertSame(
             'foo bar',
-            $this->subject->getInstagram()
+            $this->subject->getInstagram(),
         );
     }
 }

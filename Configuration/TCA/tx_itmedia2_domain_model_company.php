@@ -1,11 +1,18 @@
 <?php
+
+/*
+ * This file is part of the package jweiland/itmedia2.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE file that was distributed with this source code.
+ */
+
 return [
     'ctrl' => [
         'title' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company',
         'label' => 'company',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
-        'cruser_id' => 'cruser_id',
         'default_sortby' => 'ORDER BY company',
         'versioningWS' => true,
         'origUid' => 't3_origuid',
@@ -49,19 +56,7 @@ return [
         'sys_language_uid' => [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'special' => 'languages',
-                'items' => [
-                    [
-                        'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages',
-                        -1,
-                        'flags-multiple',
-                    ],
-                ],
-                'default' => 0,
-            ],
+            'config' => ['type' => 'language'],
         ],
         'l10n_parent' => [
             'displayCond' => 'FIELD:sys_language_uid:>:0',
@@ -70,7 +65,7 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
-                    ['', 0],
+                    ['label' => '', 'value' => 0],
                 ],
                 'foreign_table' => 'tx_itmedia2_domain_model_company',
                 'foreign_table_where' => 'AND tx_itmedia2_domain_model_company.pid=###CURRENT_PID### AND tx_itmedia2_domain_model_company.sys_language_uid IN (-1,0)',
@@ -155,7 +150,8 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim,required',
+                'eval' => 'trim',
+                'required' => true,
             ],
         ],
         'path_segment' => [
@@ -189,7 +185,6 @@ return [
                     'foreign_match_fields' => [
                         'fieldname' => 'logo',
                         'tablenames' => 'tx_itmedia2_domain_model_company',
-                        'table_local' => 'sys_file',
                     ],
                     'behaviour' => [
                         'allowLanguageSynchronization' => true,
@@ -236,7 +231,7 @@ return [
                         ],
                     ],
                 ],
-                $GLOBALS['TYPO3_CONF_VARS']['SYS']['mediafile_ext']
+                $GLOBALS['TYPO3_CONF_VARS']['SYS']['mediafile_ext'],
             ),
         ],
         'images' => [
@@ -250,7 +245,6 @@ return [
                     'foreign_match_fields' => [
                         'fieldname' => 'images',
                         'tablenames' => 'tx_itmedia2_domain_model_company',
-                        'table_local' => 'sys_file',
                     ],
                     'behaviour' => [
                         'allowLanguageSynchronization' => true,
@@ -297,7 +291,7 @@ return [
                         ],
                     ],
                 ],
-                $GLOBALS['TYPO3_CONF_VARS']['SYS']['mediafile_ext']
+                $GLOBALS['TYPO3_CONF_VARS']['SYS']['mediafile_ext'],
             ),
         ],
         'image_maps' => [
@@ -309,7 +303,7 @@ return [
                     'minitems' => 0,
                     'maxitems' => 1,
                 ],
-                $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
+                $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext'],
             ),
         ],
         'street' => [
@@ -327,7 +321,8 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim,required',
+                'eval' => 'trim',
+                'required' => true,
             ],
         ],
         'zip' => [
@@ -432,7 +427,7 @@ return [
                 'foreign_table' => 'tx_yellowpages2_domain_model_district',
                 'foreign_table_where' => 'ORDER BY tx_yellowpages2_domain_model_district.district',
                 'items' => [
-                    ['LLL:EXT:yellowpages2/Resources/Private/Language/locallang_db.xlf:tx_yellowpages2_domain_model_company.district.pleaseChoose', 0],
+                    ['label' => 'LLL:EXT:yellowpages2/Resources/Private/Language/locallang_db.xlf:tx_yellowpages2_domain_model_company.district.pleaseChoose', 'value' => 0],
                 ],
                 'minitems' => 0,
                 'maxitems' => 1,
@@ -458,7 +453,7 @@ return [
                 'foreign_table' => 'tx_itmedia2_domain_model_position',
                 'foreign_table_where' => 'ORDER BY tx_itmedia2_domain_model_position.title',
                 'items' => [
-                    ['LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.position.pleaseChoose', 0],
+                    ['label' => 'LLL:EXT:itmedia2/Resources/Private/Language/locallang_db.xlf:tx_itmedia2_domain_model_company.position.pleaseChoose', 'value' => 0],
                 ],
                 'minitems' => 0,
                 'maxitems' => 1,

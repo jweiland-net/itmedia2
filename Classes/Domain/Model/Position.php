@@ -19,10 +19,7 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
  */
 class Position extends AbstractEntity
 {
-    /**
-     * @var string
-     */
-    protected $title = '';
+    protected string $title = '';
 
     public function getTitle(): string
     {

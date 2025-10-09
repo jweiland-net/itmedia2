@@ -1,42 +1,46 @@
-# Adapted from https://github.com/TYPO3GmbH/blog/blob/master/.github/workflows/ci.yml
-name: CI
+name: Tests
 
-on: [pull_request]
+on:
+  push:
+  pull_request:
 
 jobs:
-  build:
+  testing:
+    name: Testing
+
     runs-on: ubuntu-latest
 
     strategy:
+      # This prevents cancellation of matrix job runs, if one or more already failed
+      # and let the remaining matrix jobs be executed anyway.
       fail-fast: false
 
       matrix:
-        typo3: ['^11.5']
-        php: ['7.4', '8.0', '8.1']
+        php:
+          - '8.2'
+          - '8.3'
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+      - name: 'Checkout'
+        uses: actions/checkout@v4
 
-    - name: Setup PHP ${{ matrix.php }}, with composer and extensions
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: ${{ matrix.php }}
-        extensions: mbstring, dom, zip
+      - name: 'Lint PHP'
+        run: Build/Scripts/runTests.sh -p ${{ matrix.php }} -s lint
 
-    - name: Validate composer.json and composer.lock
-      run: composer validate
+      - name: 'Install testing system'
+        run: Build/Scripts/runTests.sh -p ${{ matrix.php }} -s composerUpdate
 
-    - name: Install dependencies with typo3/cms-core:${{ matrix.typo3 }}
-      run: |
-        composer require typo3/cms-core:${{ matrix.typo3 }} --no-progress
-        git checkout composer.json
+      - name: 'Composer validate'
+        run: Build/Scripts/runTests.sh -p ${{ matrix.php }} -s composerValidate
 
-    - name: php-cs-fixer
-      run: composer ci:php:fixer
+      - name: 'Composer normalize'
+        run: Build/Scripts/runTests.sh -p ${{ matrix.php }} -s composerNormalize -n
 
-    - name: Lint PHP
-      run: composer ci:php:lint
+      - name: 'CGL'
+        run: Build/Scripts/runTests.sh -n -p ${{ matrix.php }} -s cgl
 
-    - name: Unit Tests
-      run: php .build/vendor/bin/phpunit -c .build/vendor/nimut/testing-framework/res/Configuration/UnitTests.xml Tests/Unit
+      - name: 'phpstan'
+        run: Build/Scripts/runTests.sh -n -p ${{ matrix.php }} -s phpstan
+
+      - name: 'Execute unit tests'
+        run: Build/Scripts/runTests.sh -p ${{ matrix.php }} -s unit

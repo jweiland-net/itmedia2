@@ -1,11 +1,22 @@
 <?php
-if (!defined('TYPO3_MODE')) {
+
+/*
+ * This file is part of the package jweiland/itmedia2.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE file that was distributed with this source code.
+ */
+
+if (!defined('TYPO3')) {
     die('Access denied.');
 }
 
+use JWeiland\Maps2\Tca\Maps2Registry;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+
 // Add tx_maps2_uid column to company table
-if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('maps2')) {
-    \JWeiland\Maps2\Tca\Maps2Registry::getInstance()->add(
+if (ExtensionManagementUtility::isLoaded('maps2')) {
+    Maps2Registry::getInstance()->add(
         'itmedia2',
         'tx_itmedia2_domain_model_company',
         [
@@ -13,14 +24,14 @@ if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('maps2')) {
             'defaultCountry' => 'Deutschland',
             'defaultStoragePid' => [
                 'extKey' => 'itmedia2',
-                'property' => 'poiCollectionPid'
+                'property' => 'poiCollectionPid',
             ],
             'synchronizeColumns' => [
                 [
                     'foreignColumnName' => 'company',
-                    'poiCollectionColumnName' => 'title'
-                ]
-            ]
-        ]
+                    'poiCollectionColumnName' => 'title',
+                ],
+            ],
+        ],
     );
 }
