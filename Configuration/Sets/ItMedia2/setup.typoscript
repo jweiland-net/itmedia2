@@ -1,0 +1,24 @@
+plugin.tx_itmedia2 {
+  view {
+    templateRootPaths.100 = {$itmedia2.templateRootPath}
+    partialRootPaths.100 = {$itmedia2.partialRootPath}
+    layoutRootPaths.100 = {$itmedia2.layoutRootPath}
+  }
+
+  persistence {
+    storagePid = {$itmedia2.storagePid}
+  }
+
+  settings {
+    pidOfMaps2Plugin = {$itmedia2.pidOfMaps2Plugin}
+    pidOfDetailPage = {$itmedia2.pidOfDetailPage}
+    pidOfServiceBw2Page = {$itmedia2.pidOfServiceBw2Page}
+    pageBrowser {
+      itemsPerPage = {$itmedia2.pageBrowser.itemsPerPage}
+    }
+  }
+
+  features {
+    requireCHashArgumentForActionArguments = 0
+  }
+}
