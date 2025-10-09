@@ -30,7 +30,7 @@ class Itmedia2SlugUpdate implements UpgradeWizardInterface
 
     protected string $fieldName = 'path_segment';
 
-    protected SlugHelper $slugHelper;
+    protected ?SlugHelper $slugHelper = null;
 
     /**
      * Return the identifier for this wizard
@@ -91,7 +91,7 @@ class Itmedia2SlugUpdate implements UpgradeWizardInterface
             )))->executeQuery();
 
         $connection = $this->getConnectionPool()->getConnectionForTable($this->tableName);
-        while ($recordToUpdate = $statement->fetch()) {
+        while ($recordToUpdate = $statement->fetchOne()) {
             if ((string)$recordToUpdate['company'] !== '') {
                 $slug = $this->getSlugHelper()->generate($recordToUpdate, (int)$recordToUpdate['pid']);
                 $connection->update(
