@@ -306,7 +306,7 @@ class CompanyRepository extends Repository
         QueryBuilder $queryBuilder,
         array $settings,
     ): void {
-        $event = $this->eventDispatcher->dispatch(
+        $this->eventDispatcher->dispatch(
             new ModifyQueryToFindCompanyByLetterEvent($queryBuilder, $settings),
         );
     }
@@ -325,7 +325,7 @@ class CompanyRepository extends Repository
         int $categoryUid,
         array $settings,
     ): void {
-        $event = $this->eventDispatcher->dispatch(
+        $this->eventDispatcher->dispatch(
             new ModifyQueryToSearchCompaniesEvent($queryBuilder, $search, $categoryUid, $settings),
         );
     }
