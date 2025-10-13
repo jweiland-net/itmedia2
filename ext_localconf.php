@@ -1,42 +1,40 @@
 <?php
 
-if (!defined('TYPO3_MODE')) {
+/*
+ * This file is part of the package jweiland/itmedia2.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE file that was distributed with this source code.
+ */
+
+if (!defined('TYPO3')) {
     die('Access denied.');
 }
 
+use JWeiland\Itmedia2\Controller\CompanyController;
+use JWeiland\Itmedia2\Updater\Itmedia2SlugUpdater;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
+
 call_user_func(function () {
-    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+    ExtensionUtility::configurePlugin(
         'Itmedia2',
         'Directory',
         [
-            \JWeiland\Itmedia2\Controller\CompanyController::class => 'list, show, search',
+            CompanyController::class => 'list, show, search',
         ],
         // non-cacheable actions
         [
-            \JWeiland\Itmedia2\Controller\CompanyController::class => 'search',
-        ]
+            CompanyController::class => 'search',
+        ],
+        ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT,
     );
-
-    // Register SVG Icon Identifier
-    $svgIcons = [
-        'ext-itmedia2-directory-wizard-icon' => 'plugin_wizard.svg',
-    ];
-    $iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
-        \TYPO3\CMS\Core\Imaging\IconRegistry::class
-    );
-    foreach ($svgIcons as $identifier => $fileName) {
-        $iconRegistry->registerIcon(
-            $identifier,
-            \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
-            ['source' => 'EXT:itmedia2/Resources/Public/Icons/' . $fileName]
-        );
-    }
 
     $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['itmedia2UpdateSlug']
-        = \JWeiland\Itmedia2\Updater\Itmedia2SlugUpdater::class;
+        = Itmedia2SlugUpdater::class;
 
     // Add ItMedia plugin to new element wizard
-    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(
-        '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:itmedia2/Configuration/TSconfig/ContentElementWizard.tsconfig">'
+    ExtensionManagementUtility::addPageTSConfig(
+        '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:itmedia2/Configuration/TSconfig/ContentElementWizard.tsconfig">',
     );
 });

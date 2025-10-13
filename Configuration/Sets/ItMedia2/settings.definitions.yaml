@@ -1,0 +1,61 @@
+categories:
+  itmedia2:
+    label: 'itmedia2'
+  itmedia2.templates:
+    label: 'Templates'
+    parent: itmedia2
+  itmedia2.pages:
+    label: 'Pages'
+    parent: itmedia2
+  itmedia2.settings:
+    label: 'Settings'
+    parent: itmedia2
+settings:
+  itmedia2.templateRootPath:
+    label: 'Templates'
+    category: itmedia2.templates
+    description: 'Path to template root'
+    type: string
+    default: 'EXT:itmedia2/Resources/Private/Templates/'
+  itmedia2.partialRootPath:
+    label: 'Partials'
+    category: itmedia2.templates
+    description: 'Path to partial root'
+    type: string
+    default: 'EXT:itmedia2/Resources/Private/Partials/'
+  itmedia2.layoutRootPath:
+    label: 'Layouts'
+    category: itmedia2.templates
+    description: 'Path to layout root'
+    type: string
+    default: 'EXT:itmedia2/Resources/Private/Layouts/'
+  itmedia2.storagePid:
+    label: 'Default storage PID'
+    category: itmedia2.settings
+    description: 'Folder that stores all POIs'
+    type: int
+    default: 0
+  itmedia2.pidOfMaps2Plugin:
+    label: 'Pid of Maps Page'
+    category: 'itmedia2.pages'
+    description: 'Page UID with Maps2 records'
+    type: int
+    default: 0
+  itmedia2.pidOfDetailPage:
+    label: 'Pid of Detail Page'
+    category: 'itmedia2.pages'
+    description: 'Page UID of Detail Page'
+    type: int
+    default: 0
+  itmedia2.pidOfServiceBw2Page:
+    label: 'Pid of ServiceBw2 Page'
+    category: 'itmedia2.pages'
+    description: 'Page UID with ServiceBw2 records'
+    type: int
+    default: 0
+  itmedia2.pageBrowser.itemsPerPage:
+    label: 'Items per page for pagination'
+    category: 'itmedia2.settings'
+    description: 'Number of results that needs to be shown on listing page'
+    type: int
+    default: 15

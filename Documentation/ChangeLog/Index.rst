@@ -7,6 +7,18 @@
 ChangeLog
 =========
 
+Version 5.0.0
+=============
+
+*   Compatibility fixes for TYPO3 12LTS
+*   Removed deprecated API Usages
+*   SiteSets added for more flexibility
+
+Version 4.0.0
+=============
+
+*   Compatibility fixes for TYPO3 12LTS
+
 Version 3.2.1
 =============
 

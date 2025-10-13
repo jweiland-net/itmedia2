@@ -14,6 +14,7 @@ namespace JWeiland\Itmedia2\Domain\Model;
 use JWeiland\Maps2\Domain\Model\PoiCollection;
 use JWeiland\Yellowpages2\Domain\Model\District;
 use TYPO3\CMS\Extbase\Annotation as Extbase;
+use TYPO3\CMS\Extbase\Annotation\ORM\Lazy;
 use TYPO3\CMS\Extbase\Domain\Model\Category;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
@@ -24,146 +25,92 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
  */
 class Company extends AbstractEntity
 {
-    /**
-     * @var bool
-     */
-    protected $hidden = false;
+    protected bool $hidden = false;
 
-    /**
-     * @var string
-     * @Extbase\Validate("NotEmpty")
-     */
-    protected $company = '';
+    #[Extbase\Validate(['validator' => 'NotEmpty'])]
+    protected string $company = '';
 
     /**
      * @var ObjectStorage<FileReference>
      */
-    protected $logo;
+    protected ObjectStorage $logo;
 
     /**
      * @var ObjectStorage<FileReference>
      */
-    protected $images;
+    protected ObjectStorage $images;
 
-    /**
-     * @var string
-     * @Extbase\Validate("NotEmpty")
-     */
-    protected $street = '';
+    #[Extbase\Validate(['validator' => 'NotEmpty'])]
+    protected string $street = '';
 
-    /**
-     * @var string
-     * @Extbase\Validate("NotEmpty")
-     */
-    protected $houseNumber = '';
+    #[Extbase\Validate(['validator' => 'NotEmpty'])]
+    protected string $houseNumber = '';
 
-    /**
-     * @var string
-     * @Extbase\Validate("NotEmpty")
-     */
-    protected $zip = '';
+    #[Extbase\Validate(['validator' => 'NotEmpty'])]
+    protected string $zip = '';
 
-    /**
-     * @var string
-     * @Extbase\Validate("NotEmpty")
-     */
-    protected $city = '';
+    #[Extbase\Validate(['validator' => 'NotEmpty'])]
+    protected string $city = '';
 
-    /**
-     * @var string
-     */
-    protected $telephone = '';
+    protected string $telephone = '';
 
-    /**
-     * @var string
-     */
-    protected $fax = '';
+    protected string $fax = '';
 
-    /**
-     * @var string
-     */
-    protected $contactPerson = '';
+    protected string $contactPerson = '';
 
-    /**
-     * @var string
-     */
-    protected $email = '';
+    protected string $email = '';
 
-    /**
-     * @var string
-     */
-    protected $website = '';
+    protected string $website = '';
 
-    /**
-     * @var string
-     */
-    protected $openingTimes = '';
+    protected string $openingTimes = '';
 
-    /**
-     * @var bool
-     */
-    protected $barrierFree = false;
+    protected bool $barrierFree = false;
 
-    /**
-     * @var string
-     * @Extbase\Validate("NotEmpty")
-     */
-    protected $description = '';
+    #[Extbase\Validate(['validator' => 'NotEmpty'])]
+    protected string $description = '';
 
-    /**
-     * @var District
-     * @Extbase\Validate("NotEmpty")
-     * @Extbase\ORM\Lazy
-     */
-    protected $district;
+    #[Extbase\Validate(['validator' => 'NotEmpty'])]
+    #[Lazy]
+    protected ?District $district = null;
 
     /**
      * @var ObjectStorage<Category>
-     * @Extbase\Validate("NotEmpty")
-     * @Extbase\ORM\Lazy
      */
-    protected $mainTrade;
+    #[Extbase\Validate(['validator' => 'NotEmpty'])]
+    #[Lazy]
+    protected ObjectStorage $mainTrade;
 
     /**
      * @var ObjectStorage<Category>
-     * @Extbase\ORM\Lazy
      */
-    protected $trades;
+    #[Lazy]
+    protected ObjectStorage $trades;
 
-    /**
-     * @var string
-     */
-    protected $facebook = '';
+    protected string $facebook = '';
 
-    /**
-     * @var string
-     */
-    protected $twitter = '';
+    protected string $twitter = '';
 
-    /**
-     * @var string
-     */
-    protected $instagram = '';
+    protected string $instagram = '';
 
     /**
      * @var PoiCollection
      */
-    protected $txMaps2Uid;
+    protected PoiCollection $txMaps2Uid;
 
     /**
      * @var ObjectStorage<Floor>
      */
-    protected $floors;
+    protected ObjectStorage $floors;
 
     /**
      * @var ObjectStorage<FileReference>
      */
-    protected $imageMaps;
+    protected ObjectStorage $imageMaps;
 
     /**
      * @var Position
      */
-    protected $position;
+    protected Position $position;
 
     public function __construct()
     {

@@ -34,3 +34,11 @@ nbproject
 
 # Ignore composer stuff
 /composer.lock
+bin/*
+vendor/*
+
+# Ignore testing stuff
+/.Build
+/composer.json.orig
+/composer.json.testing
+*.env

@@ -18,15 +18,9 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
  */
 class Floor extends AbstractEntity
 {
-    /**
-     * @var string
-     */
-    protected $name = '';
+    protected string $name = '';
 
-    /**
-     * @var int
-     */
-    protected $sorting = 0;
+    protected int $sorting = 0;
 
     public function getName(): string
     {

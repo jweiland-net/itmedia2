@@ -45,7 +45,7 @@ class CompanyRepository extends Repository
 
     public function __construct(
         ObjectManager $objectManager,
-        Dispatcher $dispatcher
+        Dispatcher $dispatcher,
     ) {
         parent::__construct($objectManager);
 
@@ -83,8 +83,8 @@ class CompanyRepository extends Repository
                     $glossaryService->getLetterConstraintForDoctrineQuery(
                         $queryBuilder,
                         'c.company',
-                        $letter
-                    )
+                        $letter,
+                    ),
                 );
         }
 
@@ -92,8 +92,8 @@ class CompanyRepository extends Repository
             $queryBuilder->andWhere(
                 $queryBuilder->expr()->eq(
                     'c.district',
-                    $queryBuilder->createNamedParameter($settings['district'], \PDO::PARAM_INT)
-                )
+                    $queryBuilder->createNamedParameter($settings['district'], \PDO::PARAM_INT),
+                ),
             );
         }
 
@@ -123,20 +123,16 @@ class CompanyRepository extends Repository
 
         if (!empty($longStreetSearch)) {
             $queryBuilder->andWhere(
-                $queryBuilder->expr()->orX(
-                    $queryBuilder->expr()->like(
-                        'c.company',
-                        $queryBuilder->createNamedParameter('%' . $search . '%', \PDO::PARAM_STR)
-                    ),
-                    $queryBuilder->expr()->like(
-                        'c.street',
-                        $queryBuilder->createNamedParameter('%' . $smallStreetSearch . '%', \PDO::PARAM_STR)
-                    ),
-                    $queryBuilder->expr()->like(
-                        'c.street',
-                        $queryBuilder->createNamedParameter('%' . $longStreetSearch . '%', \PDO::PARAM_STR)
-                    )
-                )
+                $queryBuilder->expr()->or($queryBuilder->expr()->like(
+                    'c.company',
+                    $queryBuilder->createNamedParameter('%' . $search . '%', \PDO::PARAM_STR),
+                ), $queryBuilder->expr()->like(
+                    'c.street',
+                    $queryBuilder->createNamedParameter('%' . $smallStreetSearch . '%', \PDO::PARAM_STR),
+                ), $queryBuilder->expr()->like(
+                    'c.street',
+                    $queryBuilder->createNamedParameter('%' . $longStreetSearch . '%', \PDO::PARAM_STR),
+                )),
             );
         }
 
@@ -163,8 +159,8 @@ class CompanyRepository extends Repository
                 return 'c.' . $column;
             },
             array_keys(
-                $connection->getSchemaManager()->listTableColumns('tx_itmedia2_domain_model_company') ?? []
-            )
+                $connection->getSchemaManager()->listTableColumns('tx_itmedia2_domain_model_company') ?? [],
+            ),
         );
     }
 
@@ -174,42 +170,36 @@ class CompanyRepository extends Repository
             'c',
             'sys_category_record_mm',
             'category_mm',
-            (string)$queryBuilder->expr()->andX(
-                $queryBuilder->expr()->eq(
-                    'c.uid',
-                    $queryBuilder->quoteIdentifier('category_mm.uid_foreign')
+            (string)$queryBuilder->expr()->and($queryBuilder->expr()->eq(
+                'c.uid',
+                $queryBuilder->quoteIdentifier('category_mm.uid_foreign'),
+            ), $queryBuilder->expr()->eq(
+                'category_mm.tablenames',
+                $queryBuilder->createNamedParameter(
+                    'tx_itmedia2_domain_model_company',
+                    \PDO::PARAM_STR,
                 ),
-                $queryBuilder->expr()->eq(
-                    'category_mm.tablenames',
-                    $queryBuilder->createNamedParameter(
-                        'tx_itmedia2_domain_model_company',
-                        \PDO::PARAM_STR
-                    )
-                )
-            )
+            )),
         );
 
         $queryBuilder->andWhere(
-            $queryBuilder->expr()->orX(
-                $queryBuilder->expr()->eq(
-                    'category_mm.fieldname',
-                    $queryBuilder->createNamedParameter(
-                        'main_trade',
-                        \PDO::PARAM_STR
-                    )
+            $queryBuilder->expr()->or($queryBuilder->expr()->eq(
+                'category_mm.fieldname',
+                $queryBuilder->createNamedParameter(
+                    'main_trade',
+                    \PDO::PARAM_STR,
                 ),
-                $queryBuilder->expr()->eq(
-                    'category_mm.fieldname',
-                    $queryBuilder->createNamedParameter(
-                        'trades',
-                        \PDO::PARAM_STR
-                    )
-                )
-            ),
+            ), $queryBuilder->expr()->eq(
+                'category_mm.fieldname',
+                $queryBuilder->createNamedParameter(
+                    'trades',
+                    \PDO::PARAM_STR,
+                ),
+            )),
             $queryBuilder->expr()->eq(
                 'category_mm.uid_local',
-                $queryBuilder->createNamedParameter($categoryUid, \PDO::PARAM_INT)
-            )
+                $queryBuilder->createNamedParameter($categoryUid, \PDO::PARAM_INT),
+            ),
         );
     }
 
@@ -228,29 +218,22 @@ class CompanyRepository extends Repository
                 'c',
                 'sys_category_record_mm',
                 'category_mm',
-                (string)$queryBuilder->expr()->andX(
-                    $queryBuilder->expr()->eq(
-                        'c.uid',
-                        $queryBuilder->quoteIdentifier('category_mm.uid_foreign')
+                (string)$queryBuilder->expr()->and($queryBuilder->expr()->eq(
+                    'c.uid',
+                    $queryBuilder->quoteIdentifier('category_mm.uid_foreign'),
+                ), $queryBuilder->expr()->eq(
+                    'category_mm.tablenames',
+                    $queryBuilder->createNamedParameter(
+                        'tx_itmedia2_domain_model_company',
+                        \PDO::PARAM_STR,
                     ),
-                    $queryBuilder->expr()->eq(
-                        'category_mm.tablenames',
-                        $queryBuilder->createNamedParameter(
-                            'tx_itmedia2_domain_model_company',
-                            \PDO::PARAM_STR
-                        )
-                    ),
-                    $queryBuilder->expr()->orX(
-                        $queryBuilder->expr()->eq(
-                            'category_mm.fieldname',
-                            $queryBuilder->createNamedParameter('main_trade', \PDO::PARAM_STR)
-                        ),
-                        $queryBuilder->expr()->eq(
-                            'category_mm.fieldname',
-                            $queryBuilder->createNamedParameter('trades', \PDO::PARAM_STR)
-                        )
-                    )
-                )
+                ), $queryBuilder->expr()->or($queryBuilder->expr()->eq(
+                    'category_mm.fieldname',
+                    $queryBuilder->createNamedParameter('main_trade', \PDO::PARAM_STR),
+                ), $queryBuilder->expr()->eq(
+                    'category_mm.fieldname',
+                    $queryBuilder->createNamedParameter('trades', \PDO::PARAM_STR),
+                ))),
             )
             ->leftJoin(
                 'category_mm',
@@ -258,8 +241,8 @@ class CompanyRepository extends Repository
                 'sc',
                 $queryBuilder->expr()->eq(
                     'sc.uid',
-                    $queryBuilder->quoteIdentifier('category_mm.uid_local')
-                )
+                    $queryBuilder->quoteIdentifier('category_mm.uid_local'),
+                ),
             )
             ->groupBy('sc.uid')
             ->orderBy('sc.title', 'ASC');
@@ -303,9 +286,9 @@ class CompanyRepository extends Repository
                     'c.pid',
                     $queryBuilder->createNamedParameter(
                         $extbaseQuery->getQuerySettings()->getStoragePageIds(),
-                        Connection::PARAM_INT_ARRAY
-                    )
-                )
+                        Connection::PARAM_INT_ARRAY,
+                    ),
+                ),
             )
             ->orderBy('c.company', 'ASC');
     }
@@ -323,12 +306,12 @@ class CompanyRepository extends Repository
      */
     protected function emitModifyQueryToFindCompanyByLetter(
         QueryBuilder $queryBuilder,
-        array $settings
+        array $settings,
     ): void {
         $this->dispatcher->dispatch(
             self::class,
             'modifyQueryToFindCompanyByLetter',
-            [$queryBuilder, $settings]
+            [$queryBuilder, $settings],
         );
     }
 
@@ -344,12 +327,12 @@ class CompanyRepository extends Repository
         QueryBuilder $queryBuilder,
         string $search,
         int $categoryUid,
-        array $settings
+        array $settings,
     ): void {
         $this->dispatcher->dispatch(
             self::class,
             'modifyQueryToSearchCompanies',
-            [$queryBuilder, $search, $categoryUid, $settings]
+            [$queryBuilder, $search, $categoryUid, $settings],
         );
     }
 

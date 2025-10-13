@@ -12,76 +12,68 @@ declare(strict_types=1);
 namespace JWeiland\Itmedia2\Tests\Unit\Domain\Model;
 
 use JWeiland\Itmedia2\Domain\Model\Floor;
-use Nimut\TestingFramework\TestCase\UnitTestCase;
+use PHPUnit\Framework\Attributes\Test;
+use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 /**
  * Test case.
  */
 class FloorTest extends UnitTestCase
 {
-    /**
-     * @var Floor
-     */
-    protected $subject;
+    protected Floor $subject;
 
     protected function setUp(): void
     {
+        parent::setUp();
+
         $this->subject = new Floor();
     }
 
     protected function tearDown(): void
     {
         unset(
-            $this->subject
+            $this->subject,
         );
         parent::tearDown();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getNameInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
             '',
-            $this->subject->getName()
+            $this->subject->getName(),
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setNameSetsName(): void
     {
         $this->subject->setName('foo bar');
 
         self::assertSame(
             'foo bar',
-            $this->subject->getName()
+            $this->subject->getName(),
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getSortingInitiallyReturnsZero(): void
     {
         self::assertSame(
             0,
-            $this->subject->getSorting()
+            $this->subject->getSorting(),
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setSortingSetsSorting(): void
     {
         $this->subject->setSorting(123456);
 
         self::assertSame(
             123456,
-            $this->subject->getSorting()
+            $this->subject->getSorting(),
         );
     }
 }

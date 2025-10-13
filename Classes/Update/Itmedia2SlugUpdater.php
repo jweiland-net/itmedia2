@@ -9,35 +9,28 @@ declare(strict_types=1);
  * LICENSE file that was distributed with this source code.
  */
 
-namespace JWeiland\Itmedia2\Updater;
+namespace JWeiland\Itmedia2\Update;
 
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\Restriction\DeletedRestriction;
 use TYPO3\CMS\Core\DataHandling\SlugHelper;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Install\Attribute\UpgradeWizard;
 use TYPO3\CMS\Install\Updates\DatabaseUpdatedPrerequisite;
 use TYPO3\CMS\Install\Updates\UpgradeWizardInterface;
 
 /**
  * Updater to fill empty slug columns of company records
  */
-class Itmedia2SlugUpdater implements UpgradeWizardInterface
+#[UpgradeWizard('itmedia2_itmedia2SlugUpdate')]
+class Itmedia2SlugUpdate implements UpgradeWizardInterface
 {
-    /**
-     * @var string
-     */
-    protected $tableName = 'tx_itmedia2_domain_model_company';
+    protected string $tableName = 'tx_itmedia2_domain_model_company';
 
-    /**
-     * @var string
-     */
-    protected $fieldName = 'path_segment';
+    protected string $fieldName = 'path_segment';
 
-    /**
-     * @var SlugHelper
-     */
-    protected $slugHelper;
+    protected ?SlugHelper $slugHelper = null;
 
     /**
      * Return the identifier for this wizard
@@ -67,20 +60,13 @@ class Itmedia2SlugUpdater implements UpgradeWizardInterface
         $queryBuilder->getRestrictions()->add(GeneralUtility::makeInstance(DeletedRestriction::class));
         $amountOfRecordsWithEmptySlug = $queryBuilder
             ->count('*')
-            ->from($this->tableName)
-            ->where(
-                $queryBuilder->expr()->orX(
-                    $queryBuilder->expr()->eq(
-                        $this->fieldName,
-                        $queryBuilder->createNamedParameter('', Connection::PARAM_STR)
-                    ),
-                    $queryBuilder->expr()->isNull(
-                        $this->fieldName
-                    )
-                )
-            )
-            ->execute()
-            ->fetchColumn();
+            ->from($this->tableName)->where($queryBuilder->expr()->or($queryBuilder->expr()->eq(
+                $this->fieldName,
+                $queryBuilder->createNamedParameter('', Connection::PARAM_STR),
+            ), $queryBuilder->expr()->isNull(
+                $this->fieldName,
+            )))->executeQuery()
+            ->fetchOne();
 
         return (bool)$amountOfRecordsWithEmptySlug;
     }
@@ -97,22 +83,15 @@ class Itmedia2SlugUpdater implements UpgradeWizardInterface
         $queryBuilder->getRestrictions()->add(GeneralUtility::makeInstance(DeletedRestriction::class));
         $statement = $queryBuilder
             ->select('uid', 'pid', 'company')
-            ->from($this->tableName)
-            ->where(
-                $queryBuilder->expr()->orX(
-                    $queryBuilder->expr()->eq(
-                        $this->fieldName,
-                        $queryBuilder->createNamedParameter('', Connection::PARAM_STR)
-                    ),
-                    $queryBuilder->expr()->isNull(
-                        $this->fieldName
-                    )
-                )
-            )
-            ->execute();
+            ->from($this->tableName)->where($queryBuilder->expr()->or($queryBuilder->expr()->eq(
+                $this->fieldName,
+                $queryBuilder->createNamedParameter('', Connection::PARAM_STR),
+            ), $queryBuilder->expr()->isNull(
+                $this->fieldName,
+            )))->executeQuery();
 
         $connection = $this->getConnectionPool()->getConnectionForTable($this->tableName);
-        while ($recordToUpdate = $statement->fetch()) {
+        while ($recordToUpdate = $statement->fetchOne()) {
             if ((string)$recordToUpdate['company'] !== '') {
                 $slug = $this->getSlugHelper()->generate($recordToUpdate, (int)$recordToUpdate['pid']);
                 $connection->update(
@@ -122,7 +101,7 @@ class Itmedia2SlugUpdater implements UpgradeWizardInterface
                     ],
                     [
                         'uid' => (int)$recordToUpdate['uid'],
-                    ]
+                    ],
                 );
             }
         }
@@ -141,7 +120,7 @@ class Itmedia2SlugUpdater implements UpgradeWizardInterface
                 SlugHelper::class,
                 $this->tableName,
                 $this->fieldName,
-                $config
+                $config,
             );
         }
 

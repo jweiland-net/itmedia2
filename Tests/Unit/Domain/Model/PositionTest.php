@@ -12,52 +12,48 @@ declare(strict_types=1);
 namespace JWeiland\Itmedia2\Tests\Unit\Domain\Model;
 
 use JWeiland\Itmedia2\Domain\Model\Position;
-use Nimut\TestingFramework\TestCase\UnitTestCase;
+use PHPUnit\Framework\Attributes\Test;
+use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 /**
  * Test case.
  */
 class PositionTest extends UnitTestCase
 {
-    /**
-     * @var Position
-     */
-    protected $subject;
+    protected Position $subject;
 
     protected function setUp(): void
     {
+        parent::setUp();
+
         $this->subject = new Position();
     }
 
     protected function tearDown(): void
     {
         unset(
-            $this->subject
+            $this->subject,
         );
         parent::tearDown();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getTitleInitiallyReturnsEmptyString(): void
     {
         self::assertSame(
             '',
-            $this->subject->getTitle()
+            $this->subject->getTitle(),
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function setTitleSetsTitle(): void
     {
         $this->subject->setTitle('foo bar');
 
         self::assertSame(
             'foo bar',
-            $this->subject->getTitle()
+            $this->subject->getTitle(),
         );
     }
 }

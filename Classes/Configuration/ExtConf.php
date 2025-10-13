@@ -20,10 +20,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class ExtConf implements SingletonInterface
 {
-    /**
-     * @var int
-     */
-    protected $poiCollectionPid = 0;
+    protected int $poiCollectionPid = 0;
 
     public function __construct()
     {
@@ -45,7 +42,7 @@ class ExtConf implements SingletonInterface
         return $this->poiCollectionPid;
     }
 
-    public function setPoiCollectionPid($poiCollectionPid)
+    public function setPoiCollectionPid($poiCollectionPid): void
     {
         $this->poiCollectionPid = (int)$poiCollectionPid;
     }
