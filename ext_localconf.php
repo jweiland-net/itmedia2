@@ -12,7 +12,7 @@ if (!defined('TYPO3')) {
 }
 
 use JWeiland\Itmedia2\Controller\CompanyController;
-use JWeiland\Itmedia2\Updater\Itmedia2SlugUpdater;
+use JWeiland\Itmedia2\Update\Itmedia2SlugUpdate;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 
@@ -31,7 +31,7 @@ call_user_func(function () {
     );
 
     $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['itmedia2UpdateSlug']
-        = Itmedia2SlugUpdater::class;
+        = Itmedia2SlugUpdate::class;
 
     // Add ItMedia plugin to new element wizard
     ExtensionManagementUtility::addPageTSConfig(
