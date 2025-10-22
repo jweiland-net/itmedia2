@@ -7,6 +7,15 @@
 ChangeLog
 =========
 
+Version 4.0.0
+=============
+
+*   [TASK] TYPO3 12 LTS Compatibility Fixes
+*   [TASK] Removed and Replaced all obsolete and deprecated functions
+*   [TASK] Update wizards namespace and registration method changes
+*   [TASK] Event dispatcher replaced with PSR-14 Events
+*   [TASK] Updated badges of README.md
+
 Version 3.2.1
 =============
 
