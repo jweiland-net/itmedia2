@@ -13,7 +13,6 @@ if (!defined('TYPO3')) {
 
 use JWeiland\Itmedia2\Controller\CompanyController;
 use JWeiland\Itmedia2\Updater\Itmedia2SlugUpdater;
-use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 
 call_user_func(function () {
@@ -27,13 +26,5 @@ call_user_func(function () {
         [
             CompanyController::class => 'search',
         ],
-    );
-
-    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['itmedia2UpdateSlug']
-        = Itmedia2SlugUpdater::class;
-
-    // Add ItMedia plugin to new element wizard
-    ExtensionManagementUtility::addPageTSConfig(
-        '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:itmedia2/Configuration/TSconfig/ContentElementWizard.tsconfig">',
     );
 });
