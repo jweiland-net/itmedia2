@@ -10,9 +10,9 @@ ChangeLog
 Version 5.0.0
 =============
 
-*   Compatibility fixes for TYPO3 13 LTS
-*   Removed deprecated API Usages
-*   SiteSets added for more flexibility
+*   [TASK] Compatibility fixes for TYPO3 13 LTS
+*   [TASK] Removed deprecated API Usages
+*   [TASK] SiteSets added for more flexibility
 
 Version 4.0.0
 =============
