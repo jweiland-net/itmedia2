@@ -13,17 +13,18 @@ namespace JWeiland\Itmedia2\Domain\Repository;
 
 use JWeiland\Glossary2\Service\GlossaryService;
 use JWeiland\Itmedia2\Domain\Model\Company;
+use JWeiland\Itmedia2\Event\ModifyQueryToFindCompanyByLetterEvent;
+use JWeiland\Itmedia2\Event\ModifyQueryToSearchCompaniesEvent;
+use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\QueryBuilder;
 use TYPO3\CMS\Core\Database\Query\Restriction\FrontendRestrictionContainer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Extbase\Persistence\Generic\Query;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
-use TYPO3\CMS\Extbase\SignalSlot\Dispatcher;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
@@ -38,18 +39,14 @@ class CompanyRepository extends Repository
         'company' => QueryInterface::ORDER_ASCENDING,
     ];
 
-    /**
-     * @var Dispatcher
-     */
-    protected $dispatcher;
+    protected EventDispatcherInterface $eventDispatcher;
 
     public function __construct(
-        ObjectManager $objectManager,
-        Dispatcher $dispatcher,
+        EventDispatcherInterface $eventDispatcher,
     ) {
-        parent::__construct($objectManager);
+        parent::__construct();
 
-        $this->dispatcher = $dispatcher;
+        $this->eventDispatcher = $eventDispatcher;
     }
 
     public function findHiddenEntryByUid(int $companyUid): ?Company
@@ -308,10 +305,8 @@ class CompanyRepository extends Repository
         QueryBuilder $queryBuilder,
         array $settings,
     ): void {
-        $this->dispatcher->dispatch(
-            self::class,
-            'modifyQueryToFindCompanyByLetter',
-            [$queryBuilder, $settings],
+        $this->eventDispatcher->dispatch(
+            new ModifyQueryToFindCompanyByLetterEvent($queryBuilder, $settings),
         );
     }
 
@@ -329,10 +324,8 @@ class CompanyRepository extends Repository
         int $categoryUid,
         array $settings,
     ): void {
-        $this->dispatcher->dispatch(
-            self::class,
-            'modifyQueryToSearchCompanies',
-            [$queryBuilder, $search, $categoryUid, $settings],
+        $this->eventDispatcher->dispatch(
+            new ModifyQueryToSearchCompaniesEvent($queryBuilder, $search, $categoryUid, $settings),
         );
     }
 
