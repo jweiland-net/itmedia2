@@ -7,6 +7,11 @@
 ChangeLog
 =========
 
+Version 5.0.1
+=============
+
+*   [BUGFIX] Remove deprecated usage of SoftRef parser: images
+
 Version 5.0.0
 =============
 
