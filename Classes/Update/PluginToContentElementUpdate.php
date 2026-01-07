@@ -29,7 +29,7 @@ class PluginToContentElementUpdate extends AbstractListTypeToCTypeUpdate
 
     public function getTitle(): string
     {
-        return 'EXT:itmedia2 - Migrate plugins to Content Elements';
+        return '[itmedia2] Migrate plugins to Content Elements';
     }
 
     public function getDescription(): string
