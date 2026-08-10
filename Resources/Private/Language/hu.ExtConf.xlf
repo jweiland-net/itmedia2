@@ -5,7 +5,7 @@
     <body>
       <trans-unit id="poiCollectionPid" xml:space="preserve">
 				<source>PID for poiCollections: Define a storage pid where to store records of type Point of Interest.</source>
-			<target state="needs-translation">PID for poiCollections: Define a storage pid where to store records of type Point of Interest.</target></trans-unit>
+			<target state="translated">PID a poiCollections számára: Adjon meg egy tárolási PID-t, ahol a Point of Interest típusú rekordok tárolódnak.</target></trans-unit>
     </body>
   </file>
 </xliff>
