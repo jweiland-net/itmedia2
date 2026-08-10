@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="messages" date="2013-03-28T08:36:00Z" product-name="itmedia2" target-language="fi">
+    <header/>
+    <body>
+      <trans-unit id="tx_itmedia2_domain_model_company" xml:space="preserve">
+				<source>Company</source>
+			<target state="needs-translation">Company</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.company" xml:space="preserve">
+				<source>Company</source>
+			<target state="needs-translation">Company</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.logo" xml:space="preserve">
+				<source>Logo</source>
+			<target state="needs-translation">Logo</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.images" xml:space="preserve">
+				<source>Images</source>
+			<target state="needs-translation">Images</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.street" xml:space="preserve">
+				<source>Street</source>
+			<target state="needs-translation">Street</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.houseNumber" xml:space="preserve">
+				<source>house number</source>
+			<target state="needs-translation">house number</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.zip" xml:space="preserve">
+				<source>Zip</source>
+			<target state="needs-translation">Zip</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.city" xml:space="preserve">
+				<source>City</source>
+			<target state="needs-translation">City</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.telephone" xml:space="preserve">
+				<source>Telephone</source>
+			<target state="needs-translation">Telephone</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.fax" xml:space="preserve">
+				<source>Fax</source>
+			<target state="needs-translation">Fax</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.postAddress" xml:space="preserve">
+				<source>Post address</source>
+			<target state="needs-translation">Post address</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.contact" xml:space="preserve">
+				<source>Contact</source>
+			<target state="needs-translation">Contact</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.contactPerson" xml:space="preserve">
+				<source>Contact person</source>
+			<target state="needs-translation">Contact person</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.email" xml:space="preserve">
+				<source>Email</source>
+			<target state="needs-translation">Email</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.website" xml:space="preserve">
+				<source>Website</source>
+			<target state="needs-translation">Website</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.openingTimes" xml:space="preserve">
+				<source>Opening times</source>
+			<target state="needs-translation">Opening times</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.barrierFree" xml:space="preserve">
+				<source>Barrier-free</source>
+			<target state="needs-translation">Barrier-free</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.description" xml:space="preserve">
+				<source>Description</source>
+			<target state="needs-translation">Description</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.facebook" xml:space="preserve">
+				<source>Facebook</source>
+			<target state="needs-translation">Facebook</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.twitter" xml:space="preserve">
+				<source>Twitter</source>
+			<target state="needs-translation">Twitter</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.instagram" xml:space="preserve">
+				<source>Instagram</source>
+			<target state="needs-translation">Instagram</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.mainTrade" xml:space="preserve">
+				<source>Main Trade</source>
+			<target state="needs-translation">Main Trade</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.trades" xml:space="preserve">
+				<source>Trades</source>
+			<target state="needs-translation">Trades</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.floors">
+        <source>Floors</source>
+        <target state="needs-translation">Floors</target>
+      </trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.position">
+        <source>Position</source>
+        <target state="needs-translation">Position</target>
+      </trans-unit>
+      <trans-unit id="search">
+        <source>Search</source>
+        <target state="needs-translation">Search</target>
+      </trans-unit>
+      <trans-unit id="noResults">
+        <source>No results found</source>
+        <target state="needs-translation">No results found</target>
+      </trans-unit>
+      <trans-unit id="branch">
+        <source>Branch</source>
+        <target state="needs-translation">Branch</target>
+      </trans-unit>
+      <trans-unit id="allBranches">
+        <source>All branches</source>
+        <target state="needs-translation">All branches</target>
+      </trans-unit>
+      <trans-unit id="yes">
+        <source>Yes</source>
+        <target state="needs-translation">Yes</target>
+      </trans-unit>
+      <trans-unit id="no">
+        <source>No</source>
+        <target state="needs-translation">No</target>
+      </trans-unit>
+      <trans-unit id="altTextMapImg">
+        <source>Map</source>
+        <target state="needs-translation">Map</target>
+      </trans-unit>
+      <trans-unit id="pageBrowser.first">
+        <source>First</source>
+        <target state="needs-translation">First</target>
+      </trans-unit>
+      <trans-unit id="pageBrowser.previous">
+        <source>Previous</source>
+        <target state="needs-translation">Previous</target>
+      </trans-unit>
+      <trans-unit id="pageBrowser.next">
+        <source>Next</source>
+        <target state="needs-translation">Next</target>
+      </trans-unit>
+      <trans-unit id="pageBrowser.last">
+        <source>Last</source>
+        <target state="needs-translation">Last</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

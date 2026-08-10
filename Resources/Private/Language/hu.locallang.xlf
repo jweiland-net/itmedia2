@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="messages" date="2013-03-28T08:36:00Z" product-name="itmedia2" target-language="hu">
+    <header/>
+    <body>
+      <trans-unit id="tx_itmedia2_domain_model_company" xml:space="preserve">
+				<source>Company</source>
+			<target state="translated">Cég</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.company" xml:space="preserve">
+				<source>Company</source>
+			<target state="translated">Cég</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.logo" xml:space="preserve">
+				<source>Logo</source>
+			<target state="translated">Logó</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.images" xml:space="preserve">
+				<source>Images</source>
+			<target state="translated">Képek</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.street" xml:space="preserve">
+				<source>Street</source>
+			<target state="translated">Utca</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.houseNumber" xml:space="preserve">
+				<source>house number</source>
+			<target state="translated">házszám</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.zip" xml:space="preserve">
+				<source>Zip</source>
+			<target state="translated">Irányítószám</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.city" xml:space="preserve">
+				<source>City</source>
+			<target state="translated">Város</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.telephone" xml:space="preserve">
+				<source>Telephone</source>
+			<target state="translated">Telefon</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.fax" xml:space="preserve">
+				<source>Fax</source>
+			<target state="translated">Fax</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.postAddress" xml:space="preserve">
+				<source>Post address</source>
+			<target state="translated">Postacím</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.contact" xml:space="preserve">
+				<source>Contact</source>
+			<target state="translated">Kapcsolat</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.contactPerson" xml:space="preserve">
+				<source>Contact person</source>
+			<target state="translated">Kapcsolattartó</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.email" xml:space="preserve">
+				<source>Email</source>
+			<target state="translated">E-mail</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.website" xml:space="preserve">
+				<source>Website</source>
+			<target state="translated">Weboldal</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.openingTimes" xml:space="preserve">
+				<source>Opening times</source>
+			<target state="translated">Nyitvatartás</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.barrierFree" xml:space="preserve">
+				<source>Barrier-free</source>
+			<target state="translated">Akadálymentes</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.description" xml:space="preserve">
+				<source>Description</source>
+			<target state="translated">Leírás</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.facebook" xml:space="preserve">
+				<source>Facebook</source>
+			<target state="translated">Facebook</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.twitter" xml:space="preserve">
+				<source>Twitter</source>
+			<target state="translated">Twitter</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.instagram" xml:space="preserve">
+				<source>Instagram</source>
+			<target state="translated">Instagram</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.mainTrade" xml:space="preserve">
+				<source>Main Trade</source>
+			<target state="translated">Fő szakma</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.trades" xml:space="preserve">
+				<source>Trades</source>
+			<target state="translated">Szakmák</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.floors">
+        <source>Floors</source>
+        <target state="translated">Emeletek</target>
+      </trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.position">
+        <source>Position</source>
+        <target state="translated">Pozíció</target>
+      </trans-unit>
+      <trans-unit id="search">
+        <source>Search</source>
+        <target state="translated">Keresés</target>
+      </trans-unit>
+      <trans-unit id="noResults">
+        <source>No results found</source>
+        <target state="translated">Nem található eredmény</target>
+      </trans-unit>
+      <trans-unit id="branch">
+        <source>Branch</source>
+        <target state="translated">Fióktelep</target>
+      </trans-unit>
+      <trans-unit id="allBranches">
+        <source>All branches</source>
+        <target state="translated">Összes fióktelep</target>
+      </trans-unit>
+      <trans-unit id="yes">
+        <source>Yes</source>
+        <target state="translated">Igen</target>
+      </trans-unit>
+      <trans-unit id="no">
+        <source>No</source>
+        <target state="translated">Nem</target>
+      </trans-unit>
+      <trans-unit id="altTextMapImg">
+        <source>Map</source>
+        <target state="translated">Térkép</target>
+      </trans-unit>
+      <trans-unit id="pageBrowser.first">
+        <source>First</source>
+        <target state="translated">Első</target>
+      </trans-unit>
+      <trans-unit id="pageBrowser.previous">
+        <source>Previous</source>
+        <target state="translated">Előző</target>
+      </trans-unit>
+      <trans-unit id="pageBrowser.next">
+        <source>Next</source>
+        <target state="translated">Következő</target>
+      </trans-unit>
+      <trans-unit id="pageBrowser.last">
+        <source>Last</source>
+        <target state="translated">Utolsó</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
