@@ -5,10 +5,10 @@
     <body>
       <trans-unit id="sheetGeneral" xml:space="preserve">
 				<source>General</source>
-			<target state="needs-translation">General</target></trans-unit>
+			<target state="translated">Általános</target></trans-unit>
       <trans-unit id="district" xml:space="preserve">
 				<source>District</source>
-			<target state="needs-translation">District</target></trans-unit>
+			<target state="translated">Kerület</target></trans-unit>
     </body>
   </file>
 </xliff>
