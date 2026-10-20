@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="messages" date="2013-03-28T08:36:00Z" product-name="itmedia2" target-language="t3">
+    <header/>
+    <body>
+      <trans-unit id="tx_itmedia2_domain_model_company" xml:space="preserve">
+				<source>Company</source>
+			<target>crwdns307266:0crwdne307266:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.company" xml:space="preserve">
+				<source>Company</source>
+			<target>crwdns307268:0crwdne307268:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.logo" xml:space="preserve">
+				<source>Logo</source>
+			<target>crwdns307270:0crwdne307270:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.images" xml:space="preserve">
+				<source>Images</source>
+			<target>crwdns307272:0crwdne307272:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.street" xml:space="preserve">
+				<source>Street</source>
+			<target>crwdns307274:0crwdne307274:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.houseNumber" xml:space="preserve">
+				<source>house number</source>
+			<target>crwdns307276:0crwdne307276:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.zip" xml:space="preserve">
+				<source>Zip</source>
+			<target>crwdns307278:0crwdne307278:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.city" xml:space="preserve">
+				<source>City</source>
+			<target>crwdns307280:0crwdne307280:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.telephone" xml:space="preserve">
+				<source>Telephone</source>
+			<target>crwdns307282:0crwdne307282:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.fax" xml:space="preserve">
+				<source>Fax</source>
+			<target>crwdns307284:0crwdne307284:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.postAddress" xml:space="preserve">
+				<source>Post address</source>
+			<target>crwdns307286:0crwdne307286:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.contact" xml:space="preserve">
+				<source>Contact</source>
+			<target>crwdns307288:0crwdne307288:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.contactPerson" xml:space="preserve">
+				<source>Contact person</source>
+			<target>crwdns307290:0crwdne307290:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.email" xml:space="preserve">
+				<source>Email</source>
+			<target>crwdns307292:0crwdne307292:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.website" xml:space="preserve">
+				<source>Website</source>
+			<target>crwdns307294:0crwdne307294:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.openingTimes" xml:space="preserve">
+				<source>Opening times</source>
+			<target>crwdns307296:0crwdne307296:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.barrierFree" xml:space="preserve">
+				<source>Barrier-free</source>
+			<target>crwdns307298:0crwdne307298:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.description" xml:space="preserve">
+				<source>Description</source>
+			<target>crwdns307300:0crwdne307300:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.facebook" xml:space="preserve">
+				<source>Facebook</source>
+			<target>crwdns307302:0crwdne307302:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.twitter" xml:space="preserve">
+				<source>Twitter</source>
+			<target>crwdns307304:0crwdne307304:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.instagram" xml:space="preserve">
+				<source>Instagram</source>
+			<target>crwdns307306:0crwdne307306:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.mainTrade" xml:space="preserve">
+				<source>Main Trade</source>
+			<target>crwdns307308:0crwdne307308:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.trades" xml:space="preserve">
+				<source>Trades</source>
+			<target>crwdns307310:0crwdne307310:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.floors">
+        <source>Floors</source>
+        <target>crwdns307312:0crwdne307312:0</target>
+      </trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.position">
+        <source>Position</source>
+        <target>crwdns307314:0crwdne307314:0</target>
+      </trans-unit>
+      <trans-unit id="search">
+        <source>Search</source>
+        <target>crwdns307316:0crwdne307316:0</target>
+      </trans-unit>
+      <trans-unit id="noResults">
+        <source>No results found</source>
+        <target>crwdns307318:0crwdne307318:0</target>
+      </trans-unit>
+      <trans-unit id="branch">
+        <source>Branch</source>
+        <target>crwdns307320:0crwdne307320:0</target>
+      </trans-unit>
+      <trans-unit id="allBranches">
+        <source>All branches</source>
+        <target>crwdns307322:0crwdne307322:0</target>
+      </trans-unit>
+      <trans-unit id="yes">
+        <source>Yes</source>
+        <target>crwdns307324:0crwdne307324:0</target>
+      </trans-unit>
+      <trans-unit id="no">
+        <source>No</source>
+        <target>crwdns307326:0crwdne307326:0</target>
+      </trans-unit>
+      <trans-unit id="altTextMapImg">
+        <source>Map</source>
+        <target>crwdns307328:0crwdne307328:0</target>
+      </trans-unit>
+      <trans-unit id="pageBrowser.first">
+        <source>First</source>
+        <target>crwdns307330:0crwdne307330:0</target>
+      </trans-unit>
+      <trans-unit id="pageBrowser.previous">
+        <source>Previous</source>
+        <target>crwdns307332:0crwdne307332:0</target>
+      </trans-unit>
+      <trans-unit id="pageBrowser.next">
+        <source>Next</source>
+        <target>crwdns307334:0crwdne307334:0</target>
+      </trans-unit>
+      <trans-unit id="pageBrowser.last">
+        <source>Last</source>
+        <target>crwdns307336:0crwdne307336:0</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
