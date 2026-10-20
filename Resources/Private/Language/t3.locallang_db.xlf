@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="messages" date="2013-03-28T08:36:40Z" product-name="itmedia2" target-language="t3">
+    <header/>
+    <body>
+      <trans-unit id="plugin.title">
+        <source>IT and Media directory</source>
+        <target>crwdns307338:0crwdne307338:0</target>
+      </trans-unit>
+      <trans-unit id="plugin.directory.title">
+        <source>IT and Media directory</source>
+        <target>crwdns307340:0crwdne307340:0</target>
+      </trans-unit>
+      <trans-unit id="plugin.directory.description">
+        <source>Inserts a lightweight industry directory. Above the industry directory you can use the a-z navigation to reduce the companies to its starting letter.</source>
+        <target>crwdns307342:0crwdne307342:0</target>
+      </trans-unit>
+      <trans-unit id="tabs.trades" xml:space="preserve">
+				<source>Trades</source>
+			<target>crwdns307344:0crwdne307344:0</target></trans-unit>
+      <trans-unit id="tabs.social" xml:space="preserve">
+				<source>Social</source>
+			<target>crwdns307346:0crwdne307346:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company" xml:space="preserve">
+				<source>Company</source>
+			<target>crwdns307348:0crwdne307348:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.company" xml:space="preserve">
+				<source>Company</source>
+			<target>crwdns307350:0crwdne307350:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.path_segment" xml:space="preserve">
+				<source>Segment for URL</source>
+			<target>crwdns307352:0crwdne307352:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.logo" xml:space="preserve">
+				<source>Logo</source>
+			<target>crwdns307354:0crwdne307354:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.logo.add" xml:space="preserve">
+				<source>Add logo</source>
+			<target>crwdns307356:0crwdne307356:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.images" xml:space="preserve">
+				<source>Images</source>
+			<target>crwdns307358:0crwdne307358:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.images.add" xml:space="preserve">
+				<source>Add image</source>
+			<target>crwdns307360:0crwdne307360:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.street" xml:space="preserve">
+				<source>Street</source>
+			<target>crwdns307362:0crwdne307362:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.houseNumber" xml:space="preserve">
+				<source>House number</source>
+			<target>crwdns307364:0crwdne307364:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.zip" xml:space="preserve">
+				<source>Zip</source>
+			<target>crwdns307366:0crwdne307366:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.city" xml:space="preserve">
+				<source>City</source>
+			<target>crwdns307368:0crwdne307368:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.telephone" xml:space="preserve">
+				<source>Telephone</source>
+			<target>crwdns307370:0crwdne307370:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.fax" xml:space="preserve">
+				<source>Fax</source>
+			<target>crwdns307372:0crwdne307372:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.contactPerson" xml:space="preserve">
+				<source>Contact person</source>
+			<target>crwdns307374:0crwdne307374:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.email" xml:space="preserve">
+				<source>Email</source>
+			<target>crwdns307376:0crwdne307376:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.website" xml:space="preserve">
+				<source>Website</source>
+			<target>crwdns307378:0crwdne307378:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.openingTimes" xml:space="preserve">
+				<source>Opening times</source>
+			<target>crwdns307380:0crwdne307380:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.barrierFree" xml:space="preserve">
+				<source>Barrier-free</source>
+			<target>crwdns307382:0crwdne307382:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.description" xml:space="preserve">
+				<source>Description</source>
+			<target>crwdns307384:0crwdne307384:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.facebook" xml:space="preserve">
+				<source>Facebook</source>
+			<target>crwdns307386:0crwdne307386:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.twitter" xml:space="preserve">
+				<source>Twitter</source>
+			<target>crwdns307388:0crwdne307388:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.instagram" xml:space="preserve">
+				<source>Instagram</source>
+			<target>crwdns307390:0crwdne307390:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.mainTrade" xml:space="preserve">
+				<source>Main Trade</source>
+			<target>crwdns307392:0crwdne307392:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.trades" xml:space="preserve">
+				<source>Sub Trades</source>
+			<target>crwdns307394:0crwdne307394:0</target></trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.floors">
+        <source>Floor(s)</source>
+        <target>crwdns307396:0crwdne307396:0</target>
+      </trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.position">
+        <source>Position</source>
+        <target>crwdns307398:0crwdne307398:0</target>
+      </trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.position.pleaseChoose">
+        <source>---Please choose a position---</source>
+        <target>crwdns307400:0crwdne307400:0</target>
+      </trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_company.image_maps">
+        <source>Image map</source>
+        <target>crwdns307402:0crwdne307402:0</target>
+      </trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_position">
+        <source>Position</source>
+        <target>crwdns307404:0crwdne307404:0</target>
+      </trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_position.title">
+        <source>Title</source>
+        <target>crwdns307406:0crwdne307406:0</target>
+      </trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_floor">
+        <source>Floor</source>
+        <target>crwdns307408:0crwdne307408:0</target>
+      </trans-unit>
+      <trans-unit id="tx_itmedia2_domain_model_floor.name">
+        <source>Name</source>
+        <target>crwdns307410:0crwdne307410:0</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
